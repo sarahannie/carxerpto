@@ -62,14 +62,14 @@ function OnboardingPage() {
           <div className="flex flex-row mt-16 gap-2">
             <Link
               to=""
-              className="py-2 px-6 rounded-md text-base text-accent-white bg-primary-normal"
+              className="py-2 px-6 rounded-md text-base text-accent-white bg-primary-normal hover:bg-primary-normalhover"
             >
               Sign Up
             </Link>
 
             <Link
               to="/signin"
-              className="py-2 px-6 rounded-md text-base text-accent-white bg-secondary-darker"
+              className="py-2 px-6 rounded-md text-base text-accent-white bg-secondary-darker hover:bg-secondary-normalhover"
             >
               Login
             </Link>
