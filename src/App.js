@@ -1,11 +1,24 @@
+// import { Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
 
-import './App.css';
+/* Importing Pages */
+import OnboardingPage from "./pages/OnboardingPage";
+import SignIn from "./pages/SignIn";
 
+/* Importing Components */
 
 function App() {
   return (
     <div className="App">
-      <h1>Welcome to Autobuy where you can buy all cars</h1> 
+      <Router>
+        <Routes>
+          {/* <Route path="/" element={<Home />} /> */}
+
+          <Route path="/" element={<OnboardingPage />} />
+          <Route path="/signin" element={<SignIn/>} />
+        </Routes>
+      </Router>
     </div>
   );
 }
