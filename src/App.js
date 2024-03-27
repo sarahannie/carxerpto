@@ -5,6 +5,8 @@ import "./App.css";
 /* Importing Pages */
 import OnboardingPage from "./pages/OnboardingPage";
 import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+
 
 /* Importing Components */
 
@@ -14,9 +16,9 @@ function App() {
       <Router>
         <Routes>
           {/* <Route path="/" element={<Home />} /> */}
-
           <Route path="/" element={<OnboardingPage />} />
           <Route path="/signin" element={<SignIn/>} />
+          <Route path ="/signup" element ={<SignUp/>} />
         </Routes>
       </Router>
     </div>
