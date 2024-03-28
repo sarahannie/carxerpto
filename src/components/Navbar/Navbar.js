@@ -24,7 +24,7 @@ function Navbar() {
         <section className="flex flex-row items-center gap-4">
         <Link
           to="/signin"
-          className="py-2 px-6 rounded-md text-base text-accent-white bg-primary-normal hover:bg-primary-normalhover"
+          className="py-2 px-4 rounded-md text-base text-accent-white bg-primary-normal hover:bg-primary-normalhover"
         >
           Sign In
         </Link>
