@@ -97,16 +97,16 @@ function Navbar() {
         {/* Navigation Links */}
         <section ref={menuRef} className={`w-48 p-4 absolute top-16 lg:top-0 lg:left-0 left-32 lg:bg-none bg-white lg:w-0 lg:p-0 lg:shadow-none shadow-lg lg:relative lg:flex lg:flex-row items-center justify-center lg:gap-14 ${isMenuOpen ? 'block' : 'hidden'}`}>
           <div className={`lg:flex lg:flex-row flex flex-col items-center gap-4 ${isMenuOpen ? 'block' : 'hidden'}`}>
-            <Link to="/home" className="text-primary-dark hover:text-secondary-normalhover text-center">
+            <Link to="/home" className="text-primary-dark hover:text-secondary-normalhover text-center lg:mr-4">
               Home
             </Link>
-            <Link to="/car-listing" className="text-primary-dark hover:text-secondary-normalhover text-center lg:flex lg:gap-1 gap-1">
+            <Link to="/car-listing" className="text-primary-dark hover:text-secondary-normalhover text-center lg:mr-4 lg:flex lg:gap-1 gap-1">
               Car<span className="ml-1 lg:ml-0">Listing</span> 
             </Link>
             <Link to="/about-us" className="text-primary-dark hover:text-secondary-normalhover text-center lg:flex lg:gap-1 gap-1">
               About<span className="ml-1 lg:ml-0">Us</span>
             </Link>
-            <Features className="text-primary-dark hover:text-secondary-normalhover text-center" />
+            <Features className="text-primary-dark hover:text-secondary-normalhover text-center " />
             <Link
               to="/signin"
               className="lg:hidden py-2 px-4 rounded-md text-base text-accent-white bg-primary-normal hover:bg-secondary-normalhover hover:text-accent-white text-center"

@@ -46,8 +46,8 @@ function SignIn() {
                   name="agree"
                 />
                 <span className="-mt-1 text-sm text-gray-900 font-extralight">
-                  Remind me always
-                </span><Link to="/forget" className="-mt-1 mx-1 underline"><span className="-mt-2 ml-16 text-sm text-gray-900 font-extralight">Forgot Password</span></Link>
+                  Remind me
+                </span><Link to="/forget" className="-mt-1 mx-1 underline"><span className="lg:-mt-2 lg:ml-24 ml-10 text-sm text-gray-900 font-extralight">Forgot Password</span></Link>
               </label>
               <button
                 type="submit"
