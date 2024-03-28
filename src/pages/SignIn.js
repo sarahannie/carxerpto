@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaGoogle } from "react-icons/fa";
+import { FaApple } from "react-icons/fa";
 import BackgroundImage from "../assets/backgroundimage.jpg";
 
 function SignIn() {
@@ -43,9 +45,9 @@ function SignIn() {
                   className="form-checkbox bg-transparent text-gray-900 mr-2"
                   name="agree"
                 />
-                <span className="text-sm text-gray-900 font-extralight">
+                <span className="-mt-1 text-sm text-gray-900 font-extralight">
                   Remind me always
-                </span>
+                </span><Link to="/forget" className="-mt-1 mx-1 underline"><span className="-mt-2 ml-16 text-sm text-gray-900 font-extralight">Forgot Password</span></Link>
               </label>
               <button
                 type="submit"
@@ -64,15 +66,15 @@ function SignIn() {
             <div className="flex flex-col items-center gap-2 mt-10">
               <Link
                 to=""
-                className="w-60 py-2 px-4 border border-x-2 border-y-2 rounded-md font-bold text-center text-base text-gray-900 white bg-transparent hover:bg-secondary-normalhover hover:text-accent-white"
-              >
+                className="flex items-center gap-4 w-60 py-2 px-4 border border-x-2 border-y-2 rounded-md font-semibold text-center text-base text-gray-900 white bg-transparent hover:bg-secondary-normalhover hover:text-accent-white"
+              >< FaGoogle className="" />
                 Login with Google
               </Link>
 
               <Link
                 to=""
-                className="w-60 py-2 px-4 border border-x-2 border-y-2 rounded-md font-bold text-center text-base text-gray-900 bg-transperent hover:bg-secondary-normalhover hover:text-accent-white"
-              >
+                className="flex items-center gap-4 w-60 py-2 px-4 border border-x-2 border-y-2 rounded-md font-semibold text-center text-base text-gray-900 bg-transperent hover:bg-secondary-normalhover hover:text-accent-white"
+              ><FaApple className="" />
                 Login with Apple
               </Link>
             </div>

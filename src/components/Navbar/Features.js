@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaAngleDown } from "react-icons/fa";
 
 function Features() {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,9 +32,9 @@ function Features() {
       <button
         ref={dropdownButtonRef}
         onClick={toggleDropdown}
-        className="text-black px-4 py-2 rounded-md focus:outline-none"
+        className="flex items-center text-black px-4 py-2 rounded-md focus:outline-none gap-1"
       >
-        Features
+        Features <FaAngleDown className="mt-1 font-extralight" />
       </button>
 
       {/* Dropdown menu */}
