@@ -8,6 +8,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import AboutYou from "./pages/AboutYou";
 import ForgetPass from "./pages/ForgetPass";
+import LandingPage from "./pages/LandingPage";
 
 /* Importing Components */
 
@@ -16,8 +17,8 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
           <Route path="/" element={<OnboardingPage />} />
+          <Route path="/home" element={<LandingPage />} />
           <Route path="/signin" element={<SignIn/>} />
           <Route path ="/signup" element ={<SignUp/>} />
           <Route path="/about" element={<AboutYou/>}/>

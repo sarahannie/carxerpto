@@ -13,7 +13,7 @@ function OnboardingPage() {
             Why Choose AutoBuy?
           </h1>
           <div className="flex lg:flex-row flex-col items-center gap-16 mt-16">
-            <div className="flex flex-col items-center  w-72 h-72 border-white shadow-sm">
+            <div className="flex flex-col items-center  w-72 h-72 border-white shadow-md">
               <img
                 src={illustration}
                 alt="illustration"
@@ -28,7 +28,7 @@ function OnboardingPage() {
               </p>
             </div>
 
-            <div className="flex flex-col items-center w-72 h-72 border-white shadow-sm">
+            <div className="flex flex-col items-center w-72 h-72 border-white shadow-md">
               <img
                 src={illustration}
                 alt="illustration"
@@ -43,7 +43,7 @@ function OnboardingPage() {
               </p>
             </div>
 
-            <div className="flex flex-col items-center w-72 h-72 border-white shadow-sm">
+            <div className="flex flex-col items-center w-72 h-72 border-white shadow-md">
               <img
                 src={illustration}
                 alt="illustration"
@@ -59,10 +59,10 @@ function OnboardingPage() {
             </div>
           </div>
 
-          <div className="flex flex-row mt-16 gap-2">
+          <div className="flex flex-row mt-16 gap-2 mb-6">
             <Link
               to="/signup"
-              className="py-2 px-6 rounded-md text-base text-accent-white bg-primary-normal hover:bg-primary-normalhover"
+              className="py-2 px-4 rounded-md text-base text-accent-white bg-primary-normal hover:bg-secondary-normalhover "
             >
               Sign Up
             </Link>
