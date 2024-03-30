@@ -106,6 +106,7 @@ function Navbar() {
             <Link to="/about-us" className="text-primary-dark hover:text-secondary-normalhover text-center lg:flex lg:gap-1 gap-1">
               About<span className="ml-1 lg:ml-0">Us</span>
             </Link>
+            
             <Features className="text-primary-dark hover:text-secondary-normalhover text-center " />
             <Link
               to="/signin"
