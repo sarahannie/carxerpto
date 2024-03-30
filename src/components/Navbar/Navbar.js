@@ -69,7 +69,7 @@ function Navbar() {
 
   return (
     <div>
-      <section className="bg-#FFFEF9 shadow-md w-full h-16 flex flex-row items-center justify-between px-12 relative">
+      <section className="bg-#FFFEF9 shadow-md w-full h-16 flex flex-row items-center justify-between px-12 relative z-50">
         <h1 className="-ml-8 lg:-ml-0 font-bold text-2xl text-primary-dark">
           Auto<span className="text-secondary-normalhover">Buy</span>
         </h1>
