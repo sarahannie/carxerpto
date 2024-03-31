@@ -10,6 +10,7 @@ import AboutYou from "./pages/AboutYou";
 import ForgetPass from "./pages/ForgetPass";
 import LandingPage from "./pages/LandingPage";
 import AboutUs from "./pages/AboutUs";
+import FeatureSec from "./pages/FeatureSec";
 
 /* Importing Components */
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/about" element={<AboutYou/>}/>
           <Route path ="/forget" element={<ForgetPass/>}/>
           <Route path ="/about-us" element={<AboutUs/>}/>
+          <Route  path= "/feature" element ={<FeatureSec/>}/>
         </Routes>
       </Router>
     </div>
