@@ -40,7 +40,7 @@ function Features() {
       {/* Dropdown menu */}
       {isOpen && (
         <div className="absolute mt-2 w-48 bg-white border border-gray-300 py-2 rounded-md shadow-md">
-          <Link to="/features" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Features</Link>
+          <Link to="/feature" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Features</Link>
           <Link to="" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Car Appraisal</Link>
           <Link to="" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Car Insurance</Link>
           <Link to="" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Sellers</Link>
