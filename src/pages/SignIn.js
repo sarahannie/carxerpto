@@ -35,6 +35,7 @@ function SignIn() {
                   type="email"
                   id="email"
                   name="email"
+                  required
                   placeholder="example@gmail.com"
                   className="border border-gray-400 text-xs px-3 py-3 rounded w-80"
                 />

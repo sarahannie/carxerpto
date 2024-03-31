@@ -32,7 +32,7 @@ function Features() {
       <button
         ref={dropdownButtonRef}
         onClick={toggleDropdown}
-        className="flex items-center text-black px-4 py-2 rounded-md focus:outline-none gap-1"
+        className="flex items-center text-black px-4 py-2 rounded-md focus:outline-none gap-1 hover:text-secondary-normalhover"
       >
         Features <FaAngleDown className="mt-1 font-extralight" />
       </button>
@@ -40,6 +40,7 @@ function Features() {
       {/* Dropdown menu */}
       {isOpen && (
         <div className="absolute mt-2 w-48 bg-white border border-gray-300 py-2 rounded-md shadow-md">
+          <Link to="/features" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Features</Link>
           <Link to="" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Car Appraisal</Link>
           <Link to="" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Car Insurance</Link>
           <Link to="" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Sellers</Link>

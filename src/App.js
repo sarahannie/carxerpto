@@ -9,6 +9,7 @@ import SignUp from "./pages/SignUp";
 import AboutYou from "./pages/AboutYou";
 import ForgetPass from "./pages/ForgetPass";
 import LandingPage from "./pages/LandingPage";
+import AboutUs from "./pages/AboutUs";
 
 /* Importing Components */
 
@@ -23,6 +24,7 @@ function App() {
           <Route path ="/signup" element ={<SignUp/>} />
           <Route path="/about" element={<AboutYou/>}/>
           <Route path ="/forget" element={<ForgetPass/>}/>
+          <Route path ="/about-us" element={<AboutUs/>}/>
         </Routes>
       </Router>
     </div>

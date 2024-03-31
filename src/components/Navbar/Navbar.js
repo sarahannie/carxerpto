@@ -95,7 +95,7 @@ function Navbar() {
         </div>
 
         {/* Navigation Links */}
-        <section ref={menuRef} className={`w-48 p-4 absolute top-16 lg:top-0 lg:left-0 left-32 lg:bg-none bg-white lg:w-0 lg:p-0 lg:shadow-none shadow-lg lg:relative lg:flex lg:flex-row items-center justify-center lg:gap-14 ${isMenuOpen ? 'block' : 'hidden'}`}>
+        <section ref={menuRef} className={`w-48 p-4 absolute z-10 lg:z-10 top-16 lg:top-0 lg:left-0 left-32 lg:bg-none bg-white lg:w-0 lg:p-0 lg:shadow-none shadow-lg lg:relative lg:flex lg:flex-row items-center justify-center lg:gap-14 ${isMenuOpen ? 'block' : 'hidden'}`}>
           <div className={`lg:flex lg:flex-row flex flex-col items-center gap-4 ${isMenuOpen ? 'block' : 'hidden'}`}>
             <Link to="/home" className="text-primary-dark hover:text-secondary-normalhover text-center lg:mr-4">
               Home
