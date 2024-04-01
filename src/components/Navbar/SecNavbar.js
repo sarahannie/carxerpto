@@ -4,19 +4,19 @@ import Features from "./Features";
 import usercircle from "../../assets/UserCircle.png";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 
-function Navbar() {
+function SecNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  
+
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
 
-  const handleClickOutside = (event) => {
+  const handleClickOutside = event => {
     if (menuRef.current && !menuRef.current.contains(event.target)) {
       setIsMenuOpen(false);
     }
@@ -43,7 +43,9 @@ function Navbar() {
             className="ml-44 block text-gray-500 hover:text-gray-700 focus:text-gray-700 focus:outline-none"
           >
             <svg
-              className={`h-6 w-6 fill-current ${isMenuOpen ? 'hidden' : 'block'}`}
+              className={`h-6 w-6 fill-current ${isMenuOpen
+                ? "hidden"
+                : "block"}`}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -58,40 +60,50 @@ function Navbar() {
             onClick={closeMenu}
             className="ml-44 block text-gray-500 hover:text-gray-700 focus:text-gray-700 focus:outline-none"
           >
-            <IoMdCloseCircleOutline className={`h-6 w-6 fill-current ${isMenuOpen ? 'block' : 'hidden'}`} />
+            <IoMdCloseCircleOutline
+              className={`h-6 w-6 fill-current ${isMenuOpen
+                ? "block"
+                : "hidden"}`}
+            />
           </button>
         </div>
 
         {/* Navigation Links */}
-        <section ref={menuRef} className={`w-48 p-4 absolute z-10 lg:z-10 top-16 lg:top-0 lg:left-0 left-48 lg:bg-none bg-white lg:w-0 lg:p-0 lg:shadow-none shadow-lg lg:relative lg:flex lg:flex-row items-center justify-center lg:gap-14 ${isMenuOpen ? 'block' : 'hidden'}`}>
-          <div className={`lg:flex lg:flex-row flex flex-col items-center gap-4 ${isMenuOpen ? 'block' : 'hidden'}`}>
-            <Link to="/home" className="text-primary-dark hover:text-secondary-normalhover text-center lg:mr-4">
+        <section
+          ref={menuRef}
+          className={`w-48 p-4 absolute z-10 lg:z-10 top-16 lg:top-0 lg:left-0 left-48 lg:bg-none bg-white lg:w-0 lg:p-0 lg:shadow-none shadow-lg lg:relative lg:flex lg:flex-row items-center justify-center lg:gap-14 ${isMenuOpen
+            ? "block"
+            : "hidden"}`}
+        >
+          <div
+            className={`lg:flex lg:flex-row flex flex-col items-center gap-4 ${isMenuOpen
+              ? "block"
+              : "hidden"}`}
+          >
+            <Link
+              to="/home"
+              className="text-primary-dark hover:text-secondary-normalhover text-center lg:mr-4"
+            >
               Home
             </Link>
-            <Link to="/car-listing" className="text-primary-dark hover:text-secondary-normalhover text-center lg:mr-4 lg:flex lg:gap-1 gap-1">
-              Car<span className="ml-1 lg:ml-0">Listing</span> 
+            <Link
+              to="/car-listing"
+              className="text-primary-dark hover:text-secondary-normalhover text-center lg:mr-4 lg:flex lg:gap-1 gap-1"
+            >
+              Car<span className="ml-1 lg:ml-0">Listing</span>
             </Link>
-            <Link to="/about-us" className="text-primary-dark hover:text-secondary-normalhover text-center lg:flex lg:gap-1 gap-1">
+            <Link
+              to="/about-us"
+              className="text-primary-dark hover:text-secondary-normalhover text-center lg:flex lg:gap-1 gap-1"
+            >
               About<span className="ml-1 lg:ml-0">Us</span>
             </Link>
-            
+
             <Features className="text-primary-dark hover:text-secondary-normalhover text-center " />
-            <Link
-              to="/signin"
-              className="lg:hidden py-2 px-4 rounded-md text-base text-accent-white bg-primary-normal hover:bg-secondary-normalhover hover:text-accent-white text-center"
-            >
-              Sign In
-            </Link>
           </div>
         </section>
 
-        <section className="hidden lg:flex lg:flex-row items-center gap-4">
-          <Link
-            to="/signup"
-            className="py-2 px-4 rounded-md text-base text-accent-white bg-primary-normal hover:bg-secondary-normalhover hover:text-accent-white"
-          >
-            Sign Up
-          </Link>
+        <section className={`lg:${isMenuOpen ? "hidden" : "flex"} hidden`}>
           <img
             src={usercircle}
             alt="UserCircle"
@@ -103,10 +115,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
-
-
-
-
-
-
+export default SecNavbar;

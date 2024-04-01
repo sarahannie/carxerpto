@@ -11,13 +11,14 @@ function AboutUs() {
     <div>
       <section className="bg-white w-full h-screen">
         <Navbar />
-        <section className="-mt-10 flex flex-row items-center gap-6 mx-10">
-          <div className="mt-20 relative rounded-md w-2/3 h-[530px] overflow-hidden">
+        <section className=" flex flex-col lg:flex lg:flex-row items-center gap-6 mx-10">
+          <div className="mt-20 relative rounded-md w-full lg:w-2/3 h-[530px] overflow-hidden">
             <div className="w-full h-[530px]">
                 {/* Use background image */}
                 <img
                     src={aboutimage1}
                     alt="car"
+                    fetchPriority="high"
                     className="w-full h-full object-cover"
                 />
                 {/* Overlay with background color */}
@@ -37,7 +38,7 @@ function AboutUs() {
             </div>
           </div>
 
-          <div className="mt-20 flex flex-col gap-4 w-1/3 h-auto">
+          <div className="mt-20 flex flex-col gap-4 lg:w-1/3  h-auto">
             <div className="bg-primary-light border border-primary-light">
               <div className="m-8 flex flex-col ">
                 <div className="flex flex-row items-center gap-2 mb-2">
@@ -71,13 +72,14 @@ function AboutUs() {
             </div>
           </div>
         </section>
-        <section className="mt-10 mb-20 flex flex-row items-center gap-6 mx-10">
-            <div className="mt-20 relative rounded-md w-1/2 h-[600px] overflow-hidden">
+        <section className="mt-10 mb-20 flex flex-col lg:flex lg:flex-row items-center gap-6 mx-10">
+            <div className="mt-20 relative rounded-md lg:w-1/2 w-full h-[600px] overflow-hidden">
                 <div className="w-full h-[600px]">
                     {/* Use background image */}
                     <img
                         src={aboutimage2}
                         alt="car"
+                        fetchPriority="high"
                         className="w-full h-full object-cover"
                     />
                     {/* Overlay with background color */}
@@ -100,7 +102,7 @@ function AboutUs() {
                     </div>
                 </div>
             </div>
-            <div className="mt-20 relative rounded-md w-1/2 h-[600px] overflow-hidden">
+            <div className="mt-20 relative rounded-md lg:w-1/2 w-full h-[600px] overflow-hidden">
                 <form className="p-8 bg-primary-light border border-primary-light h-full w-full">
                     <h1 className="text-primary-normal mt-5 mb-5 text-4xl font-bold">Contact Us</h1>
                     <br/>
@@ -154,7 +156,7 @@ function AboutUs() {
                     </div>
                     <button
                         type="submit"
-                        className="w-5/6 h-[50px] bg-primary-normal text-white py-3 rounded hover:bg-primary-normalhover transition duration-300"
+                        className="w-[200px] lg:w-[540px] h-[50px] bg-primary-normal text-white py-3 rounded hover:bg-primary-normalhover transition duration-300"
                     >
                         Send
                     </button>

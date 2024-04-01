@@ -11,6 +11,9 @@ import ForgetPass from "./pages/ForgetPass";
 import LandingPage from "./pages/LandingPage";
 import AboutUs from "./pages/AboutUs";
 import FeatureSec from "./pages/FeatureSec";
+import MonthlySub from "./pages/MonthlySub";
+import YearlySub from "./pages/YearlySub";
+import CarCategory from "./pages/CarCategory";
 
 /* Importing Components */
 
@@ -27,6 +30,9 @@ function App() {
           <Route path ="/forget" element={<ForgetPass/>}/>
           <Route path ="/about-us" element={<AboutUs/>}/>
           <Route  path= "/feature" element ={<FeatureSec/>}/>
+          <Route  path= "/month-plan" element ={<MonthlySub/>}/>
+          <Route  path= "/year-plan" element ={<YearlySub/>}/>
+          <Route  path= "/car-category" element ={<CarCategory/>}/>
         </Routes>
       </Router>
     </div>
