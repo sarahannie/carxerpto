@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from 'react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 import BackgroundImage from "../assets/backgroundimage.jpg";
 
 function SignIn() {
+
+    const [showPassword, setShowPassword] = useState(false);
+    const [password, setPassword] = useState('');
+  
+    const togglePasswordVisibility = () => {
+      setShowPassword(!showPassword);
+    };
   return (
     <div className=" h-screen relative overflow-hidden">
       <div className="flex flex-col items-center justify-center relative">
@@ -47,14 +55,25 @@ function SignIn() {
                   >
                     Password
                   </label>
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    required
-                    placeholder="***********"
-                    className="border border-gray-400 text-xs px-3 py-3 rounded lg:w-80 w-60"
-                  />
+                  <div className="">
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      id="password"
+                      name="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                      placeholder="***********"
+                      className="border border-gray-400 text-xs px-3 py-3 rounded pr-10 lg:w-80 w-60"
+                    />
+                    <button
+                      type="button"
+                      onClick={togglePasswordVisibility}
+                      className="absolute inset-y-0 right-0 px-2 py-2 text-gray-400"
+                    >
+                      {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    </button>
+                  </div>
                 </div>
               </div>
               <label class="flex items-center mx-10 mb-8">
