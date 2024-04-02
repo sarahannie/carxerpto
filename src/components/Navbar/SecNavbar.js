@@ -71,7 +71,7 @@ function SecNavbar() {
         {/* Navigation Links */}
         <section
           ref={menuRef}
-          className={`w-48 p-4 absolute z-10 lg:z-10 top-16 lg:top-0 lg:left-0 left-48 lg:bg-none bg-white lg:w-0 lg:p-0 lg:shadow-none shadow-lg lg:relative lg:flex lg:flex-row items-center justify-center lg:gap-14 ${isMenuOpen
+          className={`w-48 p-4 absolute z-10 top-16 lg:left-0 lg:top-0 left-[222px] md:left-[675px] bg-white lg:w-auto lg:p-0 lg:shadow-none shadow-lg lg:relative lg:flex lg:flex-row items-center justify-center lg:gap-14 ${isMenuOpen
             ? "block"
             : "hidden"}`}
         >
