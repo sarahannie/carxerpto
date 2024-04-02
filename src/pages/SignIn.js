@@ -28,7 +28,7 @@ function SignIn() {
             Auto<span className="text-secondary-normalhover">Buy</span>
           </h1>
           <div className=" mx-8 lg:mx-0 flex justify-center items-center h-screen">
-            <div className="-mt-20 lg:mx-0 w-80 h-4/6 md:h-4/6 lg:w-96 lg:h-4/6 z-10 bg-accent-white">
+            <div className="-mt-20 lg:mx-0 w-80 h-auto lg:w-96 z-10 bg-accent-white pb-12">
               <h2 className="mb-6 text-primary-normal text-lg font-bold mt-5">
                 Log Into Your Account
               </h2>
