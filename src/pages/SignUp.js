@@ -1,5 +1,8 @@
 import React from "react";
 import BackgroundImage from "../assets/backgroundimage.jpg";
+import { FaGoogle } from "react-icons/fa";
+import { FaApple } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function SignUp() {
   return (
@@ -18,12 +21,12 @@ function SignUp() {
           Auto Buy
         </h1>
         <div className="flex justify-center items-center h-screen">
-          <div className="-mt-20 w-96 h-4/6 z-10 bg-accent-white rounded-md">
+          <div className="-mt-20 w-96 h-[480px] z-10 bg-accent-white rounded-md">
             <h2 className="mb-4 text-primary-normal text-lg font-semibold mt-5">
               Sign Up to get Started
             </h2>
             <form className="relative">
-              <div className="mx-10 flex items-center mb-2 relative">
+              <div className="mx-10 flex items-center mb-4 relative">
                 <label
                   htmlFor="email"
                   className="absolute top-0 left-2 -mt-2 px-1 text-xs text-gray-400 bg-white"
@@ -36,10 +39,25 @@ function SignUp() {
                   name="email"
                   required
                   placeholder="example@gmail.com"
-                  className="border border-gray-400 text-xs px-3 py-3 rounded w-80"
+                  className="border border-gray-400 text-xs px-3 py-3 rounded w-80 outline-none"
                 />
               </div>
-              <label class="flex items-center mx-10 mb-8">
+              <div className="mx-10 flex items-center mb-4 relative">
+                <label
+                  htmlFor="password"
+                  className="absolute top-0 left-2 -mt-2 px-1 text-xs text-gray-400 bg-white"
+                >
+                  password
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  required
+                  className="border border-gray-400 text-xs px-3 py-3 rounded w-80 outline-none"
+                />
+              </div>
+              <label class="flex items-center mx-10 mb-5">
                 <input
                   type="checkbox"
                   className="form-checkbox bg-transparent text-gray-900 mr-2"
@@ -56,23 +74,31 @@ function SignUp() {
                 Log In
               </button>
             </form>
-            <div class="flex items-center mx-10 mt-6">
+            <div className="flex items-center mx-10 mt-6">
               <hr class="flex-grow border-t-2 border-gray-400 mr-2" />
               <span class="text-gray-500">OR</span>
               <hr class="flex-grow border-t-2 border-gray-400 ml-2" />
             </div>
-            <button
-              type="submit"
-              className="mt-8 border border-gray-400 font-bold text-xs px-3 py-3 rounded w-80 bg-transparent"
-            >
-              SignUp with Google
-            </button>
-            <button
-              type="submit"
-              className="mt-8 border border-gray-400 font-bold text-xs px-3 py-3 rounded w-80 bg-transparent"
-            >
-              SignUp with Apple
-            </button>
+            <div className="flex flex-col items-center mx-10 gap-3 mt-6" >
+              <Link to="">
+                <button
+                  type="submit"
+                  className="flex items-center gap-4 w-80 py-2 px-4 border border-x-2 border-y-2 rounded-md font-semibold text-center text-base text-gray-900 white bg-transparent hover:bg-secondary-normalhover hover:text-accent-white"
+                >
+                  <FaGoogle className="" />
+                  SignIn with Google
+                </button>
+              </Link>
+              <Link to="">
+                <button
+                  type="submit"
+                  className="flex items-center gap-4 w-80 py-2 px-4 border border-x-2 border-y-2 rounded-md font-semibold text-center text-base text-gray-900 white bg-transparent hover:bg-secondary-normalhover hover:text-accent-white"
+                >
+                  <FaApple className="" />
+                  SignIn with Google
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
         <div className="z-10 flex flex-col items-center mx-10 -mt-28 mb-5">
