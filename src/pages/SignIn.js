@@ -24,7 +24,7 @@ function SignIn() {
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-blue-900 opacity-75" />
-          <Link to="/"><img src={Logo} alt="logo" className=" w-50 h-40 absolute -left-4 -top-8 lg:-top-8 lg:left-0 object-contain" /></Link>
+          <Link to="/"><img src={Logo} alt="logo" className="lg:w-56 w-48 h-40 absolute -left-2 -top-8 lg:-top-8 lg:left-0 object-contain" /></Link>
           {/* <h1 className="absolute -left-14 top-4 lg:top-4 lg:left-4 object-contain font-bold text-2xl text-accent-white mx-16
       ">
             Auto<span className="text-secondary-normalhover">Buy</span>
