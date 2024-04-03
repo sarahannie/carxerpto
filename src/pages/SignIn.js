@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 import BackgroundImage from "../assets/backgroundimage.jpg";
+import Logo from "../assets/Logo1.png";
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
@@ -23,10 +24,11 @@ function SignIn() {
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-blue-900 opacity-75" />
-          <h1 className="absolute -left-14 top-4 lg:top-4 lg:left-4 object-contain font-bold text-2xl text-accent-white mx-16
+          <Link to="/"><img src={Logo} alt="logo" className=" w-50 h-40 absolute -left-4 -top-8 lg:-top-8 lg:left-0 object-contain" /></Link>
+          {/* <h1 className="absolute -left-14 top-4 lg:top-4 lg:left-4 object-contain font-bold text-2xl text-accent-white mx-16
       ">
             Auto<span className="text-secondary-normalhover">Buy</span>
-          </h1>
+          </h1> */}
           <div className=" mx-8 lg:mx-0 flex justify-center items-center h-screen">
             <div className="-mt-20 lg:mx-0 w-80 h-auto lg:w-96 z-10 bg-accent-white pb-12">
               <h2 className="mb-6 text-primary-normal text-lg font-bold mt-5">

@@ -20,7 +20,7 @@ function YearlySub() {
                 Monthly
               </button>
             </Link>
-            <Link to="">
+            <Link to="/year-plan">
               <button type="submit" className="bg-primary-light px-8 py-2 ">
                 Yearly (Save 2.5%)
               </button>

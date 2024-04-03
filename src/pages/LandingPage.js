@@ -3,6 +3,7 @@ import React from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import Toyota from "../assets/hero (1).png";
+import SearchComponent from "../components/Search/Search";
 
 function LandingPage() {
   return (
@@ -16,7 +17,7 @@ function LandingPage() {
               alt="car"
               className="inset-0 h-[550px] w-full object-cover object-bottom"
             />
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
+            <div className="absolute top-40 lg:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
               <h1 className="font-bold text-2xl md:text-4xl lg:text-2xl mb-2">
                 Welcome to Autobuy
               </h1>
@@ -24,6 +25,10 @@ function LandingPage() {
                 Buy, Sell, and Connect with Confidence
               </p>
             </div>
+          </div>
+          <SearchComponent />
+          <div className="mt-36">
+            <h1 className="text-4xl text-primary-normal font-bold mb-5">Featured Listings</h1>
           </div>
         </section>
 

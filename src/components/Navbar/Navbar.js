@@ -109,6 +109,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Features from "./Features";
 import usercircle from "../../assets/UserCircle.png";
+import Logo from "../../assets/Logo2.png"
 import { IoMdCloseCircleOutline } from "react-icons/io";
 
 function Navbar() {
@@ -139,9 +140,7 @@ function Navbar() {
   return (
     <div>
       <section className="bg-#FFFEF9 shadow-md w-full h-16 flex flex-row items-center justify-between px-12 relative z-50">
-        <Link to=""><h1 className="-ml-8 lg:-ml-0 font-bold text-2xl text-primary-dark">
-          Auto<span className="text-secondary-normalhover">Buy</span>
-        </h1></Link>
+        <Link to="/"><img src={Logo} alt="logo" className="-ml-14 lg:-ml-10 w-50 h-40" /></Link>
 
         {/* Hamburger Icon */}
         <div className="lg:hidden">
