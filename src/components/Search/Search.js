@@ -15,7 +15,7 @@ const SearchComponent = () => {
   return (
     <div className="absolute z-10 lg:top-[560px] top-[400px] flex lg:flex-row flex-wrap w-full lg:w-[1390px] lg:justify-between gap-4 lg:mx-10 border border-primary-light px-6 py-8 bg-primary-light shadow-2xl rounded-md overflow-x-hidden">
       <div className="flex flex-col border border-l-4 border-r-gray-900">
-        <label htmlFor="category" className="mb-1 -ml-8 font-light text-base">Category:</label>
+        <label htmlFor="category" className="mb-1 -ml-8 font-light text-base">Category</label>
         <select
           id="category"
           value={category}
