@@ -101,7 +101,7 @@ function SignUp() {
             </div>
           </div>
         </div>
-        <div className="z-10 flex flex-col items-center mx-10 -mt-28 mb-5">
+        <div className="z-10 flex flex-col items-center mx-10 lg:-mt-20 mb-5">
           <h2 className="mb-4 text-accent-white text-lg font-semibold ">
             Already have an account?
           </h2>
