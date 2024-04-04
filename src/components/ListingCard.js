@@ -33,12 +33,12 @@ function List(){
                 <hr className="w-[0.1px] h-[10px] border border-gray-400" />
                 <span>{item.sublinkD}</span>
               </div>
-              <div className="text-[14px] font-medium leading-[22.4px]">
+              <div className="text-[14px] font-medium leading-[22.4px] ">
                 <h3 className="text-start  text-[16px]">{item.Feature}</h3>
                 {item.subItems.map((subItems, Index) => {
                   return (
-                    <ul className="flex items-center">
-                      <li key={Index}>{subItems}</li>
+                    <ul className="flex items-center ">
+                      <li className="" key={Index}>{subItems}</li>
                     </ul>
                   );
                 })}

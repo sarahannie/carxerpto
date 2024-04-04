@@ -15,6 +15,7 @@ import MonthlySub from "./pages/MonthlySub";
 import YearlySub from "./pages/YearlySub";
 import CarCategory from "./pages/CarCategory";
 import CarListing from "./pages/CarListing";
+import CarInsurance from "./pages/CarInsure";
 
 /* Importing Components */
 
@@ -35,6 +36,7 @@ function App() {
           <Route  path= "/year-plan" element ={<YearlySub/>}/>
           <Route  path= "/car-category" element ={<CarCategory/>}/>
           <Route  path= "/car-listing" element ={<CarListing/>}/>
+          <Route path ="/car-insurance" element={<CarInsurance/>}/>
         </Routes>
       </Router>
     </div>
