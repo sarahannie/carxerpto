@@ -46,7 +46,7 @@ function Features() {
         <div className="absolute mt-2 w-48 bg-white border border-gray-300 py-2 rounded-md shadow-md">
           <Link to="/feature" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Features</Link>
           <Link to="/car-apprasial" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Car Appraisal</Link>
-          <Link to="" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Car Insurance</Link>
+          <Link to="/car-insurance" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Car Insurance</Link>
           <Link to="" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Sellers</Link>
           <Link to="" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Car Broker</Link>
           <Link to="/car-category" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Car Category</Link>
