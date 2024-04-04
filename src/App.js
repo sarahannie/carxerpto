@@ -36,7 +36,7 @@ function App() {
           <Route  path= "/year-plan" element ={<YearlySub/>}/>
           <Route  path= "/car-category" element ={<CarCategory/>}/>
           <Route  path= "/car-listing" element ={<CarListing/>}/>
-          <Route path ="/car-insurance" element={<CarInsurance/>}/>
+          <Route path ="/car-apprasial" element={<CarInsurance/>}/>
         </Routes>
       </Router>
     </div>
