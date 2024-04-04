@@ -8,6 +8,12 @@ import CarF from "../assets/CarF.jpg"
 import CarD from "../assets/carD.jpg"
 import CarC from "../assets/carC.jpg"
 import CarA from "../assets/carA.jpg"
+import cardCardA from  "../assets/catCardA.jpg"
+import cardCardB from  "../assets/carCardB.jpg"
+import cardCardC from  "../assets/carCardC.jpg"
+import cardCardD from  "../assets/carCardF.jpg"
+import cardCardF from  "../assets/carCardG.jpg"
+import cardCardG from  "../assets/carCardF.jpg"
 export const Posts= [
     {
       id: 1,
@@ -33,6 +39,51 @@ export const Posts= [
         id: 5,
         photo: Merci,
         title: 'Mercedes Benz'
+    },
+  ];
+  export const Categorys= [
+    {
+      id: 1,
+      photoImage:cardCardA,
+      name:'SUVs',
+      title:'200 Vehicles'
+      
+    },
+    {
+      id: 2,
+      photoImage:cardCardB,
+      name:'SUVs',
+      title:'200 Vehicles'
+      
+    },
+    {
+      id: 3,
+      photoImage: cardCardC,
+      name: 'SUVs',
+      title: '200 Vehicles'
+      
+    },
+    {
+      id: 4,
+      photoImage: cardCardD,
+      name:'Hackback',
+      title:'200 Vehicles'
+      
+    },
+    {
+      id: 5,
+      photoImage: cardCardF,
+      name: 'Sewden',
+      title: '200 Vehicles'
+      
+    },
+   
+    {
+      id: 6,
+      photoImage: cardCardG,
+      name: 'Coupe',
+      title: '200 Vehicles'
+      
     },
   ];
   export const CarPost= [
@@ -102,7 +153,7 @@ export const Posts= [
       title:'Toyota Camry',
       amount: "$15,000",
       subItems: ['Automatic Transmission', 'Leather Seat', 'Backup Camera','Bluetooth Connectivity'],
-      subtit:'Features',
+      Feature:'Features:',
       sublinkA: "Make:Toyota",
       sublinkB: "Model: Camry",
       sublinkC: "Year:2018",
