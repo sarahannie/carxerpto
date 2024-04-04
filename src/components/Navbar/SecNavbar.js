@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Features from "./Features";
+import Logo from "../../assets/Logo2.png"
 import usercircle from "../../assets/UserCircle.png";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 
@@ -32,9 +33,7 @@ function SecNavbar() {
   return (
     <div>
       <section className="bg-#FFFEF9 shadow-md w-full h-16 flex flex-row items-center justify-between px-12 relative">
-        <h1 className="-ml-8 lg:-ml-0 font-bold text-2xl text-primary-dark">
-          Auto<span className="text-secondary-normalhover">Buy</span>
-        </h1>
+      <Link to="/home"><img src={Logo} alt="logo" className="-ml-14 lg:-ml-10 w-50 h-40" /></Link>
 
         {/* Hamburger Icon */}
         <div className="lg:hidden">
@@ -71,7 +70,7 @@ function SecNavbar() {
         {/* Navigation Links */}
         <section
           ref={menuRef}
-          className={`w-48 p-4 absolute z-10 lg:z-10 top-16 lg:top-0 lg:left-0 left-48 lg:bg-none bg-white lg:w-0 lg:p-0 lg:shadow-none shadow-lg lg:relative lg:flex lg:flex-row items-center justify-center lg:gap-14 ${isMenuOpen
+          className={`w-48 p-4 absolute z-10 top-16 lg:left-0 lg:top-0 left-[222px] md:left-[675px] bg-white lg:w-auto lg:p-0 lg:shadow-none shadow-lg lg:relative lg:flex lg:flex-row items-center justify-center lg:gap-14 ${isMenuOpen
             ? "block"
             : "hidden"}`}
         >

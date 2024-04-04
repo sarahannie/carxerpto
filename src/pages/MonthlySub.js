@@ -15,12 +15,12 @@ function MonthlySub() {
             Choose Your Plan
           </h1>
           <div className="border border-x-2 border-y-2 border-primary-normal mb-3">
-            <Link to="">
+            <Link to="month-plan">
               <button type="submit" className="bg-primary-light px-8 py-2">
                 Monthly
               </button>
             </Link>
-            <Link to="">
+            <Link to="year-plan">
               <button type="submit" className="px-8 py-2">
                 Yearly (Save 2.5%)
               </button>

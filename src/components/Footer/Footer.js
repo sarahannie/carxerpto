@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Logo from "../../assets/Logo1.png"
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
@@ -8,13 +9,13 @@ import { FaTwitter } from "react-icons/fa";
 function Footer() {
   return (
     <div>
-      <section className="w-full bg-primary-normal h-auto pb-6">
+      <section className="w-full bg-primary-normal h-auto">
         <section className="mx-10 text-accent-white">
           <section className="flex flex-row items-center justify-between mb-14">
             <div className="w-1/2 lg:flex lg:flex-row flex flex-col lg:items-center gap-4 lg:gap-16 lg:-mt-4">
               <div className="flex flex-col items-start mt-10 text-xs lg:text-base">
                 <h1 className="font-bold lg:text-lg mb-2 text-sm">Navigation</h1>
-                <Link to="home">Home</Link>
+                <Link to="/home">Home</Link>
                 <Link to="">Car Listing</Link>
                 <Link to="">Search</Link>
                 <Link to="">Testimonial</Link>
@@ -23,7 +24,7 @@ function Footer() {
 
               <div className="flex flex-col items-start mt-10 text-xs lg:text-base">
                 <h1 className="font-bold lg:text-lg mb-2 text-sm">About us</h1>
-                <Link to="about-us">About Us</Link>
+                <Link to="/about-us">About Us</Link>
                 <Link to="">Our Services</Link>
                 <Link to="">Car Appraisal</Link>
                 <Link to="">Car Evaluation</Link>
@@ -64,10 +65,8 @@ function Footer() {
               </p>
             </div>
           </section>
-          <section className="flex flex-row items-center justify-between">
-            <h1 className=" lg:-ml-0 font-bold text-2xl text-accent-white">
-              Auto<span className="text-secondary-normalhover">Buy</span>
-            </h1>
+          <section className="-mt-8 flex flex-row items-center justify-between">
+            <Link to="/home"><img src={Logo} alt="logo" className="-ml-12 lg:-ml-10 w-50 h-40" /></Link>
             <div className="flex flex-row gap-4">
               <FaFacebook />
               <FaInstagram />
