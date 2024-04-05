@@ -17,6 +17,7 @@ import CarCategory from "./pages/CarCategory";
 import CarListing from "./pages/CarListing";
 import CarApprasial from "./pages/CarAppar.js";
 import CarInsur from "./pages/CarInsura.js";
+import Price from "./pages/Price.jsx";
 
 
 /* Importing Components */
@@ -40,6 +41,7 @@ function App() {
           <Route  path= "/car-listing" element ={<CarListing/>}/>
           <Route path ="/car-apprasial" element={<CarApprasial/>}/>
           <Route path="/car-insurance" element ={<CarInsur/>}/>
+          <Route path="/price" element ={<Price/>}/>
         </Routes>
       </Router>
     </div>
