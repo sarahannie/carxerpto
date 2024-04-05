@@ -11,13 +11,12 @@ import ForgetPass from "./pages/ForgetPass";
 import LandingPage from "./pages/LandingPage";
 import AboutUs from "./pages/AboutUs";
 import FeatureSec from "./pages/FeatureSec";
-import MonthlySub from "./pages/MonthlySub";
-import YearlySub from "./pages/YearlySub";
 import CarCategory from "./pages/CarCategory";
 import CarListing from "./pages/CarListing";
 import CarApprasial from "./pages/CarAppar.js";
 import CarInsur from "./pages/CarInsura.js";
-import Price from "./pages/Price.jsx";
+import Prices from "./pages/price.js";
+import Payment from "./pages/Payments.jsx";
 
 
 /* Importing Components */
@@ -35,13 +34,12 @@ function App() {
           <Route path ="/forget" element={<ForgetPass/>}/>
           <Route path ="/about-us" element={<AboutUs/>}/>
           <Route  path= "/feature" element ={<FeatureSec/>}/>
-          <Route  path= "/month-plan" element ={<MonthlySub/>}/>
-          <Route  path= "/year-plan" element ={<YearlySub/>}/>
           <Route  path= "/car-category" element ={<CarCategory/>}/>
           <Route  path= "/car-listing" element ={<CarListing/>}/>
           <Route path ="/car-apprasial" element={<CarApprasial/>}/>
           <Route path="/car-insurance" element ={<CarInsur/>}/>
-          <Route path="/price" element ={<Price/>}/>
+          <Route path="/price" element ={<Prices/>}/>
+          <Route path="/payment" element ={<Payment/>}/>
         </Routes>
       </Router>
     </div>
