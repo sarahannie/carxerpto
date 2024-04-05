@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import Suv from "../assets/hero.png";
 import SearchComponent from "../components/Search/Search";
+import Cardholder from "../components/cardholder/cardholder";
 
 
 function CarCategory() {
@@ -24,9 +25,10 @@ function CarCategory() {
             </div>
           </div>
           <SearchComponent />
-          <div className="mt-36">
-            <h1 className="text-4xl text-primary-normal font-bold mb-5">Car Categories</h1>
+          <div className="mt-36 mb-12">
+            <h1 className="text-4xl text-primary-normal font-bold mb-5">Latest Arrivals SUV Cars</h1>
           </div>
+          <Cardholder className="mb-36" />
         </section>
 
         <Footer />
