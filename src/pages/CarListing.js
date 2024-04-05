@@ -1,8 +1,11 @@
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import Hero from "../assets/carList.jpg";
-import BrandCard from "./BrandCard";
-import { Posts, CarPost } from "./DummyData.js";
+
+// import { Posts, CarPost } from "./DummyData.js";
+import BrandLink from "../components/BrandGrid.js";
+import List from "../components/ListingCard.js";
+import CategoryGrid from "../components/CategoryGrid.js";
 
 function CarListing() {
   return (
@@ -29,7 +32,7 @@ function CarListing() {
         <div className="flex w-[95%] flex-col sm:justify-between lg:flex-row lg:flex items-center bg-[#e6ebf0] lg:w-[1280px] h-[106px] rounded z-50  absolute top-[400px]">
           <section className="w-full lg:w-[70%] text-start">
             <div className=" lg:w-[850px]  mx-auto flex items-center justify-between lg:gap-4 text-start">
-              <form  className="flex flex-col lg:w-[182px] text-[#36454F] font-normal">
+              <form className="flex flex-col lg:w-[182px] text-[#36454F] font-normal">
                 <label className="text-[12px] md:text-[16px] "> Category</label>
                 <select className="bg-transparent outline-none text-[12px] md:text-[16px]">
                   <option
@@ -66,7 +69,10 @@ function CarListing() {
               </form>
               <hr className="w-[0.1px] h-[50px] border border-gray-400 hidden sm:block md:block" />
               <form className="flex flex-col lg:w-[182px]">
-                <label className="text-[12px] md:text-[16px]"> Price range</label>
+                <label className="text-[12px] md:text-[16px]">
+                  {" "}
+                  Price range
+                </label>
                 <select className="bg-transparent outline-none text-[12px] md:text-[16px]">
                   <option
                     value=""
@@ -95,64 +101,19 @@ function CarListing() {
               Search
             </button>
           </div>
-          
         </div>
       </div>
       <div className="flex flex-col lg:h-[322.58px] mt-6  max-w-[1280px] mx-auto">
         <h3 className="text-[36px] text-[#003B6D] font-bold">Trusted Brand</h3>
-        <div className="grid  grid-cols-2 lg:grid-cols-5">
-          {Posts.map((post) => {
-            return <BrandCard key={post.id} post={post} />;
-          })}
-        </div>
+        <BrandLink />
       </div>
       <div className="lg:max-w-[1122px] lg:h-[968px]  mx-auto mt-9 mb-11 p-2 lg:p-0">
         <h3 className="text-[36px] text-[#003B6D] font-bold">Listings</h3>
-        <div className="grid grid-col-1 sm:grid-cols-2 md:grid-cols-3 gap-3 w">
-          {CarPost.map((item) => (
-            <div
-              key={item.id}
-              className="border border-slate-300 bg-white shadow"
-            >
-              <div className="w-full h-[177px]">
-                <img
-                  className="w-full h-full object-cover"
-                  src={item.imgPic}
-                  alt="imageIcon"
-                />
-              </div>
-              <div className="p-3 flex flex-col gap-2">
-                <div className="flex items-center justify-between ">
-                  <h1 className=" text-[16.8px] text-[#002C52] font-bold">
-                    {item.title}
-                  </h1>
-                  <p className="text-[#002C52] text-[15px] font-bold">
-                    {item.amount}
-                  </p>
-                </div>
-                <div className="flex items-center text-[12px] font-medium justify-between">
-                  <span>{item.sublinkA}</span>
-                  <hr className="w-[0.1px] h-[10px] border border-gray-400" />
-                  <span>{item.sublinkB}</span>
-                  <hr className="w-[0.1px] h-[10px] border border-gray-400" />
-                  <span>{item.sublinkC}</span>
-                  <hr className="w-[0.1px] h-[10px] border border-gray-400" />
-                  <span>{item.sublinkD}</span>
-                </div>
-                <div className="text-[14px] font-medium leading-[22.4px]">
-                  <h3 className="text-start  text-[16px]">Featuers</h3>
-                  {item.subItems.map((subItems, Index) => {
-                    return (
-                      <ul className="flex items-center">
-                        <li key={Index}>{subItems}</li>
-                      </ul>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <List />
+      </div>
+      <div className="lg:max-w-[1122px] lg:h-[968px]  mx-auto mt-9 mb-11 p-2 lg:p-0">
+        <h3 className="text-[36px] text-[#003B6D] font-bold">Category</h3>
+        <CategoryGrid/>
       </div>
 
       <Footer />
