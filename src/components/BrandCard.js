@@ -1,11 +1,11 @@
 function BrandCard({ post }) {
   console.log(post);
   return (
-    <div className="w-full ">
-      <div className="flex flex-col lg:flex lg:flex-col p-2 mt:p-0">
-        <div className="w-[80%] h-[80%] mx-auto lg:w-[280px] lg:h-[210px] bg:green-500">
+    <div className="w-full  ">
+      <div className="flex flex-col lg:flex lg:flex-col mt:p-0  gap-3">
+        <div className="w-[80%] h-[80%] mx-auto lg:w-full lg:h-[210px] ">
           <img
-            className="w-full h-full object-cover"
+            className=" h-full object-contain"
             src={post.photo}
             alt="imageIcon"
           />
