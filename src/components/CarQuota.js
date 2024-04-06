@@ -34,11 +34,11 @@ function CarQuota() {
                 </p>
               </div>
               <div className="flex items-center gap-3 ">
-                <FaRegCheckCircle className="w-[15px] h-[15px]md:w-[18px] md:h-[18px]"/>
+                <FaRegCheckCircle className="w-[15px] h-[15px] md:w-[18px] md:h-[18px]"/>
                 <p className="text-[14px] md:text-[15px] font-medium">Non-deductible</p>
               </div>
               <div className="flex items-center gap-3 ">
-                <FaRegCheckCircle className="w-[15px] h-[15px]md:w-[18px] md:h-[18px]"/>
+                <FaRegCheckCircle className="w-[15px] h-[15px] md:w-[18px] md:h-[18px]"/>
                 <p className="text-[14px] md:text-[15px] font-medium">Standard customer support service</p>
               </div>
               <div className="flex items-center gap-3 ">
