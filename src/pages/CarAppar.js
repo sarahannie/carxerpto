@@ -211,7 +211,7 @@ function CarApprasial() {
           type="submit"
           className="w-40  mb-10 md:mt-6 bg-primary-normal text-white py-3 rounded hover:bg-primary-normalhover transition duration-300"
         >
-          Next
+          Sumbit
         </button>
       </form>
       <Footer />

@@ -17,6 +17,7 @@ import CarApprasial from "./pages/CarAppar.js";
 import CarInsur from "./pages/CarInsura.js";
 import Prices from "./pages/price.js";
 import Payment from "./pages/Payments.jsx";
+import CarQuota from "./components/CarQuota.js";
 
 
 /* Importing Components */
@@ -40,6 +41,7 @@ function App() {
           <Route path="/car-insurance" element ={<CarInsur/>}/>
           <Route path="/price" element ={<Prices/>}/>
           <Route path="/payment" element ={<Payment/>}/>
+          <Route path="/car-quota" element={<CarQuota/>}/>
         </Routes>
       </Router>
     </div>
