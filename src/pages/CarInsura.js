@@ -1,6 +1,6 @@
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
-
+import { Link } from "react-router-dom";
 function CarInsur() {
   return (
     <section className="">
@@ -236,13 +236,14 @@ function CarInsur() {
             </div>
           </div>
         </section>
-
-        <button
-          type="submit"
-          className="w-40  mb-10 md:mt-6 bg-primary-normal text-white py-3 rounded hover:bg-primary-normalhover transition duration-300"
-        >
-          Next
-        </button>
+        <Link to="/car-quota">
+          <button
+            type="submit"
+            className="w-40  mb-10 md:mt-6 bg-primary-normal text-white py-3 rounded hover:bg-primary-normalhover transition duration-300"
+          >
+            Next
+          </button>
+        </Link>
       </form>
       <Footer />
     </section>
