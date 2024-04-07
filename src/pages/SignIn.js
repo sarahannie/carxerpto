@@ -20,7 +20,7 @@ function SignIn() {
           <img
             src={BackgroundImage}
             alt="background"
-            fetchPriority="high"
+            fetchpriority="high"
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-blue-900 opacity-75" />

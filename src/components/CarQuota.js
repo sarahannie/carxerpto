@@ -2,6 +2,7 @@ import Footer from "./Footer/Footer";
 import Navbar from "./Navbar/Navbar";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 function CarQuota() {
   return (
     <section className="">
@@ -46,12 +47,14 @@ function CarQuota() {
                 <p className="text-[14px] md:text-[15px] font-medium">Deductible</p>
               </div>
             </div>
+            <Link to ="/car-quota-insurance">
             <button
               type="submit"
               className="w-40  mb-10 md:mt-20 bg-primary-normal text-white py-3 rounded hover:bg-secondary-normalhover transition duration-300"
             >
               Choose Plan
             </button>
+            </Link>
           </div>
           <div className="md:h-[480px] bg-[#E6EBF0]  shadow-md p-4 rounded-md">
             <div>
