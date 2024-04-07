@@ -1,8 +1,6 @@
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import Hero from "../assets/carList.jpg";
-
-// import { Posts, CarPost } from "./DummyData.js";
 import BrandLink from "../components/BrandGrid.js";
 import List from "../components/ListingCard.js";
 import CategoryGrid from "../components/CategoryGrid.js";
@@ -16,20 +14,20 @@ function CarListing() {
           src={Hero}
           alt="bannerIcon"
           className="w-full h-full absolute lg:object-cover object-bottom mix-blend-overlay"
-          fetchPriority="high"
+          fetchpriority="high"
         />
-        <div className="w-full max-w-[663px] h-[130px] absolute mx-auto  top-[217px] text-white flex flex-col gap-1">
+        <div className="w-full max-w-[663px] md:h-[130px] absolute mx-auto top-[300px] md:top-[217px] text-white flex flex-col gap-1">
           <p className="lg:w-[217px]  mx-auto text-[16px] font-bold leading-[26.6px] ">
             Discover Your Dream Car
           </p>
           <h3 className="text-[32px] font-bold leading-[48px] ">
             Browse Thousands of Cars for Sale
           </h3>
-          <p className="text-[20px] font-normal leading-[32px] lg:w-[377px] mx-auto">
+          <p className="text-[16px] md:text-[20px] font-normal leading-[32px] lg:w-[377px] mx-auto">
             Find the Perfect Car at the Best Price
           </p>
         </div>
-        <div className="flex w-[95%] flex-col sm:justify-between lg:flex-row lg:flex items-center bg-[#e6ebf0] lg:w-[1280px] h-[106px] rounded z-50  absolute top-[400px]">
+        <div className="flex w-[95%] flex-col sm:justify-between lg:flex-row lg:flex items-center bg-[#e6ebf0] lg:w-[1280px] h-[106px] rounded z-50  absolute top-[500px] md:top-[400px]">
           <section className="w-full lg:w-[70%] text-start">
             <div className=" lg:w-[850px]  mx-auto flex items-center justify-between lg:gap-4 text-start">
               <form className="flex flex-col lg:w-[182px] text-[#36454F] font-normal">
