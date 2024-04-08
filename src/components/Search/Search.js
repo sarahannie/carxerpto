@@ -13,7 +13,7 @@ const SearchComponent = () => {
   };
 
   return (
-    <div className="absolute z-10 lg:top-[560px] top-[400px] flex lg:flex-row flex-wrap w-full lg:w-[1390px] lg:justify-between gap-4 lg:mx-10 border border-primary-light px-6 py-8 bg-primary-light shadow-2xl rounded-md overflow-x-hidden">
+    <div className="absolute z-10 lg:top-[560px] top-[400px] grid lg:flex lg:flex-row lg:grid-cols-6 md:flex md:flex-row md:grid-cols-3 flex flex-row grid-cols-2 gap-4 w-full lg:w-[1200px] lg:justify-between  lg:mx-10 border border-primary-light px-6 py-8 bg-primary-light shadow-2xl rounded-md overflow-x-hidden">
       <div className="flex flex-col border border-l-4 border-r-gray-900">
         <label htmlFor="category" className="mb-1 -ml-8 font-light text-base">Category</label>
         <select
@@ -28,8 +28,8 @@ const SearchComponent = () => {
       </div>
 
       <div className="flex flex-col lg:-ml-14 border border-l-4 border-r-gray-900">
-        <label htmlFor="make" className="mb-1 -ml-8 font-light text-base">Make</label>
-        <select id="make" value={make} className="px-8 py-1 bg-primary-lighthover lg:mr-8 text-base" onChange={e => setMake(e.target.value)}>
+        <label htmlFor="make" className="mb-1  font-light text-base">Make</label>
+        <select id="make" value={make} className="px-4 py-1 bg-primary-lighthover lg:mr-8 text-base" onChange={e => setMake(e.target.value)}>
           <option value="">Select Make</option>
           {/* Add options for makes */}
         </select>
