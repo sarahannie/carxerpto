@@ -2,7 +2,7 @@ import { CarPost } from "./DummyData";
 
 function List(){
     return(
-        <div className="grid grid-col-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mt-8">
+        <div className="grid grid-col-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-8">
         {CarPost.map((item) => (
           <div
             key={item.id}
@@ -24,8 +24,8 @@ function List(){
                   {item.amount}
                 </p>
               </div>
-              <div className="flex items-center text-[12px] font-medium justify-between">
-                <span>{item.sublinkA}</span>
+              <div className="flex items-center text-[10px] md:text-[12px] font-medium justify-between">
+                <span className="">{item.sublinkA}</span>
                 <hr className="w-[0.1px] h-[10px] border border-gray-400" />
                 <span>{item.sublinkB}</span>
                 <hr className="w-[0.1px] h-[10px] border border-gray-400" />
@@ -37,8 +37,8 @@ function List(){
                 <h3 className="text-start  text-[16px]">{item.Feature}</h3>
                 {item.subItems.map((subItems, Index) => {
                   return (
-                    <ul className="flex items-center ">
-                      <li className="" key={Index}>{subItems}</li>
+                    <ul className="flex items-center  " key={Index.id}>
+                      <li className="" >{subItems}</li>
                     </ul>
                   );
                 })}

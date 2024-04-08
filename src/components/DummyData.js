@@ -100,7 +100,7 @@ export const Posts= [
       sublinkD: "Mileage 3000 miles",
     },
     {
-      id: 1,
+      id: 2,
       imgPic:CarF,
       title:'Toyota Camry',
       amount: "$15,000",
@@ -112,7 +112,7 @@ export const Posts= [
       sublinkD: "Mileage 3000 miles",
     },
     {
-      id: 1,
+      id: 3,
       imgPic: CarD,
       title:'Toyota Camry',
       amount: "$15,000",
@@ -124,7 +124,7 @@ export const Posts= [
       sublinkD: "Mileage 3000 miles",
     },
     {
-      id: 1,
+      id: 4,
       imgPic: CarC,
       title:'Toyota Camry',
       amount: "$15,000",
@@ -136,7 +136,7 @@ export const Posts= [
       sublinkD: "Mileage 3000 miles",
     },
     {
-      id: 1,
+      id: 5,
       imgPic:CarE,
       title:'Toyota Camry',
       amount: "$15,000",
@@ -148,7 +148,7 @@ export const Posts= [
       sublinkD: "Mileage 3000 miles",
     },
     {
-      id: 1,
+      id: 6,
       imgPic:CarA,
       title:'Toyota Camry',
       amount: "$15,000",
