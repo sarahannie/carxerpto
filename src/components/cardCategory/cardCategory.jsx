@@ -7,7 +7,7 @@ const CardCategory = () => {
 
         <div className={style.cont}>
         <Link to='/car-category'>
-        <img src='/images/carA.jpg' className={style.img} alt=''/>
+        <img src={'/images/carA.jpg'} className={style.img} alt=''/>
         <div className={style.context}>
             <h2 className={style.header}>SUV</h2>
             <p className={style.par}>200 Vehicle</p>
