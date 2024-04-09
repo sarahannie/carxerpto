@@ -88,18 +88,9 @@ function AboutUs() {
                 {/* Text placed on top */}
                 <div className="absolute inset-0 flex flex-col justify-between p-8 text-white">
                     <h1 className="text-3xl font-bold text-start">
-                        AutoBuy
+                        Carxperto
                     </h1>
-                    <div className="inset-0 flex flex-row justify-between px-8 text-white">
-                        <p className="mt-4 text-start">
-                            At AutoBuy
-                           
-                        </p> 
-                        <p className="mt-4 text-start">
-                            At AutoBuy
-                           
-                        </p>
-                    </div>
+              
                 </div>
             </div>
             <div className="mt-20 relative rounded-md lg:w-1/2 w-full h-[600px] overflow-hidden">
@@ -156,14 +147,11 @@ function AboutUs() {
                     </div>
                     <button
                         type="submit"
-                        className="w-[200px] lg:w-[540px] h-[50px] bg-primary-normal text-white py-3 rounded hover:bg-primary-normalhover transition duration-300"
+                        className="w-[200px] lg:w-[440px] h-[50px] bg-primary-normal text-white py-3 rounded hover:bg-primary-normalhover transition duration-300"
                     >
                         Send
                     </button>
-                    <div className="mt-12 flex flex-row justify-between px-10">
-                        <p>hhhd</p>
-                        <p>ppp</p>
-                    </div>
+                
                 </form>
             </div>
         </section>
