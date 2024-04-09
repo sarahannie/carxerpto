@@ -22,6 +22,8 @@ import CarInsurQ from "./components/carInsuQuota.js";
 import Success from "./components/SuccessPay.js";
 import CarDetails from "./components/CarDetails.js";
 
+import Stripe from "./components/stripe/stripe.js";
+import Profile from "./pages/profile.jsx";
 
 
 /* Importing Components */
@@ -47,8 +49,10 @@ function App() {
           <Route path="/payment" element ={<Payment/>}/>
           <Route path="/car-quota" element={<CarQuota/>}/>
           <Route path="/car-quota-insurance" element={<CarInsurQ/>}/>
-          <Route path ="/success-pay" element={<Success/>}/>
-          <Route path="car-details" element={<CarDetails/>}/>
+          <Route path ="/success" element={<Success/>}/>
+          <Route path ="/car-details" element={<CarDetails/>}/>
+          <Route path="/stripe" element={<Stripe/>}/>
+          <Route path="/profile" element={<Profile/>}/>
         </Routes>
       </Router>
     </div>
