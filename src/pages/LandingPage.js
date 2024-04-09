@@ -8,14 +8,31 @@ import Carousels from "../components/carousel/carousel";
 import Cardholder from "../components/cardholder/cardholder";
 import CardCategoryHolder from "../components/cardCategoryHolder/cardCategoryHolder";
 import Brands from "../components/Brands/Brands";
+import style from './landingpage.module.css'
 
 function LandingPage() {
   return (
     <div>
-      <section className="w-full h-full overflow-x-hidden">
+      <section className="w-full h-full overflow-x-hidden ">
         <Navbar />
         <section>
-          <div className="relative">
+        <div className={`h-screen flex items-center  ${style.header} relative`}>
+  <div className="px-4 mx-auto mt-16 mb-16 max-w-7xl sm:mt-24">
+    <div className="text-center">
+      <h1 className="text-4xl font-extrabold tracking-tight text-gray-200 sm:text-5xl md:text-6xl font-title">
+        <span className="block"> Welcome to Carxperto</span>
+        
+      </h1>
+      <p className="max-w-md mx-auto mt-3 text-base text-gray-300 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+        Innovative technology that brings you closer to your dream car 
+      </p>
+      <div className="max-w-md mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
+        
+      </div>
+    </div>
+  </div>
+</div>
+          {/* <div className="relative">
             <img
               src={Toyota}
               alt="car"
@@ -29,7 +46,7 @@ function LandingPage() {
                 Buy, Sell, and Connect with Confidence
               </p>
             </div>
-          </div>
+          </div> */}
           <SearchComponent />
           <div className="mt-36">
             <h1 className="text-4xl text-primary-normal font-bold mb-5">Featured Listings</h1>
