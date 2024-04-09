@@ -19,7 +19,7 @@ const PaymentCard = () => {
                         <FaRegCircle className={style.icon}/>
                         <span className={style.iconBox}>
                             <div>
-                                <h3 className='text-start text-[19px]'>stripe</h3>
+                                <h3 className='text-start text-[19px] text-primary-normal'>Stripe</h3>
                                 <p className='text-[12px] text-slate-500'>Unlimited users and unlimited individual data.</p>
                             </div>
                             <FaCcStripe className={style.icon2} />
@@ -33,7 +33,7 @@ const PaymentCard = () => {
                         <FaRegCircle className={style.icon}/>
                         <span className={style.iconBox2}>
                             <div>
-                                <h3 className='text-start text-[19px]'>Paypal</h3>
+                                <h3 className='text-start text-[19px] text-primary-normal'>Paypal</h3>
                                 <p className='text-[12px] text-slate-500'>You will be redirected to the PayPal after submitting your order</p>
                             </div>
                             <GrPaypal className={style.icon2} />
@@ -47,7 +47,7 @@ const PaymentCard = () => {
                         <FaRegCircle className={style.icon}/>
                         <span className={style.iconBox}>
                             <div>
-                                <h3 className='text-start text-[19px]'>Zelle</h3>
+                                <h3 className='text-start text-[19px] text-primary-normal'>Zelle</h3>
                                 <p className='text-[12px] text-slate-500'>Unlimited users and unlimited individual data.</p>
                             </div>
                             <SiZelle  className={style.icon2} />
@@ -62,18 +62,23 @@ const PaymentCard = () => {
 
         </div>
         <div className={style.btnBox}>
-        <a
-            href="/sign-up"
-            className="w-28 h-[47px] mb-1 bg-primary-light  py-5 rounded px-10 hover:bg-secondary-normalhover  mt-[10px]"
-          >
-            Back
-          </a>
-        <a
-            href="/sign-up"
-            className="w-28 h-[47px] mb-1 bg-primary-normal text-white py-5 rounded px-5 hover:bg-secondary-normalhover  mt-[10px]"
-          >
-            Continue
-          </a>
+            <button>
+                <a
+                href="/sign-up"
+                className="w-28 h-[47px] mb-1 bg-primary-light  py-5 rounded px-10 hover:bg-secondary-normalhover  mt-[10px]"
+            >
+                Back
+            </a>
+            </button>
+            <button>
+                    <a
+                    href="/sign-up"
+                    className="w-28 h-[47px] mb-1 bg-primary-normal text-white py-5 rounded px-5 hover:bg-secondary-normalhover  mt-[10px]"
+                    >
+                    Continue
+                </a>
+            </button>
+       
         </div>
     </div>
   )

@@ -12,9 +12,9 @@ function FeatureSec() {
         <Navbar />
       </div>
       
-      <section className="max-w-[1276px] mx-auto mt-3 lg:mt-8 h-[1118px] w-full mb-96">
-        <h1 className="lg:text-[56px] text-[40px] text-blue-950 w-[256px] h-[78px] mx-auto font-bold">Features</h1>
-        <section className=" mt-3 lg:mt-3  flex flex-col gap-8 p-4 sm:p-4 ">
+      <section className="max-w-[1276px] mx-auto mt-3 lg:mt-8 w-full mb-20">
+        {/* <h1 className="lg:text-[56px] text-[40px] text-blue-950 w-[256px] h-[78px] mx-auto font-bold">Features</h1> */}
+        <section className=" mt-3 lg:mt-[80px]  flex flex-col gap-8 p-4 sm:p-4 ">
         <div className=" w-full md:w-full lg:w-full  h-[320px] rounded-md relative overflow-hidden bg-gradient-to-r from-[#003B6D] via-[#003B6D] to-[#BEE1FF] inset-0 bg-opacity-[56%]">
             <img
               src={data}
@@ -33,7 +33,7 @@ function FeatureSec() {
               <p className="text-[18px] font-bold leading-[28.8px] text-white">Get started</p>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-col md:flex-col lg:flex-row items-center gap-5 justify-between">
+          <div className="flex flex-col sm:flex-col md:flex-col lg:flex-row items-center gap-5 justify-between mt-[20px]">
             <div className=" w-full md:w-full lg:w-[838px]  h-[283px] rounded-md relative overflow-hidden bg-gradient-to-r from-[#003B6D] via-[#003B6D] to-[#BEE1FF] inset-0 bg-opacity-95">
               <img
                 src={car}
@@ -73,7 +73,7 @@ function FeatureSec() {
             </div>
           </div>
          
-          <div className=" h-[320px] rounded-md relative overflow-hidden bg-gradient-to-r from-[#003B6D] via-[#003B6D] to-[#BEE1FF] inset-0 bg-opacity-95 ">
+          <div className=" rounded-md relative overflow-hidden bg-gradient-to-r from-[#003B6D] via-[#003B6D] to-[#BEE1FF] inset-0 bg-opacity-95 mt-[20px]">
             <img
               src={carbroker}
               alt="carBroker"

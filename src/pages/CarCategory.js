@@ -25,10 +25,11 @@ function CarCategory() {
             </div>
           </div>
           <SearchComponent />
-          <div className="mt-36 mb-12">
-            <h1 className="text-4xl text-primary-normal font-bold mb-5">Latest Arrivals SUV Cars</h1>
+          <div className="mt-36 mb-24">
+            <h1 className="text-4xl text-primary-normal pb-12 font-bold mb-5">Latest Arrivals SUV Cars</h1>
+            <Cardholder  />
           </div>
-          <Cardholder className="mb-36" />
+          
         </section>
 
         <Footer />
