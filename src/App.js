@@ -20,8 +20,7 @@ import Payment from "./pages/Payments.jsx";
 import CarQuota from "./components/CarQuota.js";
 import CarInsurQ from "./components/carInsuQuota.js";
 import Success from "./components/SuccessPay.js";
-import CarDetails from "./components/CarDetails.js";
-
+import CarDetails from "./components/CarDetails.js"
 import Stripe from "./components/stripe/stripe.js";
 import Profile from "./pages/profile.jsx";
 
