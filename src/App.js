@@ -19,6 +19,8 @@ import Prices from "./pages/price.js";
 import Payment from "./pages/Payments.jsx";
 import CarQuota from "./components/CarQuota.js";
 import CarInsurQ from "./components/carInsuQuota.js";
+import Stripe from "./components/stripe/stripe.js";
+import Profile from "./pages/profile.jsx";
 
 
 /* Importing Components */
@@ -44,6 +46,8 @@ function App() {
           <Route path="/payment" element ={<Payment/>}/>
           <Route path="/car-quota" element={<CarQuota/>}/>
           <Route path="/car-quota-insurance" element={<CarInsurQ/>}/>
+          <Route path="/stripe" element={<Stripe/>}/>
+          <Route path="/profile" element={<Profile/>}/>
         </Routes>
       </Router>
     </div>
