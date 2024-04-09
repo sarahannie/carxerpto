@@ -6,20 +6,20 @@ import Toyota from "../assets/hero (1).png";
 import SearchComponent from "../components/Search/Search";
 import Carousels from "../components/carousel/carousel";
 import Cardholder from "../components/cardholder/cardholder";
-import CardCategoryHolder from "../components/cardCategoryHolder/cardCategoryHolder";
 import Brands from "../components/Brands/Brands";
 import style from './landingpage.module.css'
+import CategoryGrid from "../components/CategoryGrid.js";
 
 function LandingPage() {
   return (
     <div>
       <section className="w-full h-full overflow-x-hidden ">
         <Navbar />
-        <section>
-        <div className={`h-screen flex items-center  ${style.header} relative`}>
-  <div className="px-4 mx-auto mt-16 mb-16 max-w-7xl sm:mt-24">
+        <section className="relative">
+        <div className={`h-screen flex items-center  ${style.header} `}>
+  <div className="px-4 mx-auto lg:mt-16 lg:mb-16 max-w-7xl mt-4 mb-[180px]">
     <div className="text-center">
-      <h1 className="text-4xl font-extrabold tracking-tight text-gray-200 sm:text-5xl md:text-6xl font-title">
+      <h1 className="lg:text-4xl font-extrabold tracking-tight text-gray-200 text-3xl md:text-6xl font-title">
         <span className="block"> Welcome to Carxperto</span>
         
       </h1>
@@ -32,21 +32,6 @@ function LandingPage() {
     </div>
   </div>
 </div>
-          {/* <div className="relative">
-            <img
-              src={Toyota}
-              alt="car"
-              className="inset-0 h-[550px] w-full object-cover object-bottom"
-            />
-            <div className="absolute top-40 lg:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
-              <h1 className="font-bold text-2xl md:text-4xl lg:text-2xl mb-2">
-                Welcome to Autobuys
-              </h1>
-              <p className="text-sm md:text-base lg:text-4xl font-bold mb-2">
-                Buy, Sell, and Connect with Confidence
-              </p>
-            </div>
-          </div> */}
           <SearchComponent />
           <div className="mt-36">
             <h1 className="text-4xl text-primary-normal font-bold mb-5">Featured Listings</h1>
@@ -57,10 +42,11 @@ function LandingPage() {
             <h1 className="text-4xl text-primary-normal font-bold mb-5">Latest Arrivals</h1>
         </div>
         <Cardholder />
-        <div className="mt-24 mb-12">
+        <div className="lg:max-w-[1122px]   mx-auto mt-9 mb-11 p-2 lg:p-0">
             <h1 className="text-4xl text-primary-normal font-bold mb-5">Categories</h1>
+            <CategoryGrid/>
         </div>
-        <CardCategoryHolder/>
+
         <div className="mt-24 mb-12">
             <h1 className="text-4xl text-primary-normal font-bold mb-5">Trusted Brands</h1>
         </div>

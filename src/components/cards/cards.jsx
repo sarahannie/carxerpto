@@ -7,11 +7,12 @@ import { SlCalender } from "react-icons/sl";
 import { BsFuelPumpDiesel } from "react-icons/bs";
 import { MdAirlineSeatLegroomExtra } from "react-icons/md";
 import { FaRegBookmark } from "react-icons/fa";
+import Cars from  '../../assets/hans-isaacson.png'
 const Cards = () => {
   return (
     <div className={style.container}>
         <div className={style.imgContainer}>
-            <img src={'/images/image_group_1.png'} className={style.img} alt='' />
+            <img src={Cars} className={style.img} alt='' />
         </div>
         <div className={style.header}>
             <h2 className={style.brand}>Toyota camary</h2>
