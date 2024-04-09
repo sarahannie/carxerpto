@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import style from './profilebody.module.css'
 import Profilecon from './profilecon';
+import Preference from './preference';
+import Security from './security';
 
 const Profilebody = () => {
     const [activeTab, setActiveTab] = useState('Profile');
@@ -37,7 +39,10 @@ const Profilebody = () => {
                   <Profilecon />
                   </div>}
                   {activeTab === 'Preferences' && <div >
-                  preference
+                  <Preference/>
+                  </div>}
+                  {activeTab === 'Security' && <div >
+                  <Security/>
                   </div>}
     </div>
   )
