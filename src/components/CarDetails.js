@@ -6,7 +6,7 @@ function CarDetails() {
   return (
     <section>
       <Navbar />
-      <div className="w-full max-w-[1200px] mx-auto h-[300px] mt-4 bg-red-500  ">img carusole</div>
+      <div className="w-full max-w-[1200px] mx-auto h-[300px] mt-4 bg-red-500 ">img carusole</div>
 
       <div className="mt-8">
         <div className="flex items-center w-full md:max-w-[1200px] mx-auto justify-between mt-5 mb-5">
@@ -101,6 +101,11 @@ function CarDetails() {
           
         </div>
       </section>
+        <h3>
+            <p>Contact Information</p>
+        </h3>
+      <section></section>
+
 
       <Footer />
     </section>
