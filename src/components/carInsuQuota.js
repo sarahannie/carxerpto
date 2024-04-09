@@ -268,7 +268,7 @@ function CarInsurQ() {
           
         </div>
       </section>
-      <Link to ="/">
+      <Link to ="/checkout-payment">
             <button
               type="submit"
               className="w-40  mt-5 mb-10 md:mt-20 bg-primary-normal text-white py-3 rounded hover:bg-secondary-normalhover transition duration-300"

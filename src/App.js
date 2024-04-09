@@ -19,6 +19,8 @@ import Prices from "./pages/price.js";
 import Payment from "./pages/Payments.jsx";
 import CarQuota from "./components/CarQuota.js";
 import CarInsurQ from "./components/carInsuQuota.js";
+import Success from "./components/SuccessPay.js";
+
 
 
 /* Importing Components */
@@ -44,6 +46,7 @@ function App() {
           <Route path="/payment" element ={<Payment/>}/>
           <Route path="/car-quota" element={<CarQuota/>}/>
           <Route path="/car-quota-insurance" element={<CarInsurQ/>}/>
+          <Route path ="/success-pay" element={<Success/>}/>
         </Routes>
       </Router>
     </div>
