@@ -14,6 +14,10 @@ import cardCardC from  "../assets/carCardC.jpg"
 import cardCardD from  "../assets/carCardF.jpg"
 import cardCardF from  "../assets/carCardG.jpg"
 import cardCardG from  "../assets/carCardF.jpg"
+import silderA from "../assets/slider1.jpg"
+import silderB from "../assets/slide2.jpg"
+import silderC from "../assets/slider3.jpg"
+import silderD from "../assets/slider4.jpg"
 export const Posts= [
     {
       id: 1,
@@ -160,3 +164,24 @@ export const Posts= [
       sublinkD: "Mileage 3000 miles",
     },
   ];
+
+
+
+  export const ImageSlider= [
+    {
+      id: 1,
+      slider:silderA
+    },
+    {
+      id: 2,
+      slider:silderB
+    },
+    {
+      id: 3,
+      slider:silderC
+    },
+    {
+      id: 4,
+      slider:silderD
+    }
+  ]
