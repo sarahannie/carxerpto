@@ -145,7 +145,7 @@ function CarDetails() {
         </div>
       </section>
       
-      <section className="w-full md:flex md:items-center md:justify-between md:max-w-[1200px] md:mx-auto mt-20 mb-10 md:mb-60 md:text-start ">
+      <section className="w-full md:flex md:items-center md:justify-between md:max-w-[1200px] md:mx-auto mt-20 mb-10 md:mb-20 md:text-start ">
         <button
           type="submit"
           className="w-60 lg:w-[10%] bg-primary-normal text-white py-3 rounded hover:bg-secondary-normalhover hover:text-accent-white transition duration-300"
