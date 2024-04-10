@@ -67,12 +67,14 @@ function SignUp() {
                   Remind me always
                 </span>
               </label>
+              <Link to="/about">
               <button
                 type="submit"
                 className="w-80 bg-primary-normal text-white py-3 rounded hover:bg-primary-normalhover transition duration-300"
               >
                 Log In
               </button>
+              </Link>
             </form>
             <div className="flex items-center mx-10 mt-6">
               <hr class="flex-grow border-t-2 border-gray-400 mr-2" />
