@@ -40,7 +40,7 @@ const Profilecon = () => {
           <div>
           <form>
         
-        <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center lg:w-[600px] w-[200px]">
+        <div className="flex lg:flex-row md:flex-row sm:flex-row xs:flex-col gap-2 justify-center lg:w-[600px] w-[190px] md:w-[400px]">
           <div className="w-full  mb-1 mt-1">
             <label htmlFor="" className={`${style.label}`}>
               Full Name
@@ -62,7 +62,7 @@ const Profilecon = () => {
             />
           </div>
         </div>
-        <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center lg:w-[600px] w-[200px]">
+        <div className="flex lg:flex-row md:flex-row sm:flex-row xs:flex-col gap-2 justify-center lg:w-[600px] w-[190px] md:w-[400px]">
           <div className="w-full  mb-1 mt-1">
             <label htmlFor="" className={`mb-1  ${style.label}`}>
               Email
@@ -84,7 +84,7 @@ const Profilecon = () => {
             />
           </div>
         </div>
-        <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center lg:w-[600px] w-[200px]">
+        <div className="flex lg:flex-row md:flex-row sm:flex-row xs:flex-col gap-2 justify-center lg:w-[600px] w-[190px] md:w-[400px]">
           <div className="w-full  mb-1 mt-1">
             <label htmlFor="" className={`mb-1  ${style.label}`}>
               Present Address
@@ -106,7 +106,7 @@ const Profilecon = () => {
             />
           </div>
         </div>
-        <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center lg:w-[600px] w-[200px]">
+        <div className="flex lg:flex-row md:flex-row sm:flex-row xs:flex-col gap-2 justify-center lg:w-[600px] w-[190px] md:w-[400px]">
           <div className="w-full  mb-1 mt-1">
             <label htmlFor="" className={`mb-1  ${style.label}`}>
               City
