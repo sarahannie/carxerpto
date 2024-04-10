@@ -4,8 +4,8 @@ import style from './profilecon.module.css'
 const Profilecon = () => {
   return (
     <div className={style.container}>
-        <div className="mx-[36px] flex justify-center w-[121px] h-[121px] bg-blue-300/20 rounded-full bg-[url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxwcm9maWxlfGVufDB8MHx8fDE3MTEwMDM0MjN8MA&ixlib=rb-4.0.3&q=80&w=1080')] bg-cover bg-center bg-no-repeat">
-              <div className="bg-white/90 rounded-full w-6 h-6 text-center ml-28 mt-4">
+        <div className="lg:mx-[36px] mx-[5px] flex justify-center lg:w-[121px] lg:h-[121px] w-[50px] h-[50px] bg-blue-300/20 rounded-full bg-[url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxwcm9maWxlfGVufDB8MHx8fDE3MTEwMDM0MjN8MA&ixlib=rb-4.0.3&q=80&w=1080')] bg-cover bg-center bg-no-repeat">
+              <div className="bg-white/90 rounded-full w-6 h-6 text-center lg:ml-28 ml-5 mt-4">
                 <input
                   type="file"
                   name="profile"
@@ -40,7 +40,7 @@ const Profilecon = () => {
           <div>
           <form>
         
-        <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center w-full">
+        <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center lg:w-[600px] w-[200px]">
           <div className="w-full  mb-1 mt-1">
             <label htmlFor="" className={`${style.label}`}>
               Full Name
@@ -62,7 +62,7 @@ const Profilecon = () => {
             />
           </div>
         </div>
-        <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center w-[600px]">
+        <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center lg:w-[600px] w-[200px]">
           <div className="w-full  mb-1 mt-1">
             <label htmlFor="" className={`mb-1  ${style.label}`}>
               Email
@@ -84,7 +84,7 @@ const Profilecon = () => {
             />
           </div>
         </div>
-        <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center w-full">
+        <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center lg:w-[600px] w-[200px]">
           <div className="w-full  mb-1 mt-1">
             <label htmlFor="" className={`mb-1  ${style.label}`}>
               Present Address
@@ -106,7 +106,7 @@ const Profilecon = () => {
             />
           </div>
         </div>
-        <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center w-[600px]">
+        <div className="flex lg:flex-row md:flex-col sm:flex-col xs:flex-col gap-2 justify-center lg:w-[600px] w-[200px]">
           <div className="w-full  mb-1 mt-1">
             <label htmlFor="" className={`mb-1  ${style.label}`}>
               City
