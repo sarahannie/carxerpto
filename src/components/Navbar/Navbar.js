@@ -198,11 +198,13 @@ function Navbar() {
           >
             Sign Up
           </Link>
+          <Link to='/profile'>
           <img
             src={usercircle}
             alt="UserCircle"
             className="lg:w-10 lg:h-10 w-8 h-8"
           />
+          </Link>
         </section>
       </section>
     </div>
