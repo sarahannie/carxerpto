@@ -20,6 +20,6 @@ function CategoryCard({ cards }) {
   );
 }
 
-// flex flex-col lg:flex  lg:w-[400px] lg-h-[210px] lg:flex-col gap-8 p-2 mt:p-0 shadow-md bg-green-400
+
 
 export default CategoryCard;

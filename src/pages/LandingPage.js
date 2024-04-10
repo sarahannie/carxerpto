@@ -2,7 +2,7 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
-import Toyota from "../assets/hero (1).png";
+// import Toyota from "../assets/hero (1).png";
 import SearchComponent from "../components/Search/Search";
 import Carousels from "../components/carousel/carousel";
 import Cardholder from "../components/cardholder/cardholder";
