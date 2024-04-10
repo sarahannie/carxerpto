@@ -6,8 +6,8 @@ const Preference = () => {
     <div>
         <div className="flex justify-between mt-5 mb-5">
             <div>
-                <h2 className='text-start text-xl font-bold text-primary-normal'>Language Preference</h2>
-                <p className='text-start w-[80%] text-[14px] text-slate-500' >Select English as your preferred language for all app communications and interactions. Enjoy a seamless user experience with content presented in English, tailored to your language preference. </p>
+                <h2 className='text-start lg:text-xl text-[10px] font-bold text-primary-normal'>Language Preference</h2>
+                <p className='text-start w-[80%] lg:text-[14px] text-[7px] text-slate-500' >Select English as your preferred language for all app communications and interactions. Enjoy a seamless user experience with content presented in English, tailored to your language preference. </p>
             </div>
             <select class="block w-sm text-sm font-medium transition duration-75 border border-gray-800 rounded-lg shadow-sm h-9 focus:border-blue-600 focus:ring-1 focus:ring-inset focus:ring-blue-600 bg-none" >
             <option value="week">Eng</option>
@@ -17,8 +17,8 @@ const Preference = () => {
         </div>
         <div className="flex justify-between mt-5 mb-5">
             <div>
-                <h2 className='text-start text-xl font-bold text-primary-normal'>Timezone</h2>
-                <p className='text-start w-[80%] text-[14px] text-slate-500' >Set your timezone  to ensure that all time-related information displayed in the app is accurate and aligned with your local time zone. </p>
+                <h2 className='text-start lg:text-xl text-[10px] font-bold text-primary-normal'>Timezone</h2>
+                <p className='text-start w-[80%] lg:text-[14px] text-[7px] text-slate-5000' >Set your timezone  to ensure that all time-related information displayed in the app is accurate and aligned with your local time zone. </p>
             </div>
             <select class="block w-sm text-sm font-medium transition duration-75 border border-gray-800 rounded-lg shadow-sm h-9 focus:border-blue-600 focus:ring-1 focus:ring-inset focus:ring-blue-600 bg-none" >
             <option value="week">Est</option>
@@ -28,8 +28,8 @@ const Preference = () => {
         </div>
         <div className="flex justify-between mt-5 mb-5">
             <div>
-                <h2 className='text-start text-xl font-bold text-primary-normal'>Email Notifications</h2>
-                <p className='text-start w-[80%] text-[14px] text-slate-500' >Receive important updates, reminders, and notifications directly to your email inbox in English. Stay informed about new messages, account activity, and relevant information without having to constantly check the app. </p>
+                <h2 className='text-start lg:text-xl text-[10px] font-bold text-primary-normal'>Email Notifications</h2>
+                <p className='text-start w-[80%] lg:text-[14px] text-[7px] text-slate-500' >Receive important updates, reminders, and notifications directly to your email inbox in English. Stay informed about new messages, account activity, and relevant information without having to constantly check the app. </p>
             </div>
             <label class="relative mb-5 cursor-pointer">
                 <input type="checkbox" value="" class="peer sr-only" />
@@ -38,8 +38,8 @@ const Preference = () => {
         </div>
         <div className="flex justify-between mt-5 mb-5">
             <div>
-                <h2 className='text-start text-xl font-bold text-primary-normal'>Push Notifications</h2>
-                <p className='text-start w-[80%] text-[14px] text-slate-500' >Opt-out of receiving push notifications to your device. Enjoy uninterrupted browsing without the distraction of constant alerts. You can always check for updates within the app at your convenience. </p>
+                <h2 className='text-start lg:text-xl text-[10px] font-bold text-primary-normal'>Push Notifications</h2>
+                <p className='text-start w-[80%] lg:text-[14px] text-[7px] text-slate-500' >Opt-out of receiving push notifications to your device. Enjoy uninterrupted browsing without the distraction of constant alerts. You can always check for updates within the app at your convenience. </p>
             </div>
             <label class="relative mb-5 cursor-pointer">
                 <input type="checkbox" value="" class="peer sr-only" />

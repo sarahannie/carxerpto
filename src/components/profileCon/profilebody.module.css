@@ -16,7 +16,6 @@
     padding-top: 20px ;
     padding-left: 15px;
     padding-right: 15px;
-
     border-bottom-width: 1px;
 }
 
@@ -38,4 +37,28 @@
     background-color: #b0c2d2; /* Change this to your desired color */
   }
 
+  @media (max-width: 768px) {
+    .header{
+      display: flex;
+      text-align: start;
+      gap: 5px;
+      font-size: 10px;
+      padding-top: 20px ;
+      padding-left: 15px;
+      padding-right: 15px;
+      border-bottom-width: 1px;
+  }
+  }
   
+  @media (max-width: 480px) {
+    .header{
+      display: flex;
+      text-align: start;
+      gap: 5px;
+      font-size: 10px;
+      padding-top: 20px ;
+      padding-left: 15px;
+      padding-right: 15px;
+      border-bottom-width: 1px;
+  }
+  }
