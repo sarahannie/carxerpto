@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import illustration from "../assets/Illustration.png";
 
+
 function OnboardingPage() {
   return (
     <div>
@@ -10,7 +11,7 @@ function OnboardingPage() {
         <Navbar />
         <section className="flex flex-col items-center justify-center mt-10">
           <h1 className="text-center text-primary-normal font-normal text-2xl">
-            Why Choose AutoBuy?
+            Why Choose Carxperto
           </h1>
           <div className="flex lg:flex-row flex-col items-center gap-16 mt-16">
             <Link to="/signup">
