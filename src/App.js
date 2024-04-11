@@ -23,6 +23,8 @@ import Success from "./components/SuccessPay.js";
 import CarDetails from "./components/CarDetails.js"
 import Stripe from "./components/stripe/stripe.js";
 import Profile from "./pages/profile.jsx";
+import Home from "./seller/page/dashboard/home.jsx";
+import Profiles from "./seller/page/dashboard/profiles.jsx";
 
 
 /* Importing Components */
@@ -52,6 +54,8 @@ function App() {
           <Route path ="/car-details" element={<CarDetails/>}/>
           <Route path="/stripe" element={<Stripe/>}/>
           <Route path="/profile" element={<Profile/>}/>
+          <Route path="/seller-home" element={<Home/>}/>
+          <Route path="/seller-profile" element={<Profiles/>}/>
         </Routes>
       </Router>
     </div>
