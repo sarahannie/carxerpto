@@ -1,5 +1,6 @@
 
-import { IoBagHandleOutline } from "react-icons/io5";
+
+import { FiShoppingCart  } from "react-icons/fi";
 
   
 export function OrderCard2({ color, icon, title, value, footer }) {
@@ -7,7 +8,7 @@ export function OrderCard2({ color, icon, title, value, footer }) {
    <div className="border border-primary-normal pt-4 pb-1 px-3 rounded-md shadow-lg ">
       <div className="flex justify-between py-3 align-center text-primary-normal">
           <div>
-              <IoBagHandleOutline className="font-[55px]"/>
+              <FiShoppingCart className="font-[45px]"/>
           </div>
           <div className="" >
           <select name="" id="">

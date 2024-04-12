@@ -15,6 +15,8 @@ import {  SignUp } from "../seller/page/auth/sign-up";
 import { SignIn} from "../seller/page/auth/sign-in";
 import Profiles from "./page/dashboard/profiles";
 import Setting from "./page/dashboard/setting";
+import List from "./page/dashboard/list";
+
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -38,9 +40,9 @@ export const routes = [
       },
       {
         icon: <UserCircleIcon {...icon} />,
-        name: "profile",
-        path: "/seller-profile",
-        element: <Setting />,
+        name: "Listing",
+        path: "/seller-product",
+        element: <List />,
       },
       {
         icon: <TableCellsIcon {...icon} />,
