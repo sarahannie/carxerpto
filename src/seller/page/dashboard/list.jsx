@@ -1,6 +1,7 @@
 import React from "react";
 import DashboardNavbar from "../../widgets/layout/dashboard-navbar";
 import Sidenav from "../../widgets/layout/sidenav";
+import { Select, Option } from "@material-tailwind/react";
 import { IoMdAdd } from "react-icons/io";
 import {
   ArrowDownTrayIcon,
@@ -19,55 +20,62 @@ import {
   Tooltip,
   Input,
 } from "@material-tailwind/react";
-
+import { FaEye } from "react-icons/fa";
 import { ProductCard1 } from "../../widgets/cards/productCard/product-card1";
 import { ProductCard2 } from "../../widgets/cards/productCard/product-card2";
-const TABLE_HEAD = ["Customer Name", "Order Date", "Order Type", "Tracking ID","Order Total", "Status"];
+import { Link } from "react-router-dom";
+const TABLE_HEAD = ["Product Name", "Unit Price", "In-Stock", "Discount","Total Value", "Action", "Status", "View"];
 const TABLE_ROWS = [
     {
       img: "https://docs.material-tailwind.com/img/logos/logo-spotify.svg",
-      name: "Janet Adebayo",
-      amount: "$2,500",
-      date: "12 Aug 2022 - 12:25 am",
-      status: "paid",
-      type: "Pick Up",
-      tacking:'65472rbe'
+      name: "Quattro 2020",
+      unit_price: "$25,000",
+      stock: "8",
+      discount: "$500.00",
+      action: "Edit",
+      total_value: "$24,500.00",
+      status: "published",
+      
     },
     {
       img: "https://docs.material-tailwind.com/img/logos/logo-amazon.svg",
-      name: "Samuel Johnson",
-      amount: "$5,000",
-      date: "12 Aug 2022 - 12:25 am",
-      status: "paid",
-      type: "Home Delivery",
-      tacking:'65472rbe'
+      name: "Quattro 2020",
+      unit_price: "$25,000",
+      stock: "8",
+      discount: "$500.00",
+      action: "publish",
+      total_value: "$24,500.00",
+      status: "published",
     },
     {
       img: "https://docs.material-tailwind.com/img/logos/logo-pinterest.svg",
-      name: "Francis Doe",
-      amount: "$3,400",
-      date: "12 Aug 2022 - 12:25 am",
-      status: "pending",
-      type: "Home Delivery",
-      tacking:'65472rbe'
+      name: "Quattro 2020",
+      unit_price: "$25,000",
+      stock: "8",
+      discount: "$500.00",
+      action: "Edit",
+      total_value: "$24,500.00",
+      status: "published",
     },
     {
       img: "https://docs.material-tailwind.com/img/logos/logo-google.svg",
-      name: "Janet Adebayo",
-      amount: "$1,000",
-      date: "12 Aug 2022 - 12:25 am",
-      status: "paid",
-      type: "Pick Up",
-      tacking:'65472rbe'
+      name: "Quattro 2020",
+      unit_price: "$25,000",
+      stock: "8",
+      discount: "$500.00",
+      action: "Publish",
+      total_value: "$24,500.00",
+      status: "published",
     },
     {
       img: "https://docs.material-tailwind.com/img/logos/logo-netflix.svg",
-      name: "Samuel Johnson",
-      amount: "$14,000",
-      date: "12 Aug 2022 - 12:25 am",
-      status: "cancelled",
-      type: "Home Delivery",
-      tacking:'65472rbe'
+      name: "Quattro 2020",
+      unit_price: "$25,000",
+      stock: "8",
+      discount: "$500.00",
+      action: "Edit",
+      total_value: "$24,500.00",
+      status: "published",
     },
   ];
 
@@ -102,7 +110,7 @@ export function List() {
         <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
           <div>
             <Typography variant="h5" className="text-primary-normal">
-              Received Orders
+            List Items
             </Typography>
           </div>
           <div className="flex w-full shrink-0 gap-2 md:w-max">
@@ -113,7 +121,7 @@ export function List() {
               />
             </div>
             <Button className="flex items-center bg-primary-normal gap-3" size="sm">
-               Search Order
+               Search Items
             </Button>
           </div>
         </div>
@@ -144,11 +152,11 @@ export function List() {
                 {
                   img,
                   name,
-                  amount,
-                  date,
+                  unit_price,
+                  stock,
                   status,
-                  type,
-                  tacking
+                  discount,
+                  total_value
                 },
                 index,
               ) => {
@@ -182,7 +190,7 @@ export function List() {
                         color="blue-gray"
                         className="font-normal"
                       >
-                        {date}
+                        {unit_price}
                       </Typography>
                     </td>
                     <td className={classes}>
@@ -191,17 +199,27 @@ export function List() {
                         color="blue-gray"
                         className="font-normal"
                       >
-                        {type}
+                        {stock}
                       </Typography>
                     </td>
                     <td className={classes}>
                       <div className="w-max">
-                        {tacking}
+                        {discount}
+                      </div>
+                    </td>
+                    <td className={classes}>
+                      <div className="w-max">
+                        {total_value}
                       </div>
                     </td>
                     <td className={classes}>
                       <div className="flex items-center gap-3">
-                        {amount}
+                      <Select variant="outlined" label="Perform Action">
+                        <Option>Publish</Option>
+                        <Option>Edit</Option>
+                        <Option>Delete</Option>
+                        <Option>Draft</Option>
+                    </Select>
                       </div>
                     </td>
                     <td className={classes}>
@@ -211,13 +229,22 @@ export function List() {
                           variant="ghost"
                           value={status}
                           color={
-                            status === "paid"
+                            status === "published"
                               ? "green"
                               : status === "pending"
                               ? "amber"
                               : "red"
                           }
                         />
+                      </div>
+                    </td>
+                    <td className={classes}>
+                      <div className="flex items-center gap-3">
+                        <Link>
+                        <IconButton variant="text" size="sm">
+                          <FaEye  className="h-5 w-5" />
+                        </IconButton>
+                        </Link>
                       </div>
                     </td>
                   </tr>
