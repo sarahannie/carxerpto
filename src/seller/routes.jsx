@@ -16,7 +16,7 @@ import { SignIn} from "../seller/page/auth/sign-in";
 import Profiles from "./page/dashboard/profiles";
 import Setting from "./page/dashboard/setting";
 import List from "./page/dashboard/list";
-
+import { FaList } from "react-icons/fa6";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -39,7 +39,7 @@ export const routes = [
         element: <Profiles />,
       },
       {
-        icon: <UserCircleIcon {...icon} />,
+        icon: <FaList {...icon} />,
         name: "Listing",
         path: "/seller-product",
         element: <List />,
