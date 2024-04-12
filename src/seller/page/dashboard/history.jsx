@@ -3,7 +3,7 @@ import DashboardNavbar from "../../widgets/layout/dashboard-navbar";
 import Sidenav from "../../widgets/layout/sidenav";
 
 
-export function Setting() {
+export function History() {
   
   return (
     <div className="">
@@ -24,4 +24,4 @@ export function Setting() {
   );
 }
 
-export default Setting;
+export default History;

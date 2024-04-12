@@ -28,6 +28,11 @@ import Profiles from "./seller/page/dashboard/profiles.jsx";
 import List from "./seller/page/dashboard/list.jsx";
 import Viewproduct from "./seller/page/dashboard/viewproduct.jsx";
 import Addproduct from "./seller/page/dashboard/addproduct.jsx";
+import Analytic from "./seller/page/dashboard/analytic.jsx";
+import History from "./seller/page/dashboard/history.jsx";
+import Subscription from "./seller/page/dashboard/subscription.jsx";
+import Setting from "./seller/page/dashboard/setting.jsx";
+import Message from "./seller/page/dashboard/message.jsx";
 
 
 /* Importing Components */
@@ -58,10 +63,16 @@ function App() {
           <Route path="/stripe" element={<Stripe/>}/>
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/dashboard/home" element={<Home/>}/>
-          <Route path="dashboard/seller-profile" element={<Profiles/>}/>
-          <Route path="dashboard/seller-product" element={<List/>}/>
+          <Route path="/dashboard/seller-profile" element={<Profiles/>}/>
+          <Route path="/dashboard/seller-product" element={<List/>}/>
           <Route path="/Viewproduct" element={<Viewproduct/>}/>
           <Route path="/Addproduct" element={<Addproduct/>}/>
+          <Route path="/dashboard/analysis" element={<Analytic/>}/>
+          <Route path="/dashboard/history" element={<History/>}/>
+          <Route path="/dashboard/subscription" element={<Subscription/>}/>
+          <Route path="/dashboard/setting" element={<Setting/>}/>
+          <Route path="/dashboard/message" element={<Message/>}/>
+          <Route path="/auth/signin" element={<SignIn/>} />
         </Routes>
       </Router>
     </div>

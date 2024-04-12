@@ -24,7 +24,7 @@ export function Sidenav({ brandImg, brandName, }) {
       <div className=" my-0 text-center divide-y solid divide-red-500"
       >
         <Link to="/" >
-           <img src={Logo} alt="logo" className="w-[200px] h-[100px]"/>
+           <img src={Logo} alt="logo" className="w-[200px] h-[130px]"/>
         </Link>
       </div>
       <div className=" mb-4 ml-4 mr-4">
@@ -54,7 +54,7 @@ export function Sidenav({ brandImg, brandName, }) {
                           ? "white"
                           : "blue-gray"
                       }
-                      className="flex items-center gap-4 px-4 py-2 capitalize"
+                      className="flex items-center gap-3 px-4 py-2 capitalize"
                       fullWidth
                     >
                       {icon}

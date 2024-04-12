@@ -1,22 +1,21 @@
-import {
-  HomeIcon,
-  UserCircleIcon,
-  TableCellsIcon,
-  InformationCircleIcon,
-  ServerStackIcon,
-  RectangleStackIcon,
-} from "@heroicons/react/24/solid";
+import {HomeIcon} from "@heroicons/react/24/solid";
 import { Home } from "../seller/page/dashboard/home";
 import { IoBagHandleSharp } from "react-icons/io5";
-// import { Profile} from "../seller/page/dashboard/profile";
-import {  Tables } from "../seller/page/dashboard/tables";
-import { Notifications } from "../seller/page/dashboard/notifications";
-import {  SignUp } from "../seller/page/auth/sign-up";
-import { SignIn} from "../seller/page/auth/sign-in";
 import Profiles from "./page/dashboard/profiles";
 import Setting from "./page/dashboard/setting";
 import List from "./page/dashboard/list";
 import { FaList } from "react-icons/fa6";
+import Analytic from "./page/dashboard/analytic";
+import { IoAnalyticsSharp } from "react-icons/io5";
+import { LuMessageCircle } from "react-icons/lu";
+import { MdOutlineHistoryToggleOff } from "react-icons/md";
+import { MdSubscriptions } from "react-icons/md";
+import { IoSettingsOutline } from "react-icons/io5";
+import { CiLogin } from "react-icons/ci";
+import Message from "./page/dashboard/message";
+import History from "./page/dashboard/history";
+import Subscription from "./page/dashboard/subscription";
+import SignIn from "../pages/SignIn";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -45,16 +44,34 @@ export const routes = [
         element: <List />,
       },
       {
-        icon: <TableCellsIcon {...icon} />,
-        name: "tables",
-        path: "/tables",
-        element: <Tables />,
+        icon: <IoAnalyticsSharp {...icon} />,
+        name: "analysis",
+        path: "/analysis",
+        element: <Analytic />,
       },
       {
-        icon: <InformationCircleIcon {...icon} />,
-        name: "notifications",
-        path: "/notifications",
-        element: <Notifications />,
+        icon: <LuMessageCircle {...icon} />,
+        name: "message",
+        path: "/message",
+        element: <Message/> ,
+      },
+      {
+        icon: <MdOutlineHistoryToggleOff {...icon} />,
+        name: "history",
+        path: "/history",
+        element: <History />,
+      },
+      {
+        icon: <MdSubscriptions  {...icon} />,
+        name: "subscription",
+        path: "/subscription",
+        element: <Subscription />,
+      },
+      {
+        icon: <IoSettingsOutline {...icon} />,
+        name: "setting",
+        path: "/setting",
+        element: <Setting />,
       },
     ],
   },
@@ -63,17 +80,12 @@ export const routes = [
     layout: "auth",
     pages: [
       {
-        icon: <ServerStackIcon {...icon} />,
-        name: "sign in",
-        path: "/sign-in",
+        icon: <CiLogin {...icon} />,
+        name: "Logout",
+        path: "/signin",
         element: <SignIn />,
       },
-      {
-        icon: <RectangleStackIcon {...icon} />,
-        name: "sign up",
-        path: "/sign-up",
-        element: <SignUp />,
-      },
+      
     ],
   },
 ];
