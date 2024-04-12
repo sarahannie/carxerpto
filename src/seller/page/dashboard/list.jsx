@@ -214,7 +214,7 @@ export function List() {
                     </td>
                     <td className={classes}>
                       <div className="flex items-center gap-3">
-                      <Select variant="outlined" label="Perform Action">
+                      <Select variant="outlined" label="Perform an Action">
                         <Option>Publish</Option>
                         <Option>Edit</Option>
                         <Option>Delete</Option>
@@ -240,7 +240,7 @@ export function List() {
                     </td>
                     <td className={classes}>
                       <div className="flex items-center gap-3">
-                        <Link>
+                        <Link to='/Viewproduct'>
                         <IconButton variant="text" size="sm">
                           <FaEye  className="h-5 w-5" />
                         </IconButton>
