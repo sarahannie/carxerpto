@@ -27,6 +27,7 @@ import Home from "./seller/page/dashboard/home.jsx";
 import Profiles from "./seller/page/dashboard/profiles.jsx";
 import List from "./seller/page/dashboard/list.jsx";
 import Viewproduct from "./seller/page/dashboard/viewproduct.jsx";
+import Addproduct from "./seller/page/dashboard/addproduct.jsx";
 
 
 /* Importing Components */
@@ -60,6 +61,7 @@ function App() {
           <Route path="dashboard/seller-profile" element={<Profiles/>}/>
           <Route path="dashboard/seller-product" element={<List/>}/>
           <Route path="/Viewproduct" element={<Viewproduct/>}/>
+          <Route path="/Addproduct" element={<Addproduct/>}/>
         </Routes>
       </Router>
     </div>

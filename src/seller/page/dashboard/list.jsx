@@ -4,7 +4,7 @@ import Sidenav from "../../widgets/layout/sidenav";
 import { Select, Option } from "@material-tailwind/react";
 import { IoMdAdd } from "react-icons/io";
 import {
-  ArrowDownTrayIcon,
+  
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 import {
@@ -17,7 +17,7 @@ import {
   CardFooter,
   Avatar,
   IconButton,
-  Tooltip,
+ 
   Input,
 } from "@material-tailwind/react";
 import { FaEye } from "react-icons/fa";
@@ -93,10 +93,10 @@ export function List() {
                 <h3>Inventory Summary</h3>
             </div>
             <div>
-                <button className="flex items-center gap-2 bg-primary-normal text-white px-3 py-2 ">
+                <Link to='/Addproduct' className="flex items-center gap-2 bg-primary-normal text-white px-3 py-2 ">
                     <IoMdAdd className="h-5 w-5" />
                     Add new Product List
-                </button>
+                </Link>
             </div>
         </div>
         <div className=" mb-6 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-2 mr-3">

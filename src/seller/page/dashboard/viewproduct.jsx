@@ -1,16 +1,12 @@
 import React,{useState}from "react";
 import DashboardNavbar from "../../widgets/layout/dashboard-navbar";
 import Sidenav from "../../widgets/layout/sidenav";
-import { IconButton, Typography } from "@material-tailwind/react";
+import { IconButton } from "@material-tailwind/react";
 import { useCopyToClipboard } from "usehooks-ts";
 import { CheckIcon, DocumentDuplicateIcon } from "@heroicons/react/24/outline";
-import { PencilIcon } from "@heroicons/react/24/solid";
-import {
-  ArrowDownTrayIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/24/outline";
+
 import { FaEye } from "react-icons/fa";
-import { OrderCard } from "../../widgets/cards/orderCard/order-card";
+
 import { GiOctogonalEye } from "react-icons/gi";
 import Cars from '../../../assets/CarE.jpg'
 
