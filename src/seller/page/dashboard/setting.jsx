@@ -1,6 +1,7 @@
 import React from "react";
 import DashboardNavbar from "../../widgets/layout/dashboard-navbar";
 import Sidenav from "../../widgets/layout/sidenav";
+import Profilebody from "../../layouts/profileCon/Profilebody";
 
 
 export function Setting() {
@@ -12,10 +13,8 @@ export function Setting() {
         <div className="">
         <Sidenav/>
         </div>
-        <div className=" mt-7 w-[90%] lg:ml-[20%] ml-[15px]">
-            
-        
-        
+        <div className=" mt-7 w-[90%] lg:ml-[20%] ml-[15px]">   
+        <Profilebody />
         </div>
     </div>
       
