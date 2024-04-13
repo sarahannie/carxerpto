@@ -33,6 +33,7 @@ import History from "./seller/page/dashboard/history.jsx";
 import Subscription from "./seller/page/dashboard/subscription.jsx";
 import Setting from "./seller/page/dashboard/setting.jsx";
 import Message from "./seller/page/dashboard/message.jsx";
+import Price from "./seller/page/dashboard/price.jsx";
 
 
 /* Importing Components */
@@ -72,6 +73,7 @@ function App() {
           <Route path="/dashboard/subscription" element={<Subscription/>}/>
           <Route path="/dashboard/setting" element={<Setting/>}/>
           <Route path="/dashboard/message" element={<Message/>}/>
+          <Route path="/seller-price" element={<Price/>}/>
           <Route path="/auth/signin" element={<SignIn/>} />
         </Routes>
       </Router>
