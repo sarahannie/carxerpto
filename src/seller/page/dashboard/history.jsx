@@ -216,7 +216,7 @@ export function History() {
                           variant="ghost"
                           value={status}
                           color={
-                            status === "published"
+                            status === "completed"
                               ? "green"
                               : status === "pending"
                               ? "amber"
