@@ -22,7 +22,7 @@ export function Navbar({ brandName,  action }) {
   }, []);
 
   const navList = (
-    <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+    <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 ">
       {routes && routes.map(({ name, path, icon }) => (
         <Typography
           key={name}
@@ -31,10 +31,10 @@ export function Navbar({ brandName,  action }) {
           color="blue-gray"
           className="capitalize"
         >
-          <Link to={path} className="flex items-center gap-1 p-1 font-normal">
+          <Link to={path} className="flex items-center gap-1 p-1 font-normal ">
             {icon &&
               React.createElement(icon, {
-                className: "w-[18px] h-[18px] opacity-50 mr-1",
+                className: "w-[18px] h-[18px] opacity-50 mr-1 ",
               })}
             {name}
           </Link>
@@ -45,7 +45,7 @@ export function Navbar({ brandName,  action }) {
 
   return (
     <MTNavbar className="p-3">
-      <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
+      <div className="container mx-auto flex items-center justify-between text-primary-normal">
         <Link to="/">
           <Typography
             variant="small"

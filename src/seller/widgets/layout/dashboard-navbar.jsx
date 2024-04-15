@@ -81,7 +81,7 @@ export function DashboardNavbar() {
             className="grid xl:hidden"
             onClick={() => setOpenSidenav(dispatch, !openSidenav)}
           >
-            <Bars3Icon strokeWidth={3} className="h-6 w-6 text-blue-gray-500" />
+            <Bars3Icon strokeWidth={3} className="h-6 w-6 text-primary-normal" />
           </IconButton>
           <Link to="/auth/sign-in">
             <Button
@@ -89,7 +89,7 @@ export function DashboardNavbar() {
               color="blue-gray"
               className="hidden items-center gap-1 px-4 xl:flex normal-case"
             >
-              <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
+              <UserCircleIcon className="h-5 w-5 text-primary-normal" />
               Sign In
             </Button>
             <IconButton
@@ -97,13 +97,13 @@ export function DashboardNavbar() {
               color="blue-gray"
               className="grid xl:hidden"
             >
-              <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
+              <UserCircleIcon className="h-5 w-5 text-primary-normal" />
             </IconButton>
           </Link>
           <Menu>
             <MenuHandler>
-              <IconButton variant="text" color="blue-gray">
-                <BellIcon className="h-5 w-5 text-blue-gray-500" />
+              <IconButton variant="text" color="primary-normal">
+                <BellIcon className="h-5 w-5 text-primary-normal" />
               </IconButton>
             </MenuHandler>
             <MenuList className="w-max border-0">
@@ -183,7 +183,7 @@ export function DashboardNavbar() {
             color="blue-gray"
             onClick={() => setOpenConfigurator(dispatch, true)}
           >
-            <Cog6ToothIcon className="h-5 w-5 text-blue-gray-500" />
+            <Cog6ToothIcon className="h-5 w-5 text-primary-normal" />
           </IconButton>
         </div>
       </div>
