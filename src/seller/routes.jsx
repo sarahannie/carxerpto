@@ -1,6 +1,5 @@
-import {HomeIcon} from "@heroicons/react/24/solid";
+
 import { Home } from "../seller/page/dashboard/home";
-import { IoBagHandleSharp } from "react-icons/io5";
 import Profiles from "./page/dashboard/profiles";
 import Setting from "./page/dashboard/setting";
 import List from "./page/dashboard/list";
@@ -9,12 +8,14 @@ import Analytic from "./page/dashboard/analytic";
 import { IoAnalyticsSharp } from "react-icons/io5";
 import { LuMessageCircle } from "react-icons/lu";
 import { MdOutlineHistoryToggleOff } from "react-icons/md";
-import { MdSubscriptions } from "react-icons/md";
 import { IoSettingsOutline } from "react-icons/io5";
 import { CiLogin } from "react-icons/ci";
 import Message from "./page/dashboard/message";
 import History from "./page/dashboard/history";
 import Subscription from "./page/dashboard/subscription";
+import { IoHomeOutline } from "react-icons/io5";
+import { IoBagHandleOutline } from "react-icons/io5";
+import { MdOutlineSubscriptions } from "react-icons/md";
 import SignIn from "../pages/SignIn";
 
 const icon = {
@@ -26,13 +27,13 @@ export const routes = [
     layout: "dashboard",
     pages: [
       {
-        icon: <HomeIcon {...icon} />,
+        icon: <IoHomeOutline {...icon} />,
         name: "dashboard",
         path: "/home",
         element: <Home />,
       },
       {
-        icon: <IoBagHandleSharp {...icon} />,
+        icon: <IoBagHandleOutline {...icon} />,
         name: "Order",
         path: "/seller-profile",
         element: <Profiles />,
@@ -62,7 +63,7 @@ export const routes = [
         element: <History />,
       },
       {
-        icon: <MdSubscriptions  {...icon} />,
+        icon: <MdOutlineSubscriptions  {...icon} />,
         name: "subscription",
         path: "/subscription",
         element: <Subscription />,
