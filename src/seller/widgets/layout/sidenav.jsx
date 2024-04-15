@@ -10,7 +10,7 @@ export function Sidenav({ brandImg, brandName, }) {
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavColor, sidenavType, openSidenav } = controller;
   const sidenavTypes = {
-    dark: "bg-gradient-to-br from-gray-800 to-gray-900",
+    dark: "bg-primary-normal text-white",
     white: "bg-white shadow-sm",
     transparent: "bg-transparent",
   };
@@ -46,15 +46,8 @@ export function Sidenav({ brandImg, brandName, }) {
                 <NavLink to={`/${layout}${path}`}>
                   {({ isActive }) => (
                     <Button
-                      variant={isActive ? "gradient" : "text"}
-                      color={
-                        isActive
-                          ? sidenavColor
-                          : sidenavType === "dark"
-                          ? "white"
-                          : "blue-gray"
-                      }
-                      className="flex items-center gap-3 px-4 py-2 capitalize"
+                      variant={isActive ? "dark" : "text"}
+                      className={`flex  items-center gap-3 px-4 py-2 capitalize text-primary-normal  ${isActive ? 'bg-primary-normal text-white' : ''}`}
                       fullWidth
                     >
                       {icon}
