@@ -87,7 +87,7 @@ export function DashboardNavbar() {
             <Button
               variant="text"
               color="blue-gray"
-              className="hidden items-center gap-1 px-4 xl:flex normal-case"
+              className="hidden items-center gap-1 px-4 xl:flex normal-case text-primary-normal"
             >
               <UserCircleIcon className="h-5 w-5 text-primary-normal" />
               Sign In
