@@ -34,6 +34,7 @@ import Subscription from "./seller/page/dashboard/subscription.jsx";
 import Setting from "./seller/page/dashboard/setting.jsx";
 import Message from "./seller/page/dashboard/message.jsx";
 import Price from "./seller/page/dashboard/price.jsx";
+import CarListPage from "./pages/carTest.jsx";
 
 
 /* Importing Components */
@@ -75,6 +76,7 @@ function App() {
           <Route path="/dashboard/message" element={<Message/>}/>
           <Route path="/seller-price" element={<Price/>}/>
           <Route path="/auth/signin" element={<SignIn/>} />
+          <Route path="/test" element={<CarListPage/>} />
         </Routes>
       </Router>
     </div>

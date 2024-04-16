@@ -1,18 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 import BackgroundImage from "../assets/backgroundimage.jpg";
 import Logo from "../assets/Logo1.png";
+import axios from "axios";
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
+  const [data,setData]=useState([])
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  useEffect(()=>{
+    const  getData = async ()=>{
+      
+    }
+  })
   return (
     <div>
       <div className=" h-screen relative overflow-hidden">

@@ -57,11 +57,11 @@ export function Subscription() {
                 </p>
               </div>
             </div>
-            <div className="flex lg:flex-row flex-col gap-8 ml-5 mt-6">
+            <div className="flex lg:flex-row flex-col gap-8 ml-5 mt-6 mb-6">
               <div className="lg:w-[43%] w-[90%] border mt-3 px-3 py-3 shadow-md">
                 <div className="flex gap-2 text-start align-center">
-                <IoIosCheckmarkCircleOutline className="mt-2 text-primary-normal text-[23px] font-bold" />
-                 <h2 className="text-[23px] text-primary-normal font-bold">Unlimited access to customer care </h2> 
+                <IoIosCheckmarkCircleOutline className="mt-1 text-primary-normal text-[23px] font-bold" />
+                 <h2 className="text-[19px] text-primary-normal font-bold">Unlimited access to customer care </h2> 
                 </div>
                 <p className="text-start text-[15px] pt-3">
                 Unlimited access to customer care service means that you can have unrestricted and continuous access to support and assistance from the platform's customer care team. Here's what unlimited access to customer care service entails

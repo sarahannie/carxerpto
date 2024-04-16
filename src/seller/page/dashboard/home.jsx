@@ -21,7 +21,7 @@ import {statisticsChartsData} from "../../data/statistics-charts-data";
 import { projectsTableData} from "../../data/projects-table-data";
 import {ordersOverviewData} from "../../data/orders-overview-data";
 import { CheckCircleIcon, ClockIcon } from "@heroicons/react/24/solid";
-import Navbar from "../../widgets/layout/navbar";
+
 import DashboardNavbar from "../../widgets/layout/dashboard-navbar";
 import Sidenav from "../../widgets/layout/sidenav";
 

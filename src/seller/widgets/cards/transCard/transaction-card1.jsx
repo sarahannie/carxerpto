@@ -20,7 +20,7 @@ export function TransactionCard1({ color, icon, title, value, footer }) {
       </div>
       <div className=" mb-6 grid gap-y-10 gap-x-6 grid-cols-3 mt-5 text-primary-normal">
           <div className="text-start ">
-              <h3 className="text-gray-400">Total Transactions</h3>
+              <h3 className="text-gray-400 lg:text-[15px] text-[10px]">Total Transactions</h3>
               <p className="text-white text-xl ">28</p>
           </div>
           <div className="text-start ">
@@ -28,7 +28,7 @@ export function TransactionCard1({ color, icon, title, value, footer }) {
               <p className="text-white text-xl">$350,000</p>
           </div>
           <div className="text-start ">
-              <h3 className="text-gray-400">Average Sale Price</h3>
+              <h3 className="text-gray-400 text-[15px]">Average Sale Price</h3>
               <p className="text-white text-xl">$14,000</p>
           </div>
           
