@@ -1,8 +1,7 @@
 import React from "react";
 import DashboardNavbar from "../../widgets/layout/dashboard-navbar";
 import Sidenav from "../../widgets/layout/sidenav";
-import { Select, Option } from "@material-tailwind/react";
-import { IoMdAdd } from "react-icons/io";
+
 import {
   
   MagnifyingGlassIcon,
@@ -20,8 +19,7 @@ import {
  
   Input,
 } from "@material-tailwind/react";
-import { FaEye } from "react-icons/fa";
-import { Link } from "react-router-dom";
+
 import { TransactionCard1 } from "../../widgets/cards/transCard/transaction-card1";
 import { TransactionCard2 } from "../../widgets/cards/transCard/transaction--card2";
 const TABLE_HEAD = ["ID", "Buyer", "Car", "Price","Payment Method", "Date", "Status", ];
