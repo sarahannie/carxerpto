@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Plot from 'react-plotly.js';
 
 const SalesRegionChart = () => {
@@ -45,7 +44,7 @@ const SalesRegionChart = () => {
             colorscale: '#003b6d',
             colorbar: {
                 title: 'Sales',
-                orientation: 'horizontally' // Horizontal indication
+                orientation: 'h' // Set orientation to 'h' for horizontal orientation
             }
         }],
         
@@ -54,28 +53,43 @@ const SalesRegionChart = () => {
             geo: {
                 scope: 'usa'
             },
-            height: 400, // Set the height of the map
-            width: '100%',
-            // Customize the color bar to be horizontal
-            colorbar: {
-                orientation: 'horizontally'
-            },
-            // Customize the position of the map on top
             margin: {
-                t: 50, // Adjust top margin
+                t: 50, // Top margin
                 r: 0,
                 b: 50,
                 l: 0,
             },
+            colorbar: {
+                orientation: 'h' // Set orientation to 'h' for horizontal orientation
+            },
         }
     });
+
+    // Define state for chart width based on screen size
+    const [chartWidth, setChartWidth] = useState(window.innerWidth < 768 ? '90%' : '80%');
+
+    useEffect(() => {
+        // Handle window resize
+        const handleResize = () => {
+            const newWidth = window.innerWidth < 768 ? '90%' : '80%';
+            setChartWidth(newWidth);
+        };
+
+        // Add event listener for window resize
+        window.addEventListener('resize', handleResize);
+
+        // Clean up the event listener when component unmounts
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     return (
         <div>
             <Plot
                 data={chartData.data}
                 layout={chartData.layout}
-                style={{ width: '80%', height: '400px' }}
+                style={{ width: chartWidth, height: '400px' }}
             />
         </div>
     );

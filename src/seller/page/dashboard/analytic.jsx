@@ -43,7 +43,7 @@ export function Analytic() {
             <SaleCard1 />
             <OrderCard />
         </div> 
-        <div className=" mb-6 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-2 mr-10px">
+        <div className=" mb-6 grid gap-y-10 gap-x-6 md:grid-cols-1 xl:grid-cols-2 mr-10px">
           <Sales />
           <SalesRegionChart/>
         </div>  
