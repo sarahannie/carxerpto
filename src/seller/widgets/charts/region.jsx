@@ -66,12 +66,12 @@ const SalesRegionChart = () => {
     });
 
     // Define state for chart width based on screen size
-    const [chartWidth, setChartWidth] = useState(window.innerWidth < 768 ? '90%' : '80%');
+    const [chartWidth, setChartWidth] = useState(window.innerWidth < 768 ? '88%' : '80%');
 
     useEffect(() => {
         // Handle window resize
         const handleResize = () => {
-            const newWidth = window.innerWidth < 768 ? '90%' : '80%';
+            const newWidth = window.innerWidth < 768 ? '88%' : '80%';
             setChartWidth(newWidth);
         };
 

@@ -16,268 +16,145 @@ export function Messages() {
         <div className="">
         <Sidenav/>
         </div>
-        <div className=" mt-7 w-[90%] lg:ml-[20%] ml-[15px] lg:mr-10px mr-1px">  
-        <MainContainer
-  responsive
-  className='border shadow-md rounded-lg '
->
-  <Sidebar
-    position="left"
-  >
-    <Search placeholder="Search..." className='border border-primary-normal ' style={{
-					// color: '#0C3276 ',
-					backgroundColor: 'white !default',
-					// width: '48px',
-					// height: '45px'
-					
-				}} />
-    <ConversationList>
-      <Conversation
-        info="Yes i can do it for you"
-        lastSenderName="Lilly"
-        name="Lilly"
-      >
-        <Avatar
-          name="Lilly"
-          src="https://chatscope.io/storybook/react/assets/lilly-aj6lnGPk.svg"
-          status="available"
-        />
-      </Conversation>
-      <Conversation
-        info="Yes i can do it for you"
-        lastSenderName="Joe"
-        name="Joe"
-      >
-        <Avatar
-          name="Joe"
-          src="https://chatscope.io/storybook/react/assets/joe-v8Vy3KOS.svg"
-          status="dnd"
-        />
-      </Conversation>
-      <Conversation
-        info="Yes i can do it for you"
-        lastSenderName="Emily"
-        name="Emily"
-        unreadCnt={3}
-      >
-        <Avatar
-          name="Emily"
-          src="https://chatscope.io/storybook/react/assets/emily-xzL8sDL2.svg"
-          status="available"
-        />
-      </Conversation>
-      <Conversation
-        info="Yes i can do it for you"
-        lastSenderName="Kai"
-        name="Kai"
-        unreadDot
-      >
-        <Avatar
-          name="Kai"
-          src="https://chatscope.io/storybook/react/assets/kai-5wHRJGb2.svg"
-          status="unavailable"
-        />
-      </Conversation>
-      <Conversation
-        info="Yes i can do it for you"
-        lastSenderName="Akane"
-        name="Akane"
-      >
-        <Avatar
-          name="Akane"
-          src="https://chatscope.io/storybook/react/assets/akane-MXhWvx63.svg"
-          status="eager"
-        />
-      </Conversation>
-      <Conversation
-        info="Yes i can do it for you"
-        lastSenderName="Eliot"
-        name="Eliot"
-      >
-        <Avatar
-          name="Eliot"
-          src="https://chatscope.io/storybook/react/assets/eliot-JNkqSAth.svg"
-          status="away"
-        />
-      </Conversation>
-      <Conversation
-        active
-        info="Yes i can do it for you"
-        lastSenderName="Zoe"
-        name="Zoe"
-      >
-        <Avatar
-          name="Zoe"
-          src="https://chatscope.io/storybook/react/assets/zoe-E7ZdmXF0.svg"
-          status="dnd"
-        />
-      </Conversation>
-      <Conversation
-        info="Yes i can do it for you"
-        lastSenderName="Patrik"
-        name="Patrik"
-      >
-        <Avatar
-          name="Patrik"
-          src="https://chatscope.io/storybook/react/assets/patrik-yC7svbAR.svg"
-          status="invisible"
-        />
-      </Conversation>
-    </ConversationList>
-  </Sidebar>
-  <ChatContainer>
-    <ConversationHeader>
-      <ConversationHeader.Back />
-      <Avatar
-        name="Zoe"
-        src="https://chatscope.io/storybook/react/assets/zoe-E7ZdmXF0.svg"
-      />
-      <ConversationHeader.Content
-        info="Active 10 mins ago"
-        userName="Zoe"
-      />
-      <ConversationHeader.Actions>
-        <VoiceCallButton  />
-        <VideoCallButton  />
-        <InfoButton   />
-      </ConversationHeader.Actions>
-    </ConversationHeader>
-    <MessageList typingIndicator={<TypingIndicator content="Zoe is typing" />}>
-      <MessageSeparator content="Saturday, 30 November 2024" />
-      <Message
-        model={{
-          direction: 'incoming',
-          message: 'Hello my friend',
-          position: 'single',
-          sender: 'Zoe',
-          sentTime: '15 mins ago'
+      <div className='mt-7 w-[90%] lg:ml-[20%] ml-[15px] lg:mr-10px mr-1px border rounded-lg shadow-md' style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <MainContainer
+        responsive
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          height: '100vh',
         }}
       >
-        <Avatar
-          name="Zoe"
-          src="https://chatscope.io/storybook/react/assets/zoe-E7ZdmXF0.svg"
-        />
-      </Message>
-      <Message
-        avatarSpacer
-        model={{
-          direction: 'outgoing',
-          message: 'Hello my friend',
-          position: 'single',
-          sender: 'Patrik',
-          sentTime: '15 mins ago'
-        }}
-      />
-      <Message
-        avatarSpacer
-        model={{
-          direction: 'incoming',
-          message: 'Hello my friend',
-          position: 'first',
-          sender: 'Zoe',
-          sentTime: '15 mins ago'
-        }}
-      />
-      <Message
-        avatarSpacer
-        model={{
-          direction: 'incoming',
-          message: 'Hello my friend',
-          position: 'normal',
-          sender: 'Zoe',
-          sentTime: '15 mins ago'
-        }}
-      />
-      <Message
-        avatarSpacer
-        model={{
-          direction: 'incoming',
-          message: 'Hello my friend',
-          position: 'normal',
-          sender: 'Zoe',
-          sentTime: '15 mins ago'
-        }}
-      />
-      <Message
-        model={{
-          direction: 'incoming',
-          message: 'Hello my friend',
-          position: 'last',
-          sender: 'Zoe',
-          sentTime: '15 mins ago'
-        }}
-      >
-        <Avatar
-          name="Zoe"
-          src="https://chatscope.io/storybook/react/assets/zoe-E7ZdmXF0.svg"
-        />
-      </Message>
-      <Message
-        model={{
-          direction: 'outgoing',
-          message: 'Hello my friend',
-          position: 'first',
-          sender: 'Patrik',
-          sentTime: '15 mins ago'
-        }}
-       />
-      <Message
-        model={{
-          direction: 'outgoing',
-          message: 'Hello my friend',
-          position: 'normal',
-          sender: 'Patrik',
-          sentTime: '15 mins ago'
-        }}
-       />
-      <Message
-        model={{
-          direction: 'outgoing',
-          message: 'Hello my friend',
-          position: 'normal',
-          sender: 'Patrik',
-          sentTime: '15 mins ago'
-        }}
-       />
-      <Message
-        model={{
-          direction: 'outgoing',
-          message: 'Hello my friend',
-          position: 'last',
-          sender: 'Patrik',
-          sentTime: '15 mins ago'
-        }}
-       />
-      <Message
-        avatarSpacer
-        model={{
-          direction: 'incoming',
-          message: 'Hello my friend',
-          position: 'first',
-          sender: 'Zoe',
-          sentTime: '15 mins ago'
-        }}
-      />
-      <Message
-        model={{
-          direction: 'incoming',
-          message: 'Hello my friend',
-          position: 'last',
-          sender: 'Zoe',
-          sentTime: '15 mins ago'
-        }}
-      >
-        <Avatar
-          name="Zoe"
-          src="https://chatscope.io/storybook/react/assets/zoe-E7ZdmXF0.svg"
-        />
-      </Message>
-    </MessageList>
-    <MessageInput placeholder="Type message here" />
-  </ChatContainer>
-  
-  </MainContainer>
-        </div>
+        <Sidebar
+          position="left"
+          style={{
+            flexShrink: 0,
+            width: '25%',
+            height: '100vh',
+            backgroundColor: 'white',
+            borderRight: `1px solid #003b6d`,
+          }}
+        >
+          <Search
+            placeholder="Search..."
+            style={{
+              backgroundColor: '#003b6d',
+              color: '#003b6d',
+              border: `1px solid #003b6d`,
+              borderRadius: '8px',
+              padding: '8px',
+            }}
+            inputStyle={{
+              color: '#003b6d',
+              border: 'none',
+              outline: 'none',
+              backgroundColor: 'white',
+            }}
+            iconStyle={{
+              color: '#003b6d !default',
+              backgroundColor: '#003b6d',
+            }}
+          />
+          <ConversationList style={{ height: 'calc(100vh - 48px)' }}>
+            {/* Add conversations */}
+            <Conversation
+              info="Yes, I can do it for you"
+              lastSenderName="Lilly"
+              name="Lilly"
+              style={{  textAlign:'start' }}
+            >
+              <Avatar
+                name="Lilly"
+                src="https://chatscope.io/storybook/react/assets/lilly-aj6lnGPk.svg"
+                style={{ borderColor: '#003b6d'}}
+              />
+            </Conversation>
+          </ConversationList>
+        </Sidebar>
+
+        <ChatContainer style={{ flex: 1, height: '100vh', backgroundColor: 'white' }}>
+          <ConversationHeader>
+            <ConversationHeader.Back />
+            <Avatar
+              name="Zoe"
+              src="https://chatscope.io/storybook/react/assets/zoe-E7ZdmXF0.svg"
+              style={{ borderColor: '#003b6d' }}
+            />
+            <ConversationHeader.Content
+              info="Active 10 mins ago"
+              userName="Zoe"
+            />
+            <ConversationHeader.Actions>
+              <VoiceCallButton style={{ color: '#003b6d' }} />
+              <VideoCallButton style={{ color: '#003b6d' }} />
+              <InfoButton style={{ color: '#003b6d' }} />
+            </ConversationHeader.Actions>
+          </ConversationHeader>
+
+          <MessageList
+            typingIndicator={<TypingIndicator content="Zoe is typing" />}
+            style={{ height: 'calc(100vh - 128px)' }} // Adjust the height of the message list
+          >
+            {/* Add messages */}
+            <MessageSeparator content="Saturday, 30 November 2024" style={{ color: '#003b6d' }} />
+            {/* Customize message styles */}
+            <Message
+              model={{
+                direction: 'incoming',
+                message: 'Hello John, are you done?',
+                position: 'single',
+                sender: 'Zoe',
+                sentTime: '15 mins ago',
+              }}
+              style={{
+                // backgroundColor: 'white', // Set message background color
+                color: '#003b6d' // Set text color
+              }}
+            >
+              <Avatar
+                name="Zoe"
+                src="https://chatscope.io/storybook/react/assets/zoe-E7ZdmXF0.svg"
+                style={{ borderColor: '#003b6d' }}
+              />
+            </Message>
+            <Message
+            model={{
+              direction: 'outgoing',
+              message: 'Not yet, what the deadline?',
+              position: 'normal',
+              sender: 'Patrik',
+              sentTime: '15 mins ago'
+            }}
+          />
+            <Message
+              model={{
+                direction: 'incoming',
+                message: 'the deadline is friday, 30 November 2024',
+                position: 'last',
+                sender: 'Zoe',
+                sentTime: '15 mins ago'
+              }}
+            >
+              <Avatar
+                name="Zoe"
+                src="https://chatscope.io/storybook/react/assets/zoe-E7ZdmXF0.svg"
+              />
+            </Message>
+          </MessageList>
+
+          <MessageInput
+            placeholder="Type message here"
+            style={{
+              height: '48px',
+              backgroundColor: 'white',
+              color: '#003b6d',
+              borderColor: '#003b6d',
+              textAlign:'start',
+            }}
+          />
+        </ChatContainer>
+      </MainContainer>
+    </div>
     </div>
       
     </div>
