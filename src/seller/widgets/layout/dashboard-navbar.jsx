@@ -178,6 +178,7 @@ export function DashboardNavbar() {
               </MenuItem>
             </MenuList>
           </Menu>
+          <Link to='/dashboard/setting'>
           <IconButton
             variant="text"
             color="blue-gray"
@@ -185,6 +186,8 @@ export function DashboardNavbar() {
           >
             <Cog6ToothIcon className="h-5 w-5 text-primary-normal" />
           </IconButton>
+          </Link>
+          
         </div>
       </div>
     </Navbar>
