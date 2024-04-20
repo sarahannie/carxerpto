@@ -35,6 +35,10 @@ import Setting from "./seller/page/dashboard/setting.jsx";
 import Message from "./seller/page/dashboard/message.jsx";
 import Price from "./seller/page/dashboard/price.jsx";
 import CarListPage from "./pages/carTest.jsx";
+import Homeadmin from "./admin/page/homeadmin.jsx";
+
+
+
 
 
 /* Importing Components */
@@ -62,13 +66,14 @@ function App() {
           <Route path="/car-quota-insurance" element={<CarInsurQ/>}/>
           <Route path ="/success" element={<Success/>}/>
           <Route path ="/car-details" element={<CarDetails/>}/>
-          <Route path="/stripe" element={<Stripe/>}/>
+          {/* <Route path="/stripe" element={<Stripe/>}/> */}
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/dashboard/home" element={<Home/>}/>
           <Route path="/dashboard/seller-profile" element={<Profiles/>}/>
           <Route path="/dashboard/seller-product" element={<List/>}/>
           <Route path="/Viewproduct" element={<Viewproduct/>}/>
           <Route path="/Addproduct" element={<Addproduct/>}/>
+          {/* Seller */}
           <Route path="/dashboard/analysis" element={<Analytic/>}/>
           <Route path="/dashboard/history" element={<History/>}/>
           <Route path="/dashboard/subscription" element={<Subscription/>}/>
@@ -77,6 +82,8 @@ function App() {
           <Route path="/seller-price" element={<Price/>}/>
           <Route path="/auth/signin" element={<SignIn/>} />
           <Route path="/test" element={<CarListPage/>} />
+          {/* Admin */}
+          <Route path="/dashboard/admins" element={<Homeadmin />}/>
         </Routes>
       </Router>
     </div>

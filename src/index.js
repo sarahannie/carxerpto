@@ -5,14 +5,18 @@ import App from './App';
 import { ThemeProvider } from "@material-tailwind/react";
 import reportWebVitals from './reportWebVitals';
 import { MaterialTailwindControllerProvider } from "../src/seller/context";
+import { MaterialTailwindControllerProviders } from "../src/admin/context";
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeProvider>
-        <MaterialTailwindControllerProvider>
-          <App />
-        </MaterialTailwindControllerProvider>
+        <MaterialTailwindControllerProviders>
+          <MaterialTailwindControllerProvider>
+            <App />
+          </MaterialTailwindControllerProvider>
+        </MaterialTailwindControllerProviders>
       </ThemeProvider>
   </React.StrictMode>
 );
