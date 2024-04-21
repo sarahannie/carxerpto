@@ -35,7 +35,11 @@ import Setting from "./seller/page/dashboard/setting.jsx";
 import Message from "./seller/page/dashboard/message.jsx";
 import Price from "./seller/page/dashboard/price.jsx";
 import CarListPage from "./pages/carTest.jsx";
-import Homeadmin from "./admin/page/homeadmin.jsx";
+import Homeadmin from "./admin/page/dashboard/homeadmin.jsx";
+import Usermanagement from "./admin/page/dashboard/usermanagement.jsx";
+import Listadmin from "./admin/page/dashboard/listadmin.jsx";
+import Analyticadmin from "./admin/page/dashboard/analysisadmin.jsx";
+
 
 
 
@@ -83,7 +87,11 @@ function App() {
           <Route path="/auth/signin" element={<SignIn/>} />
           <Route path="/test" element={<CarListPage/>} />
           {/* Admin */}
-          <Route path="/dashboard/admins" element={<Homeadmin />}/>
+          <Route path="/dashboard/admin" element={<Homeadmin   />}/>
+          <Route path="/dashboard/user" element={<Usermanagement  />}/>
+          <Route path="/dashboard/listing" element={<Listadmin  />}/>
+          <Route path="/dashboard/analyticadmin" element={<Analyticadmin  />}/>
+
         </Routes>
       </Router>
     </div>

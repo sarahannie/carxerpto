@@ -7,8 +7,8 @@ import {
   Configurator,
   Footer,
 } from "@/widgets/layout";
-import routes from "@/routes";
-import { useMaterialTailwindController, setOpenConfigurator } from "@/context";
+import routes from "../routes";
+import { useMaterialTailwindController, setOpenConfigurator } from "../context/index";
 
 export function Dashboard() {
   const [controller, dispatch] = useMaterialTailwindController();

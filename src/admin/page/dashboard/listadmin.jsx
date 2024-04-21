@@ -1,11 +1,9 @@
 import React from "react";
 import DashboardNavbar from "../../widgets/layout/dashboard-navbar";
 import Sidenav from "../../widgets/layout/sidenav";
-
-import {
-  
-  MagnifyingGlassIcon,
-} from "@heroicons/react/24/outline";
+import { Select, Option } from "@material-tailwind/react";
+import { IoMdAdd } from "react-icons/io";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import {
   Card,
   CardHeader,
@@ -16,68 +14,65 @@ import {
   CardFooter,
   Avatar,
   IconButton,
+ 
   Input,
 } from "@material-tailwind/react";
-import { TransactionCard1 } from "../../widgets/cards/transaction/transaction1";
-import { TransactionCard2 } from "../../widgets/cards/transaction/transaction2";
-
-
-const TABLE_HEAD = ["ID", "Buyer", "Car", "Price","Payment Method", "Date", "Status", ];
+const TABLE_HEAD = ["Product Name", "Unit Price", "In-Stock", "Discount","Total Value", "Action", "Status"];
 const TABLE_ROWS = [
     {
       img: "https://docs.material-tailwind.com/img/logos/logo-spotify.svg",
-      id: "TRX-001",
-      buyer: "Jay Channie",
-      car: "Toyota Camry 2019",
-      price: "$15,000.00",
-      payment: 'card',
-      date: "24th May 2024",
-      status: "completed",
+      name: "Quattro 2020",
+      unit_price: "$25,000",
+      stock: "8",
+      discount: "$500.00",
+      action: "Edit",
+      total_value: "$24,500.00",
+      status: "published",
       
     },
     {
       img: "https://docs.material-tailwind.com/img/logos/logo-amazon.svg",
-      id: "TRX-001",
-      buyer: "Jay Channie",
-      car: "Toyota Camry 2019",
-      price: "$15,000.00",
-      payment: 'Zelle',
-      date: "24th May 2024",
-      status: "completed",
+      name: "Quattro 2020",
+      unit_price: "$25,000",
+      stock: "8",
+      discount: "$500.00",
+      action: "publish",
+      total_value: "$24,500.00",
+      status: "published",
     },
     {
       img: "https://docs.material-tailwind.com/img/logos/logo-pinterest.svg",
-      id: "TRX-001",
-      buyer: "Jay Channie",
-      car: "Toyota Camry 2019",
-      price: "$15,000.00",
-      payment: 'paypal',
-      date: "24th May 2024",
-      status: "pending",
+      name: "Quattro 2020",
+      unit_price: "$25,000",
+      stock: "8",
+      discount: "$500.00",
+      action: "Edit",
+      total_value: "$24,500.00",
+      status: "published",
     },
     {
       img: "https://docs.material-tailwind.com/img/logos/logo-google.svg",
-      id: "TRX-001",
-      buyer: "Jay Channie",
-      car: "Toyota Camry 2019",
-      price: "$15,000.00",
-      payment: 'Zelle',
-      date: "24th May 2024",
-      status: "completed",
+      name: "Quattro 2020",
+      unit_price: "$25,000",
+      stock: "8",
+      discount: "$500.00",
+      action: "Publish",
+      total_value: "$24,500.00",
+      status: "published",
     },
     {
       img: "https://docs.material-tailwind.com/img/logos/logo-netflix.svg",
-      id: "TRX-001",
-      buyer: "Jay Channie",
-      car: "Toyota Camry 2019",
-      price: "$15,000.00",
-      payment: 'Zelle',
-      date: "24th May 2024",
-      status: "completed",
+      name: "Quattro 2020",
+      unit_price: "$25,000",
+      stock: "8",
+      discount: "$500.00",
+      action: "Edit",
+      total_value: "$24,500.00",
+      status: "published",
     },
   ];
 
-export function History() {
+export function Listadmin() {
   return (
     <div className="">
       <DashboardNavbar />
@@ -86,19 +81,19 @@ export function History() {
         <Sidenav/>
         </div>
         <div className=" mt-7 w-[90%] lg:ml-[20%] ml-[15px]">
-        
-        <div className=" mb-6 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-2 mr-3">
-            
-            <TransactionCard1 />
-            <TransactionCard2 />
+        <div className=" mb-6  flex justify-between mr-3">
+            <div>
+                <h3>Inventory Summary</h3>
+            </div>
         </div>
+        
         <div>
         <Card className="h-full w-full">
-      <CardHeader floated={false} shadow={false} className="rounded-none">
+        <CardHeader floated={false} shadow={false} className="rounded-none">
         <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
           <div>
             <Typography variant="h5" className="text-primary-normal">
-            Recent Transaction
+            List Items
             </Typography>
           </div>
           <div className="flex w-full shrink-0 gap-2 md:w-max">
@@ -109,7 +104,7 @@ export function History() {
               />
             </div>
             <Button className="flex items-center bg-primary-normal gap-3" size="sm">
-               Search record
+               Search Items
             </Button>
           </div>
         </div>
@@ -139,13 +134,11 @@ export function History() {
               (
                 {
                   img,
-                  id,
-                  buyer,
-                  car,
-                  price,
+                  name,
+                  unit_price,
+                  stock,
                   status,
-                  payment,
-                  date,
+                  discount,
                   total_value
                 },
                 index,
@@ -156,12 +149,12 @@ export function History() {
                   : "p-4 border-b border-blue-gray-50";
  
                 return (
-                  <tr key={id}>
+                  <tr key={name}>
                     <td className={classes}>
                       <div className="flex items-center gap-3">
                         <Avatar
                           src={img}
-                          alt={id}
+                          alt={name}
                           size="md"
                           className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1"
                         />
@@ -170,7 +163,7 @@ export function History() {
                           color="blue-gray"
                           className="font-bold"
                         >
-                          {id}
+                          {name}
                         </Typography>
                       </div>
                     </td>
@@ -180,7 +173,7 @@ export function History() {
                         color="blue-gray"
                         className="font-normal"
                       >
-                        {buyer}
+                        {unit_price}
                       </Typography>
                     </td>
                     <td className={classes}>
@@ -189,22 +182,27 @@ export function History() {
                         color="blue-gray"
                         className="font-normal"
                       >
-                        {car}
+                        {stock}
                       </Typography>
                     </td>
                     <td className={classes}>
                       <div className="w-max">
-                        {price}
+                        {discount}
                       </div>
                     </td>
                     <td className={classes}>
                       <div className="w-max">
-                        {payment}
+                        {total_value}
                       </div>
                     </td>
                     <td className={classes}>
                       <div className="flex items-center gap-3">
-                      {date}
+                      <Select variant="outlined" label="Perform an Action">
+                        <Option>Publish</Option>
+                        <Option>Edit</Option>
+                        <Option>Delete</Option>
+                        <Option>Draft</Option>
+                    </Select>
                       </div>
                     </td>
                     <td className={classes}>
@@ -214,7 +212,7 @@ export function History() {
                           variant="ghost"
                           value={status}
                           color={
-                            status === "completed"
+                            status === "published"
                               ? "green"
                               : status === "pending"
                               ? "amber"
@@ -223,15 +221,6 @@ export function History() {
                         />
                       </div>
                     </td>
-                    {/* <td className={classes}>
-                      <div className="flex items-center gap-3">
-                        <Link to='/Viewproduct'>
-                        <IconButton variant="text" size="sm">
-                          <FaEye  className="h-5 w-5" />
-                        </IconButton>
-                        </Link>
-                      </div>
-                    </td> */}
                   </tr>
                 );
               },
@@ -281,4 +270,4 @@ export function History() {
   );
 }
 
-export default History;
+export default Listadmin;

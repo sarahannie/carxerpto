@@ -1,12 +1,13 @@
-
+import { MdOutlinePeopleOutline } from "react-icons/md";
 
   
-export function TransactionCard2({ color, icon, title, value, footer }) {
+export function TransactionCard11({ color, icon, title, value, footer }) {
   return (
    <div className="border border-primary-normal pt-4 pb-1 px-3 rounded-md shadow-lg ">
       <div className="flex justify-between py-3 align-center text-primary-normal">
-          <div>
-          Transactions Summary
+         
+          <div className="bg-[#e6f9f8] text-[#00c6bc] p-2 rounded-md">
+              <MdOutlinePeopleOutline />
           </div>
           <div className="" >
           <select name="" id="">

@@ -16,6 +16,12 @@ import { CiLogin } from "react-icons/ci";
 import { IoHomeOutline } from "react-icons/io5";
 import { IoBagHandleOutline } from "react-icons/io5";
 import { MdOutlineSubscriptions } from "react-icons/md";
+import Homeadmin from "./page/dashboard/homeadmin";
+import Usermanagement from "./page/dashboard/usermanagement";
+import Listadmin from "./page/dashboard/listadmin";
+import Analyticadmin from "./page/dashboard/analysisadmin";
+
+
 // import SignIn from "../pages/SignIn";
 
 const icon = {
@@ -24,31 +30,31 @@ const icon = {
 
 export const routes = [
   {
-    // layout: "dashboard",
+    layout: "dashboard",
     pages: [
       {
         icon: <IoHomeOutline {...icon} />,
         name: "dashboard",
-        path: "/home",
-        // element: <Home />,
+        path: "/admin",
+        // element: <Homeadmin />,
       },
       {
         icon: <IoBagHandleOutline {...icon} />,
-        name: "Order",
-        path: "/seller-profile",
-        // element: <Profiles />,
+        name: "User management",
+        path: "/user",
+        element: <Usermanagement />,
       },
       {
         icon: <FaList {...icon} />,
         name: "Listing",
-        path: "/seller-product",
-        // element: <List />,
+        path: "/listing",
+        element: <Listadmin />,
       },
       {
         icon: <IoAnalyticsSharp {...icon} />,
         name: "analysis",
-        path: "/analysis",
-        // element: <Analytic />,
+        path: "/analyticadmin",
+        element: <Analyticadmin />,
       },
       {
         icon: <LuMessageCircle {...icon} />,
