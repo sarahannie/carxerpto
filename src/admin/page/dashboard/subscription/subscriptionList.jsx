@@ -1,103 +1,71 @@
 import React from 'react'
-
-import Sidenav from '../../widgets/layout/sidenav'
-import DashboardNavbar from '../../widgets/layout/dashboard-navbar'
-
-import { MagnifyingGlassIcon} from "@heroicons/react/24/outline";
-
 import {
-  Card,
-  CardHeader,
-  Typography,
-  Button,
-  CardBody,
-  Chip,
-  CardFooter,
-  Avatar,
-  IconButton,
-  Input,
-} from "@material-tailwind/react";
-import { HistoryTransCard } from '../../widgets/cards/history/historyTrans';
-import { HistoryTransCard1 } from '../../widgets/cards/history/historyTrans1';
-import { HistoryTransCard2 } from '../../widgets/cards/history/historyTrans2';
+    Card,
+    CardHeader,
+    Typography,
+    Button,
+    CardBody,
+    Chip,
+    CardFooter,
+    Avatar,
+    IconButton,
+    Input,
+  } from "@material-tailwind/react";
+  import { MagnifyingGlassIcon} from "@heroicons/react/24/outline";
 
 
-const TABLE_HEAD = ["ID", "Buyer", "Car", "Price","Payment Method", "Date", "Status", ];
+const TABLE_HEAD = ["Customer Name", "Subscription plan", "Activation date", "Expiry Date", "Status", ];
 const TABLE_ROWS = [
     {
       img: "https://docs.material-tailwind.com/img/logos/logo-spotify.svg",
-      id: "TRX-001",
-      buyer: "Jay Channie",
-      car: "Toyota Camry 2019",
-      price: "$15,000.00",
-      payment: 'card',
+      name: "Jay Channie",
+      subscription: "Buyer subscription",
+      active: "23rd April 2024",
       date: "24th May 2024",
-      status: "completed",
-      
+      status: "active",
     },
     {
       img: "https://docs.material-tailwind.com/img/logos/logo-amazon.svg",
-      id: "TRX-001",
-      buyer: "Jay Channie",
-      car: "Toyota Camry 2019",
-      price: "$15,000.00",
-      payment: 'Zelle',
+      name: "Jay Channie",
+      subscription: "seller subscription",
+      active: "23rd April 2024",
       date: "24th May 2024",
-      status: "completed",
+      status: "expired",
     },
     {
       img: "https://docs.material-tailwind.com/img/logos/logo-pinterest.svg",
-      id: "TRX-001",
-      buyer: "Jay Channie",
-      car: "Toyota Camry 2019",
-      price: "$15,000.00",
-      payment: 'paypal',
+      name: "Jay Channie",
+      subscription: "Buyer subscription",
+      active: "23rd April 2024",
       date: "24th May 2024",
-      status: "pending",
+      status: "active",
     },
     {
       img: "https://docs.material-tailwind.com/img/logos/logo-google.svg",
-      id: "TRX-001",
-      buyer: "Jay Channie",
-      car: "Toyota Camry 2019",
-      price: "$15,000.00",
-      payment: 'Zelle',
+      name: "Jay Channie",
+      subscription: "Buyer subscription",
+      active: "23rd April 2024",
       date: "24th May 2024",
-      status: "completed",
+      status: "active",
     },
     {
       img: "https://docs.material-tailwind.com/img/logos/logo-netflix.svg",
-      id: "TRX-001",
-      buyer: "Jay Channie",
-      car: "Toyota Camry 2019",
-      price: "$15,000.00",
-      payment: 'Zelle',
+      name: "Jay Channie",
+      subscription: "Buyer subscription",
+      active: "23rd April 2024",
       date: "24th May 2024",
-      status: "completed",
+      status: "active",
     },
   ];
-
-export function Historyadmin() {
+const SubscriptionList = () => {
   return (
-    <div className="">
-      <DashboardNavbar />
-      <div className="flex flex-row  overflow-hidden">
-        <div className="">
-        <Sidenav/>
-        </div>
-      <div className=" mt-7 w-[90%] lg:ml-[20%] ml-[15px]">
-      <div className=" mb-6 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-3 mr-5">
-        <HistoryTransCard/>
-        <HistoryTransCard1/>
-        <HistoryTransCard2/>
-      </div>
-      <div>
-        <Card className="h-full w-full">
+    <div className='mt-5 mb-3'>
+       <Card className="h-full w-full">
       <CardHeader floated={false} shadow={false} className="rounded-none">
         <div className="mb-4 flex flex-col justify-between gap-8 md:flex-row md:items-center">
           <div>
             <Typography variant="h5" className="text-primary-normal">
-            Recent Transaction
+            Subscriptions
             </Typography>
           </div>
           <div className="flex w-full shrink-0 gap-2 md:w-max">
@@ -108,7 +76,7 @@ export function Historyadmin() {
               />
             </div>
             <Button className="flex items-center bg-primary-normal gap-3" size="sm">
-               Search record
+               Search 
             </Button>
           </div>
         </div>
@@ -138,14 +106,14 @@ export function Historyadmin() {
               (
                 {
                   img,
-                  id,
-                  buyer,
-                  car,
-                  price,
+                  name,
+                  subscription,
+                  
+                  active,
                   status,
-                  payment,
+                  
                   date,
-                  total_value
+                  
                 },
                 index,
               ) => {
@@ -155,12 +123,12 @@ export function Historyadmin() {
                   : "p-4 border-b border-blue-gray-50";
  
                 return (
-                  <tr key={id}>
+                  <tr key={name}>
                     <td className={classes}>
                       <div className="flex items-center gap-3">
                         <Avatar
                           src={img}
-                          alt={id}
+                          alt={name}
                           size="md"
                           className="border border-blue-gray-50 bg-blue-gray-50/50 object-contain p-1"
                         />
@@ -169,7 +137,7 @@ export function Historyadmin() {
                           color="blue-gray"
                           className="font-bold"
                         >
-                          {id}
+                          {name}
                         </Typography>
                       </div>
                     </td>
@@ -179,7 +147,7 @@ export function Historyadmin() {
                         color="blue-gray"
                         className="font-normal"
                       >
-                        {buyer}
+                        {subscription}
                       </Typography>
                     </td>
                     <td className={classes}>
@@ -188,24 +156,15 @@ export function Historyadmin() {
                         color="blue-gray"
                         className="font-normal"
                       >
-                        {car}
+                        {active}
                       </Typography>
                     </td>
                     <td className={classes}>
                       <div className="w-max">
-                        {price}
+                        {date}
                       </div>
                     </td>
-                    <td className={classes}>
-                      <div className="w-max">
-                        {payment}
-                      </div>
-                    </td>
-                    <td className={classes}>
-                      <div className="flex items-center gap-3">
-                      {date}
-                      </div>
-                    </td>
+                   
                     <td className={classes}>
                     <div className="w-max">
                         <Chip
@@ -213,10 +172,10 @@ export function Historyadmin() {
                           variant="ghost"
                           value={status}
                           color={
-                            status === "completed"
+                            status === "active"
                               ? "green"
                               : status === "pending"
-                              ? "amber"
+                              ? "expired"
                               : "red"
                           }
                         />
@@ -269,14 +228,9 @@ export function Historyadmin() {
           Next
         </Button>
         </CardFooter>
-        </Card>
-        </div>
-    </div>
-    </div>
-      
+        </Card> 
     </div>
   )
 }
 
-
-export default Historyadmin;
+export default SubscriptionList
