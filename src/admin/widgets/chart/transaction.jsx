@@ -58,7 +58,7 @@ export class TransChart extends React.Component {
             }
           },
           yaxis: {
-            reversed: true,
+            reversed: false,
             axisTicks: {
               show: true
             }

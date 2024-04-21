@@ -2,27 +2,13 @@ import React from "react";
 import DashboardNavbar from "../../widgets/layout/dashboard-navbar";
 import Sidenav from "../../widgets/layout/sidenav";
 
-import {
-  Typography,
-  Card,
-  CardHeader,
-  CardBody,
-  IconButton,
-  Menu,
-  MenuHandler,
-  MenuList,
-  MenuItem,
-  Avatar,
-  Tooltip,
-  Progress,
-} from "@material-tailwind/react";
-
-import { CheckCircleIcon, ClockIcon } from "@heroicons/react/24/solid";
-import {EllipsisVerticalIcon,ArrowUpIcon} from "@heroicons/react/24/outline";
-
 import { AnalyticCard } from "../../widgets/cards/analytic/analytic";
 import { AnalyticCard1 } from "../../widgets/cards/analytic/analytic1";
 import { AnalyticCard2 } from "../../widgets/cards/analytic/analytic2";
+import { TransChart } from "../../widgets/chart/transaction";
+import SalesRegionAdminChart from "../../widgets/chart/region";
+import { Revenue } from "../../widgets/chart/revenue";
+import { Line } from "../../widgets/chart/line";
 
 
 export function Analyticadmin() {
@@ -40,9 +26,13 @@ export function Analyticadmin() {
             <AnalyticCard1 />
             <AnalyticCard2 />
         </div> 
-        <div className=" mb-6 grid gap-y-10 gap-x-6 md:grid-cols-1 xl:grid-cols-2 mr-10px">
-          {/* <Sales />
-          <SalesRegionChart/> */}
+        <div className=" mb-6 grid gap-y-10 gap-x-6 md:grid-cols-1 xl:grid-cols-2 mr-10px mt-[50px]">
+          <TransChart />
+          <SalesRegionAdminChart/>
+        </div>  
+        <div className=" mb-6 grid gap-y-10 gap-x-6 md:grid-cols-1 xl:grid-cols-2 mr-10px mt-[50px]">
+        <Line/>
+          <Revenue />
         </div>  
         <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-3">
         {/* {statisticsChartsData.map((props) => (

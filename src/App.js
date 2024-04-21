@@ -39,6 +39,8 @@ import Homeadmin from "./admin/page/dashboard/homeadmin.jsx";
 import Usermanagement from "./admin/page/dashboard/usermanagement.jsx";
 import Listadmin from "./admin/page/dashboard/listadmin.jsx";
 import Analyticadmin from "./admin/page/dashboard/analysisadmin.jsx";
+import Historyadmin from "./admin/page/dashboard/historyadmin.jsx";
+import Subscriptionadmin from "./admin/page/dashboard/subscription/subscriptionadmin.jsx";
 
 
 
@@ -91,6 +93,8 @@ function App() {
           <Route path="/dashboard/user" element={<Usermanagement  />}/>
           <Route path="/dashboard/listing" element={<Listadmin  />}/>
           <Route path="/dashboard/analyticadmin" element={<Analyticadmin  />}/>
+          <Route path="/dashboard/historyadmin" element={<Historyadmin  />}/>
+          <Route path="/dashboard/subscriptionadmin" element={<Subscriptionadmin  />}/>
 
         </Routes>
       </Router>

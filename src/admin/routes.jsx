@@ -20,6 +20,8 @@ import Homeadmin from "./page/dashboard/homeadmin";
 import Usermanagement from "./page/dashboard/usermanagement";
 import Listadmin from "./page/dashboard/listadmin";
 import Analyticadmin from "./page/dashboard/analysisadmin";
+import Historyadmin from "./page/dashboard/historyadmin";
+import Subscriptionadmin from "./page/dashboard/subscription/subscriptionadmin";
 
 
 // import SignIn from "../pages/SignIn";
@@ -57,23 +59,25 @@ export const routes = [
         element: <Analyticadmin />,
       },
       {
+        icon: <MdOutlineHistoryToggleOff {...icon} />,
+        name: "history",
+        path: "/historyadmin",
+        element: <Historyadmin />,
+      },
+      {
+        icon: <MdOutlineSubscriptions  {...icon} />,
+        name: "subscription",
+        path: "/subscriptionadmin",
+        element: <Subscriptionadmin />,
+      },
+      {
         icon: <LuMessageCircle {...icon} />,
         name: "message",
         path: "/message",
         // element: <Message/> ,
       },
-      {
-        icon: <MdOutlineHistoryToggleOff {...icon} />,
-        name: "history",
-        path: "/history",
-        // element: <History />,
-      },
-      {
-        icon: <MdOutlineSubscriptions  {...icon} />,
-        name: "subscription",
-        path: "/subscription",
-        // element: <Subscription />,
-      },
+     
+     
       {
         icon: <IoSettingsOutline {...icon} />,
         name: "setting",
