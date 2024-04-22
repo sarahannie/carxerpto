@@ -8,19 +8,23 @@ import {
   Textarea,
 } from "@material-tailwind/react";
 import { Select, Option } from "@material-tailwind/react";
+
+import { FaRegEdit } from "react-icons/fa";
  
-export function SubAddNew() {
+export function SubEdit() {
   const [openRight, setOpenRight] = React.useState(false);
   const openDrawer = () => setOpenRight(true);
   const closeDrawer = () => setOpenRight(false);
  
   return (
     <React.Fragment>
-        <Button className='bg-primary-normal' onClick={openDrawer}>Create Plan</Button>
+        {/* <Button className='bg-primary-normal' onClick={openDrawer}>Create Plan</Button> */}
+        <div className='text-primary-normal flex gap-2' onClick={openDrawer} style={{cursor: 'pointer'}}>Edit Plan <FaRegEdit className='mt-1'/></div>
+       
         <Drawer open={openRight} onClose={closeDrawer} placement="right">
         <div className="flex items-center justify-between px-4 pb-2">
           <Typography variant="h5" color="primary-normal" className="text-[13px] text-primary-normal">
-            Create New Subscription Plan
+            Edit Subscription Plan
           </Typography>
           <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
             <svg
@@ -61,7 +65,7 @@ export function SubAddNew() {
         </Select>
         </div>
         <div className="flex justify-end">
-        <Button className="bg-primary-normal">Create Plan</Button>
+        <Button className="bg-primary-normal">Update Plan</Button>
         </div>
           
         </form>
