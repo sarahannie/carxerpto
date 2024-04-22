@@ -15,7 +15,7 @@ export function TransactionCard({ color, icon, title, value, footer }) {
               <p className="text-white text-xl ">$100,000</p>
           </div>
           <div className="text-start ">
-              <h3 className="text-gray-400">Total Transaction</h3>
+              <h3 className="text-gray-400 lg:text-[15px] text-[14px]">Total Transaction</h3>
               <p className="text-white text-xl">$350,000</p>
           </div>
  

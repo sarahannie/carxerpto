@@ -7,7 +7,7 @@ const Subscriptionprofile = () => {
   return (
     <div className='flex flex-col'>
         
-        <div className='flex gap-4'>
+        <div className='flex gap-4 lg:flex-row flex-col'>
         <SubscriptCard />
         <SubscriptCard />
         </div>

@@ -78,7 +78,7 @@ export default function SubDeactive() {
 
   return (
     <>
-    <div className='text-red-700 flex gap-2 w-72' style={{cursor: 'pointer'}} onClick={() => setIsShowing(true)}>Deactivate Plan <RiDeleteBin6Line className='mt-1'/> </div>
+    <div className='text-red-700 flex gap-2 ' style={{cursor: 'pointer'}} onClick={() => setIsShowing(true)}>Deactivate Plan <RiDeleteBin6Line className='mt-1'/> </div>
 
       {isShowing && typeof document !== "undefined"
         ? ReactDOM.createPortal(

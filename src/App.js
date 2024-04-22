@@ -98,7 +98,7 @@ function App() {
           <Route path="/dashboard/historyadmin" element={<Historyadmin  />}/>
           <Route path="/dashboard/subscriptionadmin" element={<Subscriptionadmin  />}/>
           <Route path="/dashboard/insurance" element={<Insurance  />}/>
-          <Route path="/dashboard/adminSetting" element={<AdminSetting  />}/>
+          <Route path="/dashboard/adminSetting" element={<AdminSetting />}/>
 
         </Routes>
       </Router>

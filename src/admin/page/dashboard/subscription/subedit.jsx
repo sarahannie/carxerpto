@@ -8,6 +8,7 @@ import {
   Textarea,
 } from "@material-tailwind/react";
 import { Select, Option } from "@material-tailwind/react";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 import { FaRegEdit } from "react-icons/fa";
  
@@ -19,8 +20,10 @@ export function SubEdit() {
   return (
     <React.Fragment>
         {/* <Button className='bg-primary-normal' onClick={openDrawer}>Create Plan</Button> */}
-        <div className='text-primary-normal flex gap-2' onClick={openDrawer} style={{cursor: 'pointer'}}>Edit Plan <FaRegEdit className='mt-1'/></div>
-       
+        <div className='text-primary-normal flex gap-2 ' onClick={openDrawer} style={{cursor: 'pointer'}}>
+        Edit Plan <FaRegEdit className='mt-1'/>
+      </div>
+       {/* <div className='text-red-700 flex gap-2 w-72' style={{cursor: 'pointer'}} >Deactivate Plan <RiDeleteBin6Line className='mt-1'/> </div> */}
         <Drawer open={openRight} onClose={closeDrawer} placement="right">
         <div className="flex items-center justify-between px-4 pb-2">
           <Typography variant="h5" color="primary-normal" className="text-[13px] text-primary-normal">
