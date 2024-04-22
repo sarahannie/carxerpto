@@ -131,13 +131,9 @@ export default function SubDeactive() {
                 </div>
                 {/*        <!-- Modal actions --> */}
                 <div className="flex justify-start gap-9">
-                  {/* <button className="inline-flex items-center justify-center flex-1 h-10 gap-2 px-5 text-sm font-medium tracking-wide text-white transition duration-300 rounded whitespace-nowrap bg-emerald-500 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
-                    <span>Yes, I'm sure</span>
-                  </button> */}
+              
                   <Button className="bg-red-500">Deactivate</Button>
-                  {/* <button className="inline-flex items-center justify-center flex-1 h-10 gap-2 px-5 text-sm font-medium tracking-wide transition duration-300 rounded justify-self-center whitespace-nowrap text-emerald-500 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:text-emerald-300 disabled:shadow-none disabled:hover:bg-transparent">
-                    <span>Maybe not</span>
-                  </button> */}
+                 
                   <Button className="bg-secondary-normal">Cancel</Button>
                 </div>
               </div>

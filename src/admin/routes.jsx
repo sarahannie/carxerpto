@@ -72,8 +72,8 @@ export const routes = [
       },
       {
         icon: <LuMessageCircle {...icon} />,
-        name: "message",
-        path: "/message",
+        name: "insurance",
+        path: "/insurance",
         // element: <Message/> ,
       },
      
