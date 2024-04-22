@@ -15,6 +15,10 @@ import Historyadmin from "./page/dashboard/historyadmin";
 import Subscriptionadmin from "./page/dashboard/subscription/subscriptionadmin";
 import Insurance from "./page/dashboard/insurance/insurance";
 import AdminSetting from "./page/dashboard/adminsetting";
+import { MdOutlineDashboard } from "react-icons/md";
+import { IoIosPeople } from "react-icons/io";
+import { RiCoinLine } from "react-icons/ri";
+import { SiMicrosoftonenote } from "react-icons/si";
 
 
 // import SignIn from "../pages/SignIn";
@@ -28,13 +32,13 @@ export const routes = [
     layout: "dashboard",
     pages: [
       {
-        icon: <IoHomeOutline {...icon} />,
+        icon: <MdOutlineDashboard {...icon} />,
         name: "dashboard",
         path: "/admin",
         // element: <Homeadmin />,
       },
       {
-        icon: <IoBagHandleOutline {...icon} />,
+        icon: <IoIosPeople {...icon} />,
         name: "User management",
         path: "/user",
         element: <Usermanagement />,
@@ -58,13 +62,13 @@ export const routes = [
         element: <Historyadmin />,
       },
       {
-        icon: <MdOutlineSubscriptions  {...icon} />,
+        icon: <RiCoinLine   {...icon} />,
         name: "subscription",
         path: "/subscriptionadmin",
         element: <Subscriptionadmin />,
       },
       {
-        icon: <LuMessageCircle {...icon} />,
+        icon: <SiMicrosoftonenote {...icon} />,
         name: "insurance",
         path: "/insurance",
         element: <Insurance/> ,
