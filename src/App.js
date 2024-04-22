@@ -42,6 +42,7 @@ import Analyticadmin from "./admin/page/dashboard/analysisadmin.jsx";
 import Historyadmin from "./admin/page/dashboard/historyadmin.jsx";
 import Subscriptionadmin from "./admin/page/dashboard/subscription/subscriptionadmin.jsx";
 import Insurance from "./admin/page/dashboard/insurance/insurance.jsx";
+import AdminSetting from "./admin/page/dashboard/adminsetting.jsx";
 
 
 
@@ -97,6 +98,7 @@ function App() {
           <Route path="/dashboard/historyadmin" element={<Historyadmin  />}/>
           <Route path="/dashboard/subscriptionadmin" element={<Subscriptionadmin  />}/>
           <Route path="/dashboard/insurance" element={<Insurance  />}/>
+          <Route path="/dashboard/adminSetting" element={<AdminSetting  />}/>
 
         </Routes>
       </Router>

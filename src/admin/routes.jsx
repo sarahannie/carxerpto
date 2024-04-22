@@ -1,18 +1,9 @@
-
-// import { Home } from "../seller/page/dashboard/home";
-// import Profiles from "./page/dashboard/profiles";
-// import Setting from "./page/dashboard/setting";
-// import List from "./page/dashboard/list";
 import { FaList } from "react-icons/fa6";
-// import Analytic from "./page/dashboard/analytic";
 import { IoAnalyticsSharp } from "react-icons/io5";
 import { LuMessageCircle } from "react-icons/lu";
 import { MdOutlineHistoryToggleOff } from "react-icons/md";
 import { IoSettingsOutline } from "react-icons/io5";
 import { CiLogin } from "react-icons/ci";
-// import Message from "./page/dashboard/message";
-// import History from "./page/dashboard/history";
-// import Subscription from "./page/dashboard/subscription";
 import { IoHomeOutline } from "react-icons/io5";
 import { IoBagHandleOutline } from "react-icons/io5";
 import { MdOutlineSubscriptions } from "react-icons/md";
@@ -22,6 +13,8 @@ import Listadmin from "./page/dashboard/listadmin";
 import Analyticadmin from "./page/dashboard/analysisadmin";
 import Historyadmin from "./page/dashboard/historyadmin";
 import Subscriptionadmin from "./page/dashboard/subscription/subscriptionadmin";
+import Insurance from "./page/dashboard/insurance/insurance";
+import AdminSetting from "./page/dashboard/adminsetting";
 
 
 // import SignIn from "../pages/SignIn";
@@ -74,15 +67,15 @@ export const routes = [
         icon: <LuMessageCircle {...icon} />,
         name: "insurance",
         path: "/insurance",
-        // element: <Message/> ,
+        element: <Insurance/> ,
       },
      
      
       {
         icon: <IoSettingsOutline {...icon} />,
         name: "setting",
-        path: "/setting",
-        // element: <Setting />,
+        path: "/adminSetting",
+        element: <AdminSetting />,
       },
     ],
   },
