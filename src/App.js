@@ -99,6 +99,8 @@ function App() {
           <Route path="/dashboard/subscriptionadmin" element={<Subscriptionadmin  />}/>
           <Route path="/dashboard/insurance" element={<Insurance  />}/>
           <Route path="/dashboard/adminSetting" element={<AdminSetting />}/>
+          {/* Broker */}
+          
 
         </Routes>
       </Router>
