@@ -2,6 +2,7 @@ import React from "react";
 import DashboardNavbar from "../../../widgets/layout/dashboard-navbar";
 import Sidenav from "../../../widgets/layout/sidenav";
 import { TiEdit } from "react-icons/ti";
+import { Link } from "react-router-dom";
 
 
 
@@ -21,7 +22,10 @@ export function Brokerprofile() {
     </div>
     <div className="flex gap-2 sm:gap-5 mr-3">
       <div className="flex gap-2 text-secondary-normal">Show service <TiEdit className="mt-1"/></div>
-      <div className="flex gap-2 text-primary-normal">Edit profile <TiEdit className="mt-1" /></div>
+      <Link to="/dashboard/brokerprofileedit">
+      <div className="flex gap-2 text-primary-normal"> 
+      Edit profile <TiEdit className="mt-1" /></div>
+      </Link>
     </div>
   </div>
   <div className="flex flex-col sm:flex-row mt-4">

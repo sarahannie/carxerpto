@@ -48,6 +48,7 @@ import SubscriptionBroker from "./broker/page/dashboard/subscription.jsx";
 import PricementBroker from "./broker/layouts/Price/Price.jsx";
 import Pricebroker from "./broker/page/dashboard/price.jsx";
 import Brokerprofile from "./broker/page/dashboard/profile/brokerprofile.jsx";
+import Editprofile from "./broker/page/dashboard/profile/editprofile.jsx";
 
 
 
@@ -109,6 +110,7 @@ function App() {
           <Route path="/dashboard/SubscriptionBroker" element={<SubscriptionBroker />}/>
           <Route path="/pricebroker" element={<Pricebroker />}/>
           <Route path="/dashboard/brokerprofile" element={<Brokerprofile />}/>
+          <Route path="/dashboard/brokerprofileedit" element={<Editprofile />}/>
 
         </Routes>
       </Router>
