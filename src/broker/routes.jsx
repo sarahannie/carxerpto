@@ -22,6 +22,7 @@ import { RiCoinLine } from "react-icons/ri";
 import { IoPersonOutline } from "react-icons/io5";
 import Brokerprofile from "./page/dashboard/profile/brokerprofile";
 import { RiCustomerService2Line } from "react-icons/ri";
+import Servicebody from "./page/dashboard/service/servicebody";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -52,8 +53,8 @@ export const routes = [
       {
         icon: <RiCustomerService2Line {...icon} />,
         name: "Service",
-        path: "/analysis",
-        // element: <Analytic />,
+        path: "/service",
+        element: <Servicebody />,
       },
       {
         icon: <LuMessageCircle {...icon} />,
