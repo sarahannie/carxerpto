@@ -2,7 +2,7 @@ import { Button } from '@material-tailwind/react';
 import React, { useState } from 'react';
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
 
-const Pricement = () => {
+const PricementBroker = () => {
     const [showYearly, setShowYearly] = useState(false);
 
     const toggleYearly = () => {
@@ -425,4 +425,4 @@ const Pricement = () => {
   )
 }
 
-export default Pricement
+export default PricementBroker

@@ -9,7 +9,7 @@ const Preference = () => {
                 <h2 className='text-start lg:text-xl text-[10px] font-bold text-primary-normal'>Language Preference</h2>
                 <p className='text-start w-[80%] lg:text-[14px] text-[7px] text-slate-500' >Select English as your preferred language for all app communications and interactions. Enjoy a seamless user experience with content presented in English, tailored to your language preference. </p>
             </div>
-            <select class="block w-sm text-sm font-medium transition duration-75 border border-gray-800 rounded-lg shadow-sm h-9 focus:border-blue-600 focus:ring-1 focus:ring-inset focus:ring-blue-600 bg-none px-1" >
+            <select class="block w-sm text-sm font-medium transition duration-75 border border-gray-800 rounded-lg shadow-sm h-9 px-1 focus:border-blue-600 focus:ring-1 focus:ring-inset focus:ring-blue-600 bg-none" >
             <option value="week">Eng</option>
             <option value="month">Fre</option>
             <option value="year">spn</option>

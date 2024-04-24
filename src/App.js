@@ -43,6 +43,11 @@ import Historyadmin from "./admin/page/dashboard/historyadmin.jsx";
 import Subscriptionadmin from "./admin/page/dashboard/subscription/subscriptionadmin.jsx";
 import Insurance from "./admin/page/dashboard/insurance/insurance.jsx";
 import AdminSetting from "./admin/page/dashboard/adminsetting.jsx";
+import SettingBroker from "./broker/page/dashboard/setting.jsx";
+import SubscriptionBroker from "./broker/page/dashboard/subscription.jsx";
+import PricementBroker from "./broker/layouts/Price/Price.jsx";
+import Pricebroker from "./broker/page/dashboard/price.jsx";
+import Brokerprofile from "./broker/page/dashboard/profile/brokerprofile.jsx";
 
 
 
@@ -99,8 +104,11 @@ function App() {
           <Route path="/dashboard/subscriptionadmin" element={<Subscriptionadmin  />}/>
           <Route path="/dashboard/insurance" element={<Insurance  />}/>
           <Route path="/dashboard/adminSetting" element={<AdminSetting />}/>
-          {/* Broker */}
-          
+          {/* Broker Car */}
+          <Route path="/dashboard/settingbroker" element={<SettingBroker />}/>
+          <Route path="/dashboard/SubscriptionBroker" element={<SubscriptionBroker />}/>
+          <Route path="/pricebroker" element={<Pricebroker />}/>
+          <Route path="/dashboard/brokerprofile" element={<Brokerprofile />}/>
 
         </Routes>
       </Router>
