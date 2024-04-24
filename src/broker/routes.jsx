@@ -10,7 +10,7 @@ import { LuMessageCircle } from "react-icons/lu";
 import { MdOutlineHistoryToggleOff } from "react-icons/md";
 import { IoSettingsOutline } from "react-icons/io5";
 import { CiLogin } from "react-icons/ci";
-import Message from "./page/dashboard/message";
+import Message, { MessagesBroker } from "./page/dashboard/message";
 import History from "./page/dashboard/history";
 
 import { IoHomeOutline } from "react-icons/io5";
@@ -21,6 +21,7 @@ import SubscriptionBroker from "./page/dashboard/subscription";
 import { RiCoinLine } from "react-icons/ri";
 import { IoPersonOutline } from "react-icons/io5";
 import Brokerprofile from "./page/dashboard/profile/brokerprofile";
+import { RiCustomerService2Line } from "react-icons/ri";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -49,16 +50,16 @@ export const routes = [
         // element: <List />,
       },
       {
-        icon: <IoAnalyticsSharp {...icon} />,
-        name: "analysis",
+        icon: <RiCustomerService2Line {...icon} />,
+        name: "Service",
         path: "/analysis",
         // element: <Analytic />,
       },
       {
         icon: <LuMessageCircle {...icon} />,
         name: "message",
-        path: "/message",
-        // element: <Message/> ,
+        path: "/messagebroker",
+        element: <MessagesBroker/> ,
       },
       {
         icon: <IoPersonOutline {...icon} />,
