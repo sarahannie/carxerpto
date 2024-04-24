@@ -14,8 +14,7 @@ import Message, { MessagesBroker } from "./page/dashboard/message";
 import History from "./page/dashboard/history";
 
 import { IoHomeOutline } from "react-icons/io5";
-import { IoBagHandleOutline } from "react-icons/io5";
-import { MdOutlineSubscriptions } from "react-icons/md";
+
 import SignIn from "../pages/SignIn";
 import SubscriptionBroker from "./page/dashboard/subscription";
 import { RiCoinLine } from "react-icons/ri";
@@ -23,6 +22,8 @@ import { IoPersonOutline } from "react-icons/io5";
 import Brokerprofile from "./page/dashboard/profile/brokerprofile";
 import { RiCustomerService2Line } from "react-icons/ri";
 import Servicebody from "./page/dashboard/service/servicebody";
+import Brokerhome from "./page/dashboard/home/brokerhome";
+import { MdOutlineDashboard } from "react-icons/md";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -33,23 +34,12 @@ export const routes = [
     layout: "dashboard",
     pages: [
       {
-        icon: <IoHomeOutline {...icon} />,
+        icon: <MdOutlineDashboard {...icon} />,
         name: "dashboard",
         path: "/home",
-        // element: <Home />,
+        element: <Brokerhome />,
       },
-      {
-        icon: <IoBagHandleOutline {...icon} />,
-        name: "Order",
-        path: "/seller-profile",
-        // element: <Profiles />,
-      },
-      {
-        icon: <FaList {...icon} />,
-        name: "Listing",
-        path: "/seller-product",
-        // element: <List />,
-      },
+     
       {
         icon: <RiCustomerService2Line {...icon} />,
         name: "Service",

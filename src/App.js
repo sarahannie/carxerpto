@@ -51,6 +51,7 @@ import Brokerprofile from "./broker/page/dashboard/profile/brokerprofile.jsx";
 import Editprofile from "./broker/page/dashboard/profile/editprofile.jsx";
 import MessagesBroker from "./broker/page/dashboard/message.jsx";
 import Servicebody from "./broker/page/dashboard/service/servicebody.jsx";
+import Brokerhome from "./broker/page/dashboard/home/brokerhome.jsx";
 
 
 
@@ -115,6 +116,7 @@ function App() {
           <Route path="/dashboard/brokerprofileedit" element={<Editprofile />}/>
           <Route path="/dashboard/messagebroker" element={<MessagesBroker />}/>
           <Route path="/dashboard/service" element={<Servicebody />}/>
+          <Route path="/dashboard/brokerhome" element={<Brokerhome />}/>
 
         </Routes>
       </Router>

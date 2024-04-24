@@ -35,7 +35,7 @@ export function Sidenav({ brandImg, brandName, }) {
                   {({ isActive }) => (
                     <Button
                       variant={isActive ? "dark" : "text"}
-                      className={`flex  items-center gap-3 px-4 py-2 capitalize text-primary-normal  ${isActive ? 'bg-primary-normal text-white' : ''}`}
+                      className={`flex  items-center gap-3 px-4 py-4 capitalize text-primary-normal  ${isActive ? 'bg-primary-normal text-white' : ''}`}
                       fullWidth
                     >
                       {icon}
