@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from "@material-tailwind/react";
 import person from '../../assets/woman.png'
+import { Link } from 'react-router-dom';
 
 const Brokercard = () => {
   return (
@@ -53,7 +54,10 @@ const Brokercard = () => {
         </div>
       </div>
       <div className="mt-4 flex justify-end">
-        <Button className="bg-primary-light text-primary-dark font-semibold rounded focus:outline-none">Contact</Button>
+        <Link to='/broker-contact'>
+            <Button className="bg-primary-light text-primary-dark font-semibold rounded focus:outline-none">Contact</Button>
+        </Link>
+        
       </div>
     </div>
   </div>
