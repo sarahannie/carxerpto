@@ -109,7 +109,7 @@ function BrokerContact() {
             <Button className="bg-primary-normal">Chat Now</Button>
         </div>
         <div>
-        <Button className="bg-primary-normal">Leave a review</Button>
+        <Button className="bg-primary-light text-primary-dark">Leave a review</Button>
         </div>
     </div>
 </div>
