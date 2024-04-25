@@ -1,19 +1,13 @@
 
-import { Home } from "../seller/page/dashboard/home";
-import Profiles from "./page/dashboard/profiles";
 import Setting, { SettingBroker } from "./page/dashboard/setting";
-import List from "./page/dashboard/list";
-import { FaList } from "react-icons/fa6";
-import Analytic from "./page/dashboard/analytic";
-import { IoAnalyticsSharp } from "react-icons/io5";
+
+
 import { LuMessageCircle } from "react-icons/lu";
-import { MdOutlineHistoryToggleOff } from "react-icons/md";
+
 import { IoSettingsOutline } from "react-icons/io5";
 import { CiLogin } from "react-icons/ci";
 import Message, { MessagesBroker } from "./page/dashboard/message";
-import History from "./page/dashboard/history";
 
-import { IoHomeOutline } from "react-icons/io5";
 
 import SignIn from "../pages/SignIn";
 import SubscriptionBroker from "./page/dashboard/subscription";
@@ -36,7 +30,7 @@ export const routes = [
       {
         icon: <MdOutlineDashboard {...icon} />,
         name: "dashboard",
-        path: "/home",
+        path: "/brokerhome",
         element: <Brokerhome />,
       },
      
