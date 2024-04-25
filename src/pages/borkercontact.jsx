@@ -1,9 +1,8 @@
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
-import Suv from "../assets/hero.png";
-import Brokercard from "../components/brokercard/brokercard";
-
+import { Button } from "@material-tailwind/react";
+import ReactStars from "react-rating-stars-component";
 
 
 function BrokerContact() {
@@ -12,7 +11,7 @@ function BrokerContact() {
       <section className="w-full h-full overflow-x-hidden">
         <Navbar />
         <section>
-        <div className="mt-7 w-full sm:w-[85%] lg:ml-[20%] ml-[15px] border shadow-lg p-3 mb-3 rounded-lg">
+        <div className="mt-7 w-full sm:w-[85%] mx-auto   border shadow-lg p-3 mb-3 rounded-lg">
   <div className="flex justify-between border-b border-gray-300">
     <div className="text-primary-normal">
       Profile Overview
@@ -105,27 +104,21 @@ function BrokerContact() {
       </div>
     </div>
   </div>
-  <div className="flex justify-between border-b border-gray-300 mt-5">
-    <div className="text-primary-normal">
-      Subscription Status
+    <div className="flex justify-between">
+        <div>
+            <Button className="bg-primary-normal">Chat Now</Button>
+        </div>
+        <div>
+            <p>Rate Me</p>
+            <div>
+            <ReactStars
+                  count={5}
+                  size={24}
+                  activeColor="#ffd700"
+                />
+            </div>
+        </div>
     </div>
-  </div>
-  <div className="text-start my-4">
-    <div className="grid grid-cols-3 gap-3">
-      <div className="">
-        <label htmlFor="email" className="text-gray-400">Status</label>
-        <p className="py-2 text-secondary-normal font-bold">Active</p>
-      </div>
-      <div className="">
-        <label htmlFor="phone" className="text-gray-400">Current Plan</label>
-        <p className="py-2">$99.99/month</p>
-      </div>
-      <div className="">
-        <label htmlFor="location" className="text-gray-400">Renewal Date</label>
-        <p className="py-2">12 May 2024 </p>
-      </div>
-    </div>
-  </div>
 </div>
         </section>
 
