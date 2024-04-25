@@ -181,7 +181,7 @@ function Navbar() {
               About<span className="ml-1 lg:ml-0">Us</span>
             </Link>
             
-            <Features className="text-primary-dark hover:text-secondary-normalhover text-center " />
+            <Features className="text-primary-normal hover:text-secondary-normalhover text-center " />
             <Link
               to="/signin"
               className="lg:hidden py-2 px-4 rounded-md text-base text-accent-white bg-primary-normal hover:bg-secondary-normalhover hover:text-accent-white text-center"
