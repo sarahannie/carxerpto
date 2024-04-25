@@ -52,6 +52,7 @@ import Editprofile from "./broker/page/dashboard/profile/editprofile.jsx";
 import MessagesBroker from "./broker/page/dashboard/message.jsx";
 import Servicebody from "./broker/page/dashboard/service/servicebody.jsx";
 import Brokerhome from "./broker/page/dashboard/home/brokerhome.jsx";
+import CarBroker from "./pages/CarBroker.jsx";
 
 
 
@@ -83,6 +84,7 @@ function App() {
           <Route path="/car-quota-insurance" element={<CarInsurQ/>}/>
           <Route path ="/success" element={<Success/>}/>
           <Route path ="/car-details" element={<CarDetails/>}/>
+          <Route path ="/car-broker" element={<CarBroker/>}/>
           {/* <Route path="/stripe" element={<Stripe/>}/> */}
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/dashboard/home" element={<Home/>}/>
