@@ -36,7 +36,7 @@ export const routes = [
      
       {
         icon: <RiCustomerService2Line {...icon} />,
-        name: "Service",
+        name: "Service-card",
         path: "/service",
         element: <Servicebody />,
       },

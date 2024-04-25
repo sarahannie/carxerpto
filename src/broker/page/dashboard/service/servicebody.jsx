@@ -14,7 +14,7 @@ export function Servicebody() {
         <div className="">
         <Sidenav/>
         </div>
-        <div className=" mt-7 w-[90%] lg:ml-[20%] ml-[15px]">   
+        <div className=" mt-7 w-[90%] lg:ml-[20%] ml-[15px] flex justify-start  mb-4">   
             <Brokercard />
         </div>
     </div>

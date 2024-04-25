@@ -109,14 +109,7 @@ function BrokerContact() {
             <Button className="bg-primary-normal">Chat Now</Button>
         </div>
         <div>
-            <p>Rate Me</p>
-            <div>
-            <ReactStars
-                  count={5}
-                  size={24}
-                  activeColor="#ffd700"
-                />
-            </div>
+        <Button className="bg-primary-normal">Leave a review</Button>
         </div>
     </div>
 </div>
