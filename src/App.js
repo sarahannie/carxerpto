@@ -53,6 +53,7 @@ import MessagesBroker from "./broker/page/dashboard/message.jsx";
 import Servicebody from "./broker/page/dashboard/service/servicebody.jsx";
 import Brokerhome from "./broker/page/dashboard/home/brokerhome.jsx";
 import CarBroker from "./pages/CarBroker.jsx";
+import BrokerContact from "./pages/borkercontact.jsx";
 
 
 
@@ -85,6 +86,7 @@ function App() {
           <Route path ="/success" element={<Success/>}/>
           <Route path ="/car-details" element={<CarDetails/>}/>
           <Route path ="/car-broker" element={<CarBroker/>}/>
+          <Route path ="/broker-contact" element={<BrokerContact/>}/>
           {/* <Route path="/stripe" element={<Stripe/>}/> */}
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/dashboard/home" element={<Home/>}/>
