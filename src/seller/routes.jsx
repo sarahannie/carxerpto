@@ -16,7 +16,7 @@ import Subscription from "./page/dashboard/subscription";
 import { IoHomeOutline } from "react-icons/io5";
 import { IoBagHandleOutline } from "react-icons/io5";
 import { MdOutlineSubscriptions } from "react-icons/md";
-import SignIn from "../pages/SignIn";
+import SignIn from "../features/auth/SignIn";
 
 const icon = {
   className: "w-5 h-5 text-inherit",

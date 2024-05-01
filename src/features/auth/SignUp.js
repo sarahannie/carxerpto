@@ -1,5 +1,5 @@
 import React from 'react';
-import BackgroundImage from '../assets/backgroundimage.jpg';
+import BackgroundImage from '../../assets/backgroundimage.jpg';
 import { FaGoogle } from 'react-icons/fa';
 import { FaApple } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -47,10 +47,7 @@ function SignUp() {
               Sign Up to get Started
             </h2>
             <form className='relative' onSubmit={formik.handleSubmit}>
-              <div
-                className='mx-10 flex items-center mb-4 relative'
-                isInvalid={formik.errors.email && formik.touched.email}
-              >
+              <div className='mx-10 flex items-center mb-4 relative'>
                 <label
                   htmlFor='email'
                   className='absolute top-0 left-2 -mt-2 px-1 text-xs text-gray-400 bg-white'
@@ -69,11 +66,10 @@ function SignUp() {
                   className='border border-gray-400 text-xs px-3 py-3 rounded w-80 outline-none'
                 />
               </div>
-              <p className='text-red-300'>{formik.errors.email}</p>
-              <div
-                className='mx-10 flex items-center mb-4 relative'
-                isInvalid={formik.errors.password && formik.touched.password}
-              >
+              {formik.touched.email && formik.errors.email ? (
+                <div className='text-red-300 text-start'>{formik.errors.email}</div>
+              ) : null}
+              <div className='mx-10 flex items-center mb-4 relative'>
                 <label
                   htmlFor='password'
                   className='absolute top-0 left-2 -mt-2 px-1 text-xs text-gray-400 bg-white'
@@ -91,11 +87,10 @@ function SignUp() {
                   className='border border-gray-400 text-xs px-3 py-3 rounded w-80 outline-none'
                 />
               </div>
-              <p className='text-red-300 text-start'>{formik.errors.password}</p>
-              <div
-                className='mx-10 flex items-center mb-4 relative'
-                isInvalid={formik.errors.confirmPassword && formik.touched.confirmPassword}
-              >
+              {formik.touched.password && formik.errors.password ? (
+                <div className='text-red-300 text-start'>{formik.errors.password}</div>
+              ) : null}
+              <div className='mx-10 flex items-center mb-4 relative'>
                 <label
                   htmlFor='password'
                   className='absolute top-0 left-2 -mt-2 px-1 text-xs text-gray-400 bg-white'
@@ -113,7 +108,9 @@ function SignUp() {
                   className='border border-gray-400 text-xs px-3 py-3 rounded w-80 outline-none'
                 />
               </div>
-              <p className='text-red-300 text-start'>{formik.errors.confirmPassword}</p>
+              {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
+                <div className='text-red-300 text-start'>{formik.errors.confirmPassword}</div>
+              ) : null}
               <label class='flex items-center mx-10 mb-5'>
                 <input
                   type='checkbox'

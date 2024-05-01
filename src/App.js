@@ -4,10 +4,10 @@ import "./App.css";
 
 /* Importing Pages */
 import OnboardingPage from "./pages/OnboardingPage";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
+import SignIn from "./features/auth/SignIn.js";
+import SignUp from "./features/auth/SignUp.js";
 import AboutYou from "./pages/AboutYou";
-import ForgetPass from "./pages/ForgetPass";
+import ForgetPass from "./features/auth/ForgetPass.js";
 import LandingPage from "./pages/LandingPage";
 import AboutUs from "./pages/AboutUs";
 import FeatureSec from "./pages/FeatureSec";

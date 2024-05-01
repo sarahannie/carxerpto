@@ -1,26 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import { FaApple } from 'react-icons/fa';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import BackgroundImage from '../assets/backgroundimage.jpg';
-import Logo from '../assets/Logo1.png';
-import axios from 'axios';
+import BackgroundImage from '../../assets/backgroundimage.jpg';
+import Logo from '../../assets/Logo1.png';
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
-  const [password, setPassword] = useState('');
-  const [data, setData] = useState([]);
-
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-
-  useEffect(() => {
-    const getData = async () => {};
-  });
 
   const formik = useFormik({
     initialValues: {
@@ -66,10 +58,7 @@ function SignIn() {
                 Log Into Your Account
               </h2>
               <form className='relative' onSubmit={formik.handleSubmit}>
-                <div
-                  className='mx-10 flex flex-col gap-3 items-center mb-2 relative'
-                  isInvalid={formik.errors.email && formik.touched.email}
-                >
+                <div className='mx-10 flex flex-col gap-3 items-center mb-2 relative'>
                   <label
                     htmlFor='email'
                     className='absolute top-0 left-2 -mt-2 px-3 text-xs text-gray-400 bg-white'
@@ -87,11 +76,10 @@ function SignIn() {
                     placeholder='example@gmail.com'
                     className='border border-gray-400 text-xs px-3 py-3 rounded lg:w-80 w-60'
                   />
-                  <p className='text-red-300'>{formik.errors.email}</p>
-                  <div
-                    className='mx-10 relative'
-                    isInvalid={formik.errors.password && formik.touched.password}
-                  >
+                  {formik.touched.email && formik.errors.email ? (
+                    <div className='text-red-300 text-start'>{formik.errors.email}</div>
+                  ) : null}
+                  <div className='mx-10 relative'>
                     <label
                       htmlFor='password'
                       className='absolute top-0 left-2 -mt-2 px-3 text-xs text-gray-400 bg-white'
@@ -100,7 +88,7 @@ function SignIn() {
                     </label>
                     <div className=''>
                       <input
-                        type={showPassword ? 'text' : 'password'}
+                        type='password'
                         id='password'
                         name='password'
                         value={formik.values.password}
@@ -109,7 +97,9 @@ function SignIn() {
                         placeholder='***********'
                         className='border border-gray-400 text-xs px-3 py-3 rounded pr-10 lg:w-80 w-60'
                       />
-                      <p className='text-red-300 text-start'>{formik.errors.password}</p>
+                      {formik.touched.password && formik.errors.password ? (
+                        <div className='text-red-300 text-start'>{formik.errors.password}</div>
+                      ) : null}
                       <button
                         type='submit'
                         className='absolute inset-y-0 right-0 px-2 py-2 text-gray-400'

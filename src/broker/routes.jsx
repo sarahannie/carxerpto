@@ -9,7 +9,7 @@ import { CiLogin } from "react-icons/ci";
 import Message, { MessagesBroker } from "./page/dashboard/message";
 
 
-import SignIn from "../pages/SignIn";
+import SignIn from "../features/auth/SignIn";
 import SubscriptionBroker from "./page/dashboard/subscription";
 import { RiCoinLine } from "react-icons/ri";
 import { IoPersonOutline } from "react-icons/io5";
