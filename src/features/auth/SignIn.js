@@ -3,16 +3,23 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import { FaApple } from 'react-icons/fa';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import BackgroundImage from '../../assets/backgroundimage.jpg';
 import Logo from '../../assets/Logo1.png';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { useLoginMutation } from '../../app/api/authApi';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../app/slice/authSlice';
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  const dispatch = useDispatch();
+
+  const [ login ] = useLoginMutation();
 
   const formik = useFormik({
     initialValues: {
@@ -25,11 +32,17 @@ function SignIn() {
         .required('Email is required'),
       password: Yup.string().required('Password is required')
     }),
-    onSubmit: (values, { resetForm }) => {
-      resetForm();
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        const response = await login({ email: values.email, password: values.password }).unwrap();
+        dispatch(loginUser(response));
+        resetForm();
+      } catch (error) {
+        console.error('Login failed:', error);
+      }
     }
   });
+
   return (
     <div>
       <div className=' h-screen relative overflow-hidden'>

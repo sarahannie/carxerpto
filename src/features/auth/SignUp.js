@@ -5,8 +5,11 @@ import { FaApple } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useRegisterMutation } from '../../app/api/authApi';
 
 function SignUp() {
+  const [signUp] = useRegisterMutation();
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -21,9 +24,18 @@ function SignUp() {
         .oneOf([Yup.ref('password'), null], 'Password must match')
         .required('Confirm Password is required')
     }),
-    onSubmit: (values, { resetForm }) => {
-      resetForm();
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        await signUp({
+          email: values.email,
+          password: values.password
+        }).unwrap();
+        resetForm();
+        alert('Sign up successful!');
+      } catch (error) {
+        console.log(error);
+        console.error('Sign up failed:', error);
+      }
     }
   });
   return (
