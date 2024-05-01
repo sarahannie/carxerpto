@@ -1,17 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  user: {
-    id: null,
-    email: '',
-    role_id: '',
-    account_type: '',
-    created_at: '',
-    updated_at: '',
-    roles: []
-  },
+  user: null,
   token: '',
-  isLoggedIn: false,
+  isAuthenticated: false,
   forgotEmail: '',
   forgotEmailToken: ''
 };
@@ -23,12 +15,12 @@ export const authSlice = createSlice({
     loginUser: (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
-      state.isLoggedIn = true;
+      state.isAuthenticated = true;
     },
     logoutUser: (state) => {
       state.user = initialState.user;
       state.token = initialState.token;
-      state.isLoggedIn = false;
+      state.isAuthenticated = false;
     },
     updateUser: (state, action) => {
       state.user = { ...state.user, ...action.payload };
