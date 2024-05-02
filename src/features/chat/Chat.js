@@ -10,13 +10,13 @@ const Chat = () => {
 
   useEffect(() => {
     // Listen for incoming messages
-    socket.on('private message', ({ sender, receiver, message }) => {
-      setMessages((prevMessages) => [...prevMessages, { sender, receiver, message }]);
+    socket.on('message', (message) => {
+      setMessages((prevMessages) => [...prevMessages, message]);
     });
 
     // Clean up event listener on component unmount
     return () => {
-      socket.off('private message');
+      socket.off('message');
     };
   }, []); // Empty dependency array ensures the effect runs only once
 
@@ -25,7 +25,7 @@ const Chat = () => {
 
     if (message.trim() !== '') {
       // Emit message to the server
-      socket.emit('private message', { sender: currentUser, receiver: 'user2', message });
+      socket.emit('message', { sender: currentUser, message });
       setMessage(''); // Clear message input
     }
   };
@@ -57,6 +57,7 @@ const Chat = () => {
               <input
                 type='text'
                 value={message}
+                name={message}
                 onChange={(e) => setMessage(e.target.value)}
                 className='flex-1 rounded-lg border-gray-300 px-4 py-2'
                 placeholder='Type your message...'
