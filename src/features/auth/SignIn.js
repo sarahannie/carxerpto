@@ -37,6 +37,7 @@ function SignIn() {
         const response = await login({ email: values.email, password: values.password }).unwrap();
         dispatch(loginUser(response));
         resetForm();
+        alert('Sign in successful!');
       } catch (error) {
         console.error('Login failed:', error);
       }
