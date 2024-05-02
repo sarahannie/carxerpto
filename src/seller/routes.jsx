@@ -10,7 +10,7 @@ import { LuMessageCircle } from "react-icons/lu";
 import { MdOutlineHistoryToggleOff } from "react-icons/md";
 import { IoSettingsOutline } from "react-icons/io5";
 import { CiLogin } from "react-icons/ci";
-import Message from "./page/dashboard/message";
+import Message from "../features/chat/message";
 import History from "./page/dashboard/history";
 import Subscription from "./page/dashboard/subscription";
 import { IoHomeOutline } from "react-icons/io5";

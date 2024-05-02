@@ -31,7 +31,7 @@ function SignUp() {
           password: values.password
         }).unwrap();
         resetForm();
-        alert('Sign up successful!');
+        
       } catch (error) {
         console.log(error);
         console.error('Sign up failed:', error);
