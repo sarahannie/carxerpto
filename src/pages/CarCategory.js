@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../components/Navbar/Navbar";
+
 import Footer from "../components/Footer/Footer";
 import Suv from "../assets/hero.png";
 import SearchComponent from "../components/Search/Search";
@@ -10,7 +10,6 @@ function CarCategory() {
   return (
     <div>
       <section className="w-full h-full overflow-x-hidden">
-        <Navbar />
         <section>
           <div className="relative">
             <img

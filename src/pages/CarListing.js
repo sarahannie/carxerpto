@@ -1,5 +1,5 @@
 import Footer from "../components/Footer/Footer";
-import Navbar from "../components/Navbar/Navbar";
+
 import Hero from "../assets/carList.jpg";
 import BrandLink from "../components/BrandGrid.js";
 import List from "../components/ListingCard.js";
@@ -8,7 +8,7 @@ import CategoryGrid from "../components/CategoryGrid.js";
 function CarListing() {
   return (
     <section className="">
-      <Navbar />
+
       <div className="w-full h-[800px] relative  bg-gradient-to-t from-[#002C52] to-[#034885] inset-0 opacity-85  bg-cover bg-no-repeat flex items-center justify-center">
         <img
           src={Hero}

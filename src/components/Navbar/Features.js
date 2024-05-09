@@ -31,14 +31,14 @@ function Features() {
 
   return (
     <div>
-      <div className="relative inline-block items-center">
+      <div className="relative inline-block items-center text-primary-dark hover:text-secondary-normal text-center">
         {/* Trigger button */}
         <button
           ref={dropdownButtonRef}
           onClick={toggleDropdown}
-          className="flex items-center text-black px-4 py-2 rounded-md focus:outline-none gap-1 hover:text-secondary-normalhover"
+          className="flex items-center text-primary-dark px-4 py-2 rounded-md focus:outline-none hover:text-secondary-normalhover"
         >
-          Features <FaAngleDown className="mt-1 font-extralight" />
+          Features <FaAngleDown className=" font-extralight" />
         </button>
 
       {/* Dropdown menu */}

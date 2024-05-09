@@ -1,8 +1,5 @@
 import React from "react";
-// import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
-// import Toyota from "../assets/hero (1).png";
 import SearchComponent from "../components/Search/Search";
 import Carousels from "../components/carousel/carousel";
 import Cardholder from "../components/cardholder/cardholder";
@@ -14,7 +11,6 @@ function LandingPage() {
   return (
     <div>
       <section className="w-full h-full overflow-x-hidden ">
-        <Navbar />
         <section className="relative">
         <div className={`h-screen flex items-center  ${style.header} `}>
   <div className="px-4 mx-auto lg:mt-16 lg:mb-16 max-w-7xl mt-4 mb-[180px]">

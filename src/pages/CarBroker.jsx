@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import Suv from "../assets/hero.png";
 import Brokercard from "../components/brokercard/brokercard";
@@ -10,7 +9,6 @@ function CarBroker() {
   return (
     <div>
       <section className="w-full h-full overflow-x-hidden">
-        <Navbar />
         <section>
         <div className="relative">
   <img

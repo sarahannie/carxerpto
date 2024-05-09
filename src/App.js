@@ -1,5 +1,5 @@
 // import { Route, Routes } from "react-router-dom";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import './App.css';
 
 /* Importing Pages */
@@ -55,6 +55,7 @@ import Servicebody from './broker/page/dashboard/service/servicebody.jsx';
 import Brokerhome from './broker/page/dashboard/home/brokerhome.jsx';
 import CarBroker from './pages/CarBroker.jsx';
 import BrokerContact from './pages/borkercontact.jsx';
+import Navbar from './components/Navbar/Navbar.js';
 
 /* Importing Components */
 
@@ -63,6 +64,7 @@ function App() {
     <div className='App'>
       <Router>
         <Routes>
+          <Route element={(<><Navbar/> <Outlet/></>)}>
           <Route path='/' element={<OnboardingPage />} />
           <Route path='/home' element={<LandingPage />} />
           <Route path='/chat' element={<Chat />} />
@@ -91,6 +93,7 @@ function App() {
           <Route path='/dashboard/seller-product' element={<List />} />
           <Route path='/Viewproduct' element={<Viewproduct />} />
           <Route path='/Addproduct' element={<Addproduct />} />
+        </Route>
           {/* Seller */}
           <Route path='/dashboard/analysis' element={<Analytic />} />
           <Route path='/dashboard/history' element={<History />} />

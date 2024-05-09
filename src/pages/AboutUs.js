@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import aboutimage1 from "../assets/aboutimage1.jpg";
 import aboutimage2 from "../assets/aboutimage2.jpg";
@@ -10,7 +9,7 @@ function AboutUs() {
   return (
     <div>
       <section className="bg-white w-full h-screen">
-        <Navbar />
+   
         <section className=" flex flex-col lg:flex lg:flex-row items-center gap-6 mx-10">
           <div className="mt-20 relative rounded-md w-full lg:w-2/3 h-[530px] overflow-hidden">
             <div className="w-full h-[530px]">

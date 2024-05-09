@@ -1,15 +1,14 @@
 import React from "react";
-import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import { Button } from "@material-tailwind/react";
-import ReactStars from "react-rating-stars-component";
+
 
 
 function BrokerContact() {
   return (
     <div>
       <section className="w-full h-full overflow-x-hidden">
-        <Navbar />
+
         <section>
         <div className="mt-7 w-full sm:w-[85%] mx-auto   border shadow-lg p-3 mb-3 rounded-lg">
   <div className="flex justify-between border-b border-gray-300">

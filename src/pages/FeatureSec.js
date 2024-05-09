@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar/Navbar";
+
 import carbroker from "../assets/system.jpg";
 import car from "../assets/car.webp";
 import insurance from "../assets/insurance.jpg";
@@ -10,7 +10,6 @@ function FeatureSec() {
   return (
     <section className="bg-[#e6ebf0] z-0 ">
       <div className=" w-full bg-white ">
-        <Navbar />
       </div>
 
       <section className="max-w-[1276px] mx-auto mt-3 lg:mt-8 w-full mb-20">

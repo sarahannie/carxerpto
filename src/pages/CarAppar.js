@@ -1,10 +1,9 @@
 import Footer from "../components/Footer/Footer";
-import Navbar from "../components/Navbar/Navbar";
+
 
 function CarApprasial() {
   return (
     <section className="">
-      <Navbar />
       <form className=" lg:max-w-[800px]  md:mx-auto sm:h-[1000px] lg:h-[800px] bg-white md:shadow-2xl md:mt-8 md:mb-10">
         <div className="flex flex-col text-center w-full">
           <h1 className="text-[22px] font-bold text-[#003B6D] mt-8 mb-2">
