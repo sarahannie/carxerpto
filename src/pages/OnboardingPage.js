@@ -1,31 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
-import illustration from "../assets/Illustration.png";
+import illustration1 from "../assets/image/Illustration.webp";
+import illustration2 from "../assets/image/illustration (1).webp";
+import illustration3 from "../assets/image/illustration (2).webp";
+import { Button } from "@material-tailwind/react";
+
 
 
 function OnboardingPage() {
   return (
-    <div>
+    
       <section className="bg-white w-full h-screen">
         <Navbar />
         <section className="flex flex-col items-center justify-center mt-10">
-          <h1 className="text-center text-primary-normal font-normal text-2xl">
+          <h1 className="text-center text-primary-normal font-bold text-3xl">
             Why Choose Carxperto
           </h1>
           <div className="flex lg:flex-row flex-col items-center gap-16 mt-16">
             <Link to="/signup">
               <div className="flex flex-col items-center  w-72 h-72 border-white shadow-md">
                 <img
-                  src={illustration}
+                  src={illustration1}
                   alt="illustration"
-                  className="w-36 h-30"
+                  className="w-45 h-30"
                 />
                 <h1 className="text-base text-primary-darker font-bold mt-10">
-                  Find Your Dream Car
+                  Buy Your Dream Car
                 </h1>
                 <p className="text-base text-primary-darker">
-                  Explore a vast selection of cars from <br />trusted sellers,
+                  Explore a vast selection of cars from <br />trusted sellers and Xperto
                   all in one place.
                 </p>
               </div>
@@ -34,7 +38,7 @@ function OnboardingPage() {
             <Link to="/signup">
               <div className="flex flex-col items-center w-72 h-72 border-white shadow-md">
                 <img
-                  src={illustration}
+                  src={illustration2}
                   alt="illustration"
                   className="w-36 h-30"
                 />
@@ -51,39 +55,43 @@ function OnboardingPage() {
             <Link to="/signup">
               <div className="flex flex-col items-center w-72 h-72 border-white shadow-md">
                 <img
-                  src={illustration}
+                  src={illustration3}
                   alt="illustration"
                   className="w-36 h-30"
                 />
                 <h1 className="text-base text-primary-darker font-bold mt-10">
-                  Manage Your Platform Effectively
+                  Find Your Dream Car
                 </h1>
                 <p>
-                  {" "}Access a comprehensive admin <br />dashboard to monitor
-                  and manage<br />all aspects of your platform.
+                  {" "}With our experienced xperto <br />finding your dream car with ease. <br />register has an xperto.
                 </p>
               </div>
             </Link>
           </div>
-
+        {/* className="py-2 px-4 rounded-md text-base text-accent-white bg-primary-normal hover:bg-secondary-normalhover " */}
           <div className="flex flex-row mt-16 gap-2 mb-6">
+            <Button className="text-accent-white bg-primary-normal hover:bg-secondary-normalhover px-10">
             <Link
               to="/signup"
-              className="py-2 px-4 rounded-md text-base text-accent-white bg-primary-normal hover:bg-secondary-normalhover "
+              
             >
+
               Sign Up
             </Link>
-
+            </Button>
+           
+            <Button className="text-accent-white bg-secondary-darker hover:bg-secondary-normalhover px-12">
             <Link
               to="/signin"
-              className="py-2 px-6 rounded-md text-base text-accent-white bg-secondary-darker hover:bg-secondary-normalhover"
+            
             >
               Login
             </Link>
+            </Button>
+            
           </div>
         </section>
       </section>
-    </div>
   );
 }
 
