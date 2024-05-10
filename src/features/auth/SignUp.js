@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useRegisterMutation } from '../../app/api/authApi';
+import { Button } from '@material-tailwind/react';
 
 function SignUp() {
   const [signUp] = useRegisterMutation();
@@ -79,7 +80,7 @@ function SignUp() {
                 />
               </div>
               {formik.touched.email && formik.errors.email ? (
-                <div className='text-red-300 text-start'>{formik.errors.email}</div>
+                <span className='text-red-300 text-start pl-[20px]'>{formik.errors.email}</span>
               ) : null}
               <div className='mx-10 flex items-center mb-4 relative'>
                 <label
@@ -132,12 +133,9 @@ function SignUp() {
                 <span className='text-sm text-gray-900 font-extralight'>Remind me always</span>
               </label>
               {/* <Link to="/about"> */}
-              <button
-                type='submit'
-                className='w-80 bg-primary-normal text-white py-3 rounded hover:bg-primary-normalhover transition duration-300'
-              >
-                Log In
-              </button>
+              <Button type='submit' className='w-80 bg-primary-normal text-white py-3 rounded hover:bg-primary-normalhover transition duration-300'>
+                Sign up
+              </Button>
               {/* </Link> */}
             </form>
             <div className='flex items-center mx-10 mt-6'>
@@ -145,25 +143,13 @@ function SignUp() {
               <span class='text-gray-500'>OR</span>
               <hr class='flex-grow border-t-2 border-gray-400 ml-2' />
             </div>
-            <div className='flex flex-col items-center mx-10 gap-3 mt-6'>
-              <Link to=''>
-                <button
-                  type='submit'
-                  className='flex items-center gap-4 w-80 py-2 px-4 border border-x-2 border-y-2 rounded-md font-semibold text-center text-base text-gray-900 white bg-transparent hover:bg-secondary-normalhover hover:text-accent-white'
-                >
-                  <FaGoogle className='' />
-                  SignIn with Google
-                </button>
-              </Link>
-              <Link to=''>
-                <button
-                  type='submit'
-                  className='flex items-center gap-4 w-80 py-2 px-4 border border-x-2 border-y-2 rounded-md font-semibold text-center text-base text-gray-900 white bg-transparent hover:bg-secondary-normalhover hover:text-accent-white'
-                >
-                  <FaApple className='' />
-                  SignIn with Google
-                </button>
-              </Link>
+            <div className='flex flex-col items-center mx-10 gap-3 mt-3'>
+              <Button type='submit' className='flex justify-center items-center gap-4 w-80 py-2 px-4 border border-x-2 border-y-2 rounded-md font-semibold text-center text-base text-gray-900 white bg-transparent hover:bg-secondary-normalhover hover:text-accent-white'>
+                    <FaGoogle className='' />
+                    SignIn with Google
+              </Button>
+             
+              
             </div>
           </div>
         </div>

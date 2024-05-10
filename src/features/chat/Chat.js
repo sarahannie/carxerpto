@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 
-const socket = io('https://auto-buy-api.vercel.app/');
+const socket = io('https://api-v1.carxperto.com/');
 
 const Chat = () => {
   const [message, setMessage] = useState('');

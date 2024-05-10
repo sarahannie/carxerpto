@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const API_BASE_URL = 'https://auto-buy-api.vercel.app/';
+const API_BASE_URL = 'https://api-v1.carxperto.com/';
 
 export const authApi = createApi({
   reducerPath: 'authApi',
