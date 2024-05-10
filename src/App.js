@@ -1,7 +1,7 @@
 // import { Route, Routes } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import './App.css';
-import React,{useState} from 'react';
+import React from 'react';
 /* Importing Pages */
 import Chat from './features/chat/Chat.js';
 import OnboardingPage from './pages/OnboardingPage';
@@ -22,7 +22,7 @@ import CarQuota from './components/CarQuota.js';
 import CarInsurQ from './components/carInsuQuota.js';
 import Success from './components/SuccessPay.js';
 import CarDetails from './components/CarDetails.js';
-import Stripe from './components/stripe/stripe.js';
+//import Stripe from './components/stripe/stripe.js';
 import Profile from './pages/profile.jsx';
 import Home from './seller/page/dashboard/home.jsx';
 import Profiles from './seller/page/dashboard/profiles.jsx';
@@ -46,7 +46,7 @@ import Insurance from './admin/page/dashboard/insurance/insurance.jsx';
 import AdminSetting from './admin/page/dashboard/adminsetting.jsx';
 import SettingBroker from './broker/page/dashboard/setting.jsx';
 import SubscriptionBroker from './broker/page/dashboard/subscription.jsx';
-import PricementBroker from './broker/layouts/Price/Price.jsx';
+//import PricementBroker from './broker/layouts/Price/Price.jsx';
 import Pricebroker from './broker/page/dashboard/price.jsx';
 import Brokerprofile from './broker/page/dashboard/profile/brokerprofile.jsx';
 import Editprofile from './broker/page/dashboard/profile/editprofile.jsx';
@@ -57,47 +57,50 @@ import CarBroker from './pages/CarBroker.jsx';
 import BrokerContact from './pages/borkercontact.jsx';
 import Navbar from './components/Navbar/Navbar.js';
 
-
 /* Importing Components */
 
 function App() {
-
   return (
     <div className='App'>
       <Router>
         <Routes>
-          <Route element={(<><Navbar/> <Outlet/></>)}>
-          <Route path='/' element={<OnboardingPage />} />
-        
-          <Route path='/home' element={<LandingPage />} />
-          <Route path='/chat' element={<Chat />} />
-          <Route path='/signin' element={<SignIn />} />
-          <Route path='/signup' element={<SignUp />} />
-          <Route path='/about' element={<AboutYou />} />
-          <Route path='/forget' element={<ForgetPass />} />
-          <Route path='/about-us' element={<AboutUs />} />
-          <Route path='/feature' element={<FeatureSec />} />
-          <Route path='/car-category' element={<CarCategory />} />
-          <Route path='/car-listing' element={<CarListing />} />
-          <Route path='/car-apprasial' element={<CarApprasial />} />
-          <Route path='/car-insurance' element={<CarInsur />} />
-          <Route path='/price' element={<Prices />} />
-          <Route path='/payment' element={<Payment />} />
-          <Route path='/car-quota' element={<CarQuota />} />
-          <Route path='/car-quota-insurance' element={<CarInsurQ />} />
-          <Route path='/success' element={<Success />} />
-          <Route path='/car-details' element={<CarDetails />} />
-          <Route path='/car-broker' element={<CarBroker />} />
-          <Route path='/broker-contact' element={<BrokerContact />} />
-          {/* <Route path="/stripe" element={<Stripe/>}/> */}
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/dashboard/home' element={<Home />} />
-          <Route path='/dashboard/seller-profile' element={<Profiles />} />
-          <Route path='/dashboard/seller-product' element={<List />} />
-          <Route path='/Viewproduct' element={<Viewproduct />} />
-          <Route path='/Addproduct' element={<Addproduct />} />
-         
-        </Route>
+          <Route
+            element={
+              <>
+                <Navbar /> <Outlet />
+              </>
+            }
+          >
+            <Route path='/' element={<OnboardingPage />} />
+
+            <Route path='/home' element={<LandingPage />} />
+            <Route path='/chat' element={<Chat />} />
+            <Route path='/signin' element={<SignIn />} />
+            <Route path='/signup' element={<SignUp />} />
+            <Route path='/about' element={<AboutYou />} />
+            <Route path='/forget' element={<ForgetPass />} />
+            <Route path='/about-us' element={<AboutUs />} />
+            <Route path='/feature' element={<FeatureSec />} />
+            <Route path='/car-category' element={<CarCategory />} />
+            <Route path='/car-listing' element={<CarListing />} />
+            <Route path='/car-apprasial' element={<CarApprasial />} />
+            <Route path='/car-insurance' element={<CarInsur />} />
+            <Route path='/price' element={<Prices />} />
+            <Route path='/payment' element={<Payment />} />
+            <Route path='/car-quota' element={<CarQuota />} />
+            <Route path='/car-quota-insurance' element={<CarInsurQ />} />
+            <Route path='/success' element={<Success />} />
+            <Route path='/car-details' element={<CarDetails />} />
+            <Route path='/car-broker' element={<CarBroker />} />
+            <Route path='/broker-contact' element={<BrokerContact />} />
+            {/* <Route path="/stripe" element={<Stripe/>}/> */}
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/dashboard/home' element={<Home />} />
+            <Route path='/dashboard/seller-profile' element={<Profiles />} />
+            <Route path='/dashboard/seller-product' element={<List />} />
+            <Route path='/Viewproduct' element={<Viewproduct />} />
+            <Route path='/Addproduct' element={<Addproduct />} />
+          </Route>
           {/* Seller */}
           <Route path='/dashboard/analysis' element={<Analytic />} />
           <Route path='/dashboard/history' element={<History />} />
