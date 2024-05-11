@@ -1,21 +1,14 @@
-import BackgroundImage from "../assets/backgroundimage.jpg";
+import BackgroundImage from "../assets/image/backgroundimage.webp";
 import { Link } from "react-router-dom";
 function About() {
   return (
-    <div className=" h-screen relative">
+    <div className=" h-screen relative" style={{
+      backgroundImage: `url(${BackgroundImage})`, 
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}>
       <div className="flex flex-col items-center justify-center relative ">
-        <img
-          src={BackgroundImage}
-          alt="background"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-blue-900 opacity-75" />
-        <h1
-          className="absolute left-4 top-4 object-contain font-bold text-2xl text-accent-white mx-16
-        "
-        >
-          Auto Buy
-        </h1>
+          
         <div className="flex justify-center items-center h-screen ">
           <div className="-mt-20 w-96 h-4/6 z-10 bg-accent-white rounded-md">
             <h2 className="mb-4 text-primary-normal text-lg font-semibold mt-5">

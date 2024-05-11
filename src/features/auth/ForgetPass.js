@@ -1,8 +1,12 @@
-import BackgroundImage from '../../assets/backgroundimage.jpg';
+import BackgroundImage from '../../assets/image/backgroundimage.webp';
 
 function Forget() {
   return (
-    <div className=' h-screen relative'>
+    <div className=' relative'style={{
+      backgroundImage: `url(${BackgroundImage})`, 
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}>
       <div className='flex flex-col items-center justify-center relative'>
         <img
           src={BackgroundImage}

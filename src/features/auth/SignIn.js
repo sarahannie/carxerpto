@@ -3,7 +3,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
 import { FaApple } from 'react-icons/fa';
-import BackgroundImage from '../../assets/backgroundimage.jpg';
+import BackgroundImage from '../../assets/image/backgroundimage.webp';
 import Logo from '../../assets/Logo1.png';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';

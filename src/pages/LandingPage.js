@@ -6,28 +6,33 @@ import Cardholder from "../components/cardholder/cardholder";
 import Brands from "../components/Brands/Brands";
 import style from './landingpage.module.css'
 import CategoryGrid from "../components/CategoryGrid.js";
+import { Button } from '@material-tailwind/react';
+import image1 from '../assets/image/bmw1.webp'
 
 function LandingPage() {
   return (
     <div>
       <section className="w-full h-full overflow-x-hidden ">
         <section className="relative">
-        <div className={`h-screen flex items-center  ${style.header} `}>
-  <div className="px-4 mx-auto lg:mt-16 lg:mb-16 max-w-7xl mt-4 mb-[180px]">
-    <div className="text-center">
-      <h1 className="lg:text-4xl font-extrabold tracking-tight text-gray-200 text-3xl md:text-6xl font-title">
-        <span className="block"> Welcome to Carxperto</span>
-        
-      </h1>
-      <p className="max-w-md mx-auto mt-3 text-base text-gray-300 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-        Innovative technology that brings you closer to your dream car 
-      </p>
-      <div className="max-w-md mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
-        
+        <div className="flex px-4 lg:mt-16 ">
+        <div className="flex flex-col justify-start items-start w-[40%] pr-8">
+          <h1 className="text-[42px] text-primary-normal font-bold mb-5 pl-1">
+            Welcome to CarXerpto
+            <br />
+            Your Car Marketplace
+          </h1>
+          <p className="text-gray-600 text-start w-[100%] text-[15px] pl-3">
+            At CarXerpto, we believe that finding your dream car should be an exhilarating journey, not a tedious task. Whether you're a buyer, seller, or simply an enthusiast, our platform is designed to make car transactions seamless and exciting.
+          </p>
+          <div className="mt-6 space-x-4 flex gap-1 ml-3">
+            <Button className="bg-primary-normal text-white px-[50px]">Buy Your Car</Button>
+            <Button className="bg-transparent text-secondary-dark border-2 border-secondary-dark px-[40px]">Meet an Xerpto</Button>
+          </div>
+        </div>
+        <div className="w-[60%]">
+          <img src={image1} alt="Hero Section" className="w-[50rem] px-[70px]" />
+        </div>
       </div>
-    </div>
-  </div>
-</div>
           <SearchComponent />
           <div className="mt-36">
             <h1 className="text-4xl text-primary-normal font-bold mb-5">Featured Listings</h1>

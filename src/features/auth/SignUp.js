@@ -1,5 +1,5 @@
 import React from 'react';
-import BackgroundImage from '../../assets/backgroundimage.jpg';
+import BackgroundImage from '../../assets/image/backgroundimage.webp';
 import { FaGoogle } from 'react-icons/fa';
 import { FaApple } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
