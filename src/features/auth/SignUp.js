@@ -161,12 +161,12 @@ function SignUp() {
               </Button>
               {/* </Link> */}
             </form>
-            <div className='flex items-center mx-10 mt-6'>
-              <hr class='flex-grow border-t-2 border-gray-400 mr-2' />
+            <div className='flex items-center mx-9 mt-6'>
+              <hr class='flex-grow border-t-2 border-gray-400 mr-2 ' />
               <span class='text-gray-500'>OR</span>
               <hr class='flex-grow border-t-2 border-gray-400 ml-2' />
             </div>
-            <div className='flex flex-col items-center mx-10 gap-3 mt-3'>
+            <div className='flex flex-col items-center mx-9 gap-3 mt-3'>
               <Button type='submit' className='flex justify-center mx-10 items-center gap-4 w-80 py-2 px-4 border border-x-2 border-y-2 rounded-md font-semibold text-center text-base text-gray-900 white bg-transparent hover:bg-secondary-normalhover hover:text-accent-white'>
                     <FaGoogle className='' />
                     SignIn with Google
@@ -176,8 +176,8 @@ function SignUp() {
             </div>
           </div>
         </div>
-        <div className='z-10 flex flex-col items-center mx-10 lg:-mt-20 mb-5'>
-          <h2 className='mb-8 text-accent-white text-lg font-semibold mt-8 '>
+        <div className='z-10 flex flex-col items-center mx-10 lg:-mt-20 -mt-2 mb-5'>
+          <h2 className='mb-8 text-accent-white text-lg font-semibold lg:mt-8 -mt-2 mb-3 '>
             Already have an account?
           </h2>
           <Button
