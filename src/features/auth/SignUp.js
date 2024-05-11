@@ -9,15 +9,14 @@ import { useRegisterMutation } from '../../app/api/authApi';
 import { Button } from '@material-tailwind/react';
 
 
-const roles = ['buyer', 'seller', 'xerpto'];
+
 function SignUp() {
   const [signUp] = useRegisterMutation();
 
   const formik = useFormik({
     initialValues: {
       email: '',
-      password: '',
-      role: ''
+      password: ''
     },
     validationSchema: Yup.object().shape({
       email: Yup.string()
@@ -53,7 +52,7 @@ function SignUp() {
         <div className='absolute inset-0 bg-blue-900 opacity-75' />
        
         <div className='flex justify-center items-center h-screen mt-[50px]'>
-          <div className='-mt-20 w-96 h-[540px] z-10 bg-accent-white rounded-md'>
+          <div className='-mt-20 w-96 h-[480px] z-10 bg-accent-white rounded-md'>
             <h2 className='mb-4 text-primary-normal text-lg font-semibold mt-5'>
               Sign Up to get Started
             </h2>
@@ -79,28 +78,6 @@ function SignUp() {
                 {formik.touched.email && formik.errors.email ? (
                 <div className='text-red-300 text-start text-xs '>{formik.errors.email}</div>
               ) : null}
-              </div>
-              <div className='mx-10 mb-4 relative'>
-                <label htmlFor='role' className='absolute top-0 left-2 -mt-2 px-1 text-xs text-gray-400 bg-white '>
-                  Select Role:
-                </label>
-                <select
-                  id='role'
-                  name='role'
-                  value={formik.values.role}
-                  onChange={formik.handleChange}
-                  className='border border-gray-400 text-xs px-3 py-2 rounded w-80 outline-none'
-                >
-                  <option value=''>Select a role</option>
-                  {roles.map((role) => (
-                    <option key={role} value={role}>
-                      {role}
-                    </option>
-                  ))}
-                  {formik.touched.role && formik.errors.role ? (
-                <div className='text-red-300 text-start text-xs'>{formik.errors.role}</div>
-              ) : null}
-                </select>
               </div>
               
               <div className='mx-10 mb-4 relative'>
@@ -182,7 +159,7 @@ function SignUp() {
           </h2>
           <Button
            className='w-40 bg-accent-white text-gray-900 py-3 rounded hover:bg-secondary-normalhover hover:text-accent-white transition duration-300'>
-            <Link to='/login'>Log In</Link>
+            <Link to='/signin'>Log In</Link>
           </Button>
          
         </div>
