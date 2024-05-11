@@ -8,13 +8,16 @@ import * as Yup from 'yup';
 import { useRegisterMutation } from '../../app/api/authApi';
 import { Button } from '@material-tailwind/react';
 
+
+const roles = ['buyer', 'seller', 'xerpto'];
 function SignUp() {
   const [signUp] = useRegisterMutation();
 
   const formik = useFormik({
     initialValues: {
       email: '',
-      password: ''
+      password: '',
+      role: ''
     },
     validationSchema: Yup.object().shape({
       email: Yup.string()
@@ -29,7 +32,8 @@ function SignUp() {
       try {
         await signUp({
           email: values.email,
-          password: values.password
+          password: values.password,
+          role: values.role
         }).unwrap();
         resetForm();
         alert('Sign up successful!');
@@ -40,27 +44,21 @@ function SignUp() {
     }
   });
   return (
-    <div className=' h-screen relative'>
-      <div className='flex flex-col items-center justify-center relative'>
-        <img
-          src={BackgroundImage}
-          alt='background'
-          className='absolute inset-0 h-full w-full object-cover'
-        />
+    <div className='  relative'  style={{
+      backgroundImage: `url(${BackgroundImage})`, 
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}>
+      <div className='flex flex-col items-center justify-center relative' >
         <div className='absolute inset-0 bg-blue-900 opacity-75' />
-        <h1
-          className='absolute left-4 top-4 object-contain font-bold text-2xl text-accent-white mx-16
-        '
-        >
-          Auto Buy
-        </h1>
-        <div className='flex justify-center items-center h-screen'>
-          <div className='-mt-20 w-96 h-[480px] z-10 bg-accent-white rounded-md'>
+       
+        <div className='flex justify-center items-center h-screen mt-[50px]'>
+          <div className='-mt-20 w-96 h-[540px] z-10 bg-accent-white rounded-md'>
             <h2 className='mb-4 text-primary-normal text-lg font-semibold mt-5'>
               Sign Up to get Started
             </h2>
-            <form className='relative' onSubmit={formik.handleSubmit}>
-              <div className='mx-10 flex items-center mb-4 relative'>
+            <form className='relative flex flex-col justify-center ' onSubmit={formik.handleSubmit}>
+              <div className='mx-10  relative mb-4'>
                 <label
                   htmlFor='email'
                   className='absolute top-0 left-2 -mt-2 px-1 text-xs text-gray-400 bg-white'
@@ -78,11 +76,34 @@ function SignUp() {
                   placeholder='example@gmail.com'
                   className='border border-gray-400 text-xs px-3 py-3 rounded w-80 outline-none'
                 />
-              </div>
-              {formik.touched.email && formik.errors.email ? (
-                <span className='text-red-300 text-start pl-[20px]'>{formik.errors.email}</span>
+                {formik.touched.email && formik.errors.email ? (
+                <div className='text-red-300 text-start text-xs '>{formik.errors.email}</div>
               ) : null}
-              <div className='mx-10 flex items-center mb-4 relative'>
+              </div>
+              <div className='mx-10 mb-4 relative'>
+                <label htmlFor='role' className='absolute top-0 left-2 -mt-2 px-1 text-xs text-gray-400 bg-white '>
+                  Select Role:
+                </label>
+                <select
+                  id='role'
+                  name='role'
+                  value={formik.values.role}
+                  onChange={formik.handleChange}
+                  className='border border-gray-400 text-xs px-3 py-2 rounded w-80 outline-none'
+                >
+                  <option value=''>Select a role</option>
+                  {roles.map((role) => (
+                    <option key={role} value={role}>
+                      {role}
+                    </option>
+                  ))}
+                  {formik.touched.role && formik.errors.role ? (
+                <div className='text-red-300 text-start text-xs'>{formik.errors.role}</div>
+              ) : null}
+                </select>
+              </div>
+              
+              <div className='mx-10 mb-4 relative'>
                 <label
                   htmlFor='password'
                   className='absolute top-0 left-2 -mt-2 px-1 text-xs text-gray-400 bg-white'
@@ -99,11 +120,12 @@ function SignUp() {
                   required
                   className='border border-gray-400 text-xs px-3 py-3 rounded w-80 outline-none'
                 />
-              </div>
-              {formik.touched.password && formik.errors.password ? (
-                <div className='text-red-300 text-start'>{formik.errors.password}</div>
+                {formik.touched.password && formik.errors.password ? (
+                <div className='text-red-300 text-start text-xs'>{formik.errors.password}</div>
               ) : null}
-              <div className='mx-10 flex items-center mb-4 relative'>
+              </div>
+              
+              <div className='mx-10   mb-4 relative'>
                 <label
                   htmlFor='password'
                   className='absolute top-0 left-2 -mt-2 px-1 text-xs text-gray-400 bg-white'
@@ -120,11 +142,12 @@ function SignUp() {
                   required
                   className='border border-gray-400 text-xs px-3 py-3 rounded w-80 outline-none'
                 />
-              </div>
-              {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-                <div className='text-red-300 text-start'>{formik.errors.confirmPassword}</div>
+                  {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
+                <div className='text-red-300 text-start text-xs'>{formik.errors.confirmPassword}</div>
               ) : null}
-              <label class='flex items-center mx-10 mb-5'>
+              </div>
+            
+              <label class='flex items-center justify-start mx-10 mb-5'>
                 <input
                   type='checkbox'
                   className='form-checkbox bg-transparent text-gray-900 mr-2'
@@ -133,7 +156,7 @@ function SignUp() {
                 <span className='text-sm text-gray-900 font-extralight'>Remind me always</span>
               </label>
               {/* <Link to="/about"> */}
-              <Button type='submit' className='w-80 bg-primary-normal text-white py-3 rounded hover:bg-primary-normalhover transition duration-300'>
+              <Button type='submit' className='w-80 mx-10 bg-primary-normal text-white py-3 rounded hover:bg-primary-normalhover transition duration-300 hover:bg-secondary-normalhover hover:text-accent-white transition duration-300'>
                 Sign up
               </Button>
               {/* </Link> */}
@@ -144,7 +167,7 @@ function SignUp() {
               <hr class='flex-grow border-t-2 border-gray-400 ml-2' />
             </div>
             <div className='flex flex-col items-center mx-10 gap-3 mt-3'>
-              <Button type='submit' className='flex justify-center items-center gap-4 w-80 py-2 px-4 border border-x-2 border-y-2 rounded-md font-semibold text-center text-base text-gray-900 white bg-transparent hover:bg-secondary-normalhover hover:text-accent-white'>
+              <Button type='submit' className='flex justify-center mx-10 items-center gap-4 w-80 py-2 px-4 border border-x-2 border-y-2 rounded-md font-semibold text-center text-base text-gray-900 white bg-transparent hover:bg-secondary-normalhover hover:text-accent-white'>
                     <FaGoogle className='' />
                     SignIn with Google
               </Button>
@@ -154,15 +177,14 @@ function SignUp() {
           </div>
         </div>
         <div className='z-10 flex flex-col items-center mx-10 lg:-mt-20 mb-5'>
-          <h2 className='mb-4 text-accent-white text-lg font-semibold '>
+          <h2 className='mb-8 text-accent-white text-lg font-semibold mt-8 '>
             Already have an account?
           </h2>
-          <button
-            type='submit'
-            className='w-40 bg-accent-white text-gray-900 py-3 rounded hover:bg-secondary-normalhover hover:text-accent-white transition duration-300'
-          >
-            Log In
-          </button>
+          <Button
+           className='w-40 bg-accent-white text-gray-900 py-3 rounded hover:bg-secondary-normalhover hover:text-accent-white transition duration-300'>
+            <Link to='/login'>Log In</Link>
+          </Button>
+         
         </div>
       </div>
     </div>
