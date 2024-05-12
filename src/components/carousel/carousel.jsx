@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useRef} from 'react'
 import style from './carouse.module.css'
 import Banner from '../../assets/banner1.jpg'
 import Banner2 from '../../assets/banner2.jpg'
@@ -6,8 +6,10 @@ import Banner3 from '../../assets/banner3.jpg'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { CarPost } from "../DummyData";
+import { keyboard } from '@testing-library/user-event/dist/keyboard'
 
 const Carousels = ({ deviceType }) => {
+  const carouselRef = useRef(null);
     
 const responsive = {
   desktop: {
@@ -26,9 +28,18 @@ const responsive = {
     slidesToSlide: 1 // optional, default to 1.
   }
 };
-  return (
 
-    <Carousel
+
+
+
+
+  return (
+<div className='mt-[200px]'>
+<div className="flex justify-between ">
+    <h1 className="text-4xl text-primary-normal font-bold mb-5">Featured Listings</h1>
+    <p className="text-[#002C52] text-[15px] font-bold">   </p>
+</div>
+<Carousel
     swipeable={false}
     draggable={false}
     showDots={true}
@@ -44,11 +55,14 @@ const responsive = {
     deviceType={deviceType}
     dotListClass="custom-dot-list-style"
     itemClass="carousel-item-padding-40-px"
+    className="grid  gap-3 mt-2" 
+    arrows={false}
+    carouselRef={(el) => (this.Carousel = el)}
 >
 {CarPost.map((item) => (
           <div
             key={item.id}
-            className="border border-slate-300 bg-white shadow-md"
+            className="border border-slate-300 bg-white shadow-md w-[350px]"
           >
             <div className="w-full h-[177px]">
               <img
@@ -89,6 +103,8 @@ const responsive = {
           </div>
         ))}
 </Carousel>
+</div>
+   
     
     
   )

@@ -34,11 +34,12 @@ function LandingPage() {
         </div>
       </div>
           <SearchComponent />
-          <div className="mt-36">
-            <h1 className="text-4xl text-primary-normal font-bold mb-5">Featured Listings</h1>
-          </div>
+         
         </section>
+        <div className="mx-auto ml-12">
         <Carousels />
+        </div>
+        
         <div className="mt-24 mb-12">
             <h1 className="text-4xl text-primary-normal font-bold mb-5">Latest Arrivals</h1>
         </div>

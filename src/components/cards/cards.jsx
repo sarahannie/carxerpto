@@ -18,7 +18,7 @@ const Cards = () => {
     useEffect(() => {
         const fetchCars = async () => {
             try {
-                const response = await axios.get('https://auto-buy-opal.vercel.app/cars');
+                const response = await axios.get('https://api-v1.carxperto.com/cars');
                 setCars(response.data);
                 console.log(response.data);
             } catch (error) {
