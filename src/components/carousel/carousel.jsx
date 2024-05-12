@@ -34,7 +34,7 @@ const responsive = {
 
 
   return (
-<div className='mt-[200px]'>
+<div className='lg:mt-[200px] mt-[350px]'>
 <div className="flex justify-between ">
     <h1 className="text-4xl text-primary-normal font-bold mb-5">Featured Listings</h1>
     <p className="text-[#002C52] text-[15px] font-bold">   </p>

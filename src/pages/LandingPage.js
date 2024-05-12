@@ -14,9 +14,9 @@ function LandingPage() {
     <div>
       <section className="w-full h-full overflow-x-hidden ">
         <section className="relative">
-        <div className="flex px-4 lg:mt-16 ">
-        <div className="flex flex-col justify-start items-start w-[40%] pr-8">
-          <h1 className="text-[42px] text-primary-normal font-bold mb-5 pl-1">
+        <div className="flex lg:flex-row flex-col  px-4 lg:mt-8 text-center lg:justify-start lg:items-start justify-center items-center mt-16">
+        <div className="flex flex-col lg:justify-start lg:items-start lg:w-[40%] pr-8 w-[100%] justify-center items-center ">
+          <h1 className="lg:text-[42px] text-primary-normal font-bold mb-5 pl-1 text-[23px] ">
             Welcome to CarXerpto
             <br />
             Your Car Marketplace
@@ -25,18 +25,18 @@ function LandingPage() {
             At CarXerpto, we believe that finding your dream car should be an exhilarating journey, not a tedious task. Whether you're a buyer, seller, or simply an enthusiast, our platform is designed to make car transactions seamless and exciting.
           </p>
           <div className="mt-6 space-x-4 flex gap-1 ml-3">
-            <Button className="bg-primary-normal text-white px-[50px]">Buy Your Car</Button>
-            <Button className="bg-transparent text-secondary-dark border-2 border-secondary-dark px-[40px]">Meet an Xerpto</Button>
+            <Button className="bg-primary-normal text-white lg:px-[50px] px-[10px]">Buy Your Car</Button>
+            <Button className="bg-transparent text-secondary-dark border-2 border-secondary-dark lg:px-[40px] px-[10px]">Meet an Xerpto</Button>
           </div>
         </div>
-        <div className="w-[60%]">
+        <div className="w-[60%] lg:block    sm:hidden">
           <img src={image1} alt="Hero Section" className="w-[50rem] px-[70px]" />
         </div>
       </div>
           <SearchComponent />
          
         </section>
-        <div className="mx-auto ml-12">
+        <div className="mx-auto lg:ml-12 ml-4">
         <Carousels />
         </div>
         

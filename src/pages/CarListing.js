@@ -4,12 +4,13 @@ import Hero from "../assets/carList.jpg";
 import BrandLink from "../components/BrandGrid.js";
 import List from "../components/ListingCard.js";
 import CategoryGrid from "../components/CategoryGrid.js";
+import SearchComponent from "../components/Search/Search.js";
 
 function CarListing() {
   return (
     <section className="">
 
-      <div className="w-full h-[800px] relative  bg-gradient-to-t from-[#002C52] to-[#034885] inset-0 opacity-85  bg-cover bg-no-repeat flex items-center justify-center">
+      <div className="w-full h-[500px] relative  bg-gradient-to-t from-[#002C52] to-[#034885] inset-0 opacity-85  bg-cover bg-no-repeat flex items-center justify-center">
         <img
           src={Hero}
           alt="bannerIcon"
@@ -27,81 +28,9 @@ function CarListing() {
             Find the Perfect Car at the Best Price
           </p>
         </div>
-        <div className="flex w-[95%] flex-col sm:justify-between lg:flex-row lg:flex items-center bg-[#e6ebf0] lg:w-[1280px] h-[106px] rounded z-50  absolute top-[500px] md:top-[400px]">
-          <section className="w-full lg:w-[60%] text-start">
-            <div className=" lg:w-[850px]  mx-auto flex items-center justify-between lg:gap-4 text-start">
-              <form className="flex flex-col lg:w-[182px] text-[#36454F] font-normal">
-                <label className="text-[12px] md:text-[16px] "> Category</label>
-                <select className="bg-transparent outline-none text-[12px] md:text-[16px]">
-                  <option
-                    value=""
-                    className="text-[10px] text-[#36454F] font-medium"
-                  >
-                    SUV
-                  </option>
-                </select>
-              </form>
-              <hr className="w-[0.1px] h-[50px] border border-gray-400 hidden sm:block md:block" />
-              <form className="flex flex-col lg:w-[182px]">
-                <label className="text-[12px] md:text-[16px]">Make</label>
-                <select className="bg-transparent outline-none text-[12px] md:text-[16px]">
-                  <option
-                    value=""
-                    className="text-[12px] text-[#36454F] font-medium"
-                  >
-                    Audi
-                  </option>
-                </select>
-              </form>
-              <hr className="w-[0.1px] h-[50px] border border-gray-400 hidden sm:block md:block" />
-              <form className="flex flex-col md:w-[182px]">
-                <label className="text-[12px] md:text-[16px]"> Body Type</label>
-                <select className="bg-transparent outline-none text-[12px] md:text-[16px]">
-                  <option
-                    value=""
-                    className="text-[12px] text-[#36454F] font-medium"
-                  >
-                    Compact SUVs
-                  </option>
-                </select>
-              </form>
-              <hr className="w-[0.1px] h-[50px] border border-gray-400 hidden sm:block md:block" />
-              <form className="flex flex-col lg:w-[182px]">
-                <label className="text-[12px] md:text-[16px]">
-                  {" "}
-                  Price range
-                </label>
-                <select className="bg-transparent outline-none text-[12px] md:text-[16px]">
-                  <option
-                    value=""
-                    className="text-[12px] text-[#36454F] font-medium"
-                  >
-                    $10000
-                  </option>
-                </select>
-              </form>
-              <hr className="w-[0.1px] h-[50px] border border-gray-400 hidden sm:block md:block" />
-              <form className="flex flex-col lg:w-[182px]">
-                <label className="text-[12px] md:text-[16px]"> Year</label>
-                <select className="bg-transparent outline-none text-[12px] md:text-[16px]">
-                  <option
-                    value=""
-                    className="text-[12px] text-[#36454F] font-medium"
-                  >
-                    2019
-                  </option>
-                </select>
-              </form>
-            </div>
-          </section>
-          <div className="w-full lg:w-[30%] mt-3 lg:mt-0 md:pb-4 sm:pb-4">
-            <button className=" w-[50%] lg:w-[30%]  py-2 px-6 rounded-md text-base lg:ml-64 text-accent-white bg-primary-normal hover:bg-secondary-normalhover hover:text-accent-white cursor-pointer">
-              Search
-            </button>
-          </div>
-        </div>
+        <SearchComponent />
       </div>
-      <div className="flex flex-col lg:h-[322.58px] mt-6  max-w-[1280px] mx-auto">
+      <div className="flex flex-col lg:h-[322.58px] mt-14  max-w-[1280px] mx-auto">
         <h3 className="text-[36px] text-[#003B6D] font-bold">Trusted Brand</h3>
         <BrandLink />
       </div>
