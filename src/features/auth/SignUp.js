@@ -7,6 +7,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useRegisterMutation } from '../../app/api/authApi';
 import { Button } from '@material-tailwind/react';
+import { toast } from 'react-toastify';
+import { Navigate } from 'react-router-dom/dist';
 
 
 
@@ -35,8 +37,10 @@ function SignUp() {
           role: values.role
         }).unwrap();
         resetForm();
-        alert('Sign up successful!');
+        toast.success('Sign up successful!');
+       return <Navigate to="/signin" />;
       } catch (error) {
+        toast.error(`Sign up failed: ${error.data.msg}`);
         console.log(error);
         console.error('Sign up failed:', error);
       }

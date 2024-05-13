@@ -11,12 +11,16 @@ import { useLoginMutation } from '../../app/api/authApi';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../app/slice/authSlice';
 import { Button } from '@material-tailwind/react';
+import { toast } from 'react-toastify';
+import {  useNavigate } from 'react-router-dom/dist';
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -37,9 +41,12 @@ function SignIn() {
       try {
         const response = await login({ email: values.email, password: values.password }).unwrap();
         dispatch(loginUser(response));
+        toast.success('Sign in successful!');
         resetForm();
-        alert('Sign in successful!');
+       navigate('/home');
       } catch (error) {
+        toast.error(` ${error.data.error} and Email`);
+        console.log(error);
         console.error('Login failed:', error);
       }
     }
