@@ -8,12 +8,13 @@ import * as Yup from 'yup';
 import { useRegisterMutation } from '../../app/api/authApi';
 import { Button } from '@material-tailwind/react';
 import { toast } from 'react-toastify';
-import { Navigate } from 'react-router-dom/dist';
+import { useNavigate } from 'react-router-dom/dist';
 
 
 
 function SignUp() {
   const [signUp] = useRegisterMutation();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -38,7 +39,7 @@ function SignUp() {
         }).unwrap();
         resetForm();
         toast.success('Sign up successful!');
-       return <Navigate to="/signin" />;
+        navigate('/home');
       } catch (error) {
         toast.error(`Sign up failed: ${error.data.msg}`);
         console.log(error);

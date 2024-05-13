@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const SearchComponent = () => {
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState([]);
   const [make, setMake] = useState("");
   const [bodyType, setBodyType] = useState("");
   const [year, setYear] = useState("");
   const [price, setPrice] = useState("");
 
+  useEffect(()=>{
+    fetch("https://api-v1.carxperto.com/categories")
+    .then(res => res.json())
+    .then(category => setCategory(category))
+    console.log(category)
+
+  },[])
   const handleSearch = () => {
     // Implement your search logic here
     console.log("Searching...");
