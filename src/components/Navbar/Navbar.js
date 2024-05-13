@@ -5,9 +5,18 @@ import usercircle from "../../assets/UserCircle.png";
 import Logo from "../../assets/Logo2.png"
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { Button } from "@material-tailwind/react";
+import { setCredentials,logoutUser } from '../../app/slice/authSlice'
+import { useDispatch, useSelector } from "react-redux";
+
+
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+ 
+
   const menuRef = useRef(null);
 
   const toggleMenu = () => {
@@ -76,17 +85,40 @@ function Navbar() {
             </Link>
             
             <Features className="" />
-            <Button className=" lg:hidden text-accent-white bg-primary-normal hover:bg-secondary-normalhover hover:text-accent-white">
-            <Link
-              to="/signin"
-            >
-              Sign In
-            </Link>
-          </Button>
+            {user ? (
+  
+  <Button className=" lg:hidden text-accent-white bg-primary-normal hover:bg-secondary-normalhover hover:text-accent-white" onClick={() => dispatch(logoutUser())}>
+  <Link
+    to="/signup"
+  >
+    Logout
+  </Link>
+  </Button>
+) : (
+  <Button className=" lg:hidden text-accent-white bg-primary-normal hover:bg-secondary-normalhover hover:text-accent-white">
+  <Link
+    to="/signin"
+  >
+    Sign Up
+  </Link>
+</Button>
+)}
+           
+          
           </div>
         </section>
 
         <section className="hidden lg:flex lg:flex-row items-center gap-4">
+        {user ? (
+  
+              <Button className="text-accent-white bg-primary-normal hover:bg-secondary-normalhover hover:text-accent-white" onClick={() => dispatch(logoutUser())}>
+              <Link
+                to="/signup"
+              >
+                Logout
+              </Link>
+              </Button>
+            ) : (
           <Button className="text-accent-white bg-primary-normal hover:bg-secondary-normalhover hover:text-accent-white">
           <Link
             to="/signup"
@@ -94,6 +126,8 @@ function Navbar() {
             Sign Up
           </Link>
           </Button>
+            )}
+          
          
           <Link to='/profile'>
           <img
