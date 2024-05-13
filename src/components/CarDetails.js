@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar/Navbar";
 import { SiCmake } from "react-icons/si";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { FaFacebookMessenger } from "react-icons/fa";
-import CardD from "./Card_Slider/CarDetailsSlider";
+import CardD from "./Card_slider/CarDetailsSlider";
 function CarDetails() {
   return (
     <section>

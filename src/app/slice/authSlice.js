@@ -5,7 +5,8 @@ const initialState = {
   token: '',
   isAuthenticated: false,
   forgotEmail: '',
-  forgotEmailToken: ''
+  forgotEmailToken: '',
+  status: null
 };
 
 export const authSlice = createSlice({

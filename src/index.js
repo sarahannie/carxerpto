@@ -9,6 +9,8 @@ import { MaterialTailwindControllerProvider } from '../src/seller/context';
 import { MaterialTailwindControllerProviders } from '../src/admin/context';
 import { MaterialTailwindControllerProvidere } from './broker/context';
 
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -17,6 +19,7 @@ root.render(
         <MaterialTailwindControllerProvider>
           <MaterialTailwindControllerProvidere>
             <Provider store={store}>
+            
               <App />
             </Provider>
           </MaterialTailwindControllerProvidere>

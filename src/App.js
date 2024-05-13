@@ -56,12 +56,16 @@ import Brokerhome from './broker/page/dashboard/home/brokerhome.jsx';
 import CarBroker from './pages/CarBroker.jsx';
 import BrokerContact from './pages/borkercontact.jsx';
 import Navbar from './components/Navbar/Navbar.js';
+import ProtectedRoute from './app/api/protectedroute.js';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 /* Importing Components */
 
 function App() {
   return (
     <div className='App'>
+      <ToastContainer />
       <Router>
         <Routes>
           <Route
@@ -72,11 +76,14 @@ function App() {
             }
           >
             <Route path='/' element={<OnboardingPage />} />
-
-            <Route path='/home' element={<LandingPage />} />
-            <Route path='/chat' element={<Chat />} />
             <Route path='/signin' element={<SignIn />} />
             <Route path='/signup' element={<SignUp />} />
+
+          <Route  element={<ProtectedRoute />} >
+            
+            <Route path='/home' element={<LandingPage />} />
+            <Route path='/chat' element={<Chat />} />
+            
             <Route path='/about' element={<AboutYou />} />
             <Route path='/forget' element={<ForgetPass />} />
             <Route path='/about-us' element={<AboutUs />} />
@@ -95,13 +102,14 @@ function App() {
             <Route path='/broker-contact' element={<BrokerContact />} />
             {/* <Route path="/stripe" element={<Stripe/>}/> */}
             <Route path='/profile' element={<Profile />} />
-            <Route path='/dashboard/home' element={<Home />} />
+            </Route>
+          </Route>
+          {/* Seller */}
+          <Route path='/dashboard/home' element={<Home />} />
             <Route path='/dashboard/seller-profile' element={<Profiles />} />
             <Route path='/dashboard/seller-product' element={<List />} />
             <Route path='/Viewproduct' element={<Viewproduct />} />
             <Route path='/Addproduct' element={<Addproduct />} />
-          </Route>
-          {/* Seller */}
           <Route path='/dashboard/analysis' element={<Analytic />} />
           <Route path='/dashboard/history' element={<History />} />
           <Route path='/dashboard/subscription' element={<Subscription />} />
@@ -130,6 +138,7 @@ function App() {
           <Route path='/dashboard/brokerhome' element={<Brokerhome />} />
         </Routes>
       </Router>
+      
     </div>
   );
 }
