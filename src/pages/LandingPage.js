@@ -8,6 +8,7 @@ import style from './landingpage.module.css'
 import CategoryGrid from "../components/CategoryGrid.js";
 import { Button } from '@material-tailwind/react';
 import image1 from '../assets/image/bmw1.webp'
+import { Link } from "react-router-dom/dist/index.js";
 
 function LandingPage() {
   return (
@@ -25,8 +26,8 @@ function LandingPage() {
             At CarXerpto, we believe that finding your dream car should be an exhilarating journey, not a tedious task. Whether you're a buyer, seller, or simply an enthusiast, our platform is designed to make car transactions seamless and exciting.
           </p>
           <div className="mt-6 space-x-4 flex gap-1 ml-3">
-            <Button className="bg-primary-normal text-white lg:px-[50px] px-[10px]">Buy Your Car</Button>
-            <Button className="bg-transparent text-secondary-dark border-2 border-secondary-dark lg:px-[40px] px-[10px]">Meet an Xerpto</Button>
+            <Button className="bg-primary-normal text-white lg:px-[50px] px-[10px]"><Link to="/car-listing"></Link>Buy Your Car</Button>
+            <Button className="bg-transparent text-secondary-dark border-2 border-secondary-dark lg:px-[40px] px-[10px]"><Link to="/car-broker"></Link>Meet an Xerpto</Button>
           </div>
         </div>
         <div className="w-[60%] lg:block    sm:hidden">
