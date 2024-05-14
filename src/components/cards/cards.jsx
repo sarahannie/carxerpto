@@ -31,13 +31,13 @@ const Cards = () => {
   return (
     <>
         {
-            car.map((cars) => {
+            car.map((cars, index) => {
                 return (
                     <div key={cars} className={style.container}>
                     <Link to='/car-details' >
-                    <div className={style.imgContainer}>
-                    <img src={cars.carImages} className={style.img} alt='' />
-                </div>
+                    
+                    <img src={cars.carImages[0].url} className={style.img} alt={`Car ${index + 1}`} />
+                <div className={style.containerBody}>
                 <div className={style.header}>
                     <h2 className={style.brand}>{cars.brand}</h2>
                     <h2 className={style.price}>{cars.price}</h2>
@@ -92,6 +92,8 @@ const Cards = () => {
                     <h2  className={style.detailView}>View Details</h2>
                     <FaRegBookmark className={style.icon}/>
                 </div>
+                </div> 
+                
                     </Link>
                     </div>
                 )

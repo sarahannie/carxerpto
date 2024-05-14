@@ -41,11 +41,11 @@ function LandingPage() {
         </div>
         
         <div className="mt-24 mb-12">
-            <h1 className="text-4xl text-primary-normal font-bold mb-5">Latest Arrivals</h1>
+            <h1 className="text-4xl text-primary-normal font-bold mb-5 text-start lg:ml-[85px]">Latest Arrivals</h1>
         </div>
         <Cardholder />
-        <div className="lg:max-w-[1122px]   mx-auto mt-9 mb-11 p-2 lg:p-0">
-            <h1 className="text-4xl text-primary-normal font-bold mb-5">Categories</h1>
+        <div className="lg:max-w-[1122px]   mx-auto mt-24 mb-11 p-2 lg:p-0">
+            <h1 className="text-4xl text-primary-normal font-bold mb-3 text-start lg:ml-[15px]">Categories</h1>
             <CategoryGrid/>
         </div>
 
