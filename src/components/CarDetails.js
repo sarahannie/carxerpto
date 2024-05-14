@@ -7,7 +7,6 @@ import CardD from "./Card_slider/CarDetailsSlider";
 function CarDetails() {
   return (
     <section>
-      <Navbar />
       <div className="w-full md:max-w-[1200px] md:mx-auto md:h-[499px] mt-8 mb-5">
         <CardD />
       </div>
