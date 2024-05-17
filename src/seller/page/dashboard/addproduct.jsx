@@ -22,7 +22,8 @@ export function Addproduct() {
       quantity: '',
       discount: Yup.boolean,
       discountType: '',
-      discountValue: ''
+      discountValue: '',
+      images: []
     },
     validationSchema: Yup.object().shape({
       name: Yup.string().required('value is required'),
@@ -40,10 +41,20 @@ export function Addproduct() {
       quantity: Yup.string().required('value is required'),
       discount: Yup.boolean().required('value is required'),
       discountType: Yup.string().required('value is required'),
-      discountValue: Yup.string().required('value is required')
+      discountValue: Yup.string().required('value is required'),
+      images: Yup.array()
+        .min(1, 'At least one image is required')
+        .of(
+          Yup.mixed()
+            .test('fileType', 'Unsupported file format', (value) =>
+              ['image/jpeg', 'image/png', 'image/gif'].includes(value?.type)
+            )
+            .test('fileSize', 'File too large', (value) => value && value.size <= 5000000)
+        )
     }),
-    onSubmit: (values, { restForm }) => {
-      restForm();
+    onSubmit: (values, { resetForm }) => {
+      resetForm();
+      console.log(values.images);
       alert(JSON.stringify(values, null, 2));
     }
   });
@@ -74,7 +85,7 @@ export function Addproduct() {
                 <div>
                   <button
                     type='submit'
-                    onSubmit={() => console.log('hello')}
+                    onClick={formik.handleSubmit}
                     className='flex items-center gap-2 bg-primary-normal text-white px-3 py-2 round-md '
                   >
                     {/* <IoMdAdd className="h-5 w-5" /> */}
@@ -98,6 +109,40 @@ export function Addproduct() {
                     label='Enter Product Name'
                     className='w-full'
                   />
+                </div>
+                <div className='w-full mb-4'>
+                  <label htmlFor='images'>Upload Images</label>
+                  <input
+                    id='images'
+                    name='images'
+                    type='file'
+                    multiple
+                    onChange={(event) => {
+                      const files = Array.from(event.currentTarget.files);
+                      formik.setFieldValue('images', [...formik.values.images, ...files]);
+                    }}
+                  />
+                </div>
+                <div>
+                  {formik.values.images &&
+                    formik.values.images.map((file, index) => (
+                      <div key={index}>
+                        <img
+                          src={URL.createObjectURL(file)}
+                          alt={`preview ${index}`}
+                          style={{ width: '100px', height: '100px' }}
+                        />
+                        <button
+                          type='button'
+                          onClick={() => {
+                            const newImages = formik.values.images.filter((_, i) => i !== index);
+                            formik.setFieldValue('images', newImages);
+                          }}
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    ))}
                 </div>
                 <div className='w-full mb-4'>
                   <label for='name' className='block text-primary-normal text-start pb-3'>
@@ -320,8 +365,11 @@ export function Addproduct() {
                 </div>
               </div>
 
-              <div class='w-[35%] h-[50%] p-6 border mb-7 shadow-lg rounded-lg'>
+              {/* <div class='w-[35%] h-[50%] p-6 border mb-7 shadow-lg rounded-lg'>
                 <div>
+                  <label for='name' className='block text-primary-normal text-start pb-3'>
+                    Upload image:
+                  </label>
                   <div
                     className='w-[300px]  relative border-2 border-gray-300 border-dashed rounded-lg p-6'
                     id='dropzone'
@@ -340,160 +388,22 @@ export function Addproduct() {
                           <span>to upload</span>
                           <input
                             id='file-upload'
-                            name='file-upload'
+                            name='images'
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.images}
                             type='file'
                             className='sr-only'
                             accept='image/png,image/jpeg,image/gif'
+                            multiple
                           />
                         </label>
                       </h3>
                       <p className='mt-1 text-xs text-gray-500'>PNG, JPG, GIF up to 3MB</p>
                     </div>
-                    <img src='' className='mt-4 mx-auto max-h-40 hidden' id='preview' />
                   </div>
                 </div>
-                <div className='flex gap-2 mt-5 '>
-                  <div>
-                    <div
-                      className='w-[150px]  relative border-2 border-gray-300 border-dashed rounded-lg p-6'
-                      id='dropzone'
-                    >
-                      <input
-                        type='file'
-                        className='absolute inset-0 w-full h-full opacity-0 z-50'
-                      />
-                      <div className='text-center'>
-                        <img
-                          className='mx-auto h-12 w-12'
-                          src='https://www.svgrepo.com/show/357902/image-upload.svg'
-                          alt=''
-                        />
-                        <h3 className='mt-2 text-sm font-medium text-gray-900'>
-                          <label htmlFor='file-upload' className='relative cursor-pointer'>
-                            <span>Drag and drop</span>
-                            <span className='text-indigo-600'> or browse</span>
-                            <span>to upload</span>
-                            <input
-                              id='file-upload'
-                              name='file-upload'
-                              type='file'
-                              className='sr-only'
-                              accept='image/png,image/jpeg,image/gif'
-                            />
-                          </label>
-                        </h3>
-                        <p className='mt-1 text-xs text-gray-500'>PNG, JPG, GIF up to 3MB</p>
-                      </div>
-                      <img src='' className='mt-4 mx-auto max-h-40 hidden' id='preview' />
-                    </div>
-                  </div>
-                  <div>
-                    <div
-                      className='w-[150px]  relative border-2 border-gray-300 border-dashed rounded-lg p-6'
-                      id='dropzone'
-                    >
-                      <input
-                        type='file'
-                        className='absolute inset-0 w-full h-full opacity-0 z-50'
-                      />
-                      <div className='text-center'>
-                        <img
-                          className='mx-auto h-12 w-12'
-                          src='https://www.svgrepo.com/show/357902/image-upload.svg'
-                          alt=''
-                        />
-                        <h3 className='mt-2 text-sm font-medium text-gray-900'>
-                          <label htmlFor='file-upload' className='relative cursor-pointer'>
-                            <span>Drag and drop</span>
-                            <span className='text-indigo-600'> or browse</span>
-                            <span>to upload</span>
-                            <input
-                              id='file-upload'
-                              name='file-upload'
-                              type='file'
-                              className='sr-only'
-                              accept='image/png,image/jpeg,image/gif'
-                            />
-                          </label>
-                        </h3>
-                        <p className='mt-1 text-xs text-gray-500'>PNG, JPG, GIF up to 3MB</p>
-                      </div>
-                      <img src='' className='mt-4 mx-auto max-h-40 hidden' id='preview' />
-                    </div>
-                  </div>
-                </div>
-                <div className='flex gap-2 mt-5 '>
-                  <div>
-                    <div
-                      className='w-[150px]  relative border-2 border-gray-300 border-dashed rounded-lg p-6'
-                      id='dropzone'
-                    >
-                      <input
-                        type='file'
-                        className='absolute inset-0 w-full h-full opacity-0 z-50'
-                      />
-                      <div className='text-center'>
-                        <img
-                          className='mx-auto h-12 w-12'
-                          src='https://www.svgrepo.com/show/357902/image-upload.svg'
-                          alt=''
-                        />
-                        <h3 className='mt-2 text-sm font-medium text-gray-900'>
-                          <label htmlFor='file-upload' className='relative cursor-pointer'>
-                            <span>Drag and drop</span>
-                            <span className='text-indigo-600'> or browse</span>
-                            <span>to upload</span>
-                            <input
-                              id='file-upload'
-                              name='file-upload'
-                              type='file'
-                              className='sr-only'
-                              accept='image/png,image/jpeg,image/gif'
-                            />
-                          </label>
-                        </h3>
-                        <p className='mt-1 text-xs text-gray-500'>PNG, JPG, GIF up to 3MB</p>
-                      </div>
-                      <img src='' className='mt-4 mx-auto max-h-40 hidden' id='preview' />
-                    </div>
-                  </div>
-                  <div>
-                    <div
-                      className='w-[150px]  relative border-2 border-gray-300 border-dashed rounded-lg p-6'
-                      id='dropzone'
-                    >
-                      <input
-                        type='file'
-                        className='absolute inset-0 w-full h-full opacity-0 z-50'
-                        accept='image/png,image/jpeg,image/gif'
-                      />
-                      <div className='text-center'>
-                        <img
-                          className='mx-auto h-12 w-12'
-                          src='https://www.svgrepo.com/show/357902/image-upload.svg'
-                          alt=''
-                        />
-                        <h3 className='mt-2 text-sm font-medium text-gray-900'>
-                          <label htmlFor='file-upload' className='relative cursor-pointer'>
-                            <span>Drag and drop</span>
-                            <span className='text-indigo-600'> or browse</span>
-                            <span>to upload</span>
-                            <input
-                              id='file-upload'
-                              name='file-upload'
-                              type='file'
-                              className='sr-only'
-                              accept='image/png,image/jpeg,image/gif'
-                            />
-                          </label>
-                        </h3>
-                        <p className='mt-1 text-xs text-gray-500'>PNG, JPG, GIF up to 3MB</p>
-                      </div>
-                      <img src='' className='mt-4 mx-auto max-h-40 hidden' id='preview' />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </div> */}
             </div>
           </form>
         </div>
