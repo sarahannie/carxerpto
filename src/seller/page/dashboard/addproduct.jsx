@@ -38,7 +38,7 @@ export function Addproduct() {
       year: Yup.string().required('value is required'),
       milleage: Yup.string().required('value is required'),
       quantity: Yup.string().required('value is required'),
-      discount: Yup.boolean,
+      discount: Yup.boolean().required('value is required'),
       discountType: Yup.string().required('value is required'),
       discountValue: Yup.string().required('value is required')
     }),
