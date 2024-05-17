@@ -1,108 +1,52 @@
-import React, { useState, useEffect } from 'react';
-import DashboardNavbar from '../../widgets/layout/dashboard-navbar';
+import * as Yup from 'yup';
+import { useFormik } from 'formik';
 import Sidenav from '../../widgets/layout/sidenav';
 import { Input, Textarea } from '@material-tailwind/react';
-import axios from 'axios';
-import { toast } from 'react-toastify';
+import DashboardNavbar from '../../widgets/layout/dashboard-navbar';
 
 export function Addproduct() {
-  const [productData, setProductData] = useState({
-    productName: '',
-    category: '',
-    shortDescription: '',
-    longDescription: '',
-    sellingPrice: '',
-    costPrice: '',
-    make: '',
-    model: '',
-    year: '',
-    mileage: '',
-    quantityInStock: '',
-    hasDiscount: false,
-    discountType: '',
-    color: '',
-    condition: '',    
-  });
-
-
-
-  const [carImages, setCarImages] = useState([]);
-
-  const handleImageChange = (e) => {
-    const files = Array.from(e.target.files);
-    setCarImages(files);
-  };
-
-  
-
-  //   const handleSaveProduct = async () => {
-  //     try {
-  //       const response = await axios.post('https://api-v1.carxperto.com/cars', {
-  //         method: 'POST',
-  //         headers: { 'Content-Type': 'multipart/form-data' },
-  //         body: JSON.stringify(productData)
-  //       });
-
-  //       await toast.promise(response, {
-  //         loading: 'Saving...',
-  //         success: 'Profile saved!',
-  //         error: 'Error',
-  //       });
-
-  //       console.log('Product saved successfully:', response.data);
-
-  //       if (!response.ok) {
-  //         throw new Error(`HTTP error! status: ${response.status}`);
-  //       }
-
-  //       // Handle success (e.g., show a success message)
-  //     } catch (error) {
-  //       console.error('Error saving product:', error);
-  //       // Handle error (e.g., show an error message)
-  //     }
-  //   };
-
-  const handleSaveProduct = async () => {
-    try {
-    
-        const formData = new FormData();
-        formData.append('productName', productData.productName);
-        formData.append('shortDescription', productData.shortDescription);
-        formData.append('longDescription', productData.longDescription);
-        formData.append('sellingPrice', productData.sellingPrice);
-        formData.append('costPrice', productData.costPrice);
-        formData.append('make', productData.make);
-        formData.append('model', productData.model);
-        formData.append('year', productData.year);
-        formData.append('mileage', productData.mileage);
-        formData.append('quantityInStock', productData.quantityInStock);
-        formData.append('hasDiscount', productData.hasDiscount);
-        formData.append('discountType', productData.discountType);
-        
-  
-        // Append image files
-        carImages.forEach((file, index) => {
-          formData.append(`image${index}`, file);
-        });
-
-      const response = await axios.post('https://api-v1.carxperto.com/cars', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-    
-      await toast.promise(response, {
-        loading: 'Saving...',
-        success: 'Profile saved!',
-        error: 'Error'
-      });
-
-      console.log('Product saved successfully:', response);
-    } catch (error) {
-      console.error('Error saving:', error);
-      // Handle error (e.g., show an error message) product
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      category: '',
+      shortDescription: '',
+      longDescription: '',
+      costPrice: '',
+      sellingPrice: '',
+      color: '',
+      condition: '',
+      make: '',
+      model: '',
+      year: '',
+      milleage: '',
+      quantity: '',
+      discount: Yup.boolean,
+      discountType: '',
+      discountValue: ''
+    },
+    validationSchema: Yup.object().shape({
+      name: Yup.string().required('value is required'),
+      category: Yup.string().required('value is required'),
+      shortDescription: Yup.string().required('value is required'),
+      longDescription: Yup.string().required('value is required'),
+      costPrice: Yup.string().required('value is required'),
+      sellingPrice: Yup.string().required('value is required'),
+      color: Yup.string().required('value is required'),
+      condition: Yup.string().required('value is required'),
+      make: Yup.string().required('value is required'),
+      model: Yup.string().required('value is required'),
+      year: Yup.string().required('value is required'),
+      milleage: Yup.string().required('value is required'),
+      quantity: Yup.string().required('value is required'),
+      discount: Yup.boolean,
+      discountType: Yup.string().required('value is required'),
+      discountValue: Yup.string().required('value is required')
+    }),
+    onSubmit: (values, { restForm }) => {
+      restForm();
+      alert(JSON.stringify(values, null, 2));
     }
-  };
+  });
 
   return (
     <div className=''>
@@ -112,7 +56,7 @@ export function Addproduct() {
           <Sidenav />
         </div>
         <div className=' mt-7 w-[90%] lg:ml-[20%] ml-[15px]'>
-          <form>
+          <form onSubmit={formik.handleSubmit}>
             <div className=' mb-6  flex justify-between mr-4'>
               <div>
                 <h3 className='text-xl text-primary-normal pb-3 text-start'>Add new list</h3>
@@ -125,10 +69,7 @@ export function Addproduct() {
                   </button>
                 </div>
                 <div>
-                  <button
-                    className='flex items-center gap-2 bg-primary-normal text-white px-3 py-2 round-md '
-                    onClick={handleSaveProduct}
-                  >
+                  <button className='flex items-center gap-2 bg-primary-normal text-white px-3 py-2 round-md '>
                     {/* <IoMdAdd className="h-5 w-5" /> */}
                     Save & Publish
                   </button>
@@ -143,12 +84,12 @@ export function Addproduct() {
                   </label>
                   <Input
                     type='text'
+                    name='name'
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.name}
                     label='Enter Product Name'
                     className='w-full'
-                    value={productData.productName}
-                    onChange={(e) =>
-                      setProductData({ ...productData, productName: e.target.value })
-                    }
                   />
                 </div>
                 <div className='w-full mb-4'>
@@ -158,11 +99,11 @@ export function Addproduct() {
                   <Input
                     type='text'
                     label='Enter Product Category'
+                    name='category'
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.category}
                     className='w-full'
-                    value={productData.productName}
-                    onChange={(e) =>
-                      setProductData({ ...productData, category: e.target.value })
-                    }
                   />
                 </div>
                 <div className='w-full mb-4'>
@@ -171,12 +112,12 @@ export function Addproduct() {
                   </label>
                   <Input
                     type='text'
+                    name='shortDescription'
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.shortDescription}
                     label='Please enter details'
                     className='w-full'
-                    value={productData.shortDescription}
-                    onChange={(e) =>
-                      setProductData({ ...productData, shortDescription: e.target.value })
-                    }
                   />
                 </div>
                 <div className='w-full mb-4'>
@@ -185,11 +126,11 @@ export function Addproduct() {
                   </label>
                   <Textarea
                     type='text'
+                    name='longDescription'
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.longDescription}
                     label='Please enter full details'
-                    value={productData.longDescription}
-                    onChange={(e) =>
-                      setProductData({ ...productData, longDescription: e.target.value })
-                    }
                   />
                 </div>
                 <div className='flex gap-4 mb-4'>
@@ -199,12 +140,12 @@ export function Addproduct() {
                     </label>
                     <Input
                       type='text'
+                      name='sellingPrice'
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.sellingPrice}
                       label='Enter your selling price'
                       className='w-full'
-                      value={productData.sellingPrice}
-                      onChange={(e) =>
-                        setProductData({ ...productData, sellingPrice: e.target.value })
-                      }
                     />
                   </div>
                   <div className='w-full mb-4'>
@@ -213,12 +154,12 @@ export function Addproduct() {
                     </label>
                     <Input
                       type='text'
+                      name='costPrice'
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.costPrice}
                       label='Enter your Cost price'
                       className='w-full'
-                      value={productData.costPrice}
-                      onChange={(e) =>
-                        setProductData({ ...productData, costPrice: e.target.value })
-                      }
                     />
                   </div>
                 </div>
@@ -229,12 +170,12 @@ export function Addproduct() {
                     </label>
                     <Input
                       type='text'
+                      name='color'
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.color}
                       label='Enter your selling price'
                       className='w-full'
-                      value={productData.color}
-                      onChange={(e) =>
-                        setProductData({ ...productData, color: e.target.value })
-                      }
                     />
                   </div>
                   <div className='w-full mb-4'>
@@ -243,12 +184,12 @@ export function Addproduct() {
                     </label>
                     <Input
                       type='text'
+                      name='condition'
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.condition}
                       label='Enter your Cost price'
                       className='w-full'
-                      value={productData.condition}
-                      onChange={(e) =>
-                        setProductData({ ...productData, condition: e.target.value })
-                      }
                     />
                   </div>
                 </div>
@@ -259,10 +200,12 @@ export function Addproduct() {
                     </label>
                     <Input
                       type='text'
+                      name='make'
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.make}
                       label='Enter the Make of your product'
                       className='w-full'
-                      value={productData.make}
-                      onChange={(e) => setProductData({ ...productData, make: e.target.value })}
                     />
                   </div>
                   <div className='w-full mb-4'>
@@ -271,10 +214,12 @@ export function Addproduct() {
                     </label>
                     <Input
                       type='text'
+                      name='model'
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.model}
                       label='Enter the make of your model'
                       className='w-full'
-                      value={productData.model}
-                      onChange={(e) => setProductData({ ...productData, model: e.target.value })}
                     />
                   </div>
                 </div>
@@ -285,10 +230,12 @@ export function Addproduct() {
                     </label>
                     <Input
                       type='text'
+                      name='year'
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.year}
                       label='Enter the year of production'
                       className='w-full'
-                      value={productData.year}
-                      onChange={(e) => setProductData({ ...productData, year: e.target.value })}
                     />
                   </div>
                   <div className='w-full mb-4'>
@@ -297,10 +244,12 @@ export function Addproduct() {
                     </label>
                     <Input
                       type='text'
+                      name='milleage'
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.milleage}
                       label='Enter the mileage of production'
                       className='w-full'
-                      value={productData.mileage}
-                      onChange={(e) => setProductData({ ...productData, mileage: e.target.value })}
                     />
                   </div>
                 </div>
@@ -310,16 +259,25 @@ export function Addproduct() {
                   </label>
                   <Input
                     type='text'
+                    name='quantity'
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.quantity}
                     label='Enter stock number'
                     className='w-full'
-                    value={productData.quantity}
-                    onChange={(e) => setProductData({ ...productData, quantity: e.target.value })}
                   />
                 </div>
                 <div className='flex justify-between mb-4'>
                   <p>Discount</p>
                   <label class='relative mb-5 cursor-pointer'>
-                    <input type='checkbox' value='' class='peer sr-only' />
+                    <input
+                      type='checkbox'
+                      name='discount'
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.discount}
+                      class='peer sr-only'
+                    />
                     <div class="peer h-5 w-9 rounded-full bg-gray-400 after:absolute after:top-[2px] after:left-[2px] after:h-4 after:w-4 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-indigo-900 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-200"></div>
                   </label>
                 </div>
@@ -330,12 +288,12 @@ export function Addproduct() {
                     </label>
                     <Input
                       type='text'
+                      name='discountType'
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.discountType}
                       label='Enter the type of discount'
                       className='w-full'
-                      value={productData.discountType}
-                      onChange={(e) =>
-                        setProductData({ ...productData, discountType: e.target.value })
-                      }
                     />
                   </div>
                   <div className='w-full mb-4'>
@@ -344,12 +302,12 @@ export function Addproduct() {
                     </label>
                     <Input
                       type='text'
+                      name='discountValue'
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.discountValue}
                       label='Enter the value of the discount'
                       className='w-full'
-                      value={productData.discountValue}
-                      onChange={(e) =>
-                        setProductData({ ...productData, discountValue: e.target.value })
-                      }
                     />
                   </div>
                 </div>
@@ -378,8 +336,7 @@ export function Addproduct() {
                             name='file-upload'
                             type='file'
                             className='sr-only'
-                            accept="image/png,image/jpeg,image/gif" 
-                            onChange={handleImageChange}
+                            accept='image/png,image/jpeg,image/gif'
                           />
                         </label>
                       </h3>
@@ -414,8 +371,7 @@ export function Addproduct() {
                               name='file-upload'
                               type='file'
                               className='sr-only'
-                              accept="image/png,image/jpeg,image/gif" 
-                              onChange={handleImageChange}
+                              accept='image/png,image/jpeg,image/gif'
                             />
                           </label>
                         </h3>
@@ -449,8 +405,7 @@ export function Addproduct() {
                               name='file-upload'
                               type='file'
                               className='sr-only'
-                              accept="image/png,image/jpeg,image/gif" 
-                              onChange={handleImageChange}
+                              accept='image/png,image/jpeg,image/gif'
                             />
                           </label>
                         </h3>
@@ -486,8 +441,7 @@ export function Addproduct() {
                               name='file-upload'
                               type='file'
                               className='sr-only'
-                              accept="image/png,image/jpeg,image/gif" 
-                              onChange={handleImageChange}
+                              accept='image/png,image/jpeg,image/gif'
                             />
                           </label>
                         </h3>
@@ -504,8 +458,7 @@ export function Addproduct() {
                       <input
                         type='file'
                         className='absolute inset-0 w-full h-full opacity-0 z-50'
-                        accept="image/png,image/jpeg,image/gif" 
-                        onChange={handleImageChange}
+                        accept='image/png,image/jpeg,image/gif'
                       />
                       <div className='text-center'>
                         <img
@@ -523,8 +476,7 @@ export function Addproduct() {
                               name='file-upload'
                               type='file'
                               className='sr-only'
-                              accept="image/png,image/jpeg,image/gif" 
-                              onChange={handleImageChange}
+                              accept='image/png,image/jpeg,image/gif'
                             />
                           </label>
                         </h3>
