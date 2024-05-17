@@ -63,13 +63,20 @@ export function Addproduct() {
               </div>
               <div className='flex gap-4 align-center'>
                 <div>
-                  <button className='flex items-center gap-2 bg-green-900 text-white px-4 py-2 round-md'>
+                  <button
+                    type='submit'
+                    className='flex items-center gap-2 bg-green-900 text-white px-4 py-2 round-md'
+                  >
                     {/* <IoMdAdd className="h-5 w-5" /> */}
                     Save as Draft
                   </button>
                 </div>
                 <div>
-                  <button className='flex items-center gap-2 bg-primary-normal text-white px-3 py-2 round-md '>
+                  <button
+                    type='submit'
+                    onSubmit={() => console.log('hello')}
+                    className='flex items-center gap-2 bg-primary-normal text-white px-3 py-2 round-md '
+                  >
                     {/* <IoMdAdd className="h-5 w-5" /> */}
                     Save & Publish
                   </button>
