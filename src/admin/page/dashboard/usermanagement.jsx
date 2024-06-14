@@ -6,8 +6,6 @@ import { Select, Option } from "@material-tailwind/react";
 import { UserTrans } from '../../widgets/cards/user/userTrans'
 import { MagnifyingGlassIcon} from "@heroicons/react/24/outline";
 import { UserTrans2 } from '../../widgets/cards/user/userTrans2';
-import { FaEye } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import {
   Card,
   CardHeader,

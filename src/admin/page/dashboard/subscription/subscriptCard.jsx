@@ -1,7 +1,5 @@
 import React from 'react';
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
-import { RiDeleteBin6Line } from "react-icons/ri";
-import { FaRegEdit } from "react-icons/fa";
 import { SubEdit } from './subedit';
 import SubDeactive from './subdeactive';
 

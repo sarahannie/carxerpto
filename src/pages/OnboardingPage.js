@@ -34,7 +34,7 @@ function OnboardingPage() {
               </div>
             </Link>
 
-            <Link to="/signup">
+            <Link to="/signupseller">
               <div className="flex flex-col items-center w-72 h-72 border-white shadow-md">
                 <img
                   src={illustration2}
@@ -51,7 +51,7 @@ function OnboardingPage() {
               </div>
             </Link>
 
-            <Link to="/signup">
+            <Link to="/signupbroker">
               <div className="flex flex-col items-center w-72 h-72 border-white shadow-md">
                 <img
                   src={illustration3}

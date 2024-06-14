@@ -11,26 +11,20 @@ import { useNavigate } from 'react-router-dom/dist';
 
 
 
-function SignUp() {
+function SignUpBroker() {
   const [signUp] = useRegisterMutation();
   const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
       email: '',
-      password: '',
-      firstName:'',
-      lastName:'',
+      password: ''
     },
     validationSchema: Yup.object().shape({
       email: Yup.string()
         .email('invalid email')
         .required('Email is required'),
-      firstName: Yup.string()
-        .required('Enter your firstname'),
-      lastName: Yup.string()
-        .required('Enter your lastname'),
-      password: Yup.string().required('Password must contain at least 1 lowercase, 1 uppercase, 1 number, 1 symbol, and be at least 8 characters long'),
+      password: Yup.string().required('Password is required'),
       confirmPassword: Yup.string()
         .oneOf([Yup.ref('password'), null], 'Password must match')
         .required('Confirm Password is required')
@@ -40,13 +34,11 @@ function SignUp() {
         await signUp({
           email: values.email,
           password: values.password,
-          firstName: values.firstName,
-          lastName: values.lastName,
           role: values.role
         }).unwrap();
         resetForm();
         toast.success('Sign up successful!');
-        navigate('/varificationbuyer');
+        navigate('/home');
       } catch (error) {
         toast.error(`Sign up failed: ${error.data.msg}`);
         console.log(error);
@@ -64,58 +56,11 @@ function SignUp() {
         <div className='absolute inset-0 bg-blue-900 opacity-75' />
        
         <div className='flex justify-center items-center h-screen mt-[50px]'>
-          <div className='-mt-20 w-96 h-[550px] z-10 bg-accent-white rounded-md'>
+          <div className='-mt-20 w-96 h-[480px] z-10 bg-accent-white rounded-md'>
             <h2 className='mb-4 text-primary-normal text-lg font-semibold mt-5'>
-              Sign Up to Get Started
+              Sign Up As a Broker to Get Started
             </h2>
             <form className='relative flex flex-col justify-center ' onSubmit={formik.handleSubmit}>
-              <div className='flex mx-10   mb-4  gap-1'>
-                <div className='  relative '>
-                <label
-                  htmlFor='firstName'
-                  className='absolute top-0 left-2 -mt-2 px-1 text-xs text-gray-400 bg-white'
-                >
-                  FirstName
-                </label>
-                <input
-                  type='text'
-                  id='firstName'
-                  name='firstName'
-                  value={formik.values.firstName}
-                  onBlur={formik.handleBlur}
-                  onChange={formik.handleChange}
-                  required
-                  placeholder='Sarah'
-                  className='border border-gray-400 text-xs px-3 py-3 rounded w-40 outline-none'
-                />
-                {formik.touched.firstName && formik.errors.firstName ? (
-                <div className='text-red-300 text-start text-xs '>{formik.errors.firstName}</div>
-              ) : null}
-                </div>
-                <div className='  relative '>
-                <label
-                  htmlFor='LastName'
-                  className='absolute top-0 left-2 -mt-2 px-1 text-xs text-gray-400 bg-white'
-                >
-                  LastName
-                </label>
-                <input
-                  type='text'
-                  id='lastName'
-                  name='lastName'
-                  value={formik.values.lastName}
-                  onBlur={formik.handleBlur}
-                  onChange={formik.handleChange}
-                  required
-                  placeholder='Annie'
-                  className='border border-gray-400 text-xs px-3 py-3 rounded w-40 outline-none'
-                />
-                {formik.touched.lastName && formik.errors.lastName ? (
-                <div className='text-red-300 text-start text-xs '>{formik.errors.lastName}</div>
-              ) : null}
-                </div>
-              </div>
-            
               <div className='mx-10  relative mb-4'>
                 <label
                   htmlFor='email'
@@ -226,4 +171,4 @@ function SignUp() {
     </div>
   );
 }
-export default SignUp;
+export default SignUpBroker;

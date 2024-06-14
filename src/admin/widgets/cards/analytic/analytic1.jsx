@@ -1,5 +1,4 @@
 
-import { IoBagHandleOutline } from "react-icons/io5";
 
   
 export function AnalyticCard1({ color, icon, title, value, footer }) {

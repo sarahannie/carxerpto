@@ -1,5 +1,4 @@
 
-import { BsFillPeopleFill } from "react-icons/bs";
 
   
 export function AnalyticCard({ color, icon, title, value, footer }) {

@@ -1,13 +1,8 @@
 import { FaList } from "react-icons/fa6";
 import { IoAnalyticsSharp } from "react-icons/io5";
-import { LuMessageCircle } from "react-icons/lu";
 import { MdOutlineHistoryToggleOff } from "react-icons/md";
 import { IoSettingsOutline } from "react-icons/io5";
 import { CiLogin } from "react-icons/ci";
-import { IoHomeOutline } from "react-icons/io5";
-import { IoBagHandleOutline } from "react-icons/io5";
-import { MdOutlineSubscriptions } from "react-icons/md";
-import Homeadmin from "./page/dashboard/homeadmin";
 import Usermanagement from "./page/dashboard/usermanagement";
 import Listadmin from "./page/dashboard/listadmin";
 import Analyticadmin from "./page/dashboard/analysisadmin";

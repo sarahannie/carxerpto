@@ -1,12 +1,8 @@
 import React,{useRef} from 'react'
-import style from './carouse.module.css'
-import Banner from '../../assets/banner1.jpg'
-import Banner2 from '../../assets/banner2.jpg'
-import Banner3 from '../../assets/banner3.jpg'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { CarPost } from "../DummyData";
-import { keyboard } from '@testing-library/user-event/dist/keyboard'
+
 
 const Carousels = ({ deviceType }) => {
   const carouselRef = useRef(null);

@@ -8,8 +8,6 @@ import {
   Textarea,
 } from "@material-tailwind/react";
 import { Select, Option } from "@material-tailwind/react";
-import { RiDeleteBin6Line } from "react-icons/ri";
-
 import { FaRegEdit } from "react-icons/fa";
  
 export function SubEdit() {

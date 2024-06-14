@@ -2,7 +2,6 @@ import React from "react";
 import DashboardNavbar from "../../widgets/layout/dashboard-navbar";
 import Sidenav from "../../widgets/layout/sidenav";
 import { Select, Option } from "@material-tailwind/react";
-import { IoMdAdd } from "react-icons/io";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import {
   Card,

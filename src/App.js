@@ -59,6 +59,11 @@ import Navbar from './components/Navbar/Navbar.js';
 import ProtectedRoute from './app/api/protectedroute.js';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SignUpSeller from './features/auth/SignUp_seller.js';
+import SignUpBroker from './features/auth/SignUp_broker.js';
+import EmailVerification from './features/auth/verification.js';
+import ForgotPassword from './features/auth/ForgetPass.js';
+import ChangePassword from './features/auth/changePassword.js';
 
 /* Importing Components */
 
@@ -77,7 +82,12 @@ function App() {
           >
             <Route path='/' element={<OnboardingPage />} />
             <Route path='/signin' element={<SignIn />} />
+            <Route path='/forgetpassword' element={<ForgotPassword />} />
             <Route path='/signup' element={<SignUp />} />
+            <Route path='/signupseller' element={<SignUpSeller />} />
+            <Route path='/varificationbuyer' element={<EmailVerification />} />
+            <Route path='/changepassword' element={<ChangePassword />} />
+
 
           <Route  element={<ProtectedRoute />} >
             

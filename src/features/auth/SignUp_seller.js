@@ -4,14 +4,14 @@ import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useRegisterMutation } from '../../app/api/authApi';
+import { useRegisterMutation } from '../../app/api/sellerAuthApi';
 import { Button } from '@material-tailwind/react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom/dist';
 
 
 
-function SignUp() {
+function SignUpSeller() {
   const [signUp] = useRegisterMutation();
   const navigate = useNavigate();
 
@@ -46,7 +46,7 @@ function SignUp() {
         }).unwrap();
         resetForm();
         toast.success('Sign up successful!');
-        navigate('/varificationbuyer');
+        navigate('/home');
       } catch (error) {
         toast.error(`Sign up failed: ${error.data.msg}`);
         console.log(error);
@@ -66,7 +66,7 @@ function SignUp() {
         <div className='flex justify-center items-center h-screen mt-[50px]'>
           <div className='-mt-20 w-96 h-[550px] z-10 bg-accent-white rounded-md'>
             <h2 className='mb-4 text-primary-normal text-lg font-semibold mt-5'>
-              Sign Up to Get Started
+              Sign Up As a Seller to Get Started
             </h2>
             <form className='relative flex flex-col justify-center ' onSubmit={formik.handleSubmit}>
               <div className='flex mx-10   mb-4  gap-1'>
@@ -226,4 +226,4 @@ function SignUp() {
     </div>
   );
 }
-export default SignUp;
+export default SignUpSeller;

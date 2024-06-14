@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
-import { FaApple } from 'react-icons/fa';
 import BackgroundImage from '../../assets/image/backgroundimage.webp';
-import Logo from '../../assets/Logo1.png';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useLoginMutation } from '../../app/api/authApi';
+import { useLoginMutation } from '../../app/api/signinAuthApi';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../app/slice/authSlice';
 import { Button } from '@material-tailwind/react';
@@ -29,7 +27,7 @@ function SignIn() {
   const formik = useFormik({
     initialValues: {
       email: '',
-      password: ''
+      password: '',
     },
     validationSchema: Yup.object().shape({
       email: Yup.string()
@@ -40,12 +38,25 @@ function SignIn() {
     onSubmit: async (values, { resetForm }) => {
       try {
         const response = await login({ email: values.email, password: values.password }).unwrap();
+        console.log('Login successful:', response); 
         dispatch(loginUser(response));
-        toast.success('Sign in successful!');
         resetForm();
-       navigate('/home');
+        toast.success('Sign in successful!');
+       
+        if (values.role === 'buyer') {
+          navigate('/home');
+        } else if (values.role === 'seller') {
+          navigate('/dashboard/home');
+        } else if (values.role === 'broker') {
+          navigate('/dashboard/brokerhome');
+        } else if (values.role === 'admin') {
+          navigate('/dashboard/admin');
+        } else {
+          toast.error('Invalid role specified');
+        }
+       
       } catch (error) {
-        toast.error(` ${error.data.error} and Email`);
+        toast.error(`Login failed: ${error.data ? error.data.error : error.message}`);
         console.log(error);
         console.error('Login failed:', error);
       }
@@ -131,7 +142,7 @@ function SignIn() {
                     />
                     <span className='-mt-1 text-sm text-gray-900 font-extralight'>Remind me</span>
                   </div>
-                  <Link to='/forget' className='-mt-1 mx-1 underline'>
+                  <Link to='/forgetpassword' className='-mt-1 mx-1 underline'>
                     <span className='lg:-mt-2 lg:ml-24  text-sm text-gray-900 font-extralight'>
                       Forgot Password
                     </span>
