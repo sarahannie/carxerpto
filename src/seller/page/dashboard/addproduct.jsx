@@ -1,10 +1,15 @@
+import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import Sidenav from '../../widgets/layout/sidenav';
-import { Input, Textarea } from '@material-tailwind/react';
+import { Input, Textarea, Button } from '@material-tailwind/react';
 import DashboardNavbar from '../../widgets/layout/dashboard-navbar';
+import { useAddProductMutation } from '../../../app/api/productApi';
+import { toast } from 'react-toastify';
 
-export function Addproduct() {
+export function AddProduct() {
+  const [addProduct, { isLoading, isError, isSuccess }] = useAddProductMutation();
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -20,84 +25,94 @@ export function Addproduct() {
       year: '',
       milleage: '',
       quantity: '',
-      discount: Yup.boolean,
+      discount: false,
       discountType: '',
       discountValue: '',
       images: []
     },
     validationSchema: Yup.object().shape({
-      name: Yup.string().required('value is required'),
-      category: Yup.string().required('value is required'),
-      shortDescription: Yup.string().required('value is required'),
-      longDescription: Yup.string().required('value is required'),
-      costPrice: Yup.string().required('value is required'),
-      sellingPrice: Yup.string().required('value is required'),
-      color: Yup.string().required('value is required'),
-      condition: Yup.string().required('value is required'),
-      make: Yup.string().required('value is required'),
-      model: Yup.string().required('value is required'),
-      year: Yup.string().required('value is required'),
-      milleage: Yup.string().required('value is required'),
-      quantity: Yup.string().required('value is required'),
-      discount: Yup.boolean().required('value is required'),
-      discountType: Yup.string().required('value is required'),
-      discountValue: Yup.string().required('value is required'),
+      name: Yup.string().required('Value is required'),
+      category: Yup.string().required('Value is required'),
+      shortDescription: Yup.string().required('Value is required'),
+      longDescription: Yup.string().required('Value is required'),
+      costPrice: Yup.string().required('Value is required'),
+      sellingPrice: Yup.string().required('Value is required'),
+      color: Yup.string().required('Value is required'),
+      condition: Yup.string().required('Value is required'),
+      make: Yup.string().required('Value is required'),
+      model: Yup.string().required('Value is required'),
+      year: Yup.string().required('Value is required'),
+      milleage: Yup.string().required('Value is required'),
+      quantity: Yup.string().required('Value is required'),
+      discount: Yup.boolean().required('Value is required'),
+      discountType: Yup.string().required('Value is required'),
+      discountValue: Yup.string().required('Value is required'),
       images: Yup.array()
         .min(1, 'At least one image is required')
         .of(
           Yup.mixed()
             .test('fileType', 'Unsupported file format', (value) =>
-              ['image/jpeg', 'image/png', 'image/gif'].includes(value?.type)
+              ['image/jpeg','image/jpg', 'image/png', 'image/gif'].includes(value?.type)
             )
             .test('fileSize', 'File too large', (value) => value && value.size <= 5000000)
         )
     }),
-    onSubmit: (values, { resetForm }) => {
-      resetForm();
-      console.log(values.images);
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values, { resetForm }) => {
+      console.log("Form submitted with values:", values);
+      try {
+        const formData = new FormData();
+        for (let key in values) {
+          if (key === 'images') {
+            values.images.forEach((image, index) => {
+              formData.append(`images[${index}]`, image);
+            });
+          } else {
+            formData.append(key, values[key]);
+          }
+        }
+        await addProduct(formData).unwrap();
+        resetForm();
+        toast.success('Product added successfully!');
+      } catch (error) {
+        toast.error(`Failed to add product: ${error.data ? error.data.error : error.message}`);
+        console.error('Failed to add product:', error);
+      }
     }
   });
 
   return (
     <div className=''>
       <DashboardNavbar />
-      <div className='flex flex-row  overflow-hidden'>
+      <div className='flex flex-row overflow-hidden'>
         <div className=''>
           <Sidenav />
         </div>
-        <div className=' mt-7 w-[90%] lg:ml-[20%] ml-[15px]'>
+        <div className='mt-7 w-[90%] lg:ml-[20%] ml-[15px]'>
           <form onSubmit={formik.handleSubmit}>
-            <div className=' mb-6  flex justify-between mr-4'>
+            <div className='mb-6 flex justify-between mr-4'>
               <div>
                 <h3 className='text-xl text-primary-normal pb-3 text-start'>Add new list</h3>
               </div>
               <div className='flex gap-4 align-center'>
-                <div>
-                  <button
-                    type='submit'
-                    className='flex items-center gap-2 bg-green-900 text-white px-4 py-2 round-md'
-                  >
-                    {/* <IoMdAdd className="h-5 w-5" /> */}
-                    Save as Draft
-                  </button>
-                </div>
-                <div>
-                  <button
-                    type='submit'
-                    onClick={formik.handleSubmit}
-                    className='flex items-center gap-2 bg-primary-normal text-white px-3 py-2 round-md '
-                  >
-                    {/* <IoMdAdd className="h-5 w-5" /> */}
-                    Save & Publish
-                  </button>
-                </div>
+                {/* <button
+                  type='submit'
+                  className='flex items-center gap-2 bg-green-900 text-white px-4 py-2 round-md'
+                >
+                  Save as Draft
+                </button> */}
+                <button
+                  type='submit'
+                  className='flex items-center gap-2 bg-primary-normal text-white px-3 py-2 round-md'
+                >
+                  Save & Publish
+                </button>
               </div>
             </div>
-            <div class='flex gap-4'>
-              <div class='w-[60%] p-6 border mb-7 shadow-lg rounded-lg'>
+            <div className='flex gap-4'>
+              <div className='w-[60%] p-6 border mb-7 shadow-lg rounded-lg'>
+                {/* Product Name */}
                 <div className='w-full mb-4'>
-                  <label for='name' className='block text-primary-normal text-start pb-3'>
+                  <label htmlFor='name' className='block text-primary-normal text-start pb-3'>
                     Product Name:
                   </label>
                   <Input
@@ -109,7 +124,12 @@ export function Addproduct() {
                     label='Enter Product Name'
                     className='w-full'
                   />
+                  {formik.touched.name && formik.errors.name ? (
+                    <div className='text-red-300 text-start text-sm'>{formik.errors.name}</div>
+                  ) : null}
                 </div>
+
+                {/* Images */}
                 <div className='w-full mb-4'>
                   <label htmlFor='images'>Upload Images</label>
                   <input
@@ -122,6 +142,9 @@ export function Addproduct() {
                       formik.setFieldValue('images', [...formik.values.images, ...files]);
                     }}
                   />
+                  {formik.touched.images && formik.errors.images ? (
+                    <div className='text-red-300 text-start text-sm'>{formik.errors.images}</div>
+                  ) : null}
                 </div>
                 <div>
                   {formik.values.images &&
@@ -144,8 +167,10 @@ export function Addproduct() {
                       </div>
                     ))}
                 </div>
+
+                {/* Category */}
                 <div className='w-full mb-4'>
-                  <label for='name' className='block text-primary-normal text-start pb-3'>
+                  <label htmlFor='category' className='block text-primary-normal text-start pb-3'>
                     Category:
                   </label>
                   <Input
@@ -157,9 +182,14 @@ export function Addproduct() {
                     value={formik.values.category}
                     className='w-full'
                   />
+                  {formik.touched.category && formik.errors.category ? (
+                    <div className='text-red-300 text-start text-sm'>{formik.errors.category}</div>
+                  ) : null}
                 </div>
+
+                {/* Short Description */}
                 <div className='w-full mb-4'>
-                  <label for='name' className='block text-primary-normal text-start pb-3'>
+                  <label htmlFor='shortDescription' className='block text-primary-normal text-start pb-3'>
                     Short description:
                   </label>
                   <Input
@@ -171,9 +201,14 @@ export function Addproduct() {
                     label='Please enter details'
                     className='w-full'
                   />
+                  {formik.touched.shortDescription && formik.errors.shortDescription ? (
+                    <div className='text-red-300 text-start text-sm'>{formik.errors.shortDescription}</div>
+                  ) : null}
                 </div>
+
+                {/* Long Description */}
                 <div className='w-full mb-4'>
-                  <label for='name' className='block text-primary-normal text-start pb-3'>
+                  <label htmlFor='longDescription' className='block text-primary-normal text-start pb-3'>
                     Long description:
                   </label>
                   <Textarea
@@ -184,10 +219,15 @@ export function Addproduct() {
                     value={formik.values.longDescription}
                     label='Please enter full details'
                   />
+                  {formik.touched.longDescription && formik.errors.longDescription ? (
+                    <div className='text-red-300 text-start text-sm'>{formik.errors.longDescription}</div>
+                  ) : null}
                 </div>
+
+                {/* Selling Price */}
                 <div className='flex gap-4 mb-4'>
                   <div className='w-full mb-4'>
-                    <label for='name' className='block text-primary-normal text-start pb-3'>
+                    <label htmlFor='sellingPrice' className='block text-primary-normal text-start pb-3'>
                       Selling Price:
                     </label>
                     <Input
@@ -199,9 +239,14 @@ export function Addproduct() {
                       label='Enter your selling price'
                       className='w-full'
                     />
+                    {formik.touched.sellingPrice && formik.errors.sellingPrice ? (
+                      <div className='text-red-300 text-start text-sm'>{formik.errors.sellingPrice}</div>
+                    ) : null}
                   </div>
+
+                  {/* Cost Price */}
                   <div className='w-full mb-4'>
-                    <label for='name' className='block text-primary-normal text-start pb-3'>
+                    <label htmlFor='costPrice' className='block text-primary-normal text-start pb-3'>
                       Cost Price:
                     </label>
                     <Input
@@ -213,12 +258,17 @@ export function Addproduct() {
                       label='Enter your Cost price'
                       className='w-full'
                     />
+                    {formik.touched.costPrice && formik.errors.costPrice ? (
+                      <div className='text-red-300 text-start text-sm'>{formik.errors.costPrice}</div>
+                    ) : null}
                   </div>
                 </div>
+
+                {/* Color */}
                 <div className='flex gap-4 mb-4'>
                   <div className='w-full mb-4'>
-                    <label for='name' className='block text-primary-normal text-start pb-3'>
-                      color:
+                    <label htmlFor='color' className='block text-primary-normal text-start pb-3'>
+                      Color:
                     </label>
                     <Input
                       type='text'
@@ -226,13 +276,18 @@ export function Addproduct() {
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.color}
-                      label='Enter your selling price'
+                      label='Enter your color'
                       className='w-full'
                     />
+                    {formik.touched.color && formik.errors.color ? (
+                      <div className='text-red-300 text-start text-sm'>{formik.errors.color}</div>
+                    ) : null}
                   </div>
+
+                  {/* Condition */}
                   <div className='w-full mb-4'>
-                    <label for='name' className='block text-primary-normal text-start pb-3'>
-                      condition:
+                    <label htmlFor='condition' className='block text-primary-normal text-start pb-3'>
+                      Condition:
                     </label>
                     <Input
                       type='text'
@@ -240,14 +295,19 @@ export function Addproduct() {
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.condition}
-                      label='Enter your Cost price'
+                      label='Enter your condition'
                       className='w-full'
                     />
+                    {formik.touched.condition && formik.errors.condition ? (
+                      <div className='text-red-300 text-start text-sm'>{formik.errors.condition}</div>
+                    ) : null}
                   </div>
                 </div>
+
+                {/* Make */}
                 <div className='flex gap-4 mb-4'>
                   <div className='w-full mb-4'>
-                    <label for='name' className='block text-primary-normal text-start pb-3'>
+                    <label htmlFor='make' className='block text-primary-normal text-start pb-3'>
                       Make:
                     </label>
                     <Input
@@ -259,9 +319,14 @@ export function Addproduct() {
                       label='Enter the Make of your product'
                       className='w-full'
                     />
+                    {formik.touched.make && formik.errors.make ? (
+                      <div className='text-red-300 text-start text-sm'>{formik.errors.make}</div>
+                    ) : null}
                   </div>
+
+                  {/* Model */}
                   <div className='w-full mb-4'>
-                    <label for='name' className='block text-primary-normal text-start pb-3'>
+                    <label htmlFor='model' className='block text-primary-normal text-start pb-3'>
                       Model:
                     </label>
                     <Input
@@ -270,14 +335,19 @@ export function Addproduct() {
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.model}
-                      label='Enter the make of your model'
+                      label='Enter the Model of your product'
                       className='w-full'
                     />
+                    {formik.touched.model && formik.errors.model ? (
+                      <div className='text-red-300 text-start text-sm'>{formik.errors.model}</div>
+                    ) : null}
                   </div>
                 </div>
+
+                {/* Year */}
                 <div className='flex gap-4 mb-4'>
                   <div className='w-full mb-4'>
-                    <label for='name' className='block text-primary-normal text-start pb-3'>
+                    <label htmlFor='year' className='block text-primary-normal text-start pb-3'>
                       Year:
                     </label>
                     <Input
@@ -289,9 +359,14 @@ export function Addproduct() {
                       label='Enter the year of production'
                       className='w-full'
                     />
+                    {formik.touched.year && formik.errors.year ? (
+                      <div className='text-red-300 text-start text-sm'>{formik.errors.year}</div>
+                    ) : null}
                   </div>
+
+                  {/* Mileage */}
                   <div className='w-full mb-4'>
-                    <label for='name' className='block text-primary-normal text-start pb-3'>
+                    <label htmlFor='mileage' className='block text-primary-normal text-start pb-3'>
                       Mileage:
                     </label>
                     <Input
@@ -303,10 +378,15 @@ export function Addproduct() {
                       label='Enter the mileage of production'
                       className='w-full'
                     />
+                    {formik.touched.milleage && formik.errors.milleage ? (
+                      <div className='text-red-300 text-start text-sm'>{formik.errors.milleage}</div>
+                    ) : null}
                   </div>
                 </div>
+
+                {/* Quantity */}
                 <div className='w-full mb-4'>
-                  <label for='name' className='block text-primary-normal text-start pb-3'>
+                  <label htmlFor='quantity' className='block text-primary-normal text-start pb-3'>
                     Quantity in stock:
                   </label>
                   <Input
@@ -318,24 +398,34 @@ export function Addproduct() {
                     label='Enter stock number'
                     className='w-full'
                   />
+                  {formik.touched.quantity && formik.errors.quantity ? (
+                    <div className='text-red-300 text-start text-sm'>{formik.errors.quantity}</div>
+                  ) : null}
                 </div>
+
+                {/* Discount */}
                 <div className='flex justify-between mb-4'>
                   <p>Discount</p>
-                  <label class='relative mb-5 cursor-pointer'>
+                  <label className='relative mb-5 cursor-pointer'>
                     <input
                       type='checkbox'
                       name='discount'
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      value={formik.values.discount}
-                      class='peer sr-only'
+                      checked={formik.values.discount}
+                      className='peer sr-only'
                     />
-                    <div class="peer h-5 w-9 rounded-full bg-gray-400 after:absolute after:top-[2px] after:left-[2px] after:h-4 after:w-4 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-indigo-900 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-200"></div>
+                    <div className="peer h-5 w-9 rounded-full bg-gray-400 after:absolute after:top-[2px] after:left-[2px] after:h-4 after:w-4 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-indigo-900 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-200"></div>
                   </label>
+                  {formik.touched.discount && formik.errors.discount ? (
+                    <div className='text-red-300 text-start text-sm'>{formik.errors.discount}</div>
+                  ) : null}
                 </div>
+
+                {/* Discount Type */}
                 <div className='flex gap-4 mb-4'>
                   <div className='w-full mb-4'>
-                    <label for='name' className='block text-primary-normal text-start pb-3'>
+                    <label htmlFor='discountType' className='block text-primary-normal text-start pb-3'>
                       Type:
                     </label>
                     <Input
@@ -347,9 +437,14 @@ export function Addproduct() {
                       label='Enter the type of discount'
                       className='w-full'
                     />
+                    {formik.touched.discountType && formik.errors.discountType ? (
+                      <div className='text-red-300 text-start text-sm'>{formik.errors.discountType}</div>
+                    ) : null}
                   </div>
+
+                  {/* Discount Value */}
                   <div className='w-full mb-4'>
-                    <label for='name' className='block text-primary-normal text-start pb-3'>
+                    <label htmlFor='discountValue' className='block text-primary-normal text-start pb-3'>
                       Value:
                     </label>
                     <Input
@@ -361,49 +456,12 @@ export function Addproduct() {
                       label='Enter the value of the discount'
                       className='w-full'
                     />
+                    {formik.touched.discountValue && formik.errors.discountValue ? (
+                      <div className='text-red-300 text-start text-sm'>{formik.errors.discountValue}</div>
+                    ) : null}
                   </div>
                 </div>
               </div>
-
-              {/* <div class='w-[35%] h-[50%] p-6 border mb-7 shadow-lg rounded-lg'>
-                <div>
-                  <label for='name' className='block text-primary-normal text-start pb-3'>
-                    Upload image:
-                  </label>
-                  <div
-                    className='w-[300px]  relative border-2 border-gray-300 border-dashed rounded-lg p-6'
-                    id='dropzone'
-                  >
-                    <input type='file' className='absolute inset-0 w-full h-full opacity-0 z-50' />
-                    <div className='text-center'>
-                      <img
-                        className='mx-auto h-12 w-12'
-                        src='https://www.svgrepo.com/show/357902/image-upload.svg'
-                        alt=''
-                      />
-                      <h3 className='mt-2 text-sm font-medium text-gray-900'>
-                        <label htmlFor='file-upload' className='relative cursor-pointer'>
-                          <span>Drag and drop</span>
-                          <span className='text-indigo-600'> or browse</span>
-                          <span>to upload</span>
-                          <input
-                            id='file-upload'
-                            name='images'
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            value={formik.values.images}
-                            type='file'
-                            className='sr-only'
-                            accept='image/png,image/jpeg,image/gif'
-                            multiple
-                          />
-                        </label>
-                      </h3>
-                      <p className='mt-1 text-xs text-gray-500'>PNG, JPG, GIF up to 3MB</p>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </form>
         </div>
@@ -412,4 +470,4 @@ export function Addproduct() {
   );
 }
 
-export default Addproduct;
+export default AddProduct;

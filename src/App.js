@@ -64,6 +64,8 @@ import SignUpBroker from './features/auth/SignUp_broker.js';
 import EmailVerification from './features/auth/verification.js';
 import ForgotPassword from './features/auth/ForgetPass.js';
 import ChangePassword from './features/auth/changePassword.js';
+import EmailVerificationSeller from './features/auth/verificationSeller.js';
+import EmailVerificationBroker from './features/auth/verificationBroker.js';
 
 /* Importing Components */
 
@@ -85,8 +87,11 @@ function App() {
             <Route path='/forgetpassword' element={<ForgotPassword />} />
             <Route path='/signup' element={<SignUp />} />
             <Route path='/signupseller' element={<SignUpSeller />} />
+            <Route path='/signupbroker' element={<SignUpBroker />} />
             <Route path='/varificationbuyer' element={<EmailVerification />} />
             <Route path='/changepassword' element={<ChangePassword />} />
+            <Route path='/varificationseller' element={<EmailVerificationSeller/>} />
+            <Route path='/varificationbroker' element={<EmailVerificationBroker/>} />
 
 
           <Route  element={<ProtectedRoute />} >

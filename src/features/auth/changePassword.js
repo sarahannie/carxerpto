@@ -18,7 +18,7 @@ function ChangePassword() {
     },
     validationSchema: Yup.object().shape({
       otp: Yup.string().required('OTP is required'),
-      password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
+      password: Yup.string().min(8, 'Password must be at least 8 characters').required('Password is required'),
       confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match').required('Confirm Password is required'),
     }),
     onSubmit: async (values, { resetForm }) => {
@@ -26,13 +26,18 @@ function ChangePassword() {
         await changePassword({
           otp: values.otp,
           password: values.password,
-          confirmPassword: values.confirmPassword
+          confirmPassword: values.confirmPassword,
         }).unwrap();
         resetForm();
         toast.success('Password changed successfully!');
         navigate('/signin');
       } catch (error) {
-        toast.error(`Failed to change password: ${error.data ? error.data.error : error.message}`);
+        if (error.data?.error === 'Session expired. Request OTP again.') {
+          localStorage.removeItem('authToken'); // Clear expired token
+          toast.error('Session expired. Please request a new OTP.');
+        } else {
+          toast.error(`Failed to change password: ${error.data ? error.data.error : error.message}`);
+        }
       }
     },
   });

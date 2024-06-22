@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 // Define the base URL for seller API
-const SELLER_API_BASE_URL = 'https://autobuy-server.onrender.com/seller';
+const BROKER_API_BASE_URL = 'https://autobuy-server.onrender.com/broker';
 const baseQuery = fetchBaseQuery({
-  baseUrl: SELLER_API_BASE_URL,
+  baseUrl: BROKER_API_BASE_URL,
   prepareHeaders: (headers) => {
     const token = localStorage.getItem('auth');
     if (token) {
@@ -13,7 +13,7 @@ const baseQuery = fetchBaseQuery({
   }
 });
 
-export const sellerAuthApi = createApi({
+export const brokerAuthApi = createApi({
   reducerPath: 'sellerAuthApi',
   baseQuery: baseQuery,
   endpoints: (builder) => ({
@@ -43,4 +43,4 @@ export const sellerAuthApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const {  useLogoutMutation, useRegisterMutation, useVerifyEmailMutation } = sellerAuthApi;
+export const {  useLogoutMutation, useRegisterMutation, useVerifyEmailMutation } = brokerAuthApi;

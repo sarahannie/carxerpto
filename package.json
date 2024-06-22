@@ -17,6 +17,7 @@
     "apexcharts": "^3.48.0",
     "axios": "^1.6.8",
     "formik": "^2.4.6",
+    "js-cookie": "^3.0.5",
     "plotly.js": "^2.31.1",
     "prettierrc": "^0.0.0-5",
     "prop-types": "^15.8.1",

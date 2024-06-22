@@ -1,4 +1,6 @@
-import { useLocation, Link } from "react-router-dom";
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useLocation, Link } from 'react-router-dom';
 import {
   Navbar,
   Typography,
@@ -25,12 +27,19 @@ import {
   setOpenConfigurator,
   setOpenSidenav,
 } from "../../context/index";
+import { logoutUser } from '../../../app/slice/authSlice';
 
 export function DashboardNavbar() {
   const [controller, dispatch] = useMaterialTailwindController();
   const { fixedNavbar, openSidenav } = controller;
   const { pathname } = useLocation();
   const [layout, page] = pathname.split("/").filter((el) => el !== "");
+  const auth = useSelector((state) => state.auth);
+  
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+  };
 
   return (
     <Navbar
@@ -83,23 +92,37 @@ export function DashboardNavbar() {
           >
             <Bars3Icon strokeWidth={3} className="h-6 w-6 text-primary-normal" />
           </IconButton>
-          <Link to="/auth/sign-in">
-            <Button
-              variant="text"
-              color="blue-gray"
-              className="hidden items-center gap-1 px-4 xl:flex normal-case text-primary-normal"
-            >
-              <UserCircleIcon className="h-5 w-5 text-primary-normal" />
-              Sign In
-            </Button>
-            <IconButton
-              variant="text"
-              color="blue-gray"
-              className="grid xl:hidden"
-            >
-              <UserCircleIcon className="h-5 w-5 text-primary-normal" />
-            </IconButton>
-          </Link>
+          {auth.isAuthenticated ? (
+            <div className="flex items-center gap-4">
+              <span>{auth.user?.name}</span>
+              <Button
+                variant="text"
+                color="blue-gray"
+                className="items-center gap-1 px-4 normal-case text-primary-normal"
+                onClick={handleLogout}
+              >
+                Logout
+              </Button>
+            </div>
+          ) : (
+            <Link to="/sign-in">
+              <Button
+                variant="text"
+                color="blue-gray"
+                className="hidden items-center gap-1 px-4 xl:flex normal-case text-primary-normal"
+              >
+                <UserCircleIcon className="h-5 w-5 text-primary-normal" />
+                Sign In
+              </Button>
+              <IconButton
+                variant="text"
+                color="blue-gray"
+                className="grid xl:hidden"
+              >
+                <UserCircleIcon className="h-5 w-5 text-primary-normal" />
+              </IconButton>
+            </Link>
+          )}
           <Menu>
             <MenuHandler>
               <IconButton variant="text" color="primary-normal">
@@ -179,15 +202,14 @@ export function DashboardNavbar() {
             </MenuList>
           </Menu>
           <Link to='/dashboard/settingnp'>
-          <IconButton
-            variant="text"
-            color="blue-gray"
-            onClick={() => setOpenConfigurator(dispatch, true)}
-          >
-            <Cog6ToothIcon className="h-5 w-5 text-primary-normal" />
-          </IconButton>
+            <IconButton
+              variant="text"
+              color="blue-gray"
+              onClick={() => setOpenConfigurator(dispatch, true)}
+            >
+              <Cog6ToothIcon className="h-5 w-5 text-primary-normal" />
+            </IconButton>
           </Link>
-          
         </div>
       </div>
     </Navbar>

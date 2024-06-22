@@ -2,9 +2,20 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const API_BASE_URL = 'https://autobuy-server.onrender.com/buyer';
 
+const baseQuery = fetchBaseQuery({
+  baseUrl: API_BASE_URL,
+  prepareHeaders: (headers) => {
+    const token = localStorage.getItem('auth');
+    if (token) {
+      headers.set('Authorization', `Bearer ${token}`);
+    }
+    return headers;
+  }
+});
+
 export const authApi = createApi({
   reducerPath: 'authApi',
-  baseQuery: fetchBaseQuery({ baseUrl: API_BASE_URL }),
+  baseQuery: baseQuery,
   endpoints: (builder) => ({
     logout: builder.mutation({
       query: () => ({
@@ -13,7 +24,7 @@ export const authApi = createApi({
       })
     }),
     register: builder.mutation({
-      query: ({ email, password, firstName,lastName }) => ({
+      query: ({ email, password, firstName, lastName }) => ({
         url: '/register',
         method: 'POST',
         body: { email, password, firstName, lastName }
@@ -29,4 +40,4 @@ export const authApi = createApi({
   })
 });
 
-export const {  useLogoutMutation, useRegisterMutation, useVerifyEmailMutation } = authApi;
+export const { useLogoutMutation, useRegisterMutation, useVerifyEmailMutation } = authApi;

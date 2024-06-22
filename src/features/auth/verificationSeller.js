@@ -1,13 +1,13 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useVerifyEmailMutation } from '../../app/api/authApi';
+import { useVerifyEmailMutation } from '../../app/api/sellerAuthApi';
 import { useResendOtpMutation } from '../../app/api/signinAuthApi';
 import BackgroundImage from '../../assets/image/backgroundimage.webp';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
-function EmailVerification() {
+function EmailVerificationSeller() {
   const [verifyEmail] = useVerifyEmailMutation();
   const [resendOtp] = useResendOtpMutation();
   const navigate = useNavigate();
@@ -114,4 +114,4 @@ function EmailVerification() {
   );
 }
 
-export default EmailVerification;
+export default EmailVerificationSeller;

@@ -1,37 +1,77 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-
-const token = localStorage.getItem('token')
-  ? localStorage.getItem('token')
-  : null
-
-const initialState = {
-  user: null,
-  token: '',
-  isAuthenticated: false,
-  forgotEmail: '',
-  forgotEmailToken: '',
-  status: null
+const userToken = localStorage.getItem('auth') ? localStorage.getItem('auth') : null;
+const loadState = () => {
+  try {
+    const serializedState = localStorage.getItem('authState');
+    if (serializedState === null) {
+      return {
+        user: null,
+        isAuthenticated: false,
+      };
+    }
+    return JSON.parse(serializedState);
+  } catch (err) {
+    return {
+      user: null,
+      isAuthenticated: false,
+    };
+  }
 };
+
+// Function to save the state to localStorage
+const saveState = (state) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem('authState', serializedState);
+  } catch (err) {
+    // Ignore write errors
+  }
+};
+
+const initialState = loadState(
+  {
+    user: null,
+    token: userToken,
+    isAuthenticated: false,
+    forgotEmail: '',
+    forgotEmailToken: '',
+    status: null,
+  }
+);
+
+// const initialState = {
+//   user: null,
+//   token: userToken,
+//   isAuthenticated: false,
+//   forgotEmail: '',
+//   forgotEmailToken: '',
+//   status: null,
+// };
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
     loginUser: (state, action) => {
-     
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isAuthenticated = true;
+      localStorage.setItem('auth', action.payload.token);
+      saveState(state);
     },
     setCredentials: (state, { payload }) => {
-      state.user = payload
+      state.user = payload.user;
+      state.token = payload.token;
+      state.isAuthenticated = true;
+      localStorage.setItem('auth', payload.token);
     },
-    logoutUser: (state, action) => {
-      localStorage.setItem('token', action.payload.token);
-      state.user = initialState.user;
-      state.token = initialState.token;
+    logoutUser: (state) => {
+      localStorage.removeItem('auth');
+      state.user = null;
+      state.token = null;
       state.isAuthenticated = false;
+      saveState(state);
     },
     updateUser: (state, action) => {
       state.user = { ...state.user, ...action.payload };
@@ -41,8 +81,8 @@ export const authSlice = createSlice({
     },
     setForgotEmailToken: (state, action) => {
       state.forgotEmailToken = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const {
@@ -51,7 +91,7 @@ export const {
   setCredentials,
   updateUser,
   setForgotEmail,
-  setForgotEmailToken
+  setForgotEmailToken,
 } = authSlice.actions;
 
 export default authSlice.reducer;
