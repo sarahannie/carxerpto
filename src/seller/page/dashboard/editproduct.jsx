@@ -1,63 +1,78 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import Sidenav from '../../widgets/layout/sidenav';
 import { Input, Textarea, Button } from '@material-tailwind/react';
 import DashboardNavbar from '../../widgets/layout/dashboard-navbar';
-import { useAddProductMutation } from '../../../app/api/productApi';
+import { useEditProductMutation } from '../../../app/api/productApi';
 import { toast } from 'react-toastify';
+import { useLocation } from 'react-router-dom';
 
-export function AddProduct() {
-  const [addProduct, { isLoading, isError, isSuccess }] = useAddProductMutation();
+export function EditProduct() {
+  const location = useLocation();
+  const { product } = location.state;
+  const [editProduct, { isLoading, isError, isSuccess }] = useEditProductMutation();
 
   const formik = useFormik({
     initialValues: {
-      name: '',
-      category: '',
-      shortDescription: '',
-      longDescription: '',
-      costPrice: '',
-      sellingPrice: '',
-      color: '',
-      condition: '',
-      make: '',
-      model: '',
-      year: '',
-      milleage: '',
-      quantity: '',
-      discount: false,
-      discountType: '',
-      discountValue: '',
-      images: []
+      name: product.name,
+      category: product.category,
+      shortDescription: product.shortDescription,
+      longDescription: product.longDescription,
+      costPrice: product.costPrice,
+      sellingPrice: product.sellingPrice,
+      color: product.color,
+      condition: product.condition,
+      make: product.make,
+      model: product.model,
+      year: product.year,
+      milleage: product.milleage,
+      quantity: product.quantity,
+      discount: product.discount,
+      discountType: product.discountType,
+      discountValue: product.discountValue,
+      images: product.images || [],
+      productTag: product.productTag || '',
     },
     validationSchema: Yup.object().shape({
-      name: Yup.string().required('Value is required'),
-      category: Yup.string().required('Value is required'),
-      shortDescription: Yup.string().required('Value is required'),
-      longDescription: Yup.string().required('Value is required'),
-      costPrice: Yup.string().required('Value is required'),
-      sellingPrice: Yup.string().required('Value is required'),
-      color: Yup.string().required('Value is required'),
-      condition: Yup.string().required('Value is required'),
-      make: Yup.string().required('Value is required'),
-      model: Yup.string().required('Value is required'),
-      year: Yup.string().required('Value is required'),
-      milleage: Yup.string().required('Value is required'),
-      quantity: Yup.string().required('Value is required'),
-      discount: Yup.boolean().required('Value is required'),
-      discountType: Yup.string().required('Value is required'),
-      discountValue: Yup.string().required('Value is required'),
-      images: Yup.array()
-        .min(1, 'At least one image is required')
-        .of(
-          Yup.mixed()
-            .test('fileType', 'Unsupported file format', (value) =>
-              ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'].includes(value?.type)
-            )
-            .test('fileSize', 'File too large', (value) => value && value.size <= 5000000)
-        )
-    }),
-    onSubmit: async (values, { resetForm }) => {
+        name: Yup.string().required('Value is required'),
+        category: Yup.string().required('Value is required'),
+        shortDescription: Yup.string().required('Value is required'),
+        longDescription: Yup.string().required('Value is required'),
+        costPrice: Yup.string().required('Value is required'),
+        sellingPrice: Yup.string().required('Value is required'),
+        color: Yup.string().required('Value is required'),
+        condition: Yup.string().required('Value is required'),
+        make: Yup.string().required('Value is required'),
+        model: Yup.string().required('Value is required'),
+        year: Yup.string().required('Value is required'),
+        milleage: Yup.string().required('Value is required'),
+        quantity: Yup.string().required('Value is required'),
+        discount: Yup.boolean().required('Value is required'),
+        discountType: Yup.string().required('Value is required'),
+        discountValue: Yup.string().required('Value is required'),
+        productTag: Yup.string().required('Product Tag is required'),
+        images: Yup.array()
+          .min(1, 'At least one image is required')
+          .of(
+            Yup.mixed()
+            .test('fileType', 'Unsupported file format', (value) => {
+                if (typeof value === 'string') {
+                  // If the value is a string (URL), skip file type check
+                  return true;
+                }
+                return ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'].includes(value?.type);
+              })
+              .test('fileSize', 'File too large', (value) => {
+                if (typeof value === 'string') {
+                  // If the value is a string (URL), skip file size check
+                  return true;
+                }
+                return value?.size <= 5000000;
+              })
+          )
+      }),
+    onSubmit: async (values) => {
       console.log('Form submitted with values:', values);
       try {
         const formData = new FormData();
@@ -77,17 +92,15 @@ export function AddProduct() {
         formData.append('discount', values.discount);
         formData.append('discountType', values.discountType);
         formData.append('discountValue', values.discountValue);
+        formData.append('productTag', values.productTag);
         values.images.forEach((image) => {
           formData.append('images', image);
         });
-
-        await addProduct(formData).unwrap();
-
-        resetForm();
-        toast.success('Product added successfully!');
+        await editProduct({ ...values}).unwrap();
+        toast.success('Product edited successfully!');
       } catch (error) {
-        toast.error(`Failed to add product: ${error.data ? error.data.error : error.message}`);
-        console.error('Failed to add product:', error);
+        toast.error(`Failed to edit product: ${error.data ? error.data.error : error.message}`);
+        console.error('Failed to edit product:', error);
       }
     }
   });
@@ -103,25 +116,20 @@ export function AddProduct() {
           <form onSubmit={formik.handleSubmit}>
             <div className='mb-6 flex justify-between mr-4'>
               <div>
-                <h3 className='text-xl text-primary-normal pb-3 text-start'>Add new list</h3>
+                <h3 className='text-xl text-primary-normal pb-3 text-start'>Edit Product</h3>
               </div>
               <div className='flex gap-4 align-center'>
-                {/* <button
-                  type='submit'
-                  className='flex items-center gap-2 bg-green-900 text-white px-4 py-2 round-md'
-                >
-                  Save as Draft
-                </button> */}
                 <button
                   type='submit'
                   className='flex items-center gap-2 bg-primary-normal text-white px-3 py-2 round-md'
                 >
-                  Save & Publish
+                  Save & Update
                 </button>
               </div>
             </div>
             <div className='flex gap-4'>
               <div className='w-[60%] p-6 border mb-7 shadow-lg rounded-lg'>
+                
                 {/* Product Name */}
                 <div className='w-full mb-4'>
                   <label htmlFor='name' className='block text-primary-normal text-start pb-3'>
@@ -141,44 +149,66 @@ export function AddProduct() {
                   ) : null}
                 </div>
 
-                {/* Image */}
-                <div className='w-full mb-4'>
-                  <label htmlFor='images'>Upload Images</label>
-                  <input
-                    id='images'
-                    name='images'
-                    type='file'
-                    multiple
-                    onChange={(event) => {
-                      const files = Array.from(event.currentTarget.files);
-                      formik.setFieldValue('images', [...formik.values.images, ...files]);
-                    }}
+                 {/* Product Tag */}
+                 <div className='w-full mb-4'>
+                  <label htmlFor='productTag' className='block text-primary-normal text-start pb-3'>
+                    Product Tag:
+                  </label>
+                  <Input
+                    type='text'
+                    name='productTag'
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.productTag}
+                    label='Product Tag'
+                    className='w-full'
+                    readOnly // Make it read-only to prevent user modification
                   />
-                  {formik.touched.images && formik.errors.images ? (
-                    <div className='text-red-300 text-sm'>{formik.errors.images}</div>
+                  {formik.touched.productTag && formik.errors.productTag ? (
+                    <div className='text-red-300 text-start text-sm'>{formik.errors.productTag}</div>
                   ) : null}
                 </div>
-                <div>
-                  {formik.values.images.map((file, index) => (
-                    <div key={index}>
-                      <img
-                        src={URL.createObjectURL(file)}
-                        alt={`preview ${index}`}
-                        style={{ width: '100px', height: '100px' }}
-                      />
-                      <button
-                        type='button'
-                        onClick={() => {
-                          const newImages = formik.values.images.filter((_, i) => i !== index);
-                          formik.setFieldValue('images', newImages);
-                        }}
-                      >
-                        Remove
-                      </button>
-                    </div>
-                  ))}
-                </div>
 
+                {/* Image */}
+                <div className='w-full mb-4'>
+  <label htmlFor='images'>Upload Images</label>
+  <input
+    id='images'
+    name='images'
+    type='file'
+    multiple
+    onChange={(event) => {
+      const files = Array.from(event.currentTarget.files);
+      formik.setFieldValue('images', [...formik.values.images, ...files]);
+    }}
+  />
+  {formik.touched.images && formik.errors.images ? (
+    <div className='text-red-300 text-sm'>{formik.errors.images}</div>
+  ) : null}
+</div>
+<div>
+  {formik.values.images.map((file, index) => {
+    const imageURL = typeof file === 'string' ? file : URL.createObjectURL(file);
+    return (
+      <div key={index}>
+        <img
+          src={imageURL}
+          alt={`preview ${index}`}
+          style={{ width: '100px', height: '100px' }}
+        />
+        <button
+          type='button'
+          onClick={() => {
+            const newImages = formik.values.images.filter((_, i) => i !== index);
+            formik.setFieldValue('images', newImages);
+          }}
+        >
+          Remove
+        </button>
+      </div>
+    );
+  })}
+</div>
                 {/* Category */}
                 <div className='w-full mb-4'>
                   <label htmlFor='category' className='block text-primary-normal text-start pb-3'>
@@ -518,4 +548,4 @@ export function AddProduct() {
   );
 }
 
-export default AddProduct;
+export default EditProduct;

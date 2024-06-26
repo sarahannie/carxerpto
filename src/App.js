@@ -66,6 +66,7 @@ import ForgotPassword from './features/auth/ForgetPass.js';
 import ChangePassword from './features/auth/changePassword.js';
 import EmailVerificationSeller from './features/auth/verificationSeller.js';
 import EmailVerificationBroker from './features/auth/verificationBroker.js';
+import EditProduct from './seller/page/dashboard/editproduct.jsx';
 
 /* Importing Components */
 
@@ -123,8 +124,10 @@ function App() {
           <Route path='/dashboard/home' element={<Home />} />
             <Route path='/dashboard/seller-profile' element={<Profiles />} />
             <Route path='/dashboard/seller-product' element={<List />} />
-            <Route path='/Viewproduct' element={<Viewproduct />} />
+            <Route path='/Viewproduct/:productTag' element={<Viewproduct />} />
             <Route path='/Addproduct' element={<Addproduct />} />
+            <Route path='/edit-product' element={<EditProduct />} />
+
           <Route path='/dashboard/analysis' element={<Analytic />} />
           <Route path='/dashboard/history' element={<History />} />
           <Route path='/dashboard/subscription' element={<Subscription />} />
