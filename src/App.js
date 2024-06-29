@@ -104,7 +104,7 @@ function App() {
             <Route path='/forget' element={<ForgetPass />} />
             <Route path='/about-us' element={<AboutUs />} />
             <Route path='/feature' element={<FeatureSec />} />
-            <Route path='/car-category' element={<CarCategory />} />
+            <Route path='/car-category/:categoryId' element={<CarCategory />} />
             <Route path='/car-listing' element={<CarListing />} />
             <Route path='/car-apprasial' element={<CarApprasial />} />
             <Route path='/car-insurance' element={<CarInsur />} />
@@ -113,7 +113,7 @@ function App() {
             <Route path='/car-quota' element={<CarQuota />} />
             <Route path='/car-quota-insurance' element={<CarInsurQ />} />
             <Route path='/success' element={<Success />} />
-            <Route path='/car-details' element={<CarDetails />} />
+            <Route path='/car-details/:productTag' element={<CarDetails />} />
             <Route path='/car-broker' element={<CarBroker />} />
             <Route path='/broker-contact' element={<BrokerContact />} />
             {/* <Route path="/stripe" element={<Stripe/>}/> */}

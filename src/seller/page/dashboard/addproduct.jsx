@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import Sidenav from '../../widgets/layout/sidenav';
-import { Input, Textarea, Button } from '@material-tailwind/react';
+import { Input, Textarea, Button, Select, Option } from '@material-tailwind/react';
 import DashboardNavbar from '../../widgets/layout/dashboard-navbar';
 import { useAddProductMutation } from '../../../app/api/productApi';
 import { toast } from 'react-toastify';
@@ -92,6 +92,15 @@ export function AddProduct() {
     }
   });
 
+  const carCategories = [
+    'Sedans',
+    'SUVs',
+    'Coupes',
+    'Hatchbacks',
+    'Pickup Trucks',
+    'Minivans'
+  ];
+
   return (
     <div className=''>
       <DashboardNavbar />
@@ -106,12 +115,6 @@ export function AddProduct() {
                 <h3 className='text-xl text-primary-normal pb-3 text-start'>Add new list</h3>
               </div>
               <div className='flex gap-4 align-center'>
-                {/* <button
-                  type='submit'
-                  className='flex items-center gap-2 bg-green-900 text-white px-4 py-2 round-md'
-                >
-                  Save as Draft
-                </button> */}
                 <button
                   type='submit'
                   className='flex items-center gap-2 bg-primary-normal text-white px-3 py-2 round-md'
@@ -184,15 +187,19 @@ export function AddProduct() {
                   <label htmlFor='category' className='block text-primary-normal text-start pb-3'>
                     Category:
                   </label>
-                  <Input
-                    type='text'
-                    label='Enter Product Category'
+                  <Select
                     name='category'
-                    onChange={formik.handleChange}
+                    onChange={(value) => formik.setFieldValue('category', value)}
                     onBlur={formik.handleBlur}
                     value={formik.values.category}
                     className='w-full'
-                  />
+                  >
+                    {carCategories.map((category) => (
+                      <Option key={category} value={category}>
+                        {category}
+                      </Option>
+                    ))}
+                  </Select>
                   {formik.touched.category && formik.errors.category ? (
                     <div className='text-red-300 text-start text-sm'>{formik.errors.category}</div>
                   ) : null}
@@ -247,20 +254,17 @@ export function AddProduct() {
 
                 {/* Selling Price */}
                 <div className='flex gap-4 mb-4'>
-                  <div className='w-full mb-4'>
-                    <label
-                      htmlFor='sellingPrice'
-                      className='block text-primary-normal text-start pb-3'
-                    >
+                  <div className='w-full'>
+                    <label htmlFor='sellingPrice' className='block text-primary-normal text-start pb-3'>
                       Selling Price:
                     </label>
                     <Input
-                      type='text'
+                      type='number'
                       name='sellingPrice'
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.sellingPrice}
-                      label='Enter your selling price'
+                      label='Enter amount in Naira'
                       className='w-full'
                     />
                     {formik.touched.sellingPrice && formik.errors.sellingPrice ? (
@@ -271,20 +275,17 @@ export function AddProduct() {
                   </div>
 
                   {/* Cost Price */}
-                  <div className='w-full mb-4'>
-                    <label
-                      htmlFor='costPrice'
-                      className='block text-primary-normal text-start pb-3'
-                    >
+                  <div className='w-full'>
+                    <label htmlFor='costPrice' className='block text-primary-normal text-start pb-3'>
                       Cost Price:
                     </label>
                     <Input
-                      type='text'
+                      type='number'
                       name='costPrice'
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.costPrice}
-                      label='Enter your Cost price'
+                      label='Enter amount in Naira'
                       className='w-full'
                     />
                     {formik.touched.costPrice && formik.errors.costPrice ? (
@@ -297,7 +298,7 @@ export function AddProduct() {
 
                 {/* Color */}
                 <div className='flex gap-4 mb-4'>
-                  <div className='w-full mb-4'>
+                  <div className='w-full'>
                     <label htmlFor='color' className='block text-primary-normal text-start pb-3'>
                       Color:
                     </label>
@@ -307,7 +308,7 @@ export function AddProduct() {
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.color}
-                      label='Enter your color'
+                      label='Enter color'
                       className='w-full'
                     />
                     {formik.touched.color && formik.errors.color ? (
@@ -316,11 +317,8 @@ export function AddProduct() {
                   </div>
 
                   {/* Condition */}
-                  <div className='w-full mb-4'>
-                    <label
-                      htmlFor='condition'
-                      className='block text-primary-normal text-start pb-3'
-                    >
+                  <div className='w-full'>
+                    <label htmlFor='condition' className='block text-primary-normal text-start pb-3'>
                       Condition:
                     </label>
                     <Input
@@ -329,20 +327,18 @@ export function AddProduct() {
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.condition}
-                      label='Enter your condition'
+                      label='Enter condition'
                       className='w-full'
                     />
                     {formik.touched.condition && formik.errors.condition ? (
-                      <div className='text-red-300 text-start text-sm'>
-                        {formik.errors.condition}
-                      </div>
+                      <div className='text-red-300 text-start text-sm'>{formik.errors.condition}</div>
                     ) : null}
                   </div>
                 </div>
 
-                {/* Make */}
+                {/* Make and Model */}
                 <div className='flex gap-4 mb-4'>
-                  <div className='w-full mb-4'>
+                  <div className='w-full'>
                     <label htmlFor='make' className='block text-primary-normal text-start pb-3'>
                       Make:
                     </label>
@@ -352,7 +348,7 @@ export function AddProduct() {
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.make}
-                      label='Enter the Make of your product'
+                      label='Enter make'
                       className='w-full'
                     />
                     {formik.touched.make && formik.errors.make ? (
@@ -360,8 +356,7 @@ export function AddProduct() {
                     ) : null}
                   </div>
 
-                  {/* Model */}
-                  <div className='w-full mb-4'>
+                  <div className='w-full'>
                     <label htmlFor='model' className='block text-primary-normal text-start pb-3'>
                       Model:
                     </label>
@@ -371,7 +366,7 @@ export function AddProduct() {
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.model}
-                      label='Enter the Model of your product'
+                      label='Enter model'
                       className='w-full'
                     />
                     {formik.touched.model && formik.errors.model ? (
@@ -380,9 +375,9 @@ export function AddProduct() {
                   </div>
                 </div>
 
-                {/* Year */}
+                {/* Year and Milleage */}
                 <div className='flex gap-4 mb-4'>
-                  <div className='w-full mb-4'>
+                  <div className='w-full'>
                     <label htmlFor='year' className='block text-primary-normal text-start pb-3'>
                       Year:
                     </label>
@@ -392,7 +387,7 @@ export function AddProduct() {
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.year}
-                      label='Enter the year of production'
+                      label='Enter year'
                       className='w-full'
                     />
                     {formik.touched.year && formik.errors.year ? (
@@ -400,10 +395,9 @@ export function AddProduct() {
                     ) : null}
                   </div>
 
-                  {/* Mileage */}
-                  <div className='w-full mb-4'>
-                    <label htmlFor='mileage' className='block text-primary-normal text-start pb-3'>
-                      Mileage:
+                  <div className='w-full'>
+                    <label htmlFor='milleage' className='block text-primary-normal text-start pb-3'>
+                      Milleage:
                     </label>
                     <Input
                       type='text'
@@ -411,13 +405,11 @@ export function AddProduct() {
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.milleage}
-                      label='Enter the mileage of production'
+                      label='Enter milleage'
                       className='w-full'
                     />
                     {formik.touched.milleage && formik.errors.milleage ? (
-                      <div className='text-red-300 text-start text-sm'>
-                        {formik.errors.milleage}
-                      </div>
+                      <div className='text-red-300 text-start text-sm'>{formik.errors.milleage}</div>
                     ) : null}
                   </div>
                 </div>
@@ -425,90 +417,88 @@ export function AddProduct() {
                 {/* Quantity */}
                 <div className='w-full mb-4'>
                   <label htmlFor='quantity' className='block text-primary-normal text-start pb-3'>
-                    Quantity in stock:
+                    Quantity:
                   </label>
                   <Input
-                    type='text'
+                    type='number'
                     name='quantity'
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.quantity}
-                    label='Enter stock number'
+                    label='Enter quantity'
                     className='w-full'
                   />
                   {formik.touched.quantity && formik.errors.quantity ? (
                     <div className='text-red-300 text-start text-sm'>{formik.errors.quantity}</div>
                   ) : null}
                 </div>
+              </div>
 
+              <div className='w-[40%] p-6 border mb-7 shadow-lg rounded-lg'>
                 {/* Discount */}
-                <div className='flex justify-between mb-4'>
-                  <p>Discount</p>
-                  <label className='relative mb-5 cursor-pointer'>
-                    <input
-                      type='checkbox'
-                      name='discount'
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      checked={formik.values.discount}
-                      className='peer sr-only'
-                    />
-                    <div className="peer h-5 w-9 rounded-full bg-gray-400 after:absolute after:top-[2px] after:left-[2px] after:h-4 after:w-4 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:bg-indigo-900 peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-200"></div>
+                <div className='w-full mb-4 flex gap-3'>
+                  <label htmlFor='discount' className='block text-primary-normal text-start pb-3'>
+                    Discount:
                   </label>
+                  <input
+                    type='checkbox'
+                    name='discount'
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    checked={formik.values.discount}
+                    className='form-checkbox'
+                  />
                   {formik.touched.discount && formik.errors.discount ? (
                     <div className='text-red-300 text-start text-sm'>{formik.errors.discount}</div>
                   ) : null}
                 </div>
 
-                {/* Discount Type */}
-                <div className='flex gap-4 mb-4'>
-                  <div className='w-full mb-4'>
-                    <label
-                      htmlFor='discountType'
-                      className='block text-primary-normal text-start pb-3'
-                    >
-                      Type:
-                    </label>
-                    <Input
-                      type='text'
-                      name='discountType'
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.discountType}
-                      label='Enter the type of discount'
-                      className='w-full'
-                    />
-                    {formik.touched.discountType && formik.errors.discountType ? (
-                      <div className='text-red-300 text-start text-sm'>
-                        {formik.errors.discountType}
-                      </div>
-                    ) : null}
-                  </div>
+                {formik.values.discount && (
+                  <>
+                    {/* Discount Type */}
+                    <div className='w-full mb-4'>
+                      <label htmlFor='discountType' className='block text-primary-normal text-start pb-3'>
+                        Discount Type:
+                      </label>
+                      <Select
+                        name='discountType'
+                        onChange={(value) => formik.setFieldValue('discountType', value)}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.discountType}
+                        className='w-full'
+                      >
+                        <Option value='percentage'>Percentage</Option>
+                        <Option value='amount'>Amount</Option>
+                      </Select>
+                      {formik.touched.discountType && formik.errors.discountType ? (
+                        <div className='text-red-300 text-start text-sm'>
+                          {formik.errors.discountType}
+                        </div>
+                      ) : null}
+                    </div>
 
-                  {/* Discount Value */}
-                  <div className='w-full mb-4'>
-                    <label
-                      htmlFor='discountValue'
-                      className='block text-primary-normal text-start pb-3'
-                    >
-                      Value:
-                    </label>
-                    <Input
-                      type='text'
-                      name='discountValue'
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.discountValue}
-                      label='Enter the value of the discount'
-                      className='w-full'
-                    />
-                    {formik.touched.discountValue && formik.errors.discountValue ? (
-                      <div className='text-red-300 text-start text-sm'>
-                        {formik.errors.discountValue}
-                      </div>
-                    ) : null}
-                  </div>
-                </div>
+                    {/* Discount Value */}
+                    <div className='w-full mb-4'>
+                      <label htmlFor='discountValue' className='block text-primary-normal text-start pb-3'>
+                        Discount Value:
+                      </label>
+                      <Input
+                        type='number'
+                        name='discountValue'
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.discountValue}
+                        label='Enter discount value'
+                        className='w-full'
+                      />
+                      {formik.touched.discountValue && formik.errors.discountValue ? (
+                        <div className='text-red-300 text-start text-sm'>
+                          {formik.errors.discountValue}
+                        </div>
+                      ) : null}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </form>

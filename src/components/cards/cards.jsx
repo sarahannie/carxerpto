@@ -7,36 +7,29 @@ import { SlCalender } from "react-icons/sl";
 import { BsFuelPumpDiesel } from "react-icons/bs";
 import { MdAirlineSeatLegroomExtra } from "react-icons/md";
 import { FaRegBookmark } from "react-icons/fa";
-import Cars from  '../../assets/hans-isaacson.png'
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import {useNavigate } from 'react-router-dom';
 
-import { useState, useEffect } from 'react';
+import { useGetProductsQuery } from '../../app/api/buyerProductApi';
 const Cards = () => {
-    const [car, setCars] = useState([]);
+    const navigate = useNavigate();
+    const {data, error, isLoading} = useGetProductsQuery();
+    const products = data?.product || [];
 
-    useEffect(() => {
-        const fetchCars = async () => {
-            try {
-                const response = await axios.get('https://api-v1.carxperto.com/cars');
-                setCars(response.data);
-                console.log(response.data);
-            } catch (error) {
-                console.error('Error fetching cars:', error);
-            }
-        };
-        fetchCars();
-    }, []);
+    console.log("Buyer products", products)
+
     
   return (
     <>
         {
-            car.map((cars, index) => {
+            products.map((cars, index) => {
                 return (
                     <div key={cars} className={style.container}>
-                    <Link to='/car-details' >
+                    <div 
+                         
+                          onClick={() => navigate(`/car-details/${cars.productTag}`, { state: { cars } })}
+                     >
                     
-                    <img src={cars.carImages[0].url} className={style.img} alt={`Car ${index + 1}`} />
+                    <img src={cars.images[0]} className={style.img} alt={cars.name} />
                 <div className={style.containerBody}>
                 <div className={style.header}>
                     <h2 className={style.brand}>{cars.brand}</h2>
@@ -47,28 +40,28 @@ const Cards = () => {
                         <SiCmake className={style.icon}/>
                         <div>
                             <h3 className={style.icondescription}>Make</h3>
-                            <h3 className={style.iconProduct}>{cars.model}</h3>
+                            <h3 className={style.iconProduct}>{cars.make}</h3>
                         </div>
                     </div>
                     <div className={style.iconMain}>
                         <IoCarSportSharp className={style.icon}/>
                         <div>
                             <h3 className={style.icondescription}>Model</h3>
-                            <h3 className={style.iconProduct}>quatrro</h3>
+                            <h3 className={style.iconProduct}>{cars.model}</h3>
                         </div>
                     </div>
                     <div className={style.iconMain}>
                         <IoLocationSharp className={style.icon}/>
                         <div>
                             <h3 className={style.icondescription}>Mileage</h3>
-                            <h3 className={style.iconProduct}>20Km</h3>
+                            <h3 className={style.iconProduct}>  {cars.milleage}</h3>
                         </div>
                     </div>
                     <div className={style.iconMain}>
                         <SlCalender className={style.icon} />
                         <div>
                             <h3 className={style.icondescription}>Year</h3>
-                            <h3 className={style.iconProduct}>2020</h3>
+                            <h3 className={style.iconProduct}>{cars.year}</h3>
                         </div>
                     </div>
                 </div>
@@ -76,15 +69,15 @@ const Cards = () => {
                     <div className={style.iconMain}>
                     <BsFuelPumpDiesel className={style.icon} />
                     <div>
-                        <h3 className={style.icondescription}>Consumption</h3>
-                        <h3 className={style.iconProduct}>20 -25Mph</h3>
+                        <h3 className={style.icondescription}>Name</h3>
+                        <h3 className={style.iconProduct}>{cars.name}</h3>
                     </div>
                     </div>
                     <div className={style.iconMain}>
                     <MdAirlineSeatLegroomExtra className={style.icon} />
                     <div>
-                        <h3 className={style.icondescription}>Seats</h3>
-                        <h3 className={style.iconProduct}>4 seats</h3>
+                        <h3 className={style.icondescription}>Price</h3>
+                        <h3 className={style.iconProduct}>{cars.costPrice}</h3>
                     </div>
                     </div>
                 </div>
@@ -94,7 +87,7 @@ const Cards = () => {
                 </div>
                 </div> 
                 
-                    </Link>
+                    </div >
                     </div>
                 )
             })

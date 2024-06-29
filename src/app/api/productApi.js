@@ -30,20 +30,27 @@ export const productApi = createApi({
         body: {  ...formData }
       })
     }),
-    getProducts: builder.query({
-      query: () => ({
-        url: '/profile',
-        method: 'GET'
-      })
-    }),
     deleteProduct: builder.mutation({
       query: (productTag) => ({
         url: `/delete-product`,
         method: 'DELETE',
         body: { productTag }
       })
+    }),
+    getProducts: builder.query({
+      query: () => ({
+        url: '/profile',
+        method: 'GET'
+      })
+    }),
+    editProfile: builder.mutation({
+      query: ({  ...profileData }) => ({
+        url: `/edit-profile`,
+        method: 'PUT',
+        body: profileData
+      })
     })
   })
 });
 
-export const { useAddProductMutation, useGetProductsQuery, useEditProductMutation, useDeleteProductMutation } = productApi;
+export const { useAddProductMutation, useGetProductsQuery, useEditProductMutation, useDeleteProductMutation, useEditProfileMutation } = productApi;

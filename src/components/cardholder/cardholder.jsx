@@ -7,11 +7,6 @@ const Cardholder = () => {
     <div className={style.container}>
         <div className={style.gridcontainer}>
         <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
-        <Cards/>
     </div>
     </div>
     

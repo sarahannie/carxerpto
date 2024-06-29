@@ -76,27 +76,34 @@ export function EditProduct() {
       console.log('Form submitted with values:', values);
       try {
         const formData = new FormData();
-        formData.append('name', values.name);
-        formData.append('category', values.category);
-        formData.append('shortDescription', values.shortDescription);
-        formData.append('longDescription', values.longDescription);
-        formData.append('costPrice', values.costPrice);
-        formData.append('sellingPrice', values.sellingPrice);
-        formData.append('color', values.color);
-        formData.append('condition', values.condition);
-        formData.append('make', values.make);
-        formData.append('model', values.model);
-        formData.append('year', values.year);
-        formData.append('milleage', values.milleage);
-        formData.append('quantity', values.quantity);
-        formData.append('discount', values.discount);
-        formData.append('discountType', values.discountType);
-        formData.append('discountValue', values.discountValue);
-        formData.append('productTag', values.productTag);
-        values.images.forEach((image) => {
-          formData.append('images', image);
-        });
-        await editProduct({ ...values}).unwrap();
+    formData.append('name', values.name);
+    formData.append('category', values.category);
+    formData.append('shortDescription', values.shortDescription);
+    formData.append('longDescription', values.longDescription);
+    formData.append('costPrice', values.costPrice);
+    formData.append('sellingPrice', values.sellingPrice);
+    formData.append('color', values.color);
+    formData.append('condition', values.condition);
+    formData.append('make', values.make);
+    formData.append('model', values.model);
+    formData.append('year', values.year);
+    formData.append('milleage', values.milleage);
+    formData.append('quantity', values.quantity);
+    formData.append('discount', values.discount);
+    formData.append('discountType', values.discountType);
+    formData.append('discountValue', values.discountValue);
+    formData.append('productTag', values.productTag);
+
+    // Append images
+    values.images.forEach((image) => {
+      formData.append('images', image);
+    });
+    for (let pair of formData.entries()) {
+      console.log('annie',pair[0]+ ': ' + pair[1]); 
+    }
+
+    // Use the formData object in the API call
+    await editProduct(formData).unwrap();
         toast.success('Product edited successfully!');
       } catch (error) {
         toast.error(`Failed to edit product: ${error.data ? error.data.error : error.message}`);
