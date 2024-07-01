@@ -4,7 +4,6 @@ import SearchComponent from "../components/Search/Search";
 import Carousels from "../components/carousel/carousel";
 import Cardholder from "../components/cardholder/cardholder";
 import Brands from "../components/Brands/Brands";
-import style from './landingpage.module.css'
 import CategoryGrid from "../components/CategoryGrid.js";
 import { Button } from '@material-tailwind/react';
 import image1 from '../assets/image/bmw1.webp'

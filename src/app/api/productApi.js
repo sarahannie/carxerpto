@@ -24,10 +24,10 @@ export const productApi = createApi({
       })
     }),
     editProduct: builder.mutation({
-      query: ( {  ...formData  }) => ({
+      query: ( formData  ) => ({
         url: '/edit-product',
         method: 'PUT',
-        body: {  ...formData }
+        body: formData 
       })
     }),
     deleteProduct: builder.mutation({
@@ -44,12 +44,12 @@ export const productApi = createApi({
       })
     }),
     editProfile: builder.mutation({
-      query: ({  ...profileData }) => ({
-        url: `/edit-profile`,
+      query: (formData ) => ({
+        url: '/edit-profile',
         method: 'PUT',
-        body: profileData
-      })
-    })
+        body: formData 
+      })
+    }),
   })
 });
 

@@ -1,73 +1,110 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import style from './profilecon.module.css';
 import { useEditProfileMutation, useGetProductsQuery } from '../../../app/api/productApi';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 
+
 const validationSchema = Yup.object({
   firstName: Yup.string().required('First Name is required'),
   lastName: Yup.string().required('Last Name is required'),
   email: Yup.string().email('Invalid email address').required('Email is required'),
-  userName: Yup.string().required('User Name is required'),
+  username
+: Yup.string().required('User Name is required'),
   presentAddress: Yup.string().required('Present Address is required'),
   permanentAddress: Yup.string().required('Permanent Address is required'),
   city: Yup.string().required('City is required'),
   town: Yup.string().required('Town is required'),
-  profileImage: Yup.mixed().test('fileType', 'Unsupported file format', (value) => {
-    if (!value) return true; // Skip validation if no file is selected
-    return ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'].includes(value.type);
-  }).test('fileSize', 'File too large', (value) => {
-    if (!value) return true; // Skip validation if no file is selected
-    return value.size <= 5000000;
-  })
+  profilePhoto: Yup.mixed()
+    .test('fileType', 'Unsupported file format', (value) => {
+      if (!value) return true; // Skip validation if no file is selected
+      return ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'].includes(value.type);
+    })
+    .test('fileSize', 'File too large', (value) => {
+      if (!value) return true; // Skip validation if no file is selected
+      return value.size <= 5000000;
+    }),
 });
 
 const Profilecon = () => {
-  const { data } = useGetProductsQuery();
-  const profile = data?.responseMessage;
-  console.log('profile', profile?.firstName);
+  const { data, isSuccess: isGetSuccess } = useGetProductsQuery();
+  const profile = isGetSuccess ? data.responseMessage : null;
+ 
 
   const [editProfile, { isLoading, isError, isSuccess }] = useEditProfileMutation();
 
   const formik = useFormik({
     initialValues: {
-      firstName: profile?.firstName || '',
-      lastName: profile?.lastName || '',
-      email: profile?.email || '',
-      userName: profile?.userName || '',
-      presentAddress: profile?.presentAddress || '',
-      permanentAddress: profile?.permanentAddress || '',
-      city: profile?.city || '',
-      town: profile?.town || '',
-      profileImage: null,
+      firstName: '',
+      lastName: '',
+      email: '',
+      username: '',
+      presentAddress: '',
+      permanentAddress: '',
+      city: '',
+      town: '',
+      profilePhoto: null,
     },
-    validationSchema: validationSchema,
+    validationSchema,
     onSubmit: async (values) => {
-      const formData = new FormData();
-      Object.keys(values).forEach((key) => {
-        formData.append(key, values[key]);
-      });
       try {
-        await editProfile(formData).unwrap();
-        toast.success('Profile updated successfully');
+        const formData = new FormData();
+        formData.append('firstName', values.firstName);
+        formData.append('lastName', values.lastName);
+        formData.append('email', values.email);
+        formData.append('username', values.username
+);
+        formData.append('presentAddress', values.presentAddress);
+        formData.append('permanentAddress', values.permanentAddress);
+        formData.append('city', values.city);
+        formData.append('town', values.town);
+        if (values.profilePhoto && values.profilePhoto instanceof File) {
+          formData.append('profilePhoto', values.profilePhoto);
+        }
+         await editProfile(formData).unwrap();
+         toast.success('Profile updated successfully:')
+
+        
       } catch (error) {
-        toast.error(`Failed to update profile ${error.data ? error.data.error : error.message}`);
-        console.error(`Failed to update profile`, error);
+        toast.error(`Failed to update profile: ${error.data ? error.data.error : error.message}`);
+        console.error('Failed to update profile', error);
       }
     },
   });
 
+  useEffect(() => {
+    if (profile) {
+      formik.setValues({
+        firstName: profile.firstName,
+        lastName: profile.lastName,
+        email: profile.email,
+        username: profile.username,
+        presentAddress: profile.presentAddress,
+        permanentAddress: profile.permanentAddress,
+        city: profile.city,
+        town: profile.town,
+        profilePhoto: profile.profilePhoto
+ || null,
+      });
+    }
+  }, [profile]);
+
   return (
     <div className={style.container}>
-       <div className="lg:mx-[36px] mx-[5px] flex justify-center lg:w-[121px] lg:h-[121px] w-[50px] h-[50px] bg-blue-300/20 rounded-full bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${profile?.profileImage || 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxwcm9maWxlfGVufDB8MHx8fDE3MTEwMDM0MjN8MA&ixlib=rb-4.0.3&q=80&w=1080'})` }}>
+      <div
+        className="lg:mx-[36px] mx-[5px] flex justify-center lg:w-[121px] lg:h-[121px] w-[50px] h-[50px] bg-blue-300/20 rounded-full bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${formik.values.profilePhoto instanceof File ? URL.createObjectURL(formik.values.profilePhoto) : formik.values.profilePhoto   || 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw4fHxwcm9maWxlfGVufDB8MHx8fDE3MTEwMDM0MjN8MA&ixlib=rb-4.0.3&q=80&w=1080'})`,
+        }}
+      >
         <div className="bg-white/90 rounded-full w-6 h-6 text-center lg:ml-28 ml-5 mt-4">
           <input
             type="file"
-            name="profileImage"
+            name="profilePhoto"
             id="upload_profile"
             hidden
-            onChange={(event) => formik.setFieldValue('profileImage', event.currentTarget.files[0])}
+            onChange={(event) => formik.setFieldValue('profilePhoto', event.currentTarget.files[0])}
           />
           <label htmlFor="upload_profile">
             <svg
@@ -97,7 +134,7 @@ const Profilecon = () => {
       <div>
         <form onSubmit={formik.handleSubmit}>
           <div className="flex lg:flex-row md:flex-row sm:flex-row xs:flex-col gap-2 justify-center lg:w-[600px] w-[190px] md:w-[400px]">
-          <div className="w-full mb-1 mt-1">
+            <div className="w-full mb-1 mt-1">
               <label htmlFor="firstName" className={style.label}>
                 First Name
               </label>
@@ -133,44 +170,46 @@ const Profilecon = () => {
             </div>
           </div>
           <div className="flex lg:flex-row md:flex-row sm:flex-row xs:flex-col gap-2 justify-center lg:w-[600px] w-[190px] md:w-[400px]">
-            <div className="w-full mb-1 mt-1">
+            <div className="w-full mb-1">
               <label htmlFor="email" className={style.label}>
                 Email
               </label>
               <input
-                type="text"
+                type="email"
                 name="email"
                 className="mt-1 p-2 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
                 placeholder="Email"
                 value={formik.values.email}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                readOnly
               />
               {formik.touched.email && formik.errors.email ? (
                 <div className="text-red-500 text-sm text-start">{formik.errors.email}</div>
               ) : null}
             </div>
-            <div className="w-full mb-1 lg:mt-1">
-              <label htmlFor="userName" className={style.label}>
-                User Name
+            <div className="w-full mb-1">
+              <label htmlFor="username" className={style.label}>
+                UserName
               </label>
               <input
                 type="text"
-                name="userName"
+                name="username"
                 className="mt-1 p-2 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
                 placeholder="User Name"
-                value={formik.values.userName}
+                value={formik.values.username}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
               />
-              {formik.touched.userName && formik.errors.userName ? (
-                <div className="text-red-500 text-sm text-start">{formik.errors.userName}</div>
+              {formik.touched.username
+ && formik.errors.username
+ ? (
+                <div className="text-red-500 text-sm text-start">{formik.errors.username
+}</div>
               ) : null}
             </div>
           </div>
           <div className="flex lg:flex-row md:flex-row sm:flex-row xs:flex-col gap-2 justify-center lg:w-[600px] w-[190px] md:w-[400px]">
-            <div className="w-full mb-1 mt-1">
+            <div className="w-full mb-1">
               <label htmlFor="presentAddress" className={style.label}>
                 Present Address
               </label>
@@ -187,7 +226,7 @@ const Profilecon = () => {
                 <div className="text-red-500 text-sm text-start">{formik.errors.presentAddress}</div>
               ) : null}
             </div>
-            <div className="w-full mb-1 lg:mt-1">
+            <div className="w-full mb-1">
               <label htmlFor="permanentAddress" className={style.label}>
                 Permanent Address
               </label>
@@ -206,7 +245,7 @@ const Profilecon = () => {
             </div>
           </div>
           <div className="flex lg:flex-row md:flex-row sm:flex-row xs:flex-col gap-2 justify-center lg:w-[600px] w-[190px] md:w-[400px]">
-            <div className="w-full mb-1 mt-1">
+            <div className="w-full mb-1">
               <label htmlFor="city" className={style.label}>
                 City
               </label>
@@ -223,7 +262,7 @@ const Profilecon = () => {
                 <div className="text-red-500 text-sm text-start">{formik.errors.city}</div>
               ) : null}
             </div>
-            <div className="w-full mb-1 lg:mt-1">
+            <div className="w-full mb-1">
               <label htmlFor="town" className={style.label}>
                 Town
               </label>
@@ -241,9 +280,13 @@ const Profilecon = () => {
               ) : null}
             </div>
           </div>
-          <div className="mt-4 text-white text-lg font-semibold flex justify-end">
-            <button type="submit" className="p-3 rounded-lg bg-primary-normal w-[100px]">
-              Submit
+          <div className="flex justify-center lg:mt-10 md:mt-10 mt-4">
+            <button
+              type="submit"
+              className="bg-primary-normal text-white w-[300px] h-[35px] rounded-lg hover:bg-primary-secondary"
+              disabled={isLoading}
+            >
+              {isLoading ? 'Updating...' : 'Update Profile'}
             </button>
           </div>
         </form>

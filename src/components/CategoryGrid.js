@@ -1,6 +1,4 @@
-import {Categorys} from "./DummyData.js";
 import CategoryCard1 from "../components/categorycard/CategoryCard.js";
-import { useParams } from 'react-router-dom';
 import CategoryCardCoupes from "./categorycard/CategoryCardCoupes.js";
 import CategoryCardMinivans from "./categorycard/CategoryCardMinivans.js";
 import CategoryCardSuv from "./categorycard/CategoryCardSuv.js";

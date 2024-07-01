@@ -1,11 +1,26 @@
-import React,{useRef} from 'react'
+import React from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { CarPost } from "../DummyData";
+import { useNavigate } from 'react-router-dom';
+import { useGetProductsQuery } from '../../app/api/buyerProductApi';
+
 
 
 const Carousels = ({ deviceType }) => {
-  const carouselRef = useRef(null);
+  const navigate = useNavigate();
+  const { data,  } = useGetProductsQuery();
+  const products = Array.isArray(data?.product) ? data.product : [];
+
+  console.log("Buyer featured", products);
+
+  // Function to get a random subset of products
+  const getRandomProducts = (arr, n) => {
+    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, n);
+  };
+
+  // Limit to 6 products at random
+  const displayedProducts = getRandomProducts(products, 6);
     
 const responsive = {
   desktop: {
@@ -55,45 +70,45 @@ const responsive = {
     arrows={false}
     carouselRef={(el) => (this.Carousel = el)}
 >
-{CarPost.map((item) => (
+{displayedProducts.map((cars) => (
           <div
-            key={item.id}
-            className="border border-slate-300 bg-white shadow-md w-[350px]"
+            key={cars.id}
+            className="border border-slate-300 bg-white shadow-md w-[350px] "
+            onClick={() => navigate(`/car-details/${cars.productTag}`, { state: { cars } })}
           >
             <div className="w-full h-[177px]">
               <img
-                className="w-full h-full object-cover"
-                src={item.imgPic}
+                className="w-full h-full object-contain"
+                src={cars.images[0]}
                 alt="imageIcon"
               />
             </div>
             <div className="p-3 flex flex-col gap-2">
-              <div className="flex items-center justify-between ">
+              <div className="flex carss-center justify-between ">
                 <h1 className=" text-[16.8px] text-[#002C52] font-bold">
-                  {item.title}
+                  {cars.name}
                 </h1>
                 <p className="text-[#002C52] text-[15px] font-bold">
-                  {item.amount}
+                  ${cars.sellingPrice}
                 </p>
               </div>
-              <div className="flex items-center text-[10px] md:text-[12px] font-medium justify-between">
-                <span className="">{item.sublinkA}</span>
+              <div className="flex carss-center text-[10px] md:text-[12px] font-medium justify-between">
+                <span className="">make: {cars.make}</span>
                 <hr className="w-[0.1px] h-[10px] border border-gray-400" />
-                <span>{item.sublinkB}</span>
+                <span>model: {cars.model}</span>
                 <hr className="w-[0.1px] h-[10px] border border-gray-400" />
-                <span>{item.sublinkC}</span>
+                <span>Year: {cars.year}</span>
                 <hr className="w-[0.1px] h-[10px] border border-gray-400" />
-                <span>{item.sublinkD}</span>
+                <span>mileage: {cars.milleage}</span>
               </div>
               <div className="text-[14px] font-medium leading-[22.4px] ">
-                <h3 className="text-start  text-[16px]">{item.Feature}</h3>
-                {item.subItems.map((subItems, Index) => {
-                  return (
-                    <ul className="flex items-center  " key={Index.id}>
-                      <li className="" >{subItems}</li>
+                <h3 className="text-start  text-[16px]">Features</h3>
+                    <ul className="flex flex-col carss-center  text-start " >
+                      <li className="" >condition: {cars.condition}</li>
+                      <li className="" >color: {cars.color}</li>
+                      <li className="" >Details: {cars.shortDescription}</li>
                     </ul>
-                  );
-                })}
+                
               </div>
             </div>
           </div>

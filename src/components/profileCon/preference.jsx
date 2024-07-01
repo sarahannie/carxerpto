@@ -1,5 +1,5 @@
 import React from 'react'
-import './preference.css'
+
 
 const Preference = () => {
   return (

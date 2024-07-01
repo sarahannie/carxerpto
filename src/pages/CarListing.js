@@ -34,7 +34,7 @@ function CarListing() {
         <h3 className="text-[36px] text-[#003B6D] font-bold">Trusted Brand</h3>
         <BrandLink />
       </div>
-      <div className="lg:max-w-[1122px] lg:h-[968px]  mx-auto mt-9 mb-11 p-2 lg:p-0">
+      <div className="lg:max-w-[1122px] lg:h-[528px]  mx-auto mt-9 mb-11 p-2 lg:p-0">
         <h3 className="text-[36px] text-[#003B6D] font-bold">Listings</h3>
         <List />
       </div>

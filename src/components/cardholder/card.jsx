@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './cards.module.css';
+import style from '../cards/cards.module.css';
 import { SiCmake } from "react-icons/si";
 import { IoCarSportSharp } from "react-icons/io5";
 import { IoLocationSharp } from "react-icons/io5";
@@ -14,6 +14,12 @@ const Cards = () => {
   const navigate = useNavigate();
   const { data, error, isLoading } = useGetProductsQuery();
   const products = Array.isArray(data?.product) ? data.product : [];
+  const getRandomProducts = (arr, n) => {
+    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, n);
+  };
+
+  const displayedProducts = getRandomProducts(products, 6);
 
   console.log("Buyer products", products);
 
@@ -32,7 +38,7 @@ const Cards = () => {
           <p>No products yet</p>
         </div>
       ) : (
-        products.map((cars) => (
+        displayedProducts.map((cars) => (
           <div key={cars._id} className={style.container}>
             <div onClick={() => navigate(`/car-details/${cars.productTag}`, { state: { cars } })}>
               <img src={cars.images[0]} className={style.img} alt={cars.name} />

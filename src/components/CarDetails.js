@@ -1,10 +1,10 @@
 import Footer from "./Footer/Footer";
-import Navbar from "../components/Navbar/Navbar";
+
 import { SiCmake } from "react-icons/si";
 import { useLocation } from "react-router-dom";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { FaFacebookMessenger } from "react-icons/fa";
-import CardD from "./Card_slider/CarDetailsSlider";
+
 function CarDetails() {
   const location = useLocation();
   const { cars } = location.state || {};

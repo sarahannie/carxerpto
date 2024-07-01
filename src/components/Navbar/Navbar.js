@@ -5,7 +5,7 @@ import usercircle from "../../assets/UserCircle.png";
 import Logo from "../../assets/Logo2.png"
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { Button } from "@material-tailwind/react";
-import { setCredentials,logoutUser } from '../../app/slice/authSlice'
+import { logoutUser } from '../../app/slice/authSlice'
 import { useDispatch, useSelector } from "react-redux";
 
 

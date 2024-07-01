@@ -37,6 +37,27 @@ export const brokerAuthApi = createApi({
         method: 'POST',
         body: { otp }
       })
+    }),
+    editProduct: builder.mutation({
+      query: ( {  ...formData  }) => ({
+        url: '/edit-profile',
+        method: 'PUT',
+        body: {  ...formData }
+      })
+    }),
+    uploadImage: builder.mutation({
+      query:(formData)=>({
+        url:'upload',
+        method: 'POST',
+        body:formData
+      })
+    }),
+    deleteImage: builder.mutation({
+      query:(formData)=>({
+        url:'upload',
+        method: 'DELETE',
+        body:formData
+      })
     })
   })
 });

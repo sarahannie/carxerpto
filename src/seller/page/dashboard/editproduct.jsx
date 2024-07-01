@@ -11,7 +11,7 @@ import { useLocation } from 'react-router-dom';
 export function EditProduct() {
   const location = useLocation();
   const { product } = location.state;
-  const [editProduct, { isLoading, isError, isSuccess }] = useEditProductMutation();
+  const [editProduct] = useEditProductMutation();
 
   const formik = useFormik({
     initialValues: {
@@ -98,6 +98,7 @@ export function EditProduct() {
     values.images.forEach((image) => {
       formData.append('images', image);
     });
+
     for (let pair of formData.entries()) {
       console.log('annie',pair[0]+ ': ' + pair[1]); 
     }
