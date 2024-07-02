@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-// Define the base URL for seller API
+// Define the base URL for broker API
 const BROKER_API_BASE_URL = 'https://autobuy-server.onrender.com/broker';
 const baseQuery = fetchBaseQuery({
   baseUrl: BROKER_API_BASE_URL,
@@ -14,10 +14,9 @@ const baseQuery = fetchBaseQuery({
 });
 
 export const brokerAuthApi = createApi({
-  reducerPath: 'sellerAuthApi',
+  reducerPath: 'brokerAuthApi', // Ensure the reducer path matches the API name
   baseQuery: baseQuery,
   endpoints: (builder) => ({
-   
     logout: builder.mutation({
       query: () => ({
         url: '/logout',
@@ -38,30 +37,22 @@ export const brokerAuthApi = createApi({
         body: { otp }
       })
     }),
-    editProduct: builder.mutation({
-      query: ( {  ...formData  }) => ({
-        url: '/edit-profile',
-        method: 'PUT',
-        body: {  ...formData }
-      })
-    }),
-    uploadImage: builder.mutation({
-      query:(formData)=>({
-        url:'upload',
-        method: 'POST',
-        body:formData
+    getProfile: builder.query({
+      query: () => ({
+        url: '/profile',
+        method: 'GET'
       })
     }),
-    deleteImage: builder.mutation({
-      query:(formData)=>({
-        url:'upload',
-        method: 'DELETE',
-        body:formData
+    editProfile: builder.mutation({
+      query: (formData) => ({
+        url: '/edit-profile',
+        method: 'PUT',
+        body: formData
       })
     })
   })
 });
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
-export const {  useLogoutMutation, useRegisterMutation, useVerifyEmailMutation } = brokerAuthApi;
+// Export hooks for usage in functional components, which are auto-generated based on the defined endpoints
+export const { useLogoutMutation, useRegisterMutation, useVerifyEmailMutation, useGetProfileQuery, useEditProfileMutation } = brokerAuthApi;
+export default brokerAuthApi;

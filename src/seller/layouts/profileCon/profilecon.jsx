@@ -283,7 +283,7 @@ const Profilecon = () => {
           <div className="flex justify-center lg:mt-10 md:mt-10 mt-4">
             <button
               type="submit"
-              className="bg-primary-normal text-white w-[300px] h-[35px] rounded-lg hover:bg-primary-secondary"
+              className="bg-primary-normal text-white w-[300px] h-[35px] rounded-lg hover:bg-primary-dark"
               disabled={isLoading}
             >
               {isLoading ? 'Updating...' : 'Update Profile'}

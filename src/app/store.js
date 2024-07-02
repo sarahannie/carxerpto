@@ -8,6 +8,7 @@ import { sellerAuthApi } from './api/sellerAuthApi';
 import { signinAuthApi } from './api/signinAuthApi';
 import { productApi } from './api/productApi';
 import { buyerProductApi } from './api/buyerProductApi';
+import {brokerAuthApi} from './api/brokerAuthApi'
 
 export const store = configureStore({
   reducer: {
@@ -17,11 +18,12 @@ export const store = configureStore({
     [signinAuthApi.reducerPath]: signinAuthApi.reducer,
     [productApi.reducerPath]: productApi.reducer,
     [buyerProductApi.reducerPath]: buyerProductApi.reducer,
+    [brokerAuthApi.reducerPath]: brokerAuthApi.reducer,
     auth: authSlice,
     chat: chatSlice
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(authApi.middleware, chatApi.middleware, sellerAuthApi.middleware, signinAuthApi.middleware, productApi.middleware, buyerProductApi.middleware),
+    getDefaultMiddleware().concat(authApi.middleware, chatApi.middleware, sellerAuthApi.middleware, signinAuthApi.middleware, productApi.middleware, buyerProductApi.middleware, brokerAuthApi.middleware),
 });
 
 setupListeners(store.dispatch);
