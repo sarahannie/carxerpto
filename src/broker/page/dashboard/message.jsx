@@ -11,11 +11,9 @@ export function MessagesBroker() {
 
   return (
     <div className="">
-      <DashboardNavbar />
+     
       <div className="flex flex-row  overflow-hidden">
-        <div className="">
-        <Sidenav/>
-        </div>
+        
       <div className='mt-7 w-[90%] lg:ml-[20%] ml-[15px] lg:mr-10px mr-1px border rounded-lg shadow-md' style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
       <MainContainer
         responsive

@@ -71,3 +71,4 @@ Sidenav.propTypes = {
 Sidenav.displayName = "/src/widgets/layout/sidnave.jsx";
 
 export default Sidenav;
+

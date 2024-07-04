@@ -9,11 +9,9 @@ export function SubscriptionBroker() {
   
   return (
     <div className="">
-      <DashboardNavbar />
+      
       <div className="flex flex-row  overflow-hidden">
-        <div className="">
-        <Sidenav/>
-        </div>
+        
         <div className=" mt-7 w-[90%] lg:ml-[20%] ml-[15px]">
             <div className="w-[90%] bg-primary-normal text-white text-start px-3 py-3 rounded-md shadow-lg">
                 <h1>Current Subscription Plan</h1>

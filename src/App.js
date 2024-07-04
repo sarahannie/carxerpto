@@ -67,6 +67,8 @@ import ChangePassword from './features/auth/changePassword.js';
 import EmailVerificationSeller from './features/auth/verificationSeller.js';
 import EmailVerificationBroker from './features/auth/verificationBroker.js';
 import EditProduct from './seller/page/dashboard/editproduct.jsx';
+import Sidenav from './broker/widgets/layout/sidenav.jsx';
+import DashboardNavbar from './broker/widgets/layout/dashboard-navbar.jsx';
 
 /* Importing Components */
 
@@ -145,7 +147,18 @@ function App() {
           <Route path='/dashboard/subscriptionadmin' element={<Subscriptionadmin />} />
           <Route path='/dashboard/insurance' element={<Insurance />} />
           <Route path='/dashboard/adminSetting' element={<AdminSetting />} />
-          {/* Broker Car */}
+
+
+            {/* Broker Car */}
+          <Route
+          element={
+            <>
+              <DashboardNavbar/>
+              <Sidenav/>  <Outlet />
+            </>
+          }
+          >
+          <Route element={<ProtectedRoute />}>
           <Route path='/dashboard/settingbroker' element={<SettingBroker />} />
           <Route path='/dashboard/SubscriptionBroker' element={<SubscriptionBroker />} />
           <Route path='/pricebroker' element={<Pricebroker />} />
@@ -154,6 +167,10 @@ function App() {
           <Route path='/dashboard/messagebroker' element={<MessagesBroker />} />
           <Route path='/dashboard/service' element={<Servicebody />} />
           <Route path='/dashboard/brokerhome' element={<Brokerhome />} />
+          </Route>
+          </Route>
+          
+          
         </Routes>
       </Router>
       

@@ -8,11 +8,9 @@ import ReactStars from "react-rating-stars-component";
 export function Brokerhome() {
   return (
     <div className="">
-      <DashboardNavbar />
+      
       <div className="flex flex-row  overflow-hidden">
-        <div className="">
-          <Sidenav />
-        </div>
+        
         <div className=" mt-7 w-[90%] lg:ml-[20%] ml-[15px]">
           <div className=" mb-6 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-2 mr-5">
             <HomeCard />

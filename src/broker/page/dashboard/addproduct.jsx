@@ -7,11 +7,9 @@ export function Addproduct() {
    
   return (
     <div className="">
-      <DashboardNavbar />
+      
       <div className="flex flex-row  overflow-hidden">
-        <div className="">
-        <Sidenav/>
-        </div>
+        
         <div className=" mt-7 w-[90%] lg:ml-[20%] ml-[15px]">
         
         <div className=" mb-6  flex justify-between mr-4">
