@@ -39,7 +39,7 @@ export function Brokerprofile() {
           </div>
           <div className="flex flex-col sm:flex-row mt-4">
             <div className="w-full sm:w-[20%]">
-              <img className="object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl" src="https://via.placeholder.com/150" alt="blog" />
+              <img className="object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl" src={profile.profilePhoto?profile.profilePhoto: "https://via.placeholder.com/150"} alt="blog" />
             </div>
             <div className="w-full sm:w-[80%] ml-3">
               <div className="grid grid-cols-2 mt-2">

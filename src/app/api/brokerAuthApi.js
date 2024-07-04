@@ -43,6 +43,7 @@ export const brokerAuthApi = createApi({
         method: 'GET'
       })
     }),
+    
     editProfile: builder.mutation({
       query: (formData) => ({
         url: '/edit-profile',

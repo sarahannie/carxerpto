@@ -10,7 +10,6 @@ function CategoryHatchbacks() {
   let category = Array.isArray(data?.product) ? data.product : [];
   
 
-  console.log("Buyer category", category)
 
  
   return (

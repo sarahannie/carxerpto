@@ -8,8 +8,7 @@ function CategoryCardCoupes() {
   const { data, error, isLoading } = useGetCoupesCategoryProductsQuery();
   const category = Array.isArray(data?.product) ? data.product : [];
 
-  console.log("Buyer category", category);
-
+  
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading products for category</p>;
 

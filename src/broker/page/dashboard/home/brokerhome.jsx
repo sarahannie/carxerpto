@@ -1,11 +1,25 @@
 import React from "react";
-import DashboardNavbar from "../../../widgets/layout/dashboard-navbar";
-import Sidenav from "../../../widgets/layout/sidenav";
 import { HomeCard } from "../../../widgets/cards/sales/sale-card";
 import { HomeCard1 } from "../../../widgets/cards/sales/sale-card1";
 import ReactStars from "react-rating-stars-component";
+import { useGetProfileQuery } from "../../../../app/api/brokerAuthApi";
+import { CustomSpinner } from "../../../../loading";
 
 export function Brokerhome() {
+  const { data, isSuccess, isLoading, isError } = useGetProfileQuery();
+  const profile = isSuccess ? data.responseMessage : null;
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-full mt-[10%]">
+        <CustomSpinner />
+      </div>
+    );
+  }
+
+  if (isError || !profile) {
+    return <div className="text-md text-center">Error loading profile. Logout and try again.</div>;
+  }
   return (
     <div className="">
       
@@ -13,8 +27,11 @@ export function Brokerhome() {
         
         <div className=" mt-7 w-[90%] lg:ml-[20%] ml-[15px]">
           <div className=" mb-6 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-2 mr-5">
-            <HomeCard />
-            <HomeCard1 />
+            <HomeCard firstName={profile.firstName} 
+  lastName={profile.lastName} 
+  sale={profile.avgSalePrice} 
+  clientSatisfaction={profile.clientSatisfaction}  />
+            <HomeCard1 email ={profile.email} location ={profile.location}/>
           </div>
           <div className="border shadow-lg p-3 mt-3 mb-3 rounded-lg mr-4">
             <div className="flex justify-between ">
@@ -30,14 +47,7 @@ export function Brokerhome() {
                 Description
               </label>
               <p className="py-2">
-                Offers comprehensive assistance in buying and selling vehicles.
-                With a focus on personalized guidance, we excel in sourcing the
-                perfect vehicle for each client, leveraging our negotiation
-                expertise to secure the best deals. Through in-depth market
-                analysis, we provide insights to empower informed decisions,
-                ensuring maximum value for every transaction. Our dedication to
-                exceptional customer service means tailored support at every
-                step, cementing our reputation for integrity and results.{" "}
+              {profile.about}
               </p>
             </div>
             <div className="grid grid-cols-2 mt-4">
@@ -49,9 +59,8 @@ export function Brokerhome() {
                   Specialties
                 </label>
                 <ul>
-                  <li>Luxury Cars, </li>
-                  <li>Commercial Vehicles</li>
-                  <li>Vintage Classics</li>
+                  <li>{profile.specialities}</li>
+                  
                 </ul>
               </div>
               <div className="text-start">
@@ -62,9 +71,8 @@ export function Brokerhome() {
                   Expertise
                 </label>
                 <ul>
-                  <li>Negotiation Skills, </li>
-                  <li>Market Analysis, </li>
-                  <li>Client Relationship Managemen</li>
+                  <li>{profile.expertise} </li>
+                 
                 </ul>
               </div>
             </div>

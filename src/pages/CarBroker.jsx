@@ -2,10 +2,28 @@ import React from "react";
 import Footer from "../components/Footer/Footer";
 import Suv from "../assets/hero.png";
 import Brokercard from "../components/brokercard/brokercard";
+import  {useGetBrokerQuery} from '../app/api/buyerProductApi'
+import { CustomSpinner } from "../loading";
 
 
 
 function CarBroker() {
+  const { data, isSuccess, isLoading, isError } = useGetBrokerQuery();
+  const profile = isSuccess ? (Array.isArray(data?.brokers) ? data.brokers : []) : [];
+  console.log("what", profile)
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-full mt-[10%]">
+        <CustomSpinner />
+      </div>
+    );
+  }
+
+  if (isError || !profile) {
+    return <div className="text-md text-center">Error loading profile. Logout and try again.</div>;
+  }
+
   return (
     <div>
       <section className="w-full h-full overflow-x-hidden">
@@ -24,12 +42,9 @@ function CarBroker() {
 </div>
           <div className="mt-20 mb-14 mx-[20px]">
             <h2 className="text-primary-normal text-start font-bold text-[20px] ">Broker Listings</h2>
-            <div className="grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-2 mt-10">
+            
                 <Brokercard />
-                <Brokercard />
-                <Brokercard />
-                <Brokercard />
-            </div>
+            
 
             
           </div>

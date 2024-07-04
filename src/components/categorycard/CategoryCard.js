@@ -6,11 +6,10 @@ import {useNavigate } from 'react-router-dom';
 
 function CategoryCard1() {
   const navigate = useNavigate();
-  const { data,  } = useGetCategoryProductsQuery();
+  const { data } = useGetCategoryProductsQuery();
   let category = Array.isArray(data?.product) ? data.product : [];
   
 
-  console.log("Buyer category", category)
 
   
   return (

@@ -54,6 +54,12 @@ export const buyerProductApi = createApi({
         method: 'GET'
       })
     }),
+    getBroker: builder.query({
+      query: () => ({
+        url: '/brokers',
+        method: 'GET'
+      })
+    }),
     getMinivansCategoryProducts: builder.query({
       query: (Minivans) => ({
         url: `/products/category/Minivans`,
@@ -65,4 +71,4 @@ export const buyerProductApi = createApi({
   })
 });
 
-export const {  useGetProductsQuery, useGetCategoryProductsQuery, useGetSuvCategoryProductsQuery, useGetCoupesCategoryProductsQuery, useGetHatchbacksCategoryProductsQuery, useGetPickupTrucksCategoryProductsQuery, useGetMinivansCategoryProductsQuery } = buyerProductApi;
+export const {  useGetProductsQuery, useGetCategoryProductsQuery, useGetSuvCategoryProductsQuery, useGetCoupesCategoryProductsQuery, useGetHatchbacksCategoryProductsQuery, useGetPickupTrucksCategoryProductsQuery, useGetMinivansCategoryProductsQuery, useGetBrokerQuery } = buyerProductApi;

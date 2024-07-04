@@ -1,17 +1,17 @@
-import { IoBagHandleOutline } from "react-icons/io5";
+
 import { TiEdit } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import { PiCertificateThin } from "react-icons/pi";
 import { TfiCup } from "react-icons/tfi";
 import { MdOutlineReviews } from "react-icons/md";
   
-export function HomeCard({ color, icon, title, value, footer }) {
+export function HomeCard({ firstName, lastName, sale,clientSatisfaction }) {
   return (
     <div className="border border-primary-normal pt-4 pb-1 px-3 rounded-md shadow-lg">
       <div className="flex justify-between py-3 align-center text-primary-normal">
         <div>
           <p className="p"></p>
-          <h3>Jammie Chan</h3>
+          <h3>{firstName} {lastName}</h3>
         </div>
         <div className="">
           <Link to="/dashboard/brokerprofileedit">
@@ -28,7 +28,7 @@ export function HomeCard({ color, icon, title, value, footer }) {
           </div>
           <div className="text-start">
             <h3 className="text-gray-400 text-[13px]">Sales</h3>
-            <p className="text-black-900 text-lg">$25,000</p>
+            <p className="text-black-900 text-lg">{sale}</p>
           </div>
         </div>
         <div className="flex gap-2 items-center">
@@ -37,7 +37,7 @@ export function HomeCard({ color, icon, title, value, footer }) {
           </div>
           <div className="text-start">
             <h3 className="text-gray-400 text-[13px]">Success rate</h3>
-            <p className="text-black-900 text-lg">80%</p>
+            <p className="text-black-900 text-lg">{clientSatisfaction}%</p>
           </div>
         </div>
         <div className="flex gap-2 items-center">

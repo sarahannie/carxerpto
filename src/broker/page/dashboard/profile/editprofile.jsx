@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Stepper, Step, Button, Input, Textarea } from "@material-tailwind/react";
-import DashboardNavbar from "../../../widgets/layout/dashboard-navbar";
-import Sidenav from "../../../widgets/layout/sidenav";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useGetProfileQuery, useEditProfileMutation} from "../../../../app/api/brokerAuthApi";
@@ -67,9 +65,21 @@ const EditProfile = () => {
       console.log('Form submitted', values);
       try {
         const formData = new FormData();
-        Object.keys(values).forEach(key => {
-          formData.append(key, values[key]);
-        });
+        formData.append('firstName', values.firstName);
+        formData.append('lastName', values.lastName);
+        formData.append('email', values.email);
+        formData.append('username', values.username);
+        formData.append('phone', values.phone);
+        formData.append('location', values.location);
+        formData.append('about', values.about);
+        formData.append('experience', values.experience);
+        formData.append('specialities', values.specialities);
+        formData.append('expertise', values.expertise);
+        formData.append('language', values.language);
+        formData.append('totalTransaction', values.totalTransaction);
+        formData.append('avgSalePrice', values.avgSalePrice);
+        formData.append('clientSatisfaction', values.clientSatisfaction);
+
         if (values.profilePhoto && values.profilePhoto instanceof File) {
           formData.append('profilePhoto', values.profilePhoto);
         }
@@ -79,8 +89,9 @@ const EditProfile = () => {
         toast.success('Profile updated successfully');
       } catch (error) {
         setButtonText('Save');
-        toast.error(`Failed to update profile: ${error.data ? error.data.error : error.message}`);
-        console.log('hell owrld', error)
+        toast.error(`Failed to update profile: ${error.data ? error.data.error : error.responseMessage
+        }`);
+        console.log('hell world', error)
       }
     },
   });

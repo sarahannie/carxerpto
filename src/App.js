@@ -117,7 +117,7 @@ function App() {
             <Route path='/success' element={<Success />} />
             <Route path='/car-details/:productTag' element={<CarDetails />} />
             <Route path='/car-broker' element={<CarBroker />} />
-            <Route path='/broker-contact' element={<BrokerContact />} />
+            <Route path='/broker-contact/:id' element={<BrokerContact />} />
             {/* <Route path="/stripe" element={<Stripe/>}/> */}
             <Route path='/profile' element={<Profile />} />
             </Route>
