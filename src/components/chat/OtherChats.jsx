@@ -68,7 +68,7 @@ const OtherChats = () => {
               />
               
               {messages.map ((u, index)=>(
-                <ConversationList style={{ height: 'calc(100vh - 450px)' }}>
+                <ConversationList style={{ height: 'calc(100vh - 500px)' }}>
                   <div
                   onClick={() => updateCurrentChat(u)}
                   key={index}
