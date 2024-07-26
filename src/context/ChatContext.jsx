@@ -29,7 +29,7 @@ export const ChatContextProvider = ({ children, user }) => {
 
   // CONNECT SOCKET-IO
   useEffect(() => {
-    const newSocket = io('http://localhost:3000');
+    const newSocket = io('https://stingray-app-cog7k.ondigitalocean.app/');
     setSocket(newSocket);
 
     // Clean up

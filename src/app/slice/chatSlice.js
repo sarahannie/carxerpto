@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import chatApi from '../api/chatApi';
+
 
 const initialState = {
   user1: 'user1',

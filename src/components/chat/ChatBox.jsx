@@ -2,22 +2,20 @@ import React, { useState } from 'react';
 import { useChatContext } from '../../context/ChatContext';
 import { useFetchRecipientUser } from '../../hook/useFetchRecipient';
 import moment from 'moment';
-import InputEmoji from 'react-input-emoji';
 import {
   MessageInput,
   MessageList,
   Message,
   Avatar,
   TypingIndicator,
-  VoiceCallButton,
-  VideoCallButton,
+
   ConversationHeader,
   InfoButton,
   ChatContainer
 } from '@chatscope/chat-ui-kit-react';
-import { Spinner } from '@material-tailwind/react';
+
 import { CustomSpinner } from '../../loading';
-import { ChatBubbleBottomCenterTextIcon } from '@heroicons/react/24/solid';
+
 import { ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline';
 
 const ChatBox = () => {
@@ -26,11 +24,11 @@ const ChatBox = () => {
 
   const [textMessage, setTextMessage] = useState('');
 
-  console.log(`recipient`, recipientUser);
-  console.log(`usertext`, userMessages);
-  console.log(`current`, currentChat);
-  console.log(`currentss`, sendMessage);
-  console.log(`user`, user);
+  // console.log(`recipient`, recipientUser);
+  // console.log(`usertext`, userMessages);
+  // console.log(`current`, currentChat);
+  // console.log(`currentss`, sendMessage);
+  // console.log(`user`, user);
 
   if (!recipientUser) return (<div className='flex flex-col justify-center items-center mx-auto bg-white w-full'>
     <ChatBubbleLeftRightIcon size={4} style={{ color: '#003b6d', fontSize: '16px', width: '180px', height: '180px'}}/>
