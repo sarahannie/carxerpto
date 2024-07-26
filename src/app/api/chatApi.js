@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const BASE_URL = 'https://auto-buy-api.vercel.app/';
+const BASE_URL = 'https://autobuy-server.onrender.com/';
 
 export const chatApi = createApi({
   reducerPath: 'chatApi',
@@ -10,27 +10,27 @@ export const chatApi = createApi({
       query: (message) => ({
         url: '/chats',
         method: 'POST',
-        body: message
-      })
+        body: message,
+      }),
     }),
     fetchMessageHistory: builder.query({
       query: ({ user1, user2 }) => ({
         url: `/chats/${user1}/${user2}`,
-        method: 'GET'
-      })
+        method: 'GET',
+      }),
     }),
     updateMessageStatus: builder.mutation({
       query: ({ chatId, status }) => ({
         url: `/chats/${chatId}`,
         method: 'PUT',
-        body: { status }
-      })
-    })
-  })
+        body: { status },
+      }),
+    }),
+  }),
 });
 
 export const {
   useSendMessageMutation,
   useFetchMessageHistoryQuery,
-  useUpdateMessageStatusMutation
+  useUpdateMessageStatusMutation,
 } = chatApi;

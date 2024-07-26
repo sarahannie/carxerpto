@@ -66,9 +66,22 @@ export const buyerProductApi = createApi({
         method: 'GET'
       })
     }),
+    editProfile: builder.mutation({
+      query: (formData ) => ({
+        url: '/edit-profile',
+        method: 'PUT',
+        body: formData 
+      })
+    }),
+    getProfile: builder.query({
+      query: () => ({
+        url: '/profile',
+        method: 'GET'
+      })
+    }),
     
 
   })
 });
 
-export const {  useGetProductsQuery, useGetCategoryProductsQuery, useGetSuvCategoryProductsQuery, useGetCoupesCategoryProductsQuery, useGetHatchbacksCategoryProductsQuery, useGetPickupTrucksCategoryProductsQuery, useGetMinivansCategoryProductsQuery, useGetBrokerQuery } = buyerProductApi;
+export const {  useGetProductsQuery, useGetCategoryProductsQuery, useGetSuvCategoryProductsQuery, useGetCoupesCategoryProductsQuery, useGetHatchbacksCategoryProductsQuery, useGetPickupTrucksCategoryProductsQuery, useGetMinivansCategoryProductsQuery, useGetBrokerQuery, useEditProfileMutation, useGetProfileQuery } = buyerProductApi;

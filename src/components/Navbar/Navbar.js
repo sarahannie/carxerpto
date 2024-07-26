@@ -7,13 +7,18 @@ import { IoMdCloseCircleOutline } from "react-icons/io";
 import { Button } from "@material-tailwind/react";
 import { logoutUser } from '../../app/slice/authSlice'
 import { useDispatch, useSelector } from "react-redux";
+import { useGetProfileQuery } from "../../app/api/buyerProductApi";
 
 
 
 function Navbar() {
+  const { data, isSuccess: isGetSuccess } = useGetProfileQuery();
+  const profile = isGetSuccess ? data.responseMessage : null;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
+  console.log('profile', profile)
 
  
 

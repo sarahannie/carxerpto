@@ -3,25 +3,45 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useNavigate } from 'react-router-dom';
 import { useGetProductsQuery } from '../../app/api/buyerProductApi';
-
+import { useSelector } from 'react-redux';
 
 
 const Carousels = ({ deviceType }) => {
   const navigate = useNavigate();
-  const { data,  } = useGetProductsQuery();
+  const { category, make, color, year, sellingPrice } = useSelector(state => state.filters);
+  const { data, error, isLoading } = useGetProductsQuery({
+    category,
+    make,
+    color,
+    year,
+    sellingPrice,
+  });
   const products = Array.isArray(data?.product) ? data.product : [];
-
-  console.log("Buyer featured", products);
-
-  // Function to get a random subset of products
+  
   const getRandomProducts = (arr, n) => {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, n);
   };
 
-  // Limit to 6 products at random
   const displayedProducts = getRandomProducts(products, 6);
-    
+  
+
+  
+ 
+  const filteredProducts = products.filter((car) => {
+    const matchesCategory = !category || car.category.toLowerCase() === category.toLowerCase();
+    const matchesMake = !make || car.make.toLowerCase() === make.toLowerCase();
+    const matchesColor = !color || car.color.toLowerCase() === color.toLowerCase();
+    const matchesYear = !year || car.year.toString() === year; 
+    const matchesPrice = !sellingPrice || checkPriceRange(car.sellingPrice, sellingPrice);
+
+    return matchesCategory && matchesMake && matchesColor && matchesYear && matchesPrice;
+  });
+
+  function checkPriceRange(price, range) {
+    const [min, max] = range.split('-').map(Number);
+    return price >= min && price <= max;
+  }
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -70,7 +90,7 @@ const responsive = {
     arrows={false}
     carouselRef={(el) => (this.Carousel = el)}
 >
-{displayedProducts.map((cars) => (
+{displayedProducts && filteredProducts.map((cars) => (
           <div
             key={cars.id}
             className="border border-slate-300 bg-white shadow-md w-[350px] "

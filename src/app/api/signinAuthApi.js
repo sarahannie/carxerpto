@@ -2,7 +2,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: 'https://autobuy-server.onrender.com/users',
-  
+  // baseUrl: 'http://localhost:3576/users/',
+
   prepareHeaders: (headers) => {
     const token = localStorage.getItem('auth');
     console.log(`ReqToken:`, token);

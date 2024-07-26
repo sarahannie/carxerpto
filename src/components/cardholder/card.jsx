@@ -9,19 +9,46 @@ import { MdAirlineSeatLegroomExtra } from "react-icons/md";
 import { FaRegBookmark } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { useGetProductsQuery } from '../../app/api/buyerProductApi';
+import { useSelector } from 'react-redux';
 
 const Cards = () => {
   const navigate = useNavigate();
-  const { data, error, isLoading } = useGetProductsQuery();
+  const { category, make, color, year, sellingPrice } = useSelector(state => state.filters);
+  const { data, error, isLoading } = useGetProductsQuery({
+    category,
+    make,
+    color,
+    year,
+    sellingPrice,
+  });
   const products = Array.isArray(data?.product) ? data.product : [];
+  
   const getRandomProducts = (arr, n) => {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, n);
   };
 
   const displayedProducts = getRandomProducts(products, 6);
+  
 
-  console.log("Buyer products", products);
+  
+ 
+  const filteredProducts = products.filter((car) => {
+    const matchesCategory = !category || car.category.toLowerCase() === category.toLowerCase();
+    const matchesMake = !make || car.make.toLowerCase() === make.toLowerCase();
+    const matchesColor = !color || car.color.toLowerCase() === color.toLowerCase();
+    const matchesYear = !year || car.year.toString() === year; 
+    const matchesPrice = !sellingPrice || checkPriceRange(car.sellingPrice, sellingPrice);
+
+    return matchesCategory && matchesMake && matchesColor && matchesYear && matchesPrice;
+  });
+
+  function checkPriceRange(price, range) {
+    const [min, max] = range.split('-').map(Number);
+    return price >= min && price <= max;
+  }
+
+ 
 
   return (
     <>
@@ -33,12 +60,12 @@ const Cards = () => {
         <div className={style.errorCard}>
           <p>Error loading products</p>
         </div>
-      ) : products.length === 0 ? (
+      ) : filteredProducts.length === 0 ? (
         <div className={style.noProductCard}>
-          <p>No products yet</p>
+          <p className="text-2xl">No products like yet 😞</p>
         </div>
       ) : (
-        displayedProducts.map((cars) => (
+        displayedProducts && filteredProducts.map((cars) => (
           <div key={cars._id} className={style.container}>
             <div onClick={() => navigate(`/car-details/${cars.productTag}`, { state: { cars } })}>
               <img src={cars.images[0]} className={style.img} alt={cars.name} />

@@ -2,6 +2,7 @@
 import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import './App.css';
 import React from 'react';
+import { useSelector } from 'react-redux';
 /* Importing Pages */
 import Chat from './features/chat/Chat.js';
 import OnboardingPage from './pages/OnboardingPage';
@@ -69,111 +70,117 @@ import EmailVerificationBroker from './features/auth/verificationBroker.js';
 import EditProduct from './seller/page/dashboard/editproduct.jsx';
 import Sidenav from './broker/widgets/layout/sidenav.jsx';
 import DashboardNavbar from './broker/widgets/layout/dashboard-navbar.jsx';
+import { ChatContextProvider } from './context/ChatContext.jsx';
 
 /* Importing Components */
 
 function App() {
+  const user = useSelector((state) => state.auth.user);
+
   return (
     <div className='App'>
-      <ToastContainer />
-      <Router>
-        <Routes>
-          <Route
-            element={
-              <>
-                <Navbar /> <Outlet />
-              </>
-            }
-          >
-            <Route path='/' element={<OnboardingPage />} />
-            <Route path='/signin' element={<SignIn />} />
-            <Route path='/forgetpassword' element={<ForgotPassword />} />
-            <Route path='/signup' element={<SignUp />} />
-            <Route path='/signupseller' element={<SignUpSeller />} />
-            <Route path='/signupbroker' element={<SignUpBroker />} />
-            <Route path='/varificationbuyer' element={<EmailVerification />} />
-            <Route path='/changepassword' element={<ChangePassword />} />
-            <Route path='/varificationseller' element={<EmailVerificationSeller/>} />
-            <Route path='/varificationbroker' element={<EmailVerificationBroker/>} />
+      <ChatContextProvider user={user}>
+        <ToastContainer />
+        <Router>
+          <Routes>
+            <Route
+              element={
+                <>
+                  <Navbar /> <Outlet />
+                </>
+              }
+            >
+              <Route path='/' element={<OnboardingPage />} />
+              <Route path='/signin' element={<SignIn />} />
+              <Route path='/forgetpassword' element={<ForgotPassword />} />
+              <Route path='/signup' element={<SignUp />} />
+              <Route path='/signupseller' element={<SignUpSeller />} />
+              <Route path='/signupbroker' element={<SignUpBroker />} />
+              <Route path='/varificationbuyer' element={<EmailVerification />} />
+              <Route path='/changepassword' element={<ChangePassword />} />
+              <Route path='/varificationseller' element={<EmailVerificationSeller />} />
+              <Route path='/varificationbroker' element={<EmailVerificationBroker />} />
 
+              <Route element={<ProtectedRoute />}>
+                <Route path='/home' element={<LandingPage />} />
+                <Route path='/chat' element={<Chat />} />
 
-          <Route  element={<ProtectedRoute />} >
-            
-            <Route path='/home' element={<LandingPage />} />
-            <Route path='/chat' element={<Chat />} />
-            
-            <Route path='/about' element={<AboutYou />} />
-            <Route path='/forget' element={<ForgetPass />} />
-            <Route path='/about-us' element={<AboutUs />} />
-            <Route path='/feature' element={<FeatureSec />} />
-            <Route path='/car-category/:categoryId' element={<CarCategory />} />
-            <Route path='/car-listing' element={<CarListing />} />
-            <Route path='/car-apprasial' element={<CarApprasial />} />
-            <Route path='/car-insurance' element={<CarInsur />} />
-            <Route path='/price' element={<Prices />} />
-            <Route path='/payment' element={<Payment />} />
-            <Route path='/car-quota' element={<CarQuota />} />
-            <Route path='/car-quota-insurance' element={<CarInsurQ />} />
-            <Route path='/success' element={<Success />} />
-            <Route path='/car-details/:productTag' element={<CarDetails />} />
-            <Route path='/car-broker' element={<CarBroker />} />
-            <Route path='/broker-contact/:id' element={<BrokerContact />} />
-            {/* <Route path="/stripe" element={<Stripe/>}/> */}
-            <Route path='/profile' element={<Profile />} />
+                <Route path='/about' element={<AboutYou />} />
+                <Route path='/forget' element={<ForgetPass />} />
+                <Route path='/about-us' element={<AboutUs />} />
+                <Route path='/feature' element={<FeatureSec />} />
+                <Route path='/car-category/:categoryId' element={<CarCategory />} />
+                <Route path='/car-listing' element={<CarListing />} />
+                <Route path='/car-apprasial' element={<CarApprasial />} />
+                <Route path='/car-insurance' element={<CarInsur />} />
+                <Route path='/price' element={<Prices />} />
+                <Route path='/payment' element={<Payment />} />
+                <Route path='/car-quota' element={<CarQuota />} />
+                <Route path='/car-quota-insurance' element={<CarInsurQ />} />
+                <Route path='/success' element={<Success />} />
+                <Route path='/car-details/:productTag' element={<CarDetails />} />
+                <Route path='/car-broker' element={<CarBroker />} />
+                <Route path='/broker-contact/:_id' element={<BrokerContact />} />
+                {/* <Route path="/stripe" element={<Stripe/>}/> */}
+                <Route path='/profile' element={<Profile />} />
+              </Route>
             </Route>
-          </Route>
-          {/* Seller */}
-          <Route path='/dashboard/home' element={<Home />} />
+            {/* Seller */}
+            <Route element={<ProtectedRoute />}>
+            <Route path='/dashboard/home' element={<Home />} />
             <Route path='/dashboard/seller-profile' element={<Profiles />} />
             <Route path='/dashboard/seller-product' element={<List />} />
             <Route path='/Viewproduct/:productTag' element={<Viewproduct />} />
             <Route path='/Addproduct' element={<Addproduct />} />
             <Route path='/edit-product' element={<EditProduct />} />
 
-          <Route path='/dashboard/analysis' element={<Analytic />} />
-          <Route path='/dashboard/history' element={<History />} />
-          <Route path='/dashboard/subscription' element={<Subscription />} />
-          <Route path='/dashboard/setting' element={<Setting />} />
-          <Route path='/dashboard/message' element={<Message />} />
-          <Route path='/seller-price' element={<Price />} />
-          <Route path='/auth/signin' element={<SignIn />} />
-          <Route path='/test' element={<CarListPage />} />
-          {/* Admin */}
-          <Route path='/dashboard/admin' element={<Homeadmin />} />
-          <Route path='/dashboard/user' element={<Usermanagement />} />
-          <Route path='/dashboard/listing' element={<Listadmin />} />
-          <Route path='/dashboard/analyticadmin' element={<Analyticadmin />} />
-          <Route path='/dashboard/historyadmin' element={<Historyadmin />} />
-          <Route path='/dashboard/subscriptionadmin' element={<Subscriptionadmin />} />
-          <Route path='/dashboard/insurance' element={<Insurance />} />
-          <Route path='/dashboard/adminSetting' element={<AdminSetting />} />
+            <Route path='/dashboard/analysis' element={<Analytic />} />
+            <Route path='/dashboard/history' element={<History />} />
+            <Route path='/dashboard/subscription' element={<Subscription />} />
+            <Route path='/dashboard/setting' element={<Setting />} />
+            <Route
+              path='/dashboard/message'
+              element={<Message buyerId='buyer123' sellerId='seller456' />}
+            />
 
-
+            <Route path='/seller-price' element={<Price />} />
+            <Route path='/auth/signin' element={<SignIn />} />
+            <Route path='/test' element={<CarListPage />} />
+            </Route>
+            {/* Admin */}
+            <Route element={<ProtectedRoute />}>
+            <Route path='/dashboard/admin' element={<Homeadmin />} />
+            <Route path='/dashboard/user' element={<Usermanagement />} />
+            <Route path='/dashboard/listing' element={<Listadmin />} />
+            <Route path='/dashboard/analyticadmin' element={<Analyticadmin />} />
+            <Route path='/dashboard/historyadmin' element={<Historyadmin />} />
+            <Route path='/dashboard/subscriptionadmin' element={<Subscriptionadmin />} />
+            <Route path='/dashboard/insurance' element={<Insurance />} />
+            <Route path='/dashboard/adminSetting' element={<AdminSetting />} />
+            </Route>
             {/* Broker Car */}
-          <Route
-          element={
-            <>
-              <DashboardNavbar/>
-              <Sidenav/>  <Outlet />
-            </>
-          }
-          >
-          <Route element={<ProtectedRoute />}>
-          <Route path='/dashboard/settingbroker' element={<SettingBroker />} />
-          <Route path='/dashboard/SubscriptionBroker' element={<SubscriptionBroker />} />
-          <Route path='/pricebroker' element={<Pricebroker />} />
-          <Route path='/dashboard/brokerprofile' element={<Brokerprofile />} />
-          <Route path='/dashboard/brokerprofileedit' element={<Editprofile />} />
-          <Route path='/dashboard/messagebroker' element={<MessagesBroker />} />
-          <Route path='/dashboard/service' element={<Servicebody />} />
-          <Route path='/dashboard/brokerhome' element={<Brokerhome />} />
-          </Route>
-          </Route>
-          
-          
-        </Routes>
-      </Router>
-      
+            <Route
+              element={
+                <>
+                  <DashboardNavbar />
+                  <Sidenav /> <Outlet />
+                </>
+              }
+            >
+              <Route element={<ProtectedRoute />}>
+                <Route path='/dashboard/settingbroker' element={<SettingBroker />} />
+                <Route path='/dashboard/SubscriptionBroker' element={<SubscriptionBroker />} />
+                <Route path='/pricebroker' element={<Pricebroker />} />
+                <Route path='/dashboard/brokerprofile' element={<Brokerprofile />} />
+                <Route path='/dashboard/brokerprofileedit' element={<Editprofile />} />
+                <Route path='/dashboard/messagebroker' element={<MessagesBroker />} />
+                <Route path='/dashboard/service' element={<Servicebody />} />
+                <Route path='/dashboard/brokerhome' element={<Brokerhome />} />
+              </Route>
+            </Route>
+          </Routes>
+        </Router>
+      </ChatContextProvider>
     </div>
   );
 }

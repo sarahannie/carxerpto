@@ -62,7 +62,7 @@ const Brokercard = () => {
       </div>
       <div className="mt-4 flex justify-end">
         
-            <Button className="bg-primary-light text-primary-dark font-semibold rounded focus:outline-none" onClick={() => navigate(`/broker-contact/${broker.id}`, { state: { broker } })}>Contact</Button>
+            <Button className="bg-primary-light text-primary-dark font-semibold rounded focus:outline-none" onClick={() => navigate(`/broker-contact/${broker._id}`, { state: { broker } })}>Contact</Button>
         
         
       </div>

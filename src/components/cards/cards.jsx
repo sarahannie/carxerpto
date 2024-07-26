@@ -9,13 +9,31 @@ import { MdAirlineSeatLegroomExtra } from "react-icons/md";
 import { FaRegBookmark } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { useGetProductsQuery } from '../../app/api/buyerProductApi';
+import { useSelector } from 'react-redux';
 
 const Cards = () => {
   const navigate = useNavigate();
-  const { data, error, isLoading } = useGetProductsQuery();
-  const products = Array.isArray(data?.product) ? data.product : [];
 
-  console.log("Buyer products", products);
+  const { category, make, color, year, sellingPrice } = useSelector(state => state.filters);
+
+  const { data, error, isLoading } = useGetProductsQuery({
+    category,
+    make,
+    color,
+    year,
+    sellingPrice,
+  });
+
+  const products = Array.isArray(data?.product) ? data.product : [];
+  const filteredProducts = products.filter((car) => {
+    return (
+      (!category || car.category === category) &&
+      (!make || car.make === make) &&
+      (!color || car.color === color) &&
+      (!year || car.year === year) &&
+      (!sellingPrice || car.sellingPrice === sellingPrice)
+    );
+  });
 
   return (
     <>
@@ -27,47 +45,47 @@ const Cards = () => {
         <div className={style.errorCard}>
           <p>Error loading products</p>
         </div>
-      ) : products.length === 0 ? (
+      ) : filteredProducts.length === 0 ? (
         <div className={style.noProductCard}>
-          <p>No products yet</p>
+          <p className="text-2xl">No products like yet 😞</p>
         </div>
       ) : (
-        products.map((cars) => (
-          <div key={cars._id} className={style.container}>
-            <div onClick={() => navigate(`/car-details/${cars.productTag}`, { state: { cars } })}>
-              <img src={cars.images[0]} className={style.img} alt={cars.name} />
+        filteredProducts.map((car) => (
+          <div key={car._id} className={style.container}>
+            <div onClick={() => navigate(`/car-details/${car.productTag}`, { state: { car } })}>
+              <img src={car.images[0]} className={style.img} alt={car.name} />
               <div className={style.containerBody}>
                 <div className={style.header}>
-                  <h2 className={style.brand}>{cars.name}</h2>
-                  <h2 className={style.price}>${cars.sellingPrice}</h2>
+                  <h2 className={style.brand}>{car.name}</h2>
+                  <h2 className={style.price}>${car.sellingPrice}</h2>
                 </div>
                 <div className={style.iconCon}>
                   <div className={style.iconMain}>
                     <SiCmake className={style.icon} />
                     <div>
                       <h3 className={style.icondescription}>Make</h3>
-                      <h3 className={style.iconProduct}>{cars.make}</h3>
+                      <h3 className={style.iconProduct}>{car.make}</h3>
                     </div>
                   </div>
                   <div className={style.iconMain}>
                     <IoCarSportSharp className={style.icon} />
                     <div>
                       <h3 className={style.icondescription}>Model</h3>
-                      <h3 className={style.iconProduct}>{cars.model}</h3>
+                      <h3 className={style.iconProduct}>{car.model}</h3>
                     </div>
                   </div>
                   <div className={style.iconMain}>
                     <IoLocationSharp className={style.icon} />
                     <div>
                       <h3 className={style.icondescription}>Mileage</h3>
-                      <h3 className={style.iconProduct}>{cars.milleage}</h3>
+                      <h3 className={style.iconProduct}>{car.mileage}</h3>
                     </div>
                   </div>
                   <div className={style.iconMain}>
                     <SlCalender className={style.icon} />
                     <div>
                       <h3 className={style.icondescription}>Year</h3>
-                      <h3 className={style.iconProduct}>{cars.year}</h3>
+                      <h3 className={style.iconProduct}>{car.year}</h3>
                     </div>
                   </div>
                 </div>
@@ -75,15 +93,15 @@ const Cards = () => {
                   <div className={style.iconMain}>
                     <BsFuelPumpDiesel className={style.icon} />
                     <div>
-                      <h3 className={style.icondescription}>condition</h3>
-                      <h3 className={style.iconProduct}>{cars.condition}</h3>
+                      <h3 className={style.icondescription}>Condition</h3>
+                      <h3 className={style.iconProduct}>{car.condition}</h3>
                     </div>
                   </div>
                   <div className={style.iconMain}>
                     <MdAirlineSeatLegroomExtra className={style.icon} />
                     <div>
-                      <h3 className={style.icondescription}>color</h3>
-                      <h3 className={style.iconProduct}>{cars.color}</h3>
+                      <h3 className={style.icondescription}>Color</h3>
+                      <h3 className={style.iconProduct}>{car.color}</h3>
                     </div>
                   </div>
                 </div>

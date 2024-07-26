@@ -49,7 +49,6 @@ function Features() {
           <Link to="/car-insurance" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Car Insurance</Link>
           <Link to="/dashboard/home" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Sellers</Link>
           <Link to="/car-broker" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Car Broker</Link>
-          <Link to="/car-category" className="block px-4 py-2 text-gray-900 hover:bg-primary-normalhover hover:text-accent-white">Car Category</Link>
         </div>
       )}
     </div>

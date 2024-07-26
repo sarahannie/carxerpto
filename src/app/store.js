@@ -9,6 +9,8 @@ import { signinAuthApi } from './api/signinAuthApi';
 import { productApi } from './api/productApi';
 import { buyerProductApi } from './api/buyerProductApi';
 import {brokerAuthApi} from './api/brokerAuthApi'
+import filterSlice from './slice/filterSlice';
+
 
 export const store = configureStore({
   reducer: {
@@ -20,7 +22,9 @@ export const store = configureStore({
     [buyerProductApi.reducerPath]: buyerProductApi.reducer,
     [brokerAuthApi.reducerPath]: brokerAuthApi.reducer,
     auth: authSlice,
-    chat: chatSlice
+    chat: chatSlice,
+    filters: filterSlice,
+    
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(authApi.middleware, chatApi.middleware, sellerAuthApi.middleware, signinAuthApi.middleware, productApi.middleware, buyerProductApi.middleware, brokerAuthApi.middleware),
