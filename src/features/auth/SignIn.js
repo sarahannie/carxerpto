@@ -73,7 +73,7 @@ function SignIn() {
         }
       } catch (error) {
         // Handle login failure
-        toast.error(`Login failed: ${error.data ? error.data.error : error.message}`);
+        toast.error(`Login failed: ${error.data?.error || error.error}`);
         console.error('Login failed:', error);
       }
     }

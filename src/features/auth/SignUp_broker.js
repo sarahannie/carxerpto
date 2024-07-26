@@ -60,7 +60,7 @@ function SignUpBroker() {
           toast.error('Token not found in response');
         }
       } catch (error) {
-        toast.error(`Sign up failed: ${error.data?.msg || error.message}`);
+        toast.error(`Sign up failed: ${error.data?.error || error.error}`);
         console.error('Sign up failed:', error);
       }
     }
