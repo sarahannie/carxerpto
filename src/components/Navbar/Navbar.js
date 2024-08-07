@@ -48,7 +48,7 @@ function Navbar() {
   return (
     <div>
       <section className="bg-#FFFEF9 shadow-md w-full h-16 flex flex-row items-center justify-between px-12 relative z-50">
-        <Link to="/"><img src={Logo} alt="logo" className="-ml-14 lg:-ml-10 w-50 h-40" /></Link>
+        <Link to="/home"><img src={Logo} alt="logo" className="-ml-14 lg:-ml-10 w-50 h-40" /></Link>
 
         {/* Hamburger Icon */}
         <div className="lg:hidden">

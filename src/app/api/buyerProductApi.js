@@ -79,9 +79,16 @@ export const buyerProductApi = createApi({
         method: 'GET'
       })
     }),
+    addContact: builder.mutation({
+      query: (formData) => ({
+        url: '/user/contact',
+        method: 'POST',
+        body: formData
+      })
+    })
     
 
   })
 });
 
-export const {  useGetProductsQuery, useGetCategoryProductsQuery, useGetSuvCategoryProductsQuery, useGetCoupesCategoryProductsQuery, useGetHatchbacksCategoryProductsQuery, useGetPickupTrucksCategoryProductsQuery, useGetMinivansCategoryProductsQuery, useGetBrokerQuery, useEditProfileMutation, useGetProfileQuery } = buyerProductApi;
+export const {  useGetProductsQuery, useGetCategoryProductsQuery, useGetSuvCategoryProductsQuery, useGetCoupesCategoryProductsQuery, useGetHatchbacksCategoryProductsQuery, useGetPickupTrucksCategoryProductsQuery, useGetMinivansCategoryProductsQuery, useGetBrokerQuery, useEditProfileMutation, useGetProfileQuery, useAddContactMutation } = buyerProductApi;

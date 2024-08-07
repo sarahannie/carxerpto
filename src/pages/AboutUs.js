@@ -3,9 +3,41 @@ import Footer from "../components/Footer/Footer";
 import aboutimage1 from "../assets/aboutimage1.jpg";
 import aboutimage2 from "../assets/aboutimage2.jpg";
 import Sealcheck from "../assets/SealCheck.png";
-import Target from "../assets/Target.png"
+import Target from "../assets/Target.png";
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import { useAddContactMutation } from "../app/api/buyerProductApi";
+import { toast } from "react-toastify";
+
 
 function AboutUs() {
+  const [addContact, { isLoading, isError, isSuccess }] = useAddContactMutation();
+  const formik = useFormik({
+    initialValues: {
+      fullName: "",
+      email: "",
+      message: "",
+    },
+    validationSchema: Yup.object({
+      fullName: Yup.string().required("Name is required"),
+      email: Yup.string().email("Invalid email address").required("Email is required"),
+      message: Yup.string().required("Message is required"),
+    }),
+    onSubmit: (values, { resetForm }) => {
+      console.log('food',values);
+      try {
+        const formData = new FormData();
+        formData.append('fullName', values.fullName);
+        formData.append('email', values.email);
+        formData.append('message', values.message);
+        addContact(formData);
+        resetForm();
+        toast.success('Message sent successfully');
+      } catch (error) {
+        toast.error('Failed to send message');
+      }
+    },
+  })
   return (
     <div>
       <section className="bg-white w-full h-screen">
@@ -93,10 +125,10 @@ function AboutUs() {
                 </div>
             </div>
             <div className="mt-20 relative rounded-md lg:w-1/2 w-full h-[600px] overflow-hidden">
-                <form className="p-8 bg-primary-light border border-primary-light h-full w-full">
+                <form className="p-8 bg-primary-light border border-primary-light h-full w-full" onSubmit={formik.handleSubmit}>
                     <h1 className="text-primary-normal mt-5 mb-5 text-4xl font-bold">Contact Us</h1>
                     <br/>
-                    <div className="mx-10 flex items-center mb-10 relative">
+                    <div className="mx-10 flex items-center mb-5 mt-5 relative">
                         <label
                         htmlFor="email"
                         className="absolute top-0 left-2 -mt-2 px-1 text-sm text-gray-400 bg-white"
@@ -105,14 +137,21 @@ function AboutUs() {
                         </label>
                         <input
                         type="text"
-                        id="name"
+                        id="fullName"
                         name="fullName"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.fullName}
                         required
                         placeholder="John Jane Doe"
                         className="border border-gray-400 text-lg w-full px-3 py-3 rounded"
                         />
+                        
                     </div>
-                    <div className="mx-10 flex items-center mb-10 relative">
+                    {formik.touched.fullName && formik.errors.fullName ? (
+                    <div className='text-red-300 text-start text-sm mb-5 pl-10'>{formik.errors.fullName}</div>
+                  ) : null}
+                    <div className="mx-10 flex items-center mb-5 mt-5 relative">
                         <label
                         htmlFor="email"
                         className="absolute top-0 left-2 -mt-2 px-1 text-sm text-gray-400 bg-white"
@@ -123,12 +162,19 @@ function AboutUs() {
                         type="email"
                         id="email"
                         name="email"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.email}
                         required
                         placeholder="example@gmail.com"
                         className="border border-gray-400 text-lg w-full px-3 py-3 rounded"
                         />
+                        
                     </div>
-                    <div className="mx-10 flex items-center mb-10 relative">
+                    {formik.touched.email && formik.errors.email ? (
+                    <div className='text-red-300 text-start text-sm mb-5 pl-10'>{formik.errors.email}</div>
+                        ):null}
+                    <div className="mx-10 flex items-center mb-5 mt-5 relative">
                         <label
                         htmlFor="email"
                         className="absolute top-0 left-2 -mt-2 px-1 text-sm text-gray-400 bg-white"
@@ -139,14 +185,21 @@ function AboutUs() {
                         type="text"
                         id="message"
                         name="message"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.message}
                         required
                         placeholder="start typing..."
                         className="border border-gray-400 text-lg w-full h-[100px] px-3 py-3 rounded"
                         />
+                        
                     </div>
+                    {formik.touched.message && formik.errors.message ? (
+                    <div className='text-red-300 text-start text-sm mb-5 pl-10'>{formik.errors.message}</div>
+                  ) : null}
                     <button
                         type="submit"
-                        className="w-[200px] lg:w-[440px] h-[50px] bg-primary-normal text-white py-3 rounded hover:bg-primary-normalhover transition duration-300"
+                        className="w-[200px] lg:w-[440px] h-[50px] mt-10 bg-primary-normal text-white py-3 rounded hover:bg-primary-normalhover transition duration-300"
                     >
                         Send
                     </button>
